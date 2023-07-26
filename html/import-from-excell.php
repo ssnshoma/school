@@ -275,7 +275,7 @@ $title = "وارد کردن از فایل اکسل";
                       <h3 class="card-header mt-5">ثبت نام</h3>
                       <div class="card-body">
                         <p style="font-size: 20px">وارد کردن لیست دانش آموزن از فایل اکسل</p>
-                        <p class="text-danger">توجه: دقت کنید که ردیف اول فایل وارد نمی شود</p>
+                        <p class="text-danger">توجه: دقت کنید که ردیف اول فایل نیز وارد می شود</p>
                         <form class="form pb-5" method="POST" enctype="multipart/form-data">
 
                           <label style="font-size: 15px" for="formFile" class="form-label mt-3">فایل اکسل مورد نظر را
@@ -309,46 +309,48 @@ $title = "وارد کردن از فایل اکسل";
             $fileName = $_FILES['import_file']['name'];
             $file_ext = pathinfo($fileName, PATHINFO_EXTENSION);
             $allowed_ext = ['xls', 'csv', 'xlsx'];
-            if (in_array($file_ext, $allowed_ext)) {
-              $inputFileName = $_FILES['import_file']['tmp_name'];
-              $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
-              $data = $spreadsheet->getActiveSheet()->toArray();
-              foreach ($data as $row) {
-                $s_codemeli = $row['0'];
-                $s_fname = $row['1'];
-                $s_lname = $row['2'];
-                $s_fathername = $row['3'];
-                $s_major = $row['4'];
-                $s_school = $row['5'];
-                $s_grade = $row['6'];
-                $s_class = $row['7'];
-                $query = "INSERT INTO `studentlist`(codemeli,fname, lname, fathername , major, school, grade, class) VALUES ('$s_codemeli','$s_fname','$s_lname','$s_fathername','$s_major','$s_school','$s_grade','$s_class')";
-                $query_run = mysqli_query($connection, $query);
-              }
-            if ($query_run) {
-              ?>
-              <script>
-                  window.alert("ثبت شد");
-              </script>
+          if (in_array($file_ext, $allowed_ext)) {
+            $inputFileName = $_FILES['import_file']['tmp_name'];
+            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
+            $data = $spreadsheet->getActiveSheet()->toArray();
+          foreach ($data as $row) {
+            $s_codemeli = $row['0'];
+            $s_fname = $row['1'];
+            $s_lname = $row['2'];
+            $s_fathername = $row['3'];
+            $s_major = $row['4'];
+            $s_school = $row['5'];
+            $s_grade = $row['6'];
+            $s_class = $row['7'];
+            $sql = "SELECT * FROM studentlist WHERE codemeli=$s_codemeli";
+            $query_run = mysqli_query($connection, $sql);
+            $rowcount = mysqli_num_rows($query_run);
+          if ($rowcount <= 0) {
+            $queryy = "INSERT INTO `studentlist`(codemeli,fname, lname, fathername , major, school, grade, class) VALUES ('$s_codemeli','$s_fname','$s_lname','$s_fathername','$s_major','$s_school','$s_grade','$s_class')";
+            $queryy_run = mysqli_query($connection, $queryy);
+          if ($queryy_run) { ?>
+            <script>
+                window.alert("ثبت شد");
+            </script>
+          <?php } ?>
+          <?php
+          } else { ?>
+            <div class="float-start alert alert-primary w-50 block p-1 mb-1">
+              دانش آموز
+              <?php echo   $s_fname. " " . $s_lname ." با کد ملی ". $s_codemeli ?>
+              قبلا ثبت نام شده است
+            </div>
+          <?php }
+          }
+          }
+          } else {
+          ?>
+            <script>
+                window.alert("فرمت صحیح نیست");
+            </script>
             <?php
-            } else {
-            ?>
-              <script>
-                  window.alert("فایل وارد نشد");
-              </script>
-            <?php
-
-            }
-            } else {
-            ?>
-              <script>
-                  window.alert("فرمت صحیح نیست");
-              </script>
-              <?php
-            }
           }
           ?>
-
 
           <!-- Footer -->
           <footer class="content-footer footer bg-footer-theme">
