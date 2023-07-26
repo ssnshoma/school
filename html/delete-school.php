@@ -4,7 +4,7 @@ include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
-$title = "ثبت مدرسه جدید";
+$title = "حذف مدرسه";
 ?>
 <?php include_once '../assets/head.php'; ?>
 
@@ -281,29 +281,16 @@ if (isset($_POST['submit-btn'])) {
 
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
-                            <div class="col-lg-8 mb-4 order-0">
+                            <div class="col-lg-12 mb-4 order-0">
                                 <div class="card h-100">
                                     <div class="d-flex align-items-end row">
                                         <div class="">
                                             <div class="card-body">
-                                                <h5 class="card-title text-primary">لیست مدارس</h5>
-                                                <?php if (isset($_SESSION['school-deleted'])) {
-                                                    ?>
-                                                    <div class="alert alert-warning d-inline-block"
-                                                         style="margin-right: 15px;width: 300px">
-                                                        <?php echo $_SESSION['school-deleted']?>
-                                                    </div>
-                                                <?php
-                                                unset($_SESSION['school-deleted']);
-                                                } ?>
-                                                <p class="mb-4 d-inline-block"> لیست مدارس ثبت شده </p>
+                                                <h5 class="card-title text-primary">مشخصات مدرسه</h5>
                                                 <div class="col-12">
-
-
                                                     <table class="table">
                                                         <thead>
                                                         <tr>
-                                                            <th scope="col">ویرایش</th>
                                                             <th scope="col">آدرس</th>
                                                             <th scope="col">تلفن</th>
                                                             <th scope="col">مدیر</th>
@@ -313,30 +300,60 @@ if (isset($_POST['submit-btn'])) {
                                                         <tbody>
 
                                                         <?php
-                                                        $qry = "SELECT * FROM schools";
-                                                        $res = $pdo->prepare($qry);
-                                                        $res->execute();
-                                                        $roww = $res->fetchAll();
-                                                        foreach ($roww as $row) {
-                                                            $id = $row['Id'];
-                                                            ?>
-                                                            <tr>
-                                                                <td>
-                                                                    <?php echo '<a href="delete-school.php?deleteId=' . $id . '" class="btn p-1 text-decoration-none"><i class="bx bx-trash"></i></a>'
-                                                                    ?>
-
-                                                                    <?php echo '<a href="add-school.php?editId=' . $id . '" class="btn p-1 text-decoration-none"><i class="bx bx-edit-alt"></i></a>'
-                                                                    ?>
-                                                                </td>
-                                                                <td><?php print ($row['address']); ?></td>
-                                                                <td><?php print ($row['phone']); ?></td>
-                                                                <td><?php print ($row['managername']); ?></td>
-                                                                <td><?php print($row['name']); ?></td>
-                                                            </tr>
-                                                        <?php } ?>
+                                                        if (isset($_GET['deleteId'])) {
+                                                            $idd = $_GET['deleteId'];
+                                                            $qry = "SELECT * FROM schools WHERE Id=$idd";
+                                                            $res = $pdo->prepare($qry);
+                                                            $res->execute();
+                                                            $roww = $res->fetchAll();
+                                                            foreach ($roww as $row) {
+                                                                $id = $row['Id'];
+                                                                ?>
+                                                                <tr>
+                                                                    <td><?php print ($row['address']); ?></td>
+                                                                    <td><?php print ($row['phone']); ?></td>
+                                                                    <td><?php print ($row['managername']); ?></td>
+                                                                    <td><?php print($row['name']); ?></td>
+                                                                </tr>
+                                                            <?php }
+                                                        } ?>
                                                         </tbody>
                                                     </table>
 
+                                                </div>
+                                                <div class="alert alert-danger mb-4 mt-5">
+                                                    <form method="post">
+                                                        <input style="width: 80px" type="submit" class="btn btn-danger" name="yes"
+                                                               value="بله">
+                                                        <input style="width: 80px" type="submit" class="btn btn-success"
+                                                               name="no"
+                                                               value="خیر">
+                                                        <p class="pt-3 d-inline-block w-50" style="margin-right: 230px">
+                                                            آیا از حذف این مدرسه اطمینان
+                                                            دارید؟
+                                                        </p>
+                                                    </form>
+                                                    <?php if (isset($_POST['yes'])) {
+                                                        $idd = $_GET['deleteId'];
+                                                        $qry = "DELETE FROM schools WHERE Id=$idd";
+                                                        $res = $pdo->prepare($qry);
+                                                        $res->execute();
+                                                        $_SESSION['school-deleted']="مدرسه مورد نظر حذف شد";
+                                                        ?>
+                                                        <script>
+                                                            window.location.href = "add-school.php";
+                                                        </script>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <?php if (isset($_POST['no'])) {
+                                                        ?>
+                                                        <script>
+                                                            window.location.href = "add-school.php";
+                                                        </script>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -344,170 +361,10 @@ if (isset($_POST['submit-btn'])) {
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 mb-4 order-0">
-                                <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">ثبت مدرسه جدید</h5>
-                                                <p class="mb-4"> برای ثبت مدرسه جدید از فرم زیر استفاده کنید </p>
-                                                <?php if (isset($_GET['inserted'])) { ?>
-                                                    <div class="alert alert-success alert-dismissible"> <?php print ($_GET['inserted']); ?> </div>
-                                                <?php } ?>
-
-                                                <form method="post">
-                                                    <div class="row mb-2">
-                                                        <label style="font-size: 17px" class="form-label"
-                                                               for="name">نام</label>
-                                                        <div class="col-sm-12">
-                                                            <input style="text-align: right" type="text"
-                                                                   class="form-control"
-                                                                   id="basic-default-name"
-                                                                   placeholder="نام مدرسه را وارد کنید" name="name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <label style="font-size: 17px" class="form-label"
-                                                               for="manager-name">مدیر</label>
-                                                        <div class="col-sm-12">
-                                                            <input style="text-align: right" type="text"
-                                                                   class="form-control"
-                                                                   id="basic-default-name"
-                                                                   placeholder="نام و نام خانوادگی مدیر"
-                                                                   name="manager-name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <label style="font-size: 17px" class="form-label" for="phone">تلفن</label>
-                                                        <div class="col-sm-12">
-                                                            <input style="text-align: right" type="text"
-                                                                   class="form-control"
-                                                                   id="basic-default-name"
-                                                                   placeholder="شماره مدرسه" name="phone">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <label style="font-size: 17px" class="form-label"
-                                                               for="basic-default-name">آدرس</label>
-                                                        <div class="col-sm-12">
-                                                            <input style="text-align: right" type="text"
-                                                                   class="form-control"
-                                                                   id="basic-default-name"
-                                                                   placeholder="آدرس" name="address">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row justify-content-center">
-                                                        <div class="col-sm-12 mt-3 mb-2">
-                                                            <button name="submit-btn" type="submit"
-                                                                    class="btn btn-primary d-block m-auto">ثبت
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-
-                        if (isset($_GET['editId'])) {
-                        $ID = $_GET['editId'];
-                        $qruy = "SELECT * FROM schools WHERE id=$ID";
-                        $resu = $pdo->prepare($qruy);
-                        $resu->execute();
-                        $rowss = $resu->fetchALL();
-                        foreach ($rowss
-
-                        as $row) {
-                        $nam = $row['name'];
-                        $mange = $row['managername'];
-                        $addr = $row['address'];
-                        $number = $row['phone'];
-
-                        ?>
-                        <div class="row">
-                            <div class="col-lg-12 mb-4 border-0 m-auto">
-                                <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">ویرایش اطلاعات</h5>
-                                                <p class="mb-4"> برای ویرایش اطلاعات از فرم زیر استفاده کنید </p>
-                                                <?php if (isset($_GET['get-inserted'])) { ?>
-                                                    <div
-                                                            class="alert alert-success alert-dismissible"> <?php print ($_GET['get-inserted']); ?> </div>
-                                                <?php } ?>
-
-                                                <form method="post">
-                                                    <div class="row mb-4">
-                                                        <div class="col-sm-10">
-                                                            <input style="text-align: right" type="text"
-                                                                   class="form-control"
-                                                                   id="basic-default-name"
-                                                                   placeholder="نام مدرسه را وارد کنید"
-                                                                   value="<?php echo $nam; ?>" name="name-e">
-                                                        </div>
-                                                        <label style="font-size: 17px" class="col-sm-2 col-form-label"
-                                                               for="name">نام</label>
-                                                    </div>
-                                                    <div class="row mb-4">
-                                                        <div class="col-sm-10">
-                                                            <input style="text-align: right" type="text"
-                                                                   class="form-control"
-                                                                   id="basic-default-name"
-                                                                   placeholder="نام و نام خانوادگی مدیر"
-                                                                   name="manager-name-e"
-                                                                   value="<?php echo $mange; ?>">
-                                                        </div>
-                                                        <label style="font-size: 17px" class="col-sm-2 col-form-label"
-                                                               for="manager-name">مدیر</label>
-                                                    </div>
-                                                    <div class="row mb-4">
-                                                        <div class="col-sm-10">
-                                                            <input style="text-align: right" type="text"
-                                                                   class="form-control"
-                                                                   id="basic-default-name"
-                                                                   placeholder="شماره مدرسه" name="phone-e"
-                                                                   value="<?php echo $number; ?>">
-                                                        </div>
-                                                        <label style="font-size: 17px" class="col-sm-2 col-form-label"
-                                                               for="phone">تلفن</label>
-                                                    </div>
-                                                    <div class="row mb-4">
-                                                        <div class="col-sm-10">
-                                                            <input style="text-align: right" type="text"
-                                                                   class="form-control"
-                                                                   id="basic-default-name"
-                                                                   placeholder="آدرس" name="address-e"
-                                                                   value="<?php echo $addr; ?>">
-                                                        </div>
-                                                        <label style="font-size: 17px" class="col-sm-2 col-form-label"
-                                                               for="basic-default-name">آدرس</label>
-                                                    </div>
-
-                                                    <div class="row justify-content-center">
-                                                        <div class="col-sm-12 mt-3 mb-2">
-                                                            <button name="submit-btn-e" type="submit"
-                                                                    class="btn btn-primary d-block m-auto">ثبت
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-
-
-                    <?php }
-                    } ?>
                 </div>
+
                 <!-- / Content -->
 
                 <!-- Footer -->
@@ -548,35 +405,5 @@ if (isset($_POST['submit-btn'])) {
     <div class="layout-overlay layout-menu-toggle"></div>
 
     <!-- / Layout wrapper -->
-
-<?php
-if (isset($_GET['editId'])) { ?>
-    <script>
-        window.scrollTo({left: 0, top: 500, behavior: "smooth"});
-    </script>
-    <?php
-    if (isset($_POST['submit-btn-e'])) {
-        $editidd = $_GET['editId'];
-        $editname = $_POST['name-e'];
-        $editmanager = $_POST['manager-name-e'];
-        $editphone = $_POST['phone-e'];
-        $editadress = $_POST['address-e'];
-        $mysqlq = "UPDATE schools SET name=?,managername=?,phone=?,address=? WHERE Id=$editidd";
-        $resua = $pdo->prepare($mysqlq);
-        $resua->bindValue(1, $editname);
-        $resua->bindValue(2, $editmanager);
-        $resua->bindValue(3, $editphone);
-        $resua->bindValue(4, $editadress);
-        if ($resua->execute()) { ?>
-            <script>
-                window.location.href = "add-school.php";
-                window.scrollTo({left: 0, top: 0, behavior: "smooth"});
-            </script>
-            <?php
-        }
-    }
-}
-?>
-
 
 <?php include_once '../assets/footer.php'; ?>
