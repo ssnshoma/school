@@ -256,6 +256,52 @@ $title = "وارد کردن از فایل اکسل";
 
       <!-- / Navbar -->
 
+      <?php
+      $connection = mysqli_connect("localhost", "root", "", "");
+      mysqli_select_db($connection, '1402s1403');
+      require '../vendor/autoload.php';
+      if (isset($_POST['save_multiple_data'])) {
+        $fileName = $_FILES['import_file']['name'];
+        $file_ext = pathinfo($fileName, PATHINFO_EXTENSION);
+        $allowed_ext = ['xls', 'csv', 'xlsx'];
+        if (in_array($file_ext, $allowed_ext)) {
+          $inputFileName = $_FILES['import_file']['tmp_name'];
+          $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
+          $data = $spreadsheet->getActiveSheet()->toArray();
+        foreach ($data as $row) {
+          $s_codemeli = $row['0'];
+          $s_fname = $row['1'];
+          $s_lname = $row['2'];
+          $s_fathername = $row['3'];
+          $s_major = $row['4'];
+          $s_school = $row['5'];
+          $s_grade = $row['6'];
+          $s_class = $row['7'];
+          $sql = "SELECT * FROM studentlist WHERE codemeli=$s_codemeli";
+          $query_run = mysqli_query($connection, $sql);
+          $rowcount = mysqli_num_rows($query_run);
+        if ($rowcount <= 0) {
+          $queryy = "INSERT INTO `studentlist`(codemeli,fname, lname, fathername , major, school, grade, class) VALUES ('$s_codemeli','$s_fname','$s_lname','$s_fathername','$s_major','$s_school','$s_grade','$s_class')";
+          $queryy_run = mysqli_query($connection, $queryy);
+          if ($queryy_run) {
+          } ?>
+          <?php } else { ?>
+          <div class="float-start alert alert-primary w-50 block p-1 mb-1">
+            دانش آموز
+            <?php echo $s_fname . " " . $s_lname . " با کد ملی " . $s_codemeli ?>
+            قبلا ثبت نام شده است
+          </div>
+        <?php }
+        }
+        } else {
+        ?>
+          <script> console.log("فرمت غلطه خب") </script>
+          <?php
+          $_GET['ext-not-defined'] = "فرمت فایل انتخاب شده نادرست می باشد";
+        }
+      }
+      ?>
+
       <!-- Content wrapper -->
       <div class="content-wrapper">
         <!-- Content -->
@@ -276,6 +322,11 @@ $title = "وارد کردن از فایل اکسل";
                       <div class="card-body">
                         <p style="font-size: 20px">وارد کردن لیست دانش آموزن از فایل اکسل</p>
                         <p class="text-danger">توجه: دقت کنید که ردیف اول فایل نیز وارد می شود</p>
+
+                        <?php if (isset($_GET['ext-not-defined'])) { ?>
+                          <div class="alert alert-warning"> <?php print ($_GET['ext-not-defined']); ?>  </div>
+                        <?php } ?>
+
                         <form class="form pb-5" method="POST" enctype="multipart/form-data">
 
                           <label style="font-size: 15px" for="formFile" class="form-label mt-3">فایل اکسل مورد نظر را
@@ -299,58 +350,6 @@ $title = "وارد کردن از فایل اکسل";
             </div>
           </div>
           <!-- / Content -->
-
-
-          <?php
-          $connection = mysqli_connect("localhost", "root", "", "");
-          mysqli_select_db($connection, '1402s1403');
-          require '../vendor/autoload.php';
-          if (isset($_POST['save_multiple_data'])) {
-            $fileName = $_FILES['import_file']['name'];
-            $file_ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $allowed_ext = ['xls', 'csv', 'xlsx'];
-          if (in_array($file_ext, $allowed_ext)) {
-            $inputFileName = $_FILES['import_file']['tmp_name'];
-            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
-            $data = $spreadsheet->getActiveSheet()->toArray();
-          foreach ($data as $row) {
-            $s_codemeli = $row['0'];
-            $s_fname = $row['1'];
-            $s_lname = $row['2'];
-            $s_fathername = $row['3'];
-            $s_major = $row['4'];
-            $s_school = $row['5'];
-            $s_grade = $row['6'];
-            $s_class = $row['7'];
-            $sql = "SELECT * FROM studentlist WHERE codemeli=$s_codemeli";
-            $query_run = mysqli_query($connection, $sql);
-            $rowcount = mysqli_num_rows($query_run);
-          if ($rowcount <= 0) {
-            $queryy = "INSERT INTO `studentlist`(codemeli,fname, lname, fathername , major, school, grade, class) VALUES ('$s_codemeli','$s_fname','$s_lname','$s_fathername','$s_major','$s_school','$s_grade','$s_class')";
-            $queryy_run = mysqli_query($connection, $queryy);
-          if ($queryy_run) { ?>
-            <script>
-                window.alert("ثبت شد");
-            </script>
-          <?php } ?>
-          <?php
-          } else { ?>
-            <div class="float-start alert alert-primary w-50 block p-1 mb-1">
-              دانش آموز
-              <?php echo   $s_fname. " " . $s_lname ." با کد ملی ". $s_codemeli ?>
-              قبلا ثبت نام شده است
-            </div>
-          <?php }
-          }
-          }
-          } else {
-          ?>
-            <script>
-                window.alert("فرمت صحیح نیست");
-            </script>
-            <?php
-          }
-          ?>
 
           <!-- Footer -->
           <footer class="content-footer footer bg-footer-theme">
