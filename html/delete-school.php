@@ -8,26 +8,6 @@ $title = "حذف مدرسه";
 ?>
 <?php include_once '../assets/head.php'; ?>
 
-<?php
-if (isset($_POST['submit-btn'])) {
-    $sName = $_POST['name'];
-    $sManager = $_POST['manager-name'];
-    $sPhone = $_POST['phone'];
-    $sAddress = $_POST['address'];
-
-    $sql = "INSERT INTO schools SET name=?,managername=?,phone=?,address=?";
-    $resualt = $pdo->prepare($sql);
-    $resualt->bindValue(1, $sName);
-    $resualt->bindValue(2, $sManager);
-    $resualt->bindValue(3, $sPhone);
-    $resualt->bindValue(4, $sAddress);
-    if ($resualt->execute()) {
-        $_GET['inserted'] = "ثبت شد";
-    }
-}
-?>
-
-
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
 
