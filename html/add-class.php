@@ -4,7 +4,7 @@ include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
-$titel = "اضافه کردن کلاس"
+$title = "اضافه کردن کلاس"
 ?>
 <?php include_once '../assets/head.php'; ?>
 
