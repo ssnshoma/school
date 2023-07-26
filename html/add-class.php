@@ -375,9 +375,22 @@ if (isset($_POST['submit-btn'])) {
                           <div class="row mb-2">
                             <label style="font-size: 17px" class="form-label" for="phone">مدرسه</label>
                             <div class="col-sm-12">
-                              <input style="text-align: right" type="text" class="form-control"
-                                     id="basic-default-name"
-                                     placeholder="نام مدرسه" name="school">
+
+                              <select name="school" id="" class="form-control" style="direction: rtl">
+                                <?php
+                                $sqlq="SELECT * FROM schools";
+                                $sqlresualt=$pdo->prepare($sqlq);
+                                $sqlresualt->execute();
+                                $sqlrow=$sqlresualt->fetchAll();
+                                foreach ($sqlrow as $row){
+                                ?>
+                                <option class="salam" style="font-size: 20px" value="<?php print ($row['name']);?>"><?php print ($row['name']);?></option>
+                                <?php } ?>
+                              </select>
+
+<!--                              <input style="text-align: right" type="text" class="form-control"-->
+<!--                                     id="basic-default-name"-->
+<!--                                     placeholder="نام مدرسه" name="school">-->
                             </div>
                           </div>
                           <div class="row justify-content-center">
@@ -521,15 +534,10 @@ if (isset($_GET['editId'])) { ?>
     $resua->bindValue(2, $editgrade);
     $resua->bindValue(3, $editschool);
     if ($resua->execute()) { ?>
-
       <script>
-          if (typeof window.history.pushState == 'function') {
-              window.history.pushState({}, "Hide", "http://localhost/project/school/html/add-class.php");
-              window.location.reload(true);
+              window.location.href="add-class.php";
               window.scrollTo({left: 0, top: 0, behavior: "smooth"});
-          }
       </script>
-
       <?php
     }
   }

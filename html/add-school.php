@@ -518,7 +518,7 @@ if (isset($_POST['submit-btn'])) {
 <?php
 if (isset($_GET['editId'])) { ?>
   <script>
-      window.scrollTo({left: 0, top: 10000, behavior: "smooth"});
+      window.scrollTo({left: 0, top: 500, behavior: "smooth"});
   </script>
   <?php
   if (isset($_POST['submit-btn-e'])) {
@@ -534,15 +534,10 @@ if (isset($_GET['editId'])) { ?>
     $resua->bindValue(3, $editphone);
     $resua->bindValue(4, $editadress);
     if ($resua->execute()) { ?>
-
       <script>
-          if (typeof window.history.pushState == 'function') {
-              window.history.pushState({}, "Hide", "http://localhost/project/school/html/add-school.php");
-              window.location.reload(true);
-              window.scrollTo({left: 0, top: 0, behavior: "smooth"});
-          }
+          window.location.href="add-school.php";
+          window.scrollTo({left: 0, top: 0, behavior: "smooth"});
       </script>
-
       <?php
     }
   }
