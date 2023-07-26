@@ -42,7 +42,7 @@ if (isset($_POST['submit-btn'])) {
     <div class="layout-container">
 
 
-      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+      <aside id="layout-menu" style="display: none" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
           <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
@@ -377,20 +377,18 @@ if (isset($_POST['submit-btn'])) {
                             <div class="col-sm-12">
 
                               <select name="school" id="" class="form-control" style="direction: rtl">
+                                <option class="salam" style="font-size: 20px" selected disabled value="">مدرسه را انتخاب کنید</option>
                                 <?php
-                                $sqlq="SELECT * FROM schools";
-                                $sqlresualt=$pdo->prepare($sqlq);
+                                $sqlq = "SELECT * FROM schools";
+                                $sqlresualt = $pdo->prepare($sqlq);
                                 $sqlresualt->execute();
-                                $sqlrow=$sqlresualt->fetchAll();
-                                foreach ($sqlrow as $row){
-                                ?>
-                                <option class="salam" style="font-size: 20px" value="<?php print ($row['name']);?>"><?php print ($row['name']);?></option>
+                                $sqlrow = $sqlresualt->fetchAll();
+                                foreach ($sqlrow as $row) {
+                                  ?>
+                                  <option class="salam" style="font-size: 20px"
+                                          value="<?php print ($row['name']); ?>"><?php print ($row['name']); ?></option>
                                 <?php } ?>
                               </select>
-
-<!--                              <input style="text-align: right" type="text" class="form-control"-->
-<!--                                     id="basic-default-name"-->
-<!--                                     placeholder="نام مدرسه" name="school">-->
                             </div>
                           </div>
                           <div class="row justify-content-center">
@@ -452,12 +450,24 @@ if (isset($_POST['submit-btn'])) {
                           </div>
                           <div class="row mb-4">
                             <div class="col-sm-10">
-                              <input style="text-align: right" type="text" class="form-control"
-                                     id="basic-default-name"
-                                     placeholder="مدرسه" name="cschool-e" value="<?php echo $schoo; ?>">
+                              <select name="cschool-e" id="" class="form-control" style="direction: rtl">
+                                <option class="salam" style="font-size: 20px" disabled value="<?php echo $schoo; ?>"><?php echo $schoo; ?></option>
+                                <?php
+                                $sqlq = "SELECT * FROM schools";
+                                $sqlresualt = $pdo->prepare($sqlq);
+                                $sqlresualt->execute();
+                                $sqlrow = $sqlresualt->fetchAll();
+                                foreach ($sqlrow as $row) {
+                                  ?>
+                                  <option class="salam" style="font-size: 20px"
+                                          value="<?php print ($row['name']); ?>"><?php print ($row['name']); ?></option>
+                                <?php } ?>
+                              </select>
                             </div>
                             <label style="font-size: 17px" class="col-sm-2 col-form-label" for="phone">مدرسه</label>
                           </div>
+
+
 
                           <div class="row justify-content-center">
                             <div class="col-sm-12 mt-3 mb-2">
@@ -535,8 +545,8 @@ if (isset($_GET['editId'])) { ?>
     $resua->bindValue(3, $editschool);
     if ($resua->execute()) { ?>
       <script>
-              window.location.href="add-class.php";
-              window.scrollTo({left: 0, top: 0, behavior: "smooth"});
+          window.location.href = "add-class.php";
+          window.scrollTo({left: 0, top: 0, behavior: "smooth"});
       </script>
       <?php
     }
