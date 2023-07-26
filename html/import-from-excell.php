@@ -4,6 +4,7 @@ include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
+$title="وارد کردن از فایل اکسل";
 ?>
 <?php include_once '../assets/head.php'; ?>
 
