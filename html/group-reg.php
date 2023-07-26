@@ -4,18 +4,20 @@ include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
+$title = "ثبت نام گروهی";
+$category="ثبت نام";
 ?>
 
 <?php include_once '../assets/head.php'; ?>
 
-<!-- Layout wrapper -->
-<div class="layout-wrapper layout-content-navbar">
-  <div class="layout-container">
-    <!-- Menu -->
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Menu -->
 
-    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-      <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <div class="app-brand demo">
+          <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
               <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -60,344 +62,214 @@ $profileDetails = getProfilePicName();
                 </g>
               </svg>
             </span>
-          <span class="app-brand-text demo menu-text fw-bolder ms-2">مدرسه من</span>
-        </a>
-
-        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-          <i class="bx bx-chevron-left bx-sm align-middle"></i>
-        </a>
-      </div>
-
-      <div class="menu-inner-shadow"></div>
-
-      <ul class="menu-inner py-1">
-        <!-- Dashboard -->
-
-        <li class="menu-item">
-          <a href="dashboard.php" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-home-circle"></i>
-            <div data-i18n="Analytics">داشبورد</div>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">مدرسه من</span>
           </a>
-        </li>
 
-
-        <li class="menu-header small text-uppercase">
-          <span class="menu-header-text">ثبت نام ها </span>
-        </li>
-
-        <li class="menu-item open active">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-dock-top"></i>
-            <div data-i18n="Account Settings">ثبت نام دانش آموز</div>
+          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
           </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="single-reg.php" class="menu-link">
-                <div data-i18n="Account">ثبت نام تکی</div>
-              </a>
-            </li>
-            <li class="menu-item active">
-              <a href="group-reg.php" class="menu-link">
-                <div data-i18n="Notifications">ثبت نام گروهی</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="import-from-excell.php" class="menu-link">
-                <div data-i18n="Connections">وارد کردن فایل اکسل</div>
-              </a>
-            </li>
-          </ul>
-        </li>
+        </div>
+
+        <div class="menu-inner-shadow"></div>
+
+        <ul class="menu-inner py-1">
+          <!-- Dashboard -->
+
+          <li class="menu-item">
+            <a href="dashboard.php" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">داشبورد</div>
+            </a>
+          </li>
 
 
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-dock-top"></i>
-            <div data-i18n="Account Settings">مدرسه</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="add-class.php" class="menu-link">
-                <div data-i18n="Account">ثبت کلاس</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="add-school.php" class="menu-link">
-                <div data-i18n="Notifications">ثبت مدرسه</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-            <div data-i18n="Authentications">هویت</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="auth-login-basic.php" class="menu-link" target="_blank">
-                <div data-i18n="Basic">ورود</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="auth-register-basic.php" class="menu-link" target="_blank">
-                <div data-i18n="Basic">ثبت نام</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="auth-forgot-password-basic.php" class="menu-link" target="_blank">
-                <div data-i18n="Basic">فراموشی پسورد</div>
-              </a>
-            </li>
-          </ul>
-        </li>
+          <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">ثبت نام ها </span>
+          </li>
+
+          <li class="menu-item open active">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <div data-i18n="Account Settings">ثبت نام دانش آموز</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="single-reg.php" class="menu-link">
+                  <div data-i18n="Account">ثبت نام تکی</div>
+                </a>
+              </li>
+              <li class="menu-item active">
+                <a href="group-reg.php" class="menu-link">
+                  <div data-i18n="Notifications">ثبت نام گروهی</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="import-from-excell.php" class="menu-link">
+                  <div data-i18n="Connections">وارد کردن فایل اکسل</div>
+                </a>
+              </li>
+            </ul>
+          </li>
 
 
-        <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">ارزشیابی</span></li>
-        <!-- Cards -->
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <div data-i18n="Account Settings">مدرسه</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="add-class.php" class="menu-link">
+                  <div data-i18n="Account">ثبت کلاس</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="add-school.php" class="menu-link">
+                  <div data-i18n="Notifications">ثبت مدرسه</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+              <div data-i18n="Authentications">هویت</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="auth-login-basic.php" class="menu-link" target="_blank">
+                  <div data-i18n="Basic">ورود</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="auth-register-basic.php" class="menu-link" target="_blank">
+                  <div data-i18n="Basic">ثبت نام</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="auth-forgot-password-basic.php" class="menu-link" target="_blank">
+                  <div data-i18n="Basic">فراموشی پسورد</div>
+                </a>
+              </li>
+            </ul>
+          </li>
 
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-            <div data-i18n="Misc">ثبت نمره</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="single-daily-mark.php" class="menu-link">
-                <div data-i18n="Error">نمرات روزانه تکی</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="goup-daily-mark.php" class="menu-link">
-                <div data-i18n="Under Maintenance">نمرات روزانه گروهی</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="single-monthly-mark.php" class="menu-link">
-                <div data-i18n="Under Maintenance">نمرات ماهانه تکی</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="group-monthly-mark.php" class="menu-link">
-                <div data-i18n="Under Maintenance">نمرات ماهانه گروهی</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="final-mark.php" class="menu-link">
-                <div data-i18n="Under Maintenance">نمرات پایانی</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-            <div data-i18n="Misc">حضور غیاب</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="class-present-absent.php" class="menu-link">
-                <div data-i18n="Error">ثبت کلاسی</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="school-present-absent.php" class="menu-link">
-                <div data-i18n="Under Maintenance">ثبت مدرسه ای</div>
-              </a>
-            </li>
-          </ul>
-        </li>
 
-        <!-- User interface -->
-        <li class="menu-item">
-          <a href="javascript:void(0)" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-box"></i>
-            <div data-i18n="User interface">آزمون ها</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="add-question.php" class="menu-link">
-                <div data-i18n="Accordion">ثبت سوال</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="add-exam.php" class="menu-link">
-                <div data-i18n="Alerts">ثبت امتحان</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="search-question.php" class="menu-link">
-                <div data-i18n="Badges">جستجو سوالات</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="import-pdf.php" class="menu-link">
-                <div data-i18n="Buttons">PDF ثبت سوال با</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="import-pdf.php" class="menu-link">
-                <div data-i18n="Buttons">WORD ثبت سوال با</div>
-              </a>
-            </li>
-          </ul>
-        </li>
+          <!-- Components -->
+          <li class="menu-header small text-uppercase"><span class="menu-header-text">ارزشیابی</span></li>
+          <!-- Cards -->
 
-      </ul>
-    </aside>
-    <!-- / Menu -->
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+              <div data-i18n="Misc">ثبت نمره</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="single-daily-mark.php" class="menu-link">
+                  <div data-i18n="Error">نمرات روزانه تکی</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="goup-daily-mark.php" class="menu-link">
+                  <div data-i18n="Under Maintenance">نمرات روزانه گروهی</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="single-monthly-mark.php" class="menu-link">
+                  <div data-i18n="Under Maintenance">نمرات ماهانه تکی</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="group-monthly-mark.php" class="menu-link">
+                  <div data-i18n="Under Maintenance">نمرات ماهانه گروهی</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="final-mark.php" class="menu-link">
+                  <div data-i18n="Under Maintenance">نمرات پایانی</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+              <div data-i18n="Misc">حضور غیاب</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="class-present-absent.php" class="menu-link">
+                  <div data-i18n="Error">ثبت کلاسی</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="school-present-absent.php" class="menu-link">
+                  <div data-i18n="Under Maintenance">ثبت مدرسه ای</div>
+                </a>
+              </li>
+            </ul>
+          </li>
 
-    <!-- Layout container -->
-    <div class="layout-page">
-      <!-- Navbar -->
+          <!-- User interface -->
+          <li class="menu-item">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-box"></i>
+              <div data-i18n="User interface">آزمون ها</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="add-question.php" class="menu-link">
+                  <div data-i18n="Accordion">ثبت سوال</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="add-exam.php" class="menu-link">
+                  <div data-i18n="Alerts">ثبت امتحان</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="search-question.php" class="menu-link">
+                  <div data-i18n="Badges">جستجو سوالات</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="import-pdf.php" class="menu-link">
+                  <div data-i18n="Buttons">PDF ثبت سوال با</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="import-word.php" class="menu-link">
+                  <div data-i18n="Buttons">WORD ثبت سوال با</div>
+                </a>
+              </li>
+            </ul>
+          </li>
 
-      <?php include_once '../assets/nav.php' ?>
+        </ul>
+      </aside>
+      <!-- / Menu -->
 
-      <!-- / Navbar -->
+      <!-- Layout container -->
+      <div class="layout-page">
+        <!-- Navbar -->
 
-      <!-- Content wrapper -->
-      <div class="content-wrapper">
-        <!-- Content -->
+        <?php include_once '../assets/nav.php' ?>
 
-        <div class="container-xxl flex-grow-1 container-p-y">
-          <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Account Settings /</span> Notifications
-          </h4>
+        <!-- / Navbar -->
 
-          <div class="row">
-            <div class="col-md-12">
-              <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                <li class="nav-item">
-                  <a class="nav-link" href="pages-account-settings-account.php"
-                  ><i class="bx bx-user me-1"></i> Account</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="javascript:void(0);"
-                  ><i class="bx bx-bell me-1"></i> Notifications</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="import-from-excell.php"
-                  ><i class="bx bx-link-alt me-1"></i> Connections</a
-                  >
-                </li>
-              </ul>
-              <div class="card">
-                <!-- Notifications -->
-                <h5 class="card-header">Recent Devices</h5>
-                <div class="card-body">
-                      <span
-                      >We need permission from your browser to show notifications.
-                        <span class="notificationRequest"><strong>Request Permission</strong></span></span
-                      >
-                  <div class="error"></div>
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <h5 class="card-header">Recent Devices</h5>
+                  <div class="card-body">
+                  </div>
                 </div>
-                <div class="table-responsive">
-                  <table class="table table-striped table-borderless border-bottom">
-                    <thead>
-                    <tr>
-                      <th class="text-nowrap">Type</th>
-                      <th class="text-nowrap text-center">✉️ Email</th>
-                      <th class="text-nowrap text-center">🖥 Browser</th>
-                      <th class="text-nowrap text-center">👩🏻‍💻 App</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td class="text-nowrap">New for you</td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck1" checked/>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck2" checked/>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck3" checked/>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-nowrap">Account activity</td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck4" checked/>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck5" checked/>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck6" checked/>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-nowrap">A new browser used to sign in</td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck7" checked/>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck8" checked/>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck9"/>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-nowrap">A new device is linked</td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck10" checked/>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck11"/>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="form-check d-flex justify-content-center">
-                          <input class="form-check-input" type="checkbox" id="defaultCheck12"/>
-                        </div>
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="card-body">
-                  <h6>When should we send you notifications?</h6>
-                  <form action="javascript:void(0);">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <select id="sendNotification" class="form-select" name="sendNotification">
-                          <option selected>Only when I'm online</option>
-                          <option>Anytime</option>
-                        </select>
-                      </div>
-                      <div class="mt-4">
-                        <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                        <button type="reset" class="btn btn-outline-secondary">Discard</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <!-- /Notifications -->
               </div>
             </div>
           </div>
@@ -446,8 +318,7 @@ $profileDetails = getProfilePicName();
 
   <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
-</div>
-<!-- / Layout wrapper -->
+  <!-- / Layout wrapper -->
 
 
 <?php include_once '../assets/footer.php'; ?>

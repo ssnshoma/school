@@ -4,6 +4,8 @@ include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
+$title = "تکی روزانه";
+$category="نمره";
 ?>
 <?php include_once '../assets/head.php'; ?>
 
@@ -161,8 +163,8 @@ $profileDetails = getProfilePicName();
             <i class="menu-icon tf-icons bx bx-cube-alt"></i>
             <div data-i18n="Misc">ثبت نمره</div>
           </a>
-          <ul class="menu-sub active">
-            <li class="menu-item">
+          <ul class="menu-sub active open">
+            <li class="menu-item active">
               <a href="single-daily-mark.php" class="menu-link">
                 <div data-i18n="Error">نمرات روزانه تکی</div>
               </a>
@@ -236,7 +238,7 @@ $profileDetails = getProfilePicName();
               </a>
             </li>
             <li class="menu-item">
-              <a href="import-pdf.php" class="menu-link">
+              <a href="import-word.php" class="menu-link">
                 <div data-i18n="Buttons">WORD ثبت سوال با</div>
               </a>
             </li>

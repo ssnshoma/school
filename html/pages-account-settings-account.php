@@ -4,6 +4,8 @@ include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
+$title = "ویرایش پروفایل";
+$category="پروفایل";
 ?>
 
 <?php if (isset($_POST['send-pic'])) {

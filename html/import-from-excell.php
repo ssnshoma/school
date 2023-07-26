@@ -4,7 +4,8 @@ include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
-$title = "وارد کردن از فایل اکسل";
+$title = "وارد کردن اکسل";
+$category="ثبت نام";
 ?>
 <?php include_once '../assets/head.php'; ?>
 
@@ -237,7 +238,7 @@ $title = "وارد کردن از فایل اکسل";
               </a>
             </li>
             <li class="menu-item">
-              <a href="import-pdf.php" class="menu-link">
+              <a href="import-word.php" class="menu-link">
                 <div data-i18n="Buttons">WORD ثبت سوال با</div>
               </a>
             </li>
@@ -307,11 +308,6 @@ $title = "وارد کردن از فایل اکسل";
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-          <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">ثبت نام / </span>
-            وارد کردن از اکسل
-          </h4>
-
           <div class="row">
             <div class="col-md-12">
               <div class="row">

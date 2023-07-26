@@ -5,6 +5,7 @@ include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
 $title="داشبورد";
+$category="داشبورد";
 ?>
 
 <?php include_once '../assets/head.php'; ?>

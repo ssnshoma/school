@@ -5,6 +5,7 @@ include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
 $title = "حذف مدرسه";
+$category="مدرسه";
 ?>
 <?php include_once '../assets/head.php'; ?>
 
@@ -237,7 +238,7 @@ $title = "حذف مدرسه";
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="import-pdf.php" class="menu-link">
+                                <a href="import-word.php" class="menu-link">
                                     <div data-i18n="Buttons">WORD ثبت سوال با</div>
                                 </a>
                             </li>

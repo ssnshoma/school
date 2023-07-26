@@ -4,6 +4,8 @@ include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
+$title = "گروهی ماهانه";
+$category="ثبت نمره";
 ?>
 <?php include_once '../assets/head.php'; ?>
 
@@ -236,7 +238,7 @@ $profileDetails = getProfilePicName();
               </a>
             </li>
             <li class="menu-item">
-              <a href="import-pdf.php" class="menu-link">
+              <a href="import-word.php" class="menu-link">
                 <div data-i18n="Buttons">WORD ثبت سوال با</div>
               </a>
             </li>
