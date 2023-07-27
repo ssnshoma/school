@@ -2,15 +2,35 @@
 include_once '../assets/connect.php';
 include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
+include_once '../assets/files/jdf.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
 $title = "ثبت کلاسی";
 $category = "حضور و غیاب";
+
+function convertPersianToEnglish($string)
+{
+  $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  $english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  $output = str_replace($persian, $english, $string);
+  return $output;
+}
+
 ?>
 <?php include_once '../assets/head.php'; ?>
 <?php
 $conn = mysqli_connect("localhost", "root", "", "");
 $s = mysqli_select_db($conn, '1402s1403');
+
+$date = $_GET['data'];
+$gdate = convertPersianToEnglish($date);
+$arr_parts = explode('/', $gdate);
+$jYear = $arr_parts[0];
+$jMonth = $arr_parts[1];
+$jDay = $arr_parts[2];
+$converted = jalali_to_gregorian($jYear, $jMonth, $jDay, '/');
+
+echo $converted;
 
 if (isset($_POST['save_multiple_data'])) {
   $codemeli = $_POST['code'];
@@ -18,14 +38,16 @@ if (isset($_POST['save_multiple_data'])) {
   foreach ($codemeli as $index => $codemeli) {
     $s_codemeli = $codemeli;
     $s_fname = $fname[$index];
-    $s_date = $date[$index];
-    $query = "INSERT INTO `atendence` ( codemeli , atendence ) VALUES ('$s_codemeli','$s_fname')";
+    $s_date = $converted;
+    $query = "INSERT INTO `atendence` ( codemeli , atendence , date) VALUES ('$s_codemeli','$s_fname','$s_date')";
     $query_run = mysqli_query($conn, $query);
   }
   if ($query_run) {
-    $_SESSION['data-recived'] = "ثبت شد";
-    header('Location: test.php');
+    $_SESSION['pb-inserted']="لیست وارد شد";
+    header("location:class-present-absent.php");
   } else {
+    $_SESSION['pb-inserted']="لیست وارد نشد";
+    header("location:class-present-absent.php");
   }
 }
 ?>
@@ -34,7 +56,7 @@ if (isset($_POST['save_multiple_data'])) {
     <div class="layout-container">
 
 
-      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+      <aside id="layout-menu" class="d-none layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
           <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
@@ -288,8 +310,9 @@ if (isset($_POST['save_multiple_data'])) {
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-12">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">ثبت کلاس حضور و غیاب</h5>
-                        <p class="text-info"> ثبت روزانه حضور و غیاب دانش آموزان </p>
+                        <p class="text-info w-50 d-inline-block"> <strong
+                            style="font-size: 20px;color: black"> <?php print($date); ?></strong></p>
+                        <h5 class="card-title text-primary w-25 d-inline-block">ثبت حضور و غیاب </h5>
                         <form method="POST">
                           <table class="table table-responsive-md w-50 m-auto">
                             <thead class="table-responsive-md">
@@ -301,7 +324,8 @@ if (isset($_POST['save_multiple_data'])) {
                             <tbody>
 
                             <?php
-                            $sql = "SELECT * FROM studentlist";
+                            $classs = $_GET['class'];
+                            $sql = "SELECT * FROM studentlist WHERE class=$classs";
                             $res = $pdo->prepare($sql);
                             $res->execute();
                             $row = $res->fetchAll();
@@ -333,7 +357,7 @@ if (isset($_POST['save_multiple_data'])) {
                                   <input type="text"
                                          style="display:none;background: transparent; border: none;text-align: right;"
                                          name="code[]" class="form-control"
-                                         autocomplete="off" value="<?php echo $cod; ?>" disabled>
+                                         autocomplete="off" value="<?php echo $cod; ?>">
                                 </td>
                                 <td class="form-group mb-2">
                                   <?php echo $i;
@@ -345,7 +369,8 @@ if (isset($_POST['save_multiple_data'])) {
                             ?>
                             </tbody>
                           </table>
-                          <button type="submit" name="save_multiple_data" class="btn btn-primary mt-4 mb-5 d-block m-auto"
+                          <button type="submit" name="save_multiple_data"
+                                  class="btn btn-primary mt-4 mb-5 d-block m-auto"
                                   tabindex="9">ثبت
                           </button>
                         </form>

@@ -2,30 +2,26 @@
 include_once '../assets/connect.php';
 include_once '../assets/get-profile-pic.php';
 include_once '../assets/first-login.php';
+include_once '../assets/files/jdf.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
 $title = "ثبت کلاسی";
 $category = "حضور و غیاب";
 ?>
-<?php include_once '../assets/head.php'; ?>
-<?php
-$conn = mysqli_connect("localhost", "root", "", "");
-$s = mysqli_select_db($conn, '1402s1403');
+<?php include_once '../assets/head-1.php'; ?>
 
-if (isset($_POST['save_multiple_data'])) {
-  $codemeli = $_POST['code'];
-  $fname = $_POST['fname'];
-  foreach ($codemeli as $index => $codemeli) {
-    $s_codemeli = $codemeli;
-    $s_fname = $fname[$index];
-    $s_date = $date[$index];
-    $query = "INSERT INTO `atendence` ( codemeli , atendence ) VALUES ('$s_codemeli','$s_fname')";
-    $query_run = mysqli_query($conn, $query);
-  }
-  if ($query_run) {
-    $_SESSION['data-recived'] = "ثبت شد";
-    header('Location: test.php');
-  } else {
+<?php
+if (isset($_POST['send'])) {
+  $task_group = $_POST['taskgroup'];
+  $task = $_POST['task'];
+  $task_priority = $_POST['priority'];
+  $date = $_POST['data'];
+  function convertPersianToEnglish($string)
+  {
+    $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    $english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    $output = str_replace($persian, $english, $string);
+    return $output;
   }
 }
 ?>
@@ -284,70 +280,61 @@ if (isset($_POST['save_multiple_data'])) {
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
               <div class="col-lg-12 mb-4 order-0">
-                <div class="card">
+                <div class="card border-0">
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-12">
-                      <div class="card-body">
-                        <h5 class="card-title text-primary">ثبت کلاس حضور و غیاب</h5>
-                        <p class="text-info"> ثبت روزانه حضور و غیاب دانش آموزان </p>
-                        <form method="POST">
-                          <table class="table table-responsive-md w-50 m-auto">
-                            <thead class="table-responsive-md">
-                            <th class="col">حضور/غیاب</th>
-                            <th class="col">نام و نام خانوادگی</th>
-                            <th class="col">شماره دانش آموزی</th>
-                            <th class="col">ردیف</th>
-                            </thead>
-                            <tbody>
+                      <div role="alert" class="alert-dismissable alert alert-success w-25 m-auto position-absolute"
+                           style="left: 37.5%;top: 20px">
+                       ثبت شد
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
 
-                            <?php
-                            $sql = "SELECT * FROM studentlist";
-                            $res = $pdo->prepare($sql);
-                            $res->execute();
-                            $row = $res->fetchAll();
-                            $i = 1;
-                            foreach ($row
+                      </div>
+                      <div class="card-body mt-5">
+                        <h4 class="card-title text-primary mb-3">ثبت کلاسی حضور و غیاب</h4>
+                        <p class="text-info mb-5"> برای ثبت حضور و غیاب لطفا موارد زیر را تکمیل کنید</p>
+                        <form method="get" action="class-pr-ab.php">
+                          <div class="w-25 m-auto">
+                            <div class="input-group form-group" dir="rtl">
+                              <div class="input-group-addon form-group" style="cursor: pointer;
+                                  border: 1px solid rgba(255,255,255,0) !important;
+                                  color: #fff;
+                                  background-color: #5cb85c;
+                                  border-color: #4cae4c;
+                                  border-radius: 0px 10px 10px 0px;
+                                  width: 160px;" data-mddatetimepicker="true"
+                                   data-trigger="click" data-targetselector="#exampleInput3">
+                                <span>تاریخ</span>
+                              </div>
+                              <input type="text" name="data" class="form-control form-group text-center"
+                                     id="exampleInput3" data-placement="right"
+                                     data-englishnumber="true" style="cursor: pointer;
+                                  border: 2px solid #5cb85c !important;
+                                  border-color: #5cb85c;
+                                  border-radius: 10px 0px 0px 10px;
+                                  width: 160px;">
+                            </div>
 
-                                     as $value) {
-                              $cod = $value["codemeli"];
-                              $fam = $value['fname'];
-                              $lam = $value['lname'];
-
-                              ?>
-                              <tr>
-
-                                <td class="form-group mb-2">
-                                  <label for="fname[]" class="lable">غایب</label>
-                                  <input type="checkbox" name="fname[]" value="not" tabindex="1">
-                                  <label for="fname[]" class="lable">حاضر</label>
-                                  <input type="checkbox" name="fname[]" value="ok" checked tabindex="1">
-                                </td>
-
-                                <td class="form-group mb-2">
-                                  <?php echo $fam . " " . $lam; ?>
-                                </td>
-
-
-                                <td class="form-group mb-2">
-                                  <?php echo $cod; ?>
-                                  <input type="text"
-                                         style="display:none;background: transparent; border: none;text-align: right;"
-                                         name="code[]" class="form-control"
-                                         autocomplete="off" value="<?php echo $cod; ?>" disabled>
-                                </td>
-                                <td class="form-group mb-2">
-                                  <?php echo $i;
-                                  $i += 1; ?>
-                                </td>
-                              </tr>
+                            <select name="class" style="border: 2px solid #5cb85c !important;
+                              text-align: right;" class="form-control form-group mt-4">
                               <?php
-                            }
-                            ?>
-                            </tbody>
-                          </table>
-                          <button type="submit" name="save_multiple_data" class="btn btn-primary mt-4 mb-5 d-block m-auto"
-                                  tabindex="9">ثبت
-                          </button>
+                              $sqli = "SELECT * FROM classes";
+                              $resui = $pdo->prepare($sqli);
+                              $resui->execute();
+                              $rowi = $resui->fetchAll();
+                              foreach ($rowi as $row) {
+                                echo "ok";
+                                ?>
+                                <option dir="rtl" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+                                <?php
+                              }
+                              ?>
+                            </select>
+                          </div>
+
+                          <input type="submit" name="send" value="ارسال"
+                                 class="mb-5 mt-4 btn btn-success center-block">
                         </form>
                       </div>
                     </div>
@@ -395,5 +382,16 @@ if (isset($_POST['save_multiple_data'])) {
   <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
   <!-- / Layout wrapper -->
-
+  <script type="text/javascript">
+      $('#input1').change(function () {
+          var $this = $(this),
+              value = $this.val();
+      });
+      $('#textbox1').change(function () {
+          var $this = $(this),
+              value = $this.val();
+      });
+  </script>
+  <script src="../assets/files/js/jalaali.js" type="text/javascript"></script>
+  <script src="../assets/files/js/jquery.Bootstrap-PersianDateTimePicker.js" type="text/javascript"></script>
 <?php include_once '../assets/footer.php'; ?>
