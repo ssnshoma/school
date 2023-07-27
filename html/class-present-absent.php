@@ -27,6 +27,7 @@ if (isset($_POST['send'])) {
 ?>
 
   <div class="layout-wrapper layout-content-navbar">
+
     <div class="layout-container">
 
 
@@ -279,64 +280,54 @@ if (isset($_POST['send'])) {
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-              <div class="col-lg-12 mb-4 order-0">
+              <div class="col-lg-10 mb-4 order-0 m-auto">
                 <div class="card border-0">
-                  <div class="d-flex align-items-end row">
-                    <div class="col-sm-12">
-                      <div role="alert" class="alert-dismissable alert alert-success w-25 m-auto position-absolute"
-                           style="left: 37.5%;top: 20px">
-                       ثبت شد
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-
-                      </div>
-                      <div class="card-body mt-5">
-                        <h4 class="card-title text-primary mb-3">ثبت کلاسی حضور و غیاب</h4>
-                        <p class="text-info mb-5"> برای ثبت حضور و غیاب لطفا موارد زیر را تکمیل کنید</p>
-                        <form method="get" action="class-pr-ab.php">
-                          <div class="w-25 m-auto">
-                            <div class="input-group form-group" dir="rtl">
-                              <div class="input-group-addon form-group" style="cursor: pointer;
+                  <div class="d-flex align-items-end row ">
+                    <div class="card-body p-5">
+                      <h3 class="card-title text-primary mb-4">ثبت کلاسی حضور و غیاب</h3>
+                      <h4 class="text-info mb-5"> برای ثبت حضور و غیاب لطفا موارد زیر را تکمیل کنید</h4>
+                      <form method="get" action="class-pr-ab.php">
+                        <div class="w-25 m-auto">
+                          <div class="input-group form-group" dir="rtl">
+                            <div class="input-group-addon form-group" style="cursor: pointer;
                                   border: 1px solid rgba(255,255,255,0) !important;
                                   color: #fff;
                                   background-color: #5cb85c;
                                   border-color: #4cae4c;
                                   border-radius: 0px 10px 10px 0px;
                                   width: 160px;" data-mddatetimepicker="true"
-                                   data-trigger="click" data-targetselector="#exampleInput3">
-                                <span>تاریخ</span>
-                              </div>
-                              <input type="text" name="data" class="form-control form-group text-center"
-                                     id="exampleInput3" data-placement="right"
-                                     data-englishnumber="true" style="cursor: pointer;
+                                 data-trigger="click" data-targetselector="#exampleInput3">
+                              <span>تاریخ</span>
+                            </div>
+                            <input type="text" name="data" class="form-control form-group text-center"
+                                   id="exampleInput3" data-placement="right"
+                                   data-englishnumber="true" style="cursor: pointer;
                                   border: 2px solid #5cb85c !important;
                                   border-color: #5cb85c;
                                   border-radius: 10px 0px 0px 10px;
                                   width: 160px;">
-                            </div>
-
-                            <select name="class" style="border: 2px solid #5cb85c !important;
-                              text-align: right;" class="form-control form-group mt-4">
-                              <?php
-                              $sqli = "SELECT * FROM classes";
-                              $resui = $pdo->prepare($sqli);
-                              $resui->execute();
-                              $rowi = $resui->fetchAll();
-                              foreach ($rowi as $row) {
-                                echo "ok";
-                                ?>
-                                <option dir="rtl" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
-                                <?php
-                              }
-                              ?>
-                            </select>
                           </div>
 
-                          <input type="submit" name="send" value="ارسال"
-                                 class="mb-5 mt-4 btn btn-success center-block">
-                        </form>
-                      </div>
+                          <select name="class" style="border: 2px solid #5cb85c !important;
+                              text-align: right;" class="form-control form-group mt-4">
+                            <?php
+                            $sqli = "SELECT * FROM classes";
+                            $resui = $pdo->prepare($sqli);
+                            $resui->execute();
+                            $rowi = $resui->fetchAll();
+                            foreach ($rowi as $row) {
+                              echo "ok";
+                              ?>
+                              <option dir="rtl" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+                              <?php
+                            }
+                            ?>
+                          </select>
+                        </div>
+
+                        <input type="submit" name="send" value="ارسال"
+                               class="mb-5 mt-4 btn btn-success center-block">
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -344,43 +335,39 @@ if (isset($_POST['send'])) {
             </div>
           </div>
         </div>
-
-        ?>
-
-        <!-- Footer -->
-        <footer class="content-footer footer bg-footer-theme">
-          <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-            <div class="mb-2 mb-md-0">
-              ©
-              <script>
-                  document.write(new Date().getFullYear());
-              </script>
-              , made with ❤️ by
-              <a href="" target="_blank" class="footer-link fw-bolder">Hossein Mansoori</a>
-            </div>
-            <div>
-              <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-              <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-              <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                 target="_blank" class="footer-link me-4">Documentation</a>
-
-              <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                 class="footer-link me-4">Support</a>
-            </div>
-          </div>
-        </footer>
-        <!-- / Footer -->
-
-        <div class="content-backdrop fade"></div>
       </div>
-      <!-- Content wrapper -->
+      <!-- Footer -->
+
+      <!-- / Footer -->
+
+      <div class="content-backdrop fade"></div>
     </div>
-    <!-- / Layout page -->
+        <!-- Content wrapper -->
   </div>
 
+  <footer class="content-footer footer bg-footer-theme w-75">
+    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+      <div class="mb-2 mb-md-0">
+        ©
+        <script>
+            document.write(new Date().getFullYear());
+        </script>
+        , made with ❤️ by
+        <a href="" target="_blank" class="footer-link fw-bolder">Hossein Mansoori</a>
+      </div>
+      <div>
+        <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+        <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+        <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+           target="_blank" class="footer-link me-4">Documentation</a>
+
+        <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
+           class="footer-link me-4">Support</a>
+      </div>
+    </div>
+  </footer>
   <!-- Overlay -->
-  <div class="layout-overlay layout-menu-toggle"></div>
   <!-- / Layout wrapper -->
   <script type="text/javascript">
       $('#input1').change(function () {
