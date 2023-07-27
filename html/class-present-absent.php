@@ -9,6 +9,29 @@ $category = "حضور و غیاب";
 ?>
 <?php include_once '../assets/head.php'; ?>
 
+<?php
+
+$conn = mysqli_connect("localhost", "root", "", "");
+mysqli_select_db($conn, '1402s1403');
+
+if (isset($_POST['save_multiple_data'])) {
+  $codemeli = $_POST['codemeli'];
+  $fname = $_POST['fname'];
+  foreach ($codemeli as $index => $codemeli) {
+    $s_codemeli = $codemeli;
+    $s_fname = $fname[$index];
+    $s_date = $date[$index];
+    $query = "INSERT INTO `atendence`(codemeli,atendence) VALUES ('$s_codemeli','$s_fname')";
+    $query_run = mysqli_query($conn, $query);
+  }
+  if ($query_run) {
+    $_SESSION['data-recived'] = "ثبت شد";
+    header('Location: test.php');
+  } else {
+  }
+}
+
+?>
 
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
@@ -270,36 +293,63 @@ $category = "حضور و غیاب";
                       <div class="card-body">
                         <h5 class="card-title text-primary">ثبت کلاس حضور و غیاب</h5>
                         <p class="text-info"> ثبت روزانه حضور و غیاب دانش آموزان </p>
+                        <form action="" method="POST">
+                          <table class="table table-responsive-md w-75 m-auto">
+                            <thead class="table-responsive-md">
+                            <th class="col">حضور/غیاب</th>
+                            <th class="col">نام و نام خانوادگی</th>
+                            <th class="col">شماره دانش آموزی</th>
+                            <th class="col">ردیف</th>
+                            </thead>
+                            <tbody>
 
-                        <table class="table table-responsive-md">
-                          <thead class="table-responsive-md">
-                          <th class="col">تاریخ</th>
-                          <th class="col">حضور/غیاب</th>
-                          <th class="col">نام</th>
-                          <th class="col">شماره دانش آموزی</th>
-                          </thead>
-                          <tbody>
-                          <?php $sql="SELECT * FROM"; ?>
-                          <tr>
-                            <td>
-                              <input type="date" name="date[]">
-                            </td>
-                            <td>
-                              <label for="absent">غایب</label>
-                              <input type="radio" name="present[]" id="absent" value="absent"/>
+                            <?php
+                            $sql = "SELECT * FROM studentlist";
+                            $res = $pdo->prepare($sql);
+                            $res->execute();
+                            $row = $res->fetchAll();
+                            $i=1;
+                            foreach ($row
 
-                              <label for="present">حاضر</label>
-                              <input type="radio" name="present[]" id="present" value="present" checked/>
+                                     as $value) {
+                              $cod = $value["codemeli"];
+                              $fam = $value['fname'];
+                              $lam = $value['lname'];
 
-                            </td>
-                            <td><input type="text" value="" name="name[]" placeholder="نام"></td>
-                            <td>
-                              <input type="text" name="codemeli[]" value="" placeholder="کد ملی">
-                            </td>
-                          </tr>
-                          </tbody>
-                        </table>
+                              ?>
+                              <tr>
 
+                                <td class="form-group mb-2">
+                                  <label for="fname[]" class="lable">غایب</label>
+                                  <input type="checkbox" name="fname[]" value="not" tabindex="1">
+                                  <label for="fname[]" class="lable">حاضر</label>
+                                  <input type="checkbox" name="fname[]" value="ok" checked tabindex="1">
+                                </td>
+
+                                <td class="form-group mb-2">
+                                  <input type="text" class="form-control"
+                                         autocomplete="off" style="background: transparent; border: none;text-align: right;" value="<?php echo $fam . " " . $lam; ?>" disabled>
+                                </td>
+
+
+                                <td class="form-group mb-2">
+                                  <input type="text" style="background: transparent; border: none;text-align: right;" name="codemeli[]" class="form-control"
+                                         autocomplete="off" value="<?php echo $cod; ?>" disabled>
+                                </td>
+                                <td class="form-group mb-2">
+                                  <?php echo $i;
+                                  $i+=1;?>
+                                </td>
+                              </tr>
+                              <?php
+                            }
+                            ?>
+                            </tbody>
+                          </table>
+                          <button type="submit" name="save_multiple_data" class="btn btn-success d-block m-auto"
+                                  tabindex="9">ذخیره
+                          </button>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -308,7 +358,8 @@ $category = "حضور و غیاب";
             </div>
           </div>
         </div>
-        <!-- / Content -->
+
+        ?>
 
         <!-- Footer -->
         <footer class="content-footer footer bg-footer-theme">

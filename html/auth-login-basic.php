@@ -105,8 +105,8 @@ if (isset($_POST['login-btn'])) {
             <p class="alert alert-danger"> <?php print($_GET['not-ok']); ?> </p>
           <?php } ?>
 
-          <?php if ($_SESSION['first-login']) { ?>
-            <p class="alert alert-danger"> <?php print($_SESSION['first-login']); ?> </p>
+          <?php if (@$_SESSION['first-login']) { ?>
+            <p class="alert alert-danger"> <?php print(@$_SESSION['first-login']); ?> </p>
           <?php } ?>
 
           <h4 class="mb-2">خوش آمدید</h4>
