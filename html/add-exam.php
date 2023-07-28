@@ -264,13 +264,13 @@ $category="آزمون ها"
 
         <div class="container-xxl flex-grow-1 container-p-y">
           <div class="row">
-            <!-- Order Statistics -->
+            <!-- Order Sta tistics -->
             <div class="col-md-10 col-lg-10 col-xl-10 order-0 mb-4 m-auto">
               <div class="card h-100" style="direction: rtl;">
                 <div class="card-header d-flex align-items-center justify-content-between pb-0">
                   <div class="card-title mb-0">
                     <h3 style="direction: rtl" class="m-0 me-2"> ثبت امتحان </h3>
-                    <h6 class="my-4">لطفا برای ثبت امتحان اطلاعات لازم را تکمیل کرده و سپس فایل Word یا PDF را وارد کنید.</h6>
+                    <h6 class="my-4">لطفا برای ثبت امتحان اطلاعات لازم را تکمیل کرده و سپس فایل Word یا PDF و یا Jpg را وارد کنید.</h6>
                   </div>
                 </div>
                 <div class="card-body">

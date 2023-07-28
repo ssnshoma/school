@@ -275,7 +275,7 @@ $category = "آزمون ها"
                   <div class="card-header d-flex align-items-center justify-content-between pb-0">
                     <div class="card-title mb-0">
                       <h3 style="direction: rtl" class="m-0 me-2"> ثبت سوال </h3>
-                      <h6 class="my-4">لطفا برای ثبت سوال اطلاعات لازم را تکمیل کرده و سپس عکس را وارد کنید.</h6>
+                      <h6 class="my-4">لطفا برای ثبت سوال اطلاعات لازم را تکمیل کرده و سپس فایل Word یا PDF و یا Jpg را وارد کنید.</h6>
                     </div>
                   </div>
                   <div class="card-body">
@@ -345,7 +345,7 @@ $category = "آزمون ها"
                   </div>
                 </div>
               </div>
-              <!--/ Order Statistics -->
+              <!--/ Order S tatistics -->
             </div>
           </div>
           <!-- / Content -->
