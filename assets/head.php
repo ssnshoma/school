@@ -100,6 +100,18 @@
           margin: auto;
           z-index: 1;
       }
+
+      .input {
+          display: block;
+          width: 100%;
+          padding: 0.35rem 1rem 0.35rem 0.2rem;
+          font-size: 0.9375rem;
+          font-weight: 400;
+          line-height: 1.53;
+          color: #697a8d;
+          border: 1px solid #d9dee3;
+          border-radius: 0.375rem;
+      }
   </style>
 
 </head>
