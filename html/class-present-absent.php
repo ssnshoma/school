@@ -338,7 +338,7 @@ if (isset($_POST['send'])) {
       </div>
       <!-- Footer -->
 
-      <!-- / Footer -->
+      <!-- / Fo oter -->
 
       <div class="content-backdrop fade"></div>
     </div>
