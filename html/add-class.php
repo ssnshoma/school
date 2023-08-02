@@ -5,7 +5,7 @@ include_once '../assets/first-login.php';
 $logifo = $_SESSION['log-info'];
 $profileDetails = getProfilePicName();
 $title = "ثبت کلاس";
-$category="مدرسه"
+$category = "مدرسه"
 ?>
 <?php include_once '../assets/head.php'; ?>
 
@@ -325,6 +325,7 @@ if (isset($_POST['submit-btn'])) {
                             <tr>
                               <th scope="col">عملیات</th>
                               <th scope="col">مدرسه</th>
+                              <th scope="col">رشته</th>
                               <th scope="col">پایه</th>
                               <th scope="col">نام</th>
                             </tr>
@@ -347,6 +348,7 @@ if (isset($_POST['submit-btn'])) {
                                   ?>
                                 </td>
                                 <td><?php print($row['school']); ?></td>
+                                <td><?php print ($row['major']); ?></td>
                                 <td><?php print ($row['grade']); ?></td>
                                 <td><?php print ($row['name']); ?></td>
                               </tr>
@@ -387,6 +389,20 @@ if (isset($_POST['submit-btn'])) {
                                      class="form-control"
                                      id="basic-default-name"
                                      placeholder="نام کلاس را وارد کنید" name="name">
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <label style="font-size: 17px" class="form-label"
+                                   for="manager-name">رشته</label>
+                            <div class="col-sm-12">
+                              <select style="text-align: right" type="text"
+                                     class="form-control"
+                                     name="major">
+                                <option value="ادبیات">ادبیات</option>
+                                <option value="تجربی">تجربی</option>
+                                <option value="ریاضی">ریاضی</option>
+                                <option value="کامپیوتر">کامپیوتر</option>
+                              </select>
                             </div>
                           </div>
                           <div class="row mb-2">

@@ -7,6 +7,31 @@ $profileDetails = getProfilePicName();
 $title = "ثبت نام تکی";
 $category = "ثبت نام";
 ?>
+<?php
+if (isset($_POST['reg-btn'])) {
+  $selschool = $_POST['sel-school'];
+  $selclass = $_POST['sel-class'];
+  $grade = $_POST['grade'];
+  $major = $_POST['major'];
+  $codemeli = $_POST['codemeli'];
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $fathername = $_POST['fathername'];
+  $resualt = $pdo->prepare("SELECT * FROM studentlist WHERE codemeli=$codemeli");
+  $resualt->execute();
+  $row = $resualt->rowCount();
+  if ($row <= 0) {
+    $resualt = $pdo->prepare("INSERT INTO `studentlist`(`codemeli`, `fname`, `lname`, `fathername`, `major`, `school`, `grade`, `class`) VALUES ('$codemeli','$fname','$lname','$fathername','$major','$selschool','$grade','$selclass')");
+    if ($resualt->execute()) {
+      $_GET['data-inserted'] = "ثبت نام انجام شد";
+    }
+  } else {
+    $_GET['data-not-inserted'] = "کد ملی تکراری می باشد";
+  }
+
+}
+?>
+
 <?php include_once '../assets/head.php'; ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
@@ -271,11 +296,18 @@ $category = "ثبت نام";
                   <div class="d-flex align-items-center row">
                     <div class="col-sm-12 m-auto">
                       <div class="card-body">
-
-                        <div class="position-absolute alert alert-success text-danger" style="top: 30px;left: 45%">
-
-                        </div>
-
+                        <?php if (isset($_GET['data-inserted'])) { ?>
+                          <div class="position-absolute alert alert-success text-danger" style="top: 30px;left: 45%">
+                            <?php print ($_GET['data-inserted']) ?>
+                          </div>
+                          <?php unset($_GET['data-inserted']);
+                        } ?>
+                        <?php if (isset($_GET['data-not-inserted'])) { ?>
+                          <div class="position-absolute alert alert-danger text-danger" style="top: 30px;left: 45%">
+                            <?php print ($_GET['data-not-inserted']) ?>
+                          </div>
+                          <?php unset($_GET['data-not-inserted']);
+                        } ?>
                         <h5 class="card-title text-primary mt-4">مدرسه را انتخاب کنید</h5>
                         <p class="mt-4">برای ثبت نام دانش آموز بر اساس مدرسه و کلاس انتخاب کنید</p>
                         <div class="input-group">
@@ -311,11 +343,18 @@ $category = "ثبت نام";
                             <div class="row">
                               <div class="col-md-6">
                                 <label for="grade" class="pb-2">پایه</label>
-                                <input name="grade" class="input mb-4" id="grade" tabindex="3">
+                                <input name="grade" class="input mb-4" id="grade" tabindex="8">
                               </div>
                               <div class="col-md-6">
                                 <label for="grade" class="pb-2">رشته</label>
-                                <input name="major" class="input mb-4" id="major" tabindex="4">
+                                <select name="major" style="padding-right: 40px" class="form-select mb-4" id="major"
+                                        tabindex="4">
+                                  <option value="">رشته را انتخاب کنید</option>
+                                  <option value="ادبیات">ادبیات</option>
+                                  <option value="تجربی">تجربی</option>
+                                  <option value="ریاضی">ریاضی</option>
+                                  <option value="کامپیوتر">کامپیوتر</option>
+                                </select>
                               </div>
                             </div>
                             <div class="row">

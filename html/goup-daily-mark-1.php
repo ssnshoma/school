@@ -21,6 +21,7 @@ function convertPersianToEnglish($string)
 <?php
 $conn = mysqli_connect("localhost", "root", "", "");
 $s = mysqli_select_db($conn, '1402s1403');
+
 $date = $_GET['data'];
 $gdate = convertPersianToEnglish($date);
 $arr_parts = explode('/', $gdate);
@@ -31,20 +32,23 @@ $converted = jalali_to_gregorian($jYear, $jMonth, $jDay, '/');
 
 if (isset($_POST['save_multiple_data'])) {
   $codemeli = $_POST['code'];
-  $fname = $_POST['fname'];
+  $mark = $_POST['mark'];
   foreach ($codemeli as $index => $codemeli) {
     $s_codemeli = $codemeli;
-    $s_fname = $fname[$index];
-    $s_date = $converted;
-    $query = "INSERT INTO `atendence` ( codemeli , atendence , date) VALUES ('$s_codemeli','$s_fname','$s_date')";
-    $query_run = mysqli_query($conn, $query);
+    $s_mark = $mark[$index];
+    $monCode = $jMonth;
+    if ($s_mark == "") {
+    } else {
+      $query = "INSERT INTO `monmark` (`codemeli`, `mark`, `monCode`,`tarikh`) VALUES ('$s_codemeli','$s_mark','$monCode', '$converted')";
+      $query_run = mysqli_query($conn, $query);
+    }
   }
   if ($query_run) {
-    $_SESSION['pb-inserted']="لیست وارد شد";
-    header("location:class-present-absent.php");
+    $_SESSION['pb-inserted'] = "نمرات با موفقیت ثبت شدند";
+    header("location:goup-daily-mark.php");
   } else {
-    $_SESSION['pb-inserted']="لیست وارد نشد";
-    header("location:class-present-absent.php");
+    $_SESSION['pb-not-inserted'] = "متاسفانه نمرات ثبت نشدند";
+    header("location:goup-daily-mark.php");
   }
 }
 ?>
@@ -203,12 +207,12 @@ if (isset($_POST['save_multiple_data'])) {
               <div data-i18n="Misc">ثبت نمره</div>
             </a>
             <ul class="menu-sub">
-              <li class="menu-item">
+              <li class="menu-item active open">
                 <a href="single-daily-mark.php" class="menu-link">
                   <div data-i18n="Error">نمرات روزانه تکی</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item active">
                 <a href="goup-daily-mark.php" class="menu-link">
                   <div data-i18n="Under Maintenance">نمرات روزانه گروهی</div>
                 </a>
@@ -230,13 +234,13 @@ if (isset($_POST['save_multiple_data'])) {
               </li>
             </ul>
           </li>
-          <li class="menu-item open active">
+          <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-cube-alt"></i>
               <div data-i18n="Misc">حضور غیاب</div>
             </a>
             <ul class="menu-sub">
-              <li class="menu-item active">
+              <li class="menu-item">
                 <a href="class-present-absent.php" class="menu-link">
                   <div data-i18n="Error">ثبت کلاسی</div>
                 </a>
@@ -307,13 +311,13 @@ if (isset($_POST['save_multiple_data'])) {
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-12">
                       <div class="card-body">
-                        <p class="text-info w-50 d-inline-block"> <strong
+                        <p class="text-info w-50 d-inline-block"><strong
                             style="font-size: 20px;color: black"> <?php print($date); ?></strong></p>
                         <h5 class="card-title text-primary w-25 d-inline-block">ثبت حضور و غیاب </h5>
                         <form method="POST">
                           <table class="table table-responsive-md w-50 m-auto">
                             <thead class="table-responsive-md">
-                            <th class="col">حضور/غیاب</th>
+                            <th class="col">نمره</th>
                             <th class="col">نام و نام خانوادگی</th>
                             <th class="col">شماره دانش آموزی</th>
                             <th class="col">ردیف</th>
@@ -338,10 +342,7 @@ if (isset($_POST['save_multiple_data'])) {
                               <tr>
 
                                 <td class="form-group mb-2">
-                                  <label for="fname[]" class="lable">غایب</label>
-                                  <input type="checkbox" name="fname[]" value="not" tabindex="1">
-                                  <label for="fname[]" class="lable">حاضر</label>
-                                  <input type="checkbox" name="fname[]" value="ok" checked tabindex="1">
+                                  <input type="text" style="width: 50px" name="mark[]" tabindex="1">
                                 </td>
 
                                 <td class="form-group mb-2">
