@@ -200,7 +200,7 @@ if (isset($_POST['submit-btn'])) {
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="group-monthly-mark.php" class="menu-link">
+                                <a href="report-monthly-mark.php" class="menu-link">
                                     <div data-i18n="Under Maintenance">نمرات ماهانه گروهی</div>
                                 </a>
                             </li>

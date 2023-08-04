@@ -57,7 +57,7 @@ if (isset($_POST['save_multiple_data'])) {
     <div class="layout-container">
 
 
-      <aside id="layout-menu" class="d-none layout-menu menu-vertical menu bg-menu-theme">
+      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
           <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
@@ -223,7 +223,7 @@ if (isset($_POST['save_multiple_data'])) {
                 </a>
               </li>
               <li class="menu-item">
-                <a href="group-monthly-mark.php" class="menu-link">
+                <a href="report-monthly-mark.php" class="menu-link">
                   <div data-i18n="Under Maintenance">نمرات ماهانه گروهی</div>
                 </a>
               </li>
@@ -311,9 +311,13 @@ if (isset($_POST['save_multiple_data'])) {
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-12">
                       <div class="card-body">
-                        <p class="text-info w-50 d-inline-block"><strong
-                            style="font-size: 20px;color: black"> <?php print($date); ?></strong></p>
-                        <h5 class="card-title text-primary w-25 d-inline-block">ثبت حضور و غیاب </h5>
+                        <p class="text-info d-inline-block">
+                         <strong
+                            style="font-size: 20px;color: black;margin: 0px 4px;padding: 0px 5px;border-bottom: 1px solid #d3d3d3"> <?php print($date); ?></strong></p>
+                        <h5 class="card-title text-primary d-inline-block">ثبت نمرات کلاس
+                          <strong style="font-size: 20px;color: black;margin: 0px 4px;padding: 0px 5px;border-bottom: 1px solid #d3d3d3"><?php print($_GET['class']);?></strong>
+                          برای تاریخ
+                        </h5>
                         <form method="POST">
                           <table class="table table-responsive-md w-50 m-auto">
                             <thead class="table-responsive-md">
@@ -326,7 +330,7 @@ if (isset($_POST['save_multiple_data'])) {
 
                             <?php
                             $classs = $_GET['class'];
-                            $sql = "SELECT * FROM studentlist WHERE class=$classs";
+                            $sql = "SELECT * FROM `studentlist` WHERE class='$classs' ";
                             $res = $pdo->prepare($sql);
                             $res->execute();
                             $row = $res->fetchAll();

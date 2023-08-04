@@ -195,7 +195,7 @@ if (isset($_POST['send'])) {
               </a>
             </li>
             <li class="menu-item">
-              <a href="group-monthly-mark.php" class="menu-link">
+              <a href="report-monthly-mark.php" class="menu-link">
                 <div data-i18n="Under Maintenance">نمرات ماهانه گروهی</div>
               </a>
             </li>
@@ -298,8 +298,8 @@ if (isset($_POST['send'])) {
                       unset($_SESSION['pb-not-inserted']);
                     }
                     ?>
-                    <h3 class="card-title text-primary mb-4">ثبت کلاسی حضور و غیاب</h3>
-                    <h4 class="text-info mb-5"> برای ثبت حضور و غیاب لطفا موارد زیر را تکمیل کنید</h4>
+                    <h3 class="card-title text-primary mb-4">ثبت کلاسی نمرات</h3>
+                    <h4 class="text-info mb-5"> برای ثبت نمرات لطفا موارد زیر را تکمیل کنید</h4>
                     <form method="get" action="goup-daily-mark-1.php">
                       <div class="w-25 m-auto">
                         <div class="input-group form-group" dir="rtl">
