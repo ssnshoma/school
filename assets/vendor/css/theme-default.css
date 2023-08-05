@@ -112,6 +112,7 @@ html {
 }
 
 @media (max-width: 1199.98px) {
+
   .app-brand .layout-menu-toggle {
     display: none !important;
   }

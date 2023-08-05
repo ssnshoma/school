@@ -9,9 +9,9 @@
     $row = $resualt->fetchAll();
     echo '<option selected disabled>کلاس را انتخاب کنید</option>';
     foreach ($row as $row) {
-      echo '
-      <option value=' . $row['name'] . '>' . $row['name'] . '</option>
-      ';
+      ?>
+     <option value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+      <?php
     }
   }
 
