@@ -29,7 +29,7 @@
  <div class="layout-container">
 
 
-   <?php include_once '../assets/aside.php';?>
+   <?php include_once '../assets/aside.php'; ?>
   <!-- / Menu -->
 
   <!-- Layout container -->
@@ -125,6 +125,7 @@
      </div>
     </div>
    </div>
+    <?php include_once '../assets/page-footer.php'; ?>
   </div>
   <!-- / Layout page -->
  </div>

@@ -78,6 +78,11 @@
    </a>
    <ul class="menu-sub">
     <li class="menu-item">
+     <a href="student-list.php" class="menu-link">
+      <div data-i18n="Account">لیست دانش آموزان</div>
+     </a>
+    </li>
+    <li class="menu-item">
      <a href="single-reg.php" class="menu-link">
       <div data-i18n="Account">ثبت نام تکی</div>
      </a>

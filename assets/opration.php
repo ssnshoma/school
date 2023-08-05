@@ -4,32 +4,8 @@
   include '../assets/first-login.php';
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
-  $title = "ثبت نام تکی";
+  $title = "ویرایش";
   $category = "ثبت نام";
-?>
-<?php
-  if (isset($_POST['reg-btn'])) {
-    $selschool = $_POST['sel-school'];
-    $selclass = $_POST['sel-class'];
-    $grade = $_POST['grade'];
-    $major = $_POST['major'];
-    $codemeli = $_POST['codemeli'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $fathername = $_POST['fathername'];
-    $resualt = $pdo->prepare("SELECT * FROM studentlist WHERE codemeli=$codemeli");
-    $resualt->execute();
-    $row = $resualt->rowCount();
-    if ($row <= 0) {
-      $resualt = $pdo->prepare("INSERT INTO `studentlist`(`codemeli`, `fname`, `lname`, `fathername`, `major`, `school`, `grade`, `class`) VALUES ('$codemeli','$fname','$lname','$fathername','$major','$selschool','$grade','$selclass')");
-      if ($resualt->execute()) {
-        $_GET['data-inserted'] = "ثبت نام انجام شد";
-      }
-    } else {
-      $_GET['data-not-inserted'] = "کد ملی تکراری می باشد";
-    }
-
-  }
 ?>
 
 <?php include_once '../assets/head.php'; ?>
@@ -43,19 +19,6 @@
     <?php include_once '../assets/nav.php' ?>
    <!-- / Navbar -->
 
-    <?php
-      if (isset($_POST['reg-btn'])) {
-        $school = $_POST['sel-school'];
-        $class = $_POST['sel-class'];
-        $name = $_POST['codemeli'];
-        $name = $_POST['fname'];
-        $name = $_POST['lname'];
-        $name = $_POST['fathername'];
-        $name = $_POST['reg-btn'];
-      }
-
-    ?>
-
    <!-- Content wrapper -->
    <div class="content-wrapper">
     <!-- Content -->
@@ -66,19 +29,7 @@
         <div class="d-flex align-items-center row">
          <div class="col-sm-12 m-auto">
           <div class="card-body">
-            <?php if (isset($_GET['data-inserted'])) { ?>
-             <div class="position-absolute alert alert-success text-danger" style="top: 30px;left: 45%">
-               <?php print ($_GET['data-inserted']) ?>
-             </div>
-              <?php unset($_GET['data-inserted']);
-            } ?>
-            <?php if (isset($_GET['data-not-inserted'])) { ?>
-             <div class="position-absolute alert alert-danger text-danger" style="top: 30px;left: 45%">
-               <?php print ($_GET['data-not-inserted']) ?>
-             </div>
-              <?php unset($_GET['data-not-inserted']);
-            } ?>
-           <h5 class="card-title text-primary mt-4">مدرسه را انتخاب کنید</h5>
+           <h5 class="card-title text-primary mt-4">ویرایش مشخصات دانش آموز</h5>
            <p class="mt-4">برای ثبت نام دانش آموز بر اساس مدرسه و کلاس انتخاب کنید</p>
            <div class="input-group">
             <form method="post" class="w-75 m-auto mt-2" style="direction: rtl">
