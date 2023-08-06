@@ -42,13 +42,15 @@
         <div class="d-flex align-items-center row">
          <div class="col-sm-12 m-auto">
           <div class="card-body">
-           <h5 class="card-title text-primary">دریافت لیست دانش آموزان</h5>
-           <div class="row flex-row mt-4" style="direction: rtl">
+           <div class="row flex-row" style="direction: rtl">
+            <div class="col-md-3">
+             <h5 class="card-title text-primary">دریافت لیست دانش آموزان</h5>
+            </div>
             <div class="col-md-4">
-             <label for="sel-school" class="pb-1">مدرسه</label>
-             <select name="sel-school" onchange="changeSelectOption(this.value)"
+             <label for="selschool" class="pb-1">مدرسه</label>
+             <select name="selschool" onchange="changeSelectOption(this.value)"
                      class="form-select mb-1"
-                     id="sel-school" tabindex="1" style="padding-right: 40px">
+                     id="selschool" tabindex="1" style="padding-right: 40px">
               <option selected disabled>مدرسه را انتخاب کنید</option>
                <?php
                  $sql = "SELECT * FROM schools";
@@ -70,13 +72,6 @@
               <option selected class="pe-5" disabled> کلاس را انتخاب کنید</option>
              </select>
             </div>
-            <!--             <label for="grade" class="pb-1">پایه</label>-->
-            <!--             <input name="grade" class="input mb-4" id="grade">-->
-            <!---->
-            <!---->
-            <!--             <label for="grade" class="pb-1">رشته</label>-->
-            <!--             <input name="major" class="input mb-1" id="major">-->
-
            </div>
           </div>
          </div>
@@ -88,11 +83,11 @@
        <div class="card">
         <div class="d-flex align-items-center row">
          <div class="col-sm-12 m-auto">
-          <div class="card-body">
+          <div class="card-body" style="height: 500px">
 
-           <div class="row flex-row" style="direction: rtl">
+           <div class="row flex-row" style="direction: rtl;height: 440px;overflow-y: scroll">
 
-            <table class="table align-right">
+            <table class="table align-right" style="height: fit-content">
              <thead>
              <tr>
               <th scope="col" style="text-align: right">کد ملی</th>
@@ -107,7 +102,7 @@
 
              </tr>
              </thead>
-             <tbody>
+             <tbody id="tbody">
 
              <?php
 
@@ -164,7 +159,7 @@
     <!-- / Content -->
 
     <!-- Footer -->
-     <?php include_once '../assets/page-footer.php'; ?>
+     <?php // include_once '../assets/page-footer.php'; ?>
     <!-- / Footer -->
 
     <div class="content-backdrop fade"></div>
@@ -183,7 +178,22 @@
      function changeSelectOption(str) {
 
          if (str == "") {
-             document.getElementById("sel-school").innerHTML = "";
+             document.getElementById("tbody").innerHTML = " ";
+             return;
+         } else {
+             var xmlHttp = new XMLHttpRequest();
+             xmlHttp.onreadystatechange = function () {
+                 if (this.readyState == 4 && this.status == 200) {
+                     document.getElementById("tbody").innerHTML = this.responseText;
+                 }
+             };
+             xmlHttp.open("GET", "../assets/searchClass.php?tbody=" + str);
+             xmlHttp.send();
+         }
+
+
+         if (str == "") {
+             document.getElementById("selschool").innerHTML = "";
              return;
          } else {
              var xmlhttp = new XMLHttpRequest();
@@ -198,30 +208,24 @@
      }
 
      function cshowGrade(str) {
-         if (str == "") {
-             document.getElementById("grade").innerHTML = "";
-             return;
-         } else {
-             var xmlhttp = new XMLHttpRequest();
-             xmlhttp.onreadystatechange = function () {
-                 if (this.readyState == 4 && this.status == 200) {
-                     var data = JSON.parse(this.responseText);
-                     var grade = data[0][2];
-                     var major = data[0][3];
-                     console.log(grade, major)
-                     document.getElementById("grade").value = grade;
-                     document.getElementById("major").value = major;
-                 }
-             };
-             xmlhttp.open("GET", "../assets/searchClass.php?grade=" + str);
-             xmlhttp.send();
-         }
+
+         document.getElementById("tbody").innerHTML = "";
+         console.log('exit');
+         var xmlHttP = new XMLHttpRequest();
+         xmlHttP.onreadystatechange = function () {
+             if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("tbody").innerHTML = this.responseText;
+             }
+         };
+         xmlHttP.open("GET", "../assets/searchClass.php?tbodyClass=" + str);
+         xmlHttP.send();
+
      }
 
  </script>
 
-
   <?php include_once '../assets/footer.php'; ?>
+
 
 
 

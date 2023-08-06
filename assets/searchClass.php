@@ -24,5 +24,71 @@
     $row = $resualt->fetchAll();
     echo json_encode($row);
   }
+
+
+  if (isset($_GET['tbody'])) {
+    $school = $_GET['tbody'];
+    $sql = "SELECT * FROM `studentlist` WHERE school='$school' order by lname";
+    $resualt = $pdo->prepare($sql);
+    $resualt->execute();
+    $row = $resualt->fetchAll();
+    foreach ($row as $row) {
+      ?>
+     <tr>
+      <td><?php echo $row['codemeli']; ?></td>
+      <td><?php echo $row['fname']; ?></td>
+      <td><?php echo $row['lname']; ?></td>
+      <td><?php echo $row['fathername']; ?></td>
+      <td><?php echo $row['school']; ?></td>
+      <td><?php echo $row['class']; ?></td>
+      <td><?php echo $row['major']; ?></td>
+      <td><?php echo $row['grade']; ?></td>
+      <td>
+       <a href="../assets/opration.php?editid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-warning">
+        <i class="bx bx-edit-alt"></i>
+       </a>
+       <a href="../assets/opration.php?deleteid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-danger">
+        <i class="bx bx-trash me-1"></i>
+       </a>
+      </td>
+     </tr>
+
+
+      <?php
+    }
+
+  }
+
+
+  if (isset($_GET['tbodyClass'])) {
+    $class = $_GET['tbodyClass'];
+    $sql = "SELECT * FROM `studentlist` WHERE class='$class' order by lname";
+    $resualt = $pdo->prepare($sql);
+    $resualt->execute();
+    $row = $resualt->fetchAll();
+    foreach ($row as $row) {
+      ?>
+     <tr>
+      <td><?php echo $row['codemeli']; ?></td>
+      <td><?php echo $row['fname']; ?></td>
+      <td><?php echo $row['lname']; ?></td>
+      <td><?php echo $row['fathername']; ?></td>
+      <td><?php echo $row['school']; ?></td>
+      <td><?php echo $row['class']; ?></td>
+      <td><?php echo $row['major']; ?></td>
+      <td><?php echo $row['grade']; ?></td>
+      <td>
+       <a href="../assets/opration.php?editid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-warning">
+        <i class="bx bx-edit-alt"></i>
+       </a>
+       <a href="../assets/opration.php?deleteid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-danger">
+        <i class="bx bx-trash me-1"></i>
+       </a>
+      </td>
+     </tr>
+      <?php
+    }
+  }
+
 ?>
 

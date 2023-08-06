@@ -43,19 +43,6 @@
     <?php include_once '../assets/nav.php' ?>
    <!-- / Navbar -->
 
-    <?php
-      if (isset($_POST['reg-btn'])) {
-        $school = $_POST['sel-school'];
-        $class = $_POST['sel-class'];
-        $name = $_POST['codemeli'];
-        $name = $_POST['fname'];
-        $name = $_POST['lname'];
-        $name = $_POST['fathername'];
-        $name = $_POST['reg-btn'];
-      }
-
-    ?>
-
    <!-- Content wrapper -->
    <div class="content-wrapper">
     <!-- Content -->
@@ -113,12 +100,11 @@
              <div class="row">
               <div class="col-md-6">
                <label for="grade" class="pb-2">پایه</label>
-               <input name="grade" class="input mb-4" id="grade" tabindex="8">
+               <input name="grade" class="input mb-4" id="grade"tabindex="3">
               </div>
               <div class="col-md-6">
                <label for="grade" class="pb-2">رشته</label>
-               <input name="major" class="input mb-4" id="major"
-                      tabindex="4">
+               <input name="major" class="input mb-4" id="major"tabindex="4">
               </div>
              </div>
              <div class="row">
@@ -166,6 +152,8 @@
  <div class="layout-overlay layout-menu-toggle"></div>
 </div>
 <!-- / Layout wrapper -->
+
+
 
 <script>
 
