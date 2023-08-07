@@ -1,6 +1,18 @@
 <?php
   include_once 'connect.php';
 
+
+?>
+
+<form method="post" action="<?php htmlentities($_SERVER['PHP_SELF']); ?>">
+
+ <input type="text">
+ <input type="submit" name="go" value="go">
+
+</form>
+<?php
+  include_once 'connect.php';
+
   $sql = "SELECT lname,fname,codemeli,monCode, AVG(mark) as mark FROM `monmark` GROUP BY codemeli,monCode;";
   $resualt=$pdo->prepare($sql);
   $resualt->execute();
