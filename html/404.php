@@ -17,7 +17,7 @@
   class="light-style"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="../assets/"
+  data-assets-path="http://localhost/main/phpstorm-test/assets/"
   data-template="vertical-menu-template-free"
 >
   <head>
