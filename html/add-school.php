@@ -33,8 +33,8 @@
   <div class="layout-container">
 
 
-   <!--          --><?php //include_once '../assets/aside.php';?>
-   <!-- / Menu -->
+<?php include_once '../assets/aside.php'; ?>
+
 
    <!-- Layout container -->
    <div class="layout-page">

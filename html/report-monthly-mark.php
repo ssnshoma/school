@@ -4,11 +4,8 @@
   include_once '../assets/first-login.php';
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
-  $title = "گزارش نمرات";
-  $category = "نمره";
-?>
-<?php include_once '../assets/head-1.php';
-
+  $title = "نمرات دانش آموزان";
+  $category = "ثبت نام";
 ?>
 
 <?php
@@ -100,9 +97,16 @@
 
 ?>
 
+<?php include_once '../assets/head.php'; ?>
+
+<?php
+
+?>
+
+<!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
  <div class="layout-container">
-
+  <!-- Menu -->
 
    <?php include_once '../assets/aside.php'; ?>
   <!-- / Menu -->
@@ -120,115 +124,111 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-     <div class="row">
-      <div class="col-lg-10 mb-4 order-0 m-auto">
-       <div class="card border-0">
-        <div class="d-flex align-items-end row ">
-         <div class="card-body p-5">
-          <h3 class="card-title text-primary mb-4">گزارش کلاسی نمرات</h3>
-          <h4 class="text-info mb-5"> برای بررسی نمرات لطفا موارد زیر را تکمیل کنید</h4>
-          <div class="m-auto">
-           <div class="form-group row" dir="rtl">
-            <div class="col-md-4">
-             <select name="class" id="month" style="text-align: right;" class="form-control form-group mt-4">
-              <option disabled selected>ماه انتخاب شود</option>
-              <option dir="rtl" value="7">مهر</option>
-              <option dir="rtl" value="8">آبان</option>
-              <option dir="rtl" value="9">آذر</option>
-              <option dir="rtl" value="10">دی</option>
-              <option dir="rtl" value="11">بهمن</option>
-              <option dir="rtl" value="12">اسفند</option>
-              <option dir="rtl" value="1">فروردین</option>
-              <option dir="rtl" value="2">اردیبهشت</option>
-              <option dir="rtl" value="3">خرداد</option>
-             </select>
+     <div class="row flex-row-reverse">
+      <div>
+       <div class="card">
+        <div class="d-flex align-items-center row">
+         <div class="col-sm-12 m-auto">
+          <div class="card-body">
+           <div class="row flex-row" style="direction: rtl">
+            <div class="col-md-3">
+             <h5 class="card-title text-primary">دریافت نمرات دانش آموزان</h5>
             </div>
-
-
             <div class="col-md-4">
-             <select name="class" id="class" style="text-align: right;" class="form-control form-group mt-4">
-              <option disabled selected>کلاس انتخاب شود</option>
+             <label for="selschool" class="pb-1">مدرسه</label>
+             <select name="selschool" onchange="changeSelectOption(this.value)"
+                     class="form-select mb-1"
+                     id="selschool" tabindex="1" style="padding-right: 40px">
+              <option selected disabled>مدرسه را انتخاب کنید</option>
                <?php
-                 $sqli = "SELECT * FROM classes";
-                 $resui = $pdo->prepare($sqli);
-                 $resui->execute();
-                 $rowi = $resui->fetchAll();
-                 foreach ($rowi as $row) {
-                   echo "ok";
+                 $sql = "SELECT * FROM schools";
+                 $resualt = $pdo->prepare($sql);
+                 $resualt->execute();
+                 $roww = $resualt->fetchAll(PDO::FETCH_ASSOC);
+                 foreach ($roww as $row) {
                    ?>
-                  <option dir="rtl" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
-                   <?php
-                 }
-               ?>
+                  <option style="direction: rtl"
+                          value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+                 <?php } ?>
+
              </select>
             </div>
-            <div class="col-md-2">
-             <input type="submit" name="send" value="ارسال" onclick="searchfunc()"
-                    class="mb-5 mt-4 btn btn-success center-block">
+            <div class="col-md-4">
+             <label for="sel-class" class="pb-1">کلاس</label>
+             <select name="sel-class" class="form-select mb-1" onchange="cshowGrade(this.value)"
+                     id="sel-class" tabindex="2" style="padding-right: 40px">
+              <option selected class="pe-5" disabled> کلاس را انتخاب کنید</option>
+             </select>
             </div>
-
            </div>
           </div>
+         </div>
+        </div>
+       </div>
+      </div>
 
-          <div class="row" dir="rtl">
-           <table class="table align-right">
-            <thead>
-            <tr>
-             <th scope="col" style="text-align: right">کد ملی</th>
-             <th scope="col" style="text-align: right">نام</th>
-             <th scope="col" style="text-align: right">نام خانوادگی</th>
-             <th scope="col" style="text-align: right">مهر</th>
-             <th scope="col" style="text-align: right">آبان</th>
-             <th scope="col" style="text-align: right">آذر</th>
-             <th scope="col" style="text-align: right">دی</th>
-             <th scope="col" style="text-align: right">بهمن</th>
-             <th scope="col" style="text-align: right">اسفند</th>
-             <th scope="col" style="text-align: right">فروردین</th>
-             <th scope="col" style="text-align: right">اردیبهشت</th>
-             <th scope="col" style="text-align: right">خرداد</th>
+      <div class="mt-2">
+       <div class="card">
+        <div class="d-flex align-items-center row">
+         <div class="col-sm-12 m-auto">
+          <div class="card-body" style="height: 500px">
 
-            </tr>
-            </thead>
-            <tbody>
+           <div class="row flex-row" style="direction: rtl;height: 440px;overflow-y: scroll;">
 
-            <?php
+            <table class="table align-right" style="height: fit-content;padding: 0.5rem 1.1rem;">
+             <thead style="padding: 0.5rem 1.1rem;">
+             <tr>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">کد ملی</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">نام</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">نام خانوادگی</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">کلاس</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">مدرسه</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">مهر</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">آبان</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">آذز</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">دی</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">بهمن</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">اسفند</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">فروردین</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">اردیبهشت</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem;">خرداد</th>
 
-              $sqll = "SELECT * FROM `month_mark` order by lname";
-              $result3 = mysqli_query($conn, $sqll);
-              if ($result3) {
-                while ($row1 = mysqli_fetch_assoc($result3)) {
-                  $codmeli = $row1['codemeli'];
-                  $fname = $row1['fname'];
-                  $lname = $row1['lname'];
-                  $mehr = substr($row1['mehr'], 0, 5);
-                  $aban = substr($row1['aban'], 0, 5);
-                  $azar = substr($row1['azar'], 0, 5);
-                  $dey = substr($row1['dey'], 0, 5);
-                  $bahman = substr($row1['bahman'], 0, 5);
-                  $esfand = substr($row1['esfand'], 0, 5);
-                  $farvardin = substr($row1['farvardin'], 0, 5);
-                  $ordibehesht = substr($row1['ordibehesht'], 0, 5);
-                  $khordad = substr($row1['khordad'], 0, 5);
+             </tr>
+             </thead>
+             <tbody id="tbody">
 
-                  echo ' <tr><td scope="row">' . $codmeli . '</th>
-                            <td>' . $fname . '</td>
-                            <td>' . $lname . '</td>
-                            <td>' . $mehr . '</td>
-                            <td>' . $aban . '</td>
-                            <td>' . $azar . '</td>
-                            <td>' . $dey . '</td>
-                            <td>' . $bahman . '</td>
-                            <td>' . $esfand . '</td>
-                            <td>' . $farvardin . '</td>
-                            <td>' . $ordibehesht . '</td>
-                            <td>' . $khordad . '</td>
-                            </tr>';
-                }
-              }
-            ?>
-            </tbody>
+             <?php
 
-           </table>
+               $sqll = "SELECT * FROM `month_mark` order by lname";
+               $result3 = mysqli_query($conn, $sqll);
+               if ($result3) {
+                 while ($row1 = mysqli_fetch_assoc($result3)) {
+                   ?>
+                  <tr>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['codemeli']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['fname']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['lname']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['class']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['school']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['mehr']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['aban']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['azar']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['dey']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['bahman']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['esfand']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['farvardin']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['ordibehesht']; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['khordad']; ?></td>
+                  </tr>
+                 <?php }
+               }
+             ?>
+             </tbody>
+
+            </table>
+
+           </div>
+
           </div>
          </div>
         </div>
@@ -236,33 +236,69 @@
       </div>
      </div>
     </div>
-     <?php include_once '../assets/page-footer.php'; ?>
+
+
+    <!-- / Content -->
+
+    <div class="content-backdrop fade"></div>
    </div>
+   <!-- Content wrapper -->
   </div>
   <!-- / Layout page -->
  </div>
 
  <!-- Overlay -->
+ <div class="layout-overlay layout-menu-toggle"></div>
  <!-- / Layout wrapper -->
+
  <script>
-     function searchfunc() {
-         let month = document.getElementById('month').value;
-         let className = document.getElementById('class').value;
-         let xmlHttp;
-         if (window.XMLHttpRequest) {
-             xmlHttp = new XMLHttpRequest();
+
+     function changeSelectOption(str) {
+
+         if (str == "") {
+             document.getElementById("tbody").innerHTML = " ";
+             return;
          } else {
-             xmlHttp = new ActiveXObject();
+             var xmlHttp = new XMLHttpRequest();
+             xmlHttp.onreadystatechange = function () {
+                 if (this.readyState == 4 && this.status == 200) {
+                     document.getElementById("tbody").innerHTML = this.responseText;
+                 }
+             };
+             xmlHttp.open("GET", "../assets/searchClass.php?MarkSchool=" + str);
+             xmlHttp.send();
          }
-         xmlHttp.onreadystatechange = function () {
-             if (xmlHttp.states == 200 && xmlHttp.readyState == 4) {
-                 document.getElementById('').innerHTML = xmlHttp.responseText;
+
+
+         if (str == "") {
+             document.getElementById("selschool").innerHTML = "";
+             return;
+         } else {
+             var xmlhttp = new XMLHttpRequest();
+             xmlhttp.onreadystatechange = function () {
+                 if (this.readyState == 4 && this.status == 200) {
+                     document.getElementById("sel-class").innerHTML = this.responseText;
+                 }
+             };
+             xmlhttp.open("GET", "../assets/searchClass.php?school=" + str);
+             xmlhttp.send();
+         }
+     }
+
+     function cshowGrade(str) {
+
+         document.getElementById("tbody").innerHTML = "";
+         var xmlHttP = new XMLHttpRequest();
+         xmlHttP.onreadystatechange = function () {
+             if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("tbody").innerHTML = this.responseText;
              }
-         }
-         xmlHttp.open("POST", "")
+         };
+         xmlHttP.open("GET", "../assets/searchClass.php?MarkClass=" + str);
+         xmlHttP.send();
+
      }
 
  </script>
-
 
   <?php include_once '../assets/footer.php'; ?>

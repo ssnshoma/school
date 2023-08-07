@@ -141,7 +141,7 @@
          id="password"
          class="form-control"
          name="password"
-         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+         placeholder="رمز عبور"
          aria-describedby="password" tabindex="1"
         />
         <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>

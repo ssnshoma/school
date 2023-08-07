@@ -14,16 +14,18 @@
     $cName = $_POST['name'];
     $cGrade = $_POST['grade'];
     $cSchool = $_POST['school'];
+    $cMajor = $_POST['major'];
     $sqli = "SELECT * FROM schools WHERE name=?";
     $ress = $pdo->prepare($sqli);
     $ress->bindValue(1, $cSchool);
     if ($rwo = $ress->execute()) {
       if ($ress->rowCount() >= 1) {
-        $sql = "INSERT INTO classes SET name=?,grade=?,school=?";
+        $sql = "INSERT INTO classes SET name=?,grade=?,major=?,school=?";
         $resualt = $pdo->prepare($sql);
         $resualt->bindValue(1, $cName);
         $resualt->bindValue(2, $cGrade);
-        $resualt->bindValue(3, $cSchool);
+        $resualt->bindValue(3, $cMajor);
+        $resualt->bindValue(4, $cSchool);
         if ($resualt->execute()) {
           $_GET['c-inserted'] = "ثبت شد";
         } else {
@@ -249,6 +251,7 @@
          as $row) {
          $nam = $row['name'];
          $grad = $row['grade'];
+         $major = $row['major'];
          $schoo = $row['school'];
 
        ?>
@@ -273,6 +276,7 @@
               <label style="font-size: 17px" class="col-sm-2 col-form-label"
                      for="name">نام</label>
              </div>
+
              <div class="row mb-4">
               <div class="col-sm-10">
                <input style="text-align: right" type="text"
@@ -287,10 +291,25 @@
              </div>
              <div class="row mb-4">
               <div class="col-sm-10">
+               <select style="text-align: right" type="text"
+                       class="form-control"
+                       id="basic-default-name"
+                       name="cmajor">
+                <option value="<?php echo $major; ?>" selected><?php echo $major; ?></option>
+                <option value="ادبیات">ادبیات</option>
+                <option value="تجربی">تجربی</option>
+                <option value="ریاضی">ریاضی</option>
+                <option value="کامپیوتر">کامپیوتر</option>
+               </select>
+              </div>
+              <label style="font-size: 17px" class="col-sm-2 col-form-label"
+                     for="manager-name">پایه</label>
+             </div>
+             <div class="row mb-4">
+              <div class="col-sm-10">
                <select name="cschool-e" id="" class="form-control"
                        style="direction: rtl">
-                <option class="salam" style="font-size: 20px" disabled
-                        value="<?php echo $schoo; ?>"><?php echo $schoo; ?></option>
+                <option class="salam" style="font-size: 20px" value="<?php echo $schoo; ?>"><?php echo $schoo; ?></option>
                  <?php
                    $sqlq = "SELECT * FROM schools";
                    $sqlresualt = $pdo->prepare($sqlq);
@@ -355,13 +374,15 @@
     if (isset($_POST['submit-btn-c'])) {
       $editidd = $_GET['editId'];
       $editname = $_POST['cname-e'];
+      $cmajor = $_POST['cmajor'];
       $editgrade = $_POST['cgrade-e'];
       $editschool = $_POST['cschool-e'];
-      $mysqlq = "UPDATE classes SET name=?,grade=?,school=? WHERE Id=$editidd";
+      $mysqlq = "UPDATE classes SET name=?,grade=?,major=?,school=? WHERE Id=$editidd";
       $resua = $pdo->prepare($mysqlq);
       $resua->bindValue(1, $editname);
       $resua->bindValue(2, $editgrade);
-      $resua->bindValue(3, $editschool);
+      $resua->bindValue(3, $cmajor);
+      $resua->bindValue(4, $editschool);
       if ($resua->execute()) { ?>
        <script>
            window.location.href = "add-class.php";

@@ -90,15 +90,15 @@
             <table class="table align-right" style="height: fit-content">
              <thead>
              <tr>
-              <th scope="col" style="text-align: right">کد ملی</th>
-              <th scope="col" style="text-align: right">نام</th>
-              <th scope="col" style="text-align: right">نام خانوادگی</th>
-              <th scope="col" style="text-align: right">نام پدر</th>
-              <th scope="col" style="text-align: right">مدرسه</th>
-              <th scope="col" style="text-align: right">کلاس</th>
-              <th scope="col" style="text-align: right">رشته</th>
-              <th scope="col" style="text-align: right">پایه</th>
-              <th scope="col" style="text-align: right">عملیات</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">کد ملی</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">نام</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">نام خانوادگی</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">نام پدر</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">مدرسه</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">کلاس</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">رشته</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">پایه</th>
+              <th style="text-align: right;padding: 0.5rem 1.1rem">عملیات</th>
 
              </tr>
              </thead>
@@ -121,14 +121,14 @@
                    ?>
 
                   <tr>
-                   <td><?php echo $codmeli; ?></td>
-                   <td><?php echo $fname; ?></td>
-                   <td><?php echo $lname; ?></td>
-                   <td><?php echo $fathername; ?></td>
-                   <td><?php echo $school; ?></td>
-                   <td><?php echo $class; ?></td>
-                   <td><?php echo $major; ?></td>
-                   <td><?php echo $grade; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $codmeli; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $fname; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $lname; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $fathername; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $school; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $class; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $major; ?></td>
+                   <td style="padding: 0.5rem 1.1rem"><?php echo $grade; ?></td>
                    <td>
                     <a href="../assets/opration.php?editid=<?php echo $codmeli; ?>" class="btn btn-sm btn-warning">
                      <i class="bx bx-edit-alt"></i>
@@ -142,11 +142,8 @@
                }
              ?>
              </tbody>
-
             </table>
-
            </div>
-
           </div>
          </div>
         </div>
@@ -159,7 +156,7 @@
     <!-- / Content -->
 
     <!-- Footer -->
-     <?php // include_once '../assets/page-footer.php'; ?>
+     <?php include_once '../assets/page-footer.php'; ?>
     <!-- / Footer -->
 
     <div class="content-backdrop fade"></div>
@@ -225,10 +222,3 @@
  </script>
 
   <?php include_once '../assets/footer.php'; ?>
-
-
-
-
-
-
-
