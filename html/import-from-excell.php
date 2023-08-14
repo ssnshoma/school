@@ -26,7 +26,7 @@ $category="ثبت نام";
       <!-- / Navbar -->
 
       <?php
-      $connection = mysqli_connect("localhost", "root", "", "");
+      $connection = mysqli_connect("localhost", "hossein", "1234", "");
       mysqli_select_db($connection, '1402s1403');
       require '../vendor/autoload.php';
       if (isset($_POST['save_multiple_data'])) {

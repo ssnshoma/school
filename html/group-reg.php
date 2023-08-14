@@ -125,7 +125,7 @@
 
              <?php
 
-               $conn = mysqli_connect("localhost", "root", "", "");
+               $conn = mysqli_connect("localhost", "hossein", "1234", "");
                mysqli_select_db($conn, '1402s1403');
 
                if (isset($_POST['save_multiple_data'])) {

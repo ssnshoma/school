@@ -54,7 +54,7 @@
        <div class="card h-100">
         <div class="card-body d-flex">
           <?php
-            $conn = mysqli_connect("localhost", "root", "", "");
+            $conn = mysqli_connect("localhost", "hossein", "1234", "");
             mysqli_select_db($conn, '1402s1403');
             $sql = "SELECT mehr, AVG(mehr) as mehr, AVG(aban) as aban, AVG(azar) as azar, AVG(dey) as dey, AVG(bahman) as bahman, AVG(esfand) as esfand, AVG(farvardin) as farvardin, AVG(ordibehesht) as ordibehesht, AVG(khordad) as khordad FROM `month_mark`";
             $resualtInsert = mysqli_query($conn, $sql);
