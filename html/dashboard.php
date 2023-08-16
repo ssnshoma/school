@@ -68,9 +68,19 @@
             $farvardin = $resualt['farvardin'];
             $ordibehesht = $resualt['ordibehesht'];
             $khordad = $resualt['khordad'];
-            $updateSql = "UPDATE `mark_avg` SET `mehr`='$mehr',`aban`='$aban',`azar`='$azar',`dey`='$dey',`bahman`='$bahman',`esfand`='$esfand',`farvardin`='$farvardin',`ordibehesht`='$ordibehesht',`khordad`='$khordad' WHERE `id`=1";
-            $uptResualt = $pdo->prepare($updateSql);
-            $uptResualt->execute();
+            $updateSql = "UPDATE `mark_avg` SET mehr=? ,aban=?,azar=?,dey=?,bahman=?,esfand=?,farvardin=?,ordibehesht=?,khordad=? WHERE `id`=1";
+            $updateSqlRun=$pdo->prepare($updateSql);
+            $updateSqlRun->bindValue(1,$mehr);
+            $updateSqlRun->bindValue(2,$aban);
+            $updateSqlRun->bindValue(3,$azar);
+            $updateSqlRun->bindValue(4,$dey);
+            $updateSqlRun->bindValue(5,$bahman);
+            $updateSqlRun->bindValue(6,$esfand);
+            $updateSqlRun->bindValue(7,$farvardin);
+            $updateSqlRun->bindValue(8,$ordibehesht);
+            $updateSqlRun->bindValue(9,$khordad);
+            $updateSqlRun->execute();
+
           ?>
          <div class="graph w-100">
 

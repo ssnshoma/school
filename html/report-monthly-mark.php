@@ -9,7 +9,7 @@
 ?>
 
 <?php
-  $conn = mysqli_connect("localhost", "root", "", "");
+  $conn = mysqli_connect("localhost", "hossein", "1234", "");
   mysqli_select_db($conn, '1402s1403');
   $sql = "SELECT fname,lname,class,school,codemeli,monCode, AVG(mark) as mark FROM `monmark` GROUP BY codemeli,monCode;";
   $resualtInsert = mysqli_query($conn, $sql);
