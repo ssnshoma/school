@@ -243,6 +243,8 @@
 
 <script>
 
+    import {$} from "../libs/jquery/jquery";
+
     $(document).ready(function () {
 
         $(document).on('click', '.remove-btn', function () {

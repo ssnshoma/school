@@ -53,37 +53,7 @@
       <div class="col-md-9 col-lg-9 order-2 mb-4">
        <div class="card h-100">
         <div class="card-body d-flex">
-          <?php
-            $conn = mysqli_connect("localhost", "hossein", "1234", "");
-            mysqli_select_db($conn, '1402s1403');
-            $sql = "SELECT mehr, AVG(mehr) as mehr, AVG(aban) as aban, AVG(azar) as azar, AVG(dey) as dey, AVG(bahman) as bahman, AVG(esfand) as esfand, AVG(farvardin) as farvardin, AVG(ordibehesht) as ordibehesht, AVG(khordad) as khordad FROM `month_mark`";
-            $resualtInsert = mysqli_query($conn, $sql);
-            $resualt = mysqli_fetch_assoc($resualtInsert);
-            $mehr = $resualt['mehr'];
-            $aban = $resualt['aban'];
-            $azar = $resualt['azar'];
-            $dey = $resualt['dey'];
-            $bahman = $resualt['bahman'];
-            $esfand = $resualt['esfand'];
-            $farvardin = $resualt['farvardin'];
-            $ordibehesht = $resualt['ordibehesht'];
-            $khordad = $resualt['khordad'];
-            $updateSql = "UPDATE `mark_avg` SET mehr=? ,aban=?,azar=?,dey=?,bahman=?,esfand=?,farvardin=?,ordibehesht=?,khordad=? WHERE `id`=1";
-            $updateSqlRun=$pdo->prepare($updateSql);
-            $updateSqlRun->bindValue(1,$mehr);
-            $updateSqlRun->bindValue(2,$aban);
-            $updateSqlRun->bindValue(3,$azar);
-            $updateSqlRun->bindValue(4,$dey);
-            $updateSqlRun->bindValue(5,$bahman);
-            $updateSqlRun->bindValue(6,$esfand);
-            $updateSqlRun->bindValue(7,$farvardin);
-            $updateSqlRun->bindValue(8,$ordibehesht);
-            $updateSqlRun->bindValue(9,$khordad);
-            $updateSqlRun->execute();
-
-          ?>
          <div class="graph w-100">
-
           <table class="table align-right w-100" style="height: fit-content">
            <thead>
            <tr>
@@ -100,16 +70,16 @@
            </thead>
            <tbody id="tbody">
            <tr>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $mehr; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $aban; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $azar; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $dey; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $bahman; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $esfand; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $farvardin; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $ordibehesht; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $khordad; ?></td>
-           </tr>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($mehr, 0, 5); ?></td>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($aban, 0, 5); ?></td>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($azar, 0, 5); ?></td>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($dey, 0, 5); ?></td>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($bahman, 0, 5); ?></td>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($esfand, 0, 5); ?></td>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($farvardin, 0, 5); ?></td>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($ordibehesht, 0, 5); ?></td>
+            <td style="padding: 0.5rem 1.1rem"><?php print substr($khordad, 0, 5); ?></td>
+             </tr>
            </tbody>
           </table>
          </div>
@@ -145,7 +115,7 @@
 
     function clock() {
         const date = new Date();
-
+        // console.log(date);
         const hours = ((date.getHours() + 11) % 12 + 1);
         const minutes = date.getMinutes();
         const seconds = date.getSeconds();
