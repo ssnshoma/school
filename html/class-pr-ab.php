@@ -19,7 +19,7 @@
 ?>
 <?php include_once '../assets/head.php'; ?>
 <?php
-  $conn = mysqli_connect("localhost", "root", "", "");
+  $conn = mysqli_connect("localhost", "hossein", "1234", "");
   $s = mysqli_select_db($conn, '1402s1403');
   $date = $_GET['data'];
   $gdate = convertPersianToEnglish($date);
