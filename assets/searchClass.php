@@ -1,5 +1,7 @@
 <?php
   include_once "connect.php";
+  include_once './files/jdf.php';
+
   if (isset($_GET['school'])) {
     $school = $_GET['school'];
     $sql = "SELECT * FROM `classes` WHERE school=?";
@@ -150,6 +152,59 @@
       <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['farvardin']; ?></td>
       <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['ordibehesht']; ?></td>
       <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['khordad']; ?></td>
+     </tr>
+      <?php
+    }
+  }
+
+  if (isset($_GET['className'])) {
+    $class = $_GET['className'];
+    $sql = "SELECT * FROM `studentlist` WHERE class=? order by lname";
+    $resualt = $pdo->prepare($sql);
+    $resualt->bindValue(1, $class);
+    $resualt->execute();
+    $row = $resualt->fetchAll();
+    echo '<option selected disabled>دانش آموز را انتخاب کنید</option>';
+    foreach ($row as $row) {
+      ?>
+     <option value="<?php echo $row['codemeli'] ?>"><?php echo $row['fname'] . " " . $row['lname'] ?></option>
+      <?php
+    }
+  }
+
+  if (isset($_GET['montCode']) && isset($_GET['codemeli'])) {
+    $monthCode = $_GET['montCode'];
+    $codemeli = $_GET['codemeli'];
+    $sql = "SELECT * FROM `monmark` WHERE codemeli='$codemeli' AND monCode='$monthCode' order by tarikh";
+    $resualt = $pdo->prepare($sql);
+    $resualt->execute();
+    $row = $resualt->fetchAll();
+    foreach ($row as $row) {
+      ?>
+     <tr>
+      <td style="text-align: right;padding: 0.5rem 1.1rem">
+       <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
+        <i class="bx bx-edit-alt"></i>
+       </a>
+       <a href="check-marks.php?deleteid=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger">
+        <i class="bx bx-trash"></i>
+       </a>
+      </td>
+      <td class="text-dark"
+          style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['mark']; ?></td>
+      <td class="text-dark" style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php
+          $date = $row['tarikh'];
+          $arr_parts = explode('-', $date);
+          $gYear = $arr_parts[0];
+          $gMonth = $arr_parts[1];
+          $gDay = $arr_parts[2];
+          $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, ' / ');
+          print $converted;
+        ?></td>
+      <td class="text-dark"
+          style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['lname']; ?></td>
+      <td class="text-dark"
+          style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['fname']; ?></td>
      </tr>
       <?php
     }

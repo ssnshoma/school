@@ -7,6 +7,7 @@
   $title = "داشبورد";
   $category = "داشبورد";
 
+
 ?>
 
 <?php include_once '../assets/head.php'; ?>
@@ -33,9 +34,6 @@
     <div class="container-xxl flex-grow-1 container-p-y">
 
      <div class="row">
-      <!-- Order Statistics -->
-
-      <!-- Transactions -->
       <div class="col-md-3 col-lg-3 order-2 mb-4">
        <div class="card h-100">
         <div class="card-body d-flex align-items-center justify-content-center">
@@ -53,28 +51,8 @@
       <div class="col-md-9 col-lg-9 order-2 mb-4">
        <div class="card h-100">
         <div class="card-body d-flex">
-          <?php
-            $conn = mysqli_connect("localhost", "hossein", "1234", "");
-            mysqli_select_db($conn, '1402s1403');
-            $sql = "SELECT mehr, AVG(mehr) as mehr, AVG(aban) as aban, AVG(azar) as azar, AVG(dey) as dey, AVG(bahman) as bahman, AVG(esfand) as esfand, AVG(farvardin) as farvardin, AVG(ordibehesht) as ordibehesht, AVG(khordad) as khordad FROM `month_mark`";
-            $resualtInsert = mysqli_query($conn, $sql);
-            $resualt = mysqli_fetch_assoc($resualtInsert);
-            $mehr = $resualt['mehr'];
-            $aban = $resualt['aban'];
-            $azar = $resualt['azar'];
-            $dey = $resualt['dey'];
-            $bahman = $resualt['bahman'];
-            $esfand = $resualt['esfand'];
-            $farvardin = $resualt['farvardin'];
-            $ordibehesht = $resualt['ordibehesht'];
-            $khordad = $resualt['khordad'];
-            $updateSql = "UPDATE `mark_avg` SET `mehr`='$mehr',`aban`='$aban',`azar`='$azar',`dey`='$dey',`bahman`='$bahman',`esfand`='$esfand',`farvardin`='$farvardin',`ordibehesht`='$ordibehesht',`khordad`='$khordad' WHERE `id`=1";
-            $uptResualt = $pdo->prepare($updateSql);
-            $uptResualt->execute();
-          ?>
          <div class="graph w-100">
-
-          <table class="table align-right w-100" style="height: fit-content">
+          <table class="table align-right w-100" dir="rtl" style="height: fit-content">
            <thead>
            <tr>
             <th style="text-align: right;padding: 0.5rem 1.1rem">مهر</th>
@@ -90,18 +68,52 @@
            </thead>
            <tbody id="tbody">
            <tr>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $mehr; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $aban; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $azar; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $dey; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $bahman; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $esfand; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $farvardin; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $ordibehesht; ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php echo $khordad; ?></td>
+             <?php
+               $monthes = array("mehr", "aban", "azar", "dey", "bahman", "esfand");
+               for ($i = 7; $i <= 12; $i++) {
+                 $mon = $monthes[($i - 7)];
+                 $sql = "SELECT AVG(mark) as $mon from `monmark` WHERE monCode=$i";
+                 $run = $pdo->prepare($sql);
+                 $run->execute();
+                 $row = $run->fetchAll();
+                 $mark = $row[0]["$mon"];
+                 ?>
+                <td> <?php echo $mark ?> </td>
+               <?php }
+             ?>
+             <?php
+               $monthes = array("farvardin", "ordibehesht", "khordad");
+               for ($i = 1; $i <= 3; $i++) {
+                 $monn = $monthes[($i - 1)];
+                 $sql = "SELECT AVG(mark) as $monn from `monmark` WHERE monCode=$i";
+                 $run = $pdo->prepare($sql);
+                 $run->execute();
+                 $row = $run->fetchAll();
+                 $mark = $row[0]["$monn"];
+                 ?>
+                <td> <?php echo $mark ?> </td>
+               <?php }
+             ?>
            </tr>
            </tbody>
           </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-6 col-lg-6 order-2 mb-4">
+       <div class="card h-100">
+        <div class="card-body d-flex align-items-center justify-content-center">
+        </div>
+       </div>
+      </div>
+      <div class="col-md-6 col-lg-6 order-2 mb-4">
+       <div class="card h-100">
+        <div class="card-body d-flex">
+         <div class="graph w-100">
+
          </div>
         </div>
        </div>
@@ -135,7 +147,7 @@
 
     function clock() {
         const date = new Date();
-
+        // console.log(date);
         const hours = ((date.getHours() + 11) % 12 + 1);
         const minutes = date.getMinutes();
         const seconds = date.getSeconds();

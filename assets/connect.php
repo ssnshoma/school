@@ -6,9 +6,6 @@
   $pdo = new PDO('mysql:host=localhost;dbname=1402s1403', 'hossein', '1234', $utf);
   $conn = mysqli_connect("localhost", "hossein", "1234", "");
   mysqli_select_db($conn, '1402s1403');
-
   session_start();
-
+  date_default_timezone_set("Asia/Tehran");
 ?>
-
-

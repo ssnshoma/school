@@ -8,100 +8,8 @@
   $category = "ثبت نام";
 ?>
 
-<?php
-  $conn = mysqli_connect("localhost", "root", "1234", "");
-  mysqli_select_db($conn, '1402s1403');
-  $sql = "SELECT fname,lname,class,school,codemeli,monCode, AVG(mark) as mark FROM `monmark` GROUP BY codemeli,monCode;";
-  $resualtInsert = mysqli_query($conn, $sql);
-  while ($resualt = mysqli_fetch_assoc($resualtInsert)) {
-    $codemeli = $resualt['codemeli'];
-    $fname = $resualt['fname'];
-    $lname = $resualt['lname'];
-    $class = $resualt['class'];
-    $school = $resualt['school'];
-    $mark = $resualt['mark'];
-    $monthcode = $resualt['monCode'];
-    $qry = "SELECT * From `month_mark` WHERE codemeli=$codemeli";
-    $query_run = mysqli_query($conn, $qry);
-    $rowcount = mysqli_num_rows($query_run);
-    if ($rowcount <= 0) {
-      if ($monthcode == "7") {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `mehr`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "8") {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `aban`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "9") {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `azar`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "10") {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `dey`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "11") {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `bahman`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "12") {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `esfand`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "1") {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `farvardin`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "2") {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `ordibehesht`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      } else {
-        $sql1 = "INSERT INTO `month_mark` (`codemeli`, `fname`, `lname`, `class`, `school`, `khordad`) values ('$codemeli','$fname','$lname','$class','$school','$mark')";
-        $result1 = mysqli_query($conn, $sql1);
-      }
-    } else {
-      if ($monthcode == "7") {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `mehr`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "8") {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `aban`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "9") {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `azar`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "10") {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `dey`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "11") {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `bahman`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "12") {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `esfand`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "1") {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `farvardin`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      } else if ($monthcode == "2") {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `ordibehesht`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      } else {
-        $codemeli = $resualt['codemeli'];
-        $sql1 = "UPDATE `month_mark` SET `khordad`='$mark' WHERE `codemeli`='$codemeli'";
-        $result1 = mysqli_query($conn, $sql1);
-      }
-    }
-  }
+<?php include_once '../assets/head.php';?>
 
-
-?>
-
-<?php include_once '../assets/head.php'; ?>
-
-<?php
-
-?>
 
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
@@ -175,60 +83,112 @@
 
            <div class="row flex-row" style="direction: rtl;height: 440px;overflow-y: scroll;">
 
-            <table class="table align-right" style="height: fit-content;padding: 0.5rem 1.1rem;">
-             <thead style="padding: 0.5rem 1.1rem;">
+            <table dir="rtl" class="table text-black">
+             <thead>
              <tr>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">کد ملی</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">نام</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">نام خانوادگی</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">کلاس</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">مدرسه</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">مهر</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">آبان</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">آذز</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">دی</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">بهمن</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">اسفند</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">فروردین</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">اردیبهشت</th>
-              <th style="text-align: right;padding: 0.5rem 1.1rem;">خرداد</th>
-
+              <td>کد ملی</td>
+              <td>نام</td>
+              <td>نام خانوادگی</td>
+              <td>مهر</td>
+              <td>آبان</td>
+              <td>آذر</td>
+              <td>دی</td>
+              <td>بهمن</td>
+              <td>اسفند</td>
+              <td>فروردین</td>
+              <td>اردیبهشت</td>
+              <td>خرداد</td>
              </tr>
              </thead>
-             <tbody id="tbody">
-
+             <tbody style="font-weight: bolder">
              <?php
 
-               $sqll = "SELECT * FROM `month_mark` order by lname";
-               $result3 = mysqli_query($conn, $sqll);
-               if ($result3) {
-                 while ($row1 = mysqli_fetch_assoc($result3)) {
-                   ?>
-                  <tr>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['codemeli']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['fname']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['lname']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['class']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['school']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['mehr']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['aban']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['azar']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['dey']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['bahman']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['esfand']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['farvardin']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['ordibehesht']; ?></td>
-                   <td style="padding: 0.5rem 1.1rem"><?php echo $row1['khordad']; ?></td>
-                  </tr>
-                 <?php }
-               }
+               $sql = "SELECT DISTINCT codemeli,fname,lname FROM `monmark` ORDER BY lname";
+               $codeFind = $pdo->prepare($sql);
+               $codeFind->execute();
+               $codes = $codeFind->fetchAll();
+               foreach ($codes
+
+               as $row) {
+               $codemeli = $row['codemeli'];
+               $fname = $row['fname'];
+               $lname = $row['lname'];
+
+               $mehrSql = "SELECT AVG(mark) as mehr FROM `monmark` WHERE monCode=7 AND codemeli=$codemeli";
+               $runMehr = $pdo->prepare($mehrSql);
+               $runMehr->execute();
+               $mehrMark = $runMehr->fetchAll();
+               $mehr = $mehrMark[0]['mehr'];
+
+               $abanSql = "SELECT AVG(mark) as aban FROM `monmark` WHERE monCode=8 AND codemeli=$codemeli";
+               $runaban = $pdo->prepare($abanSql);
+               $runaban->execute();
+               $abanMark = $runaban->fetchAll();
+               $aban = $abanMark[0]['aban'];
+
+
+               $azarSql = "SELECT AVG(mark) as azar FROM `monmark` WHERE monCode=9 AND codemeli=$codemeli";
+               $runazar = $pdo->prepare($azarSql);
+               $runazar->execute();
+               $azarMark = $runazar->fetchAll();
+               $azar = $azarMark[0]['azar'];
+
+               $deySql = "SELECT AVG(mark) as dey FROM `monmark` WHERE monCode=10 AND codemeli=$codemeli";
+               $rundey = $pdo->prepare($deySql);
+               $rundey->execute();
+               $deyMark = $rundey->fetchAll();
+               $dey = $deyMark[0]['dey'];
+
+               $bahmanSql = "SELECT AVG(mark) as bahman FROM `monmark` WHERE monCode=11 AND codemeli=$codemeli";
+               $runbahman = $pdo->prepare($bahmanSql);
+               $runbahman->execute();
+               $bahmanMark = $runbahman->fetchAll();
+               $bahman = $bahmanMark[0]['bahman'];
+
+               $esfandSql = "SELECT AVG(mark) as esfand FROM `monmark` WHERE monCode=12 AND codemeli=$codemeli";
+               $runesfand = $pdo->prepare($esfandSql);
+               $runesfand->execute();
+               $esfandMark = $runesfand->fetchAll();
+               $esfand = $esfandMark[0]['esfand'];
+
+               $farvardinSql = "SELECT AVG(mark) as farvardin FROM `monmark` WHERE monCode=1 AND codemeli=$codemeli";
+               $runfarvardin = $pdo->prepare($farvardinSql);
+               $runfarvardin->execute();
+               $farvardinMark = $runfarvardin->fetchAll();
+               $farvardin = $farvardinMark[0]['farvardin'];
+
+               $ordibeheshtSql = "SELECT AVG(mark) as ordibehesht FROM `monmark` WHERE monCode=2 AND codemeli=$codemeli";
+               $runordibehesht = $pdo->prepare($ordibeheshtSql);
+               $runordibehesht->execute();
+               $ordibeheshtMark = $runMehr->fetchAll();
+               $ordibehesht = $ordibeheshtMark[0]['ordibehesht'];
+
+               $khordadSql = "SELECT AVG(mark) as khordad FROM `monmark` WHERE monCode=3 AND codemeli=$codemeli";
+               $runkhordad = $pdo->prepare($khordadSql);
+               $runkhordad->execute();
+               $khordadMark = $runkhordad->fetchAll();
+               $khordad = $khordadMark[0]['khordad'];
+
              ?>
+
+             <tr>
+              <td><?php echo $codemeli; ?></td>
+              <td><?php echo $fname; ?></td>
+              <td><?php echo $lname; ?></td>
+              <td><?php echo $mehr; ?></td>
+              <td><?php echo $aban; ?></td>
+              <td><?php echo $azar; ?></td>
+              <td><?php echo $dey; ?></td>
+              <td><?php echo $bahman; ?></td>
+              <td><?php echo $esfand; ?></td>
+              <td><?php echo $farvardin; ?></td>
+              <td><?php echo $ordibehesht; ?></td>
+              <td><?php echo $khordad; ?></td>
+               <?php } ?>
+             </tr>
              </tbody>
-
             </table>
-
            </div>
-
           </div>
          </div>
         </div>
