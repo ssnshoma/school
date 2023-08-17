@@ -81,7 +81,7 @@
          <div class="col-sm-12 m-auto">
           <div class="card-body" style="height: 500px">
 
-           <div class="row flex-row" style="direction: rtl;height: 440px;overflow-y: scroll;">
+           <div class="row flex-row" style="direction: rtl">
 
             <table dir="rtl" class="table text-black">
              <thead>
@@ -160,14 +160,14 @@
                $ordibeheshtSql = "SELECT AVG(mark) as ordibehesht FROM `monmark` WHERE monCode=2 AND codemeli=$codemeli";
                $runordibehesht = $pdo->prepare($ordibeheshtSql);
                $runordibehesht->execute();
-               $ordibeheshtMark = $runMehr->fetchAll();
+               $ordibeheshtMark = $runordibehesht->fetchAll();
                $ordibehesht = $ordibeheshtMark[0]['ordibehesht'];
 
                $khordadSql = "SELECT AVG(mark) as khordad FROM `monmark` WHERE monCode=3 AND codemeli=$codemeli";
                $runkhordad = $pdo->prepare($khordadSql);
                $runkhordad->execute();
                $khordadMark = $runkhordad->fetchAll();
-               $khordad = $khordadMark[0]['khordad'];
+               $khordad = $khordadMark[0]["khordad"];
 
              ?>
 
