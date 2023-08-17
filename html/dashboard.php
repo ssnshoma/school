@@ -6,7 +6,7 @@
   $profileDetails = getProfilePicName();
   $title = "داشبورد";
   $category = "داشبورد";
-  
+
 
 ?>
 
@@ -55,7 +55,7 @@
        <div class="card h-100">
         <div class="card-body d-flex">
          <div class="graph w-100">
-          <table class="table align-right w-100" style="height: fit-content">
+          <table class="table align-right w-100" dir="rtl" style="height: fit-content">
            <thead>
            <tr>
             <th style="text-align: right;padding: 0.5rem 1.1rem">مهر</th>
@@ -72,28 +72,31 @@
            <tbody id="tbody">
            <tr>
              <?php
-               $qry = "SELECT * FROM `mark_avg`";
-               $sqlRun = mysqli_query($conn, $qry);
-               $row = mysqli_fetch_assoc($sqlRun);
-               $mehr = $row['mehr'];
-               $aban = $row['aban'];
-               $azar = $row['azar'];
-               $dey = $row['dey'];
-               $bahman = $row['bahman'];
-               $esfand = $row['esfand'];
-               $farvardin = $row['farvardin'];
-               $ordibehesht = $row['ordibehesht'];
-               $khordad = $row['khordad'];
+               $monthes = array("mehr", "aban", "azar", "dey", "bahman", "esfand");
+               for ($i = 7; $i <= 12; $i++) {
+                 $mon = $monthes[($i - 7)];
+                 $sql = "SELECT AVG(mark) as $mon from `monmark` WHERE monCode=$i";
+                 $run = $pdo->prepare($sql);
+                 $run->execute();
+                 $row = $run->fetchAll();
+                 $mark = $row[0]["$mon"];
+                 ?>
+                <td> <?php echo $mark ?> </td>
+               <?php }
              ?>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($mehr, 0, 5); ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($aban, 0, 5); ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($azar, 0, 5); ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($dey, 0, 5); ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($bahman, 0, 5); ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($esfand, 0, 5); ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($farvardin, 0, 5); ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($ordibehesht, 0, 5); ?></td>
-            <td style="padding: 0.5rem 1.1rem"><?php print substr($khordad, 0, 5); ?></td>
+             <?php
+               $monthes = array("farvardin", "ordibehesht", "khordad");
+               for ($i = 1; $i <= 3; $i++) {
+                 $monn = $monthes[($i-1)];
+                 $sql = "SELECT AVG(mark) as $monn from `monmark` WHERE monCode=$i";
+                 $run = $pdo->prepare($sql);
+                 $run->execute();
+                 $row = $run->fetchAll();
+                 $mark = $row[0]["$monn"];
+                 ?>
+                <td> <?php echo $mark ?> </td>
+               <?php }
+             ?>
            </tr>
            </tbody>
           </table>
