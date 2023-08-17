@@ -5,7 +5,7 @@
    <script>
        document.write(new Date().getFullYear());
    </script>
-   <a href="" target="_blank" class="footer-link fw-bolder">حسین منصوری</a>
+   <a href="" target="_blank" class="footer-link fw-bolder" tabindex="-1">حسین منصوری</a>
    ساخته شده توسط
   </div>
  </div>
