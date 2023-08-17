@@ -172,7 +172,7 @@
       function changeSelectOption(str) {
           if (str == "") {
               document.getElementById("sel-class").innerHTML = "";
-              return;
+
           } else {
               var xmlhttp = new XMLHttpRequest();
               xmlhttp.onreadystatechange = function () {
@@ -188,7 +188,7 @@
       function cshowStudent(str) {
           if (str == "") {
               document.getElementById("students").innerHTML = "";
-              return;
+
           } else {
               var xmlhttp = new XMLHttpRequest();
               xmlhttp.onreadystatechange = function () {
