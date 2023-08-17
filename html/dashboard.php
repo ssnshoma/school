@@ -34,9 +34,6 @@
     <div class="container-xxl flex-grow-1 container-p-y">
 
      <div class="row">
-      <!-- Order Statistics -->
-
-      <!-- Transactions -->
       <div class="col-md-3 col-lg-3 order-2 mb-4">
        <div class="card h-100">
         <div class="card-body d-flex align-items-center justify-content-center">
@@ -87,7 +84,7 @@
              <?php
                $monthes = array("farvardin", "ordibehesht", "khordad");
                for ($i = 1; $i <= 3; $i++) {
-                 $monn = $monthes[($i-1)];
+                 $monn = $monthes[($i - 1)];
                  $sql = "SELECT AVG(mark) as $monn from `monmark` WHERE monCode=$i";
                  $run = $pdo->prepare($sql);
                  $run->execute();
@@ -100,6 +97,23 @@
            </tr>
            </tbody>
           </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-6 col-lg-6 order-2 mb-4">
+       <div class="card h-100">
+        <div class="card-body d-flex align-items-center justify-content-center">
+        </div>
+       </div>
+      </div>
+      <div class="col-md-6 col-lg-6 order-2 mb-4">
+       <div class="card h-100">
+        <div class="card-body d-flex">
+         <div class="graph w-100">
+
          </div>
         </div>
        </div>
