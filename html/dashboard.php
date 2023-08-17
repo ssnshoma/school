@@ -6,6 +6,7 @@
   $profileDetails = getProfilePicName();
   $title = "داشبورد";
   $category = "داشبورد";
+  
 
 ?>
 
@@ -70,6 +71,20 @@
            </thead>
            <tbody id="tbody">
            <tr>
+             <?php
+               $qry = "SELECT * FROM `mark_avg`";
+               $sqlRun = mysqli_query($conn, $qry);
+               $row = mysqli_fetch_assoc($sqlRun);
+               $mehr = $row['mehr'];
+               $aban = $row['aban'];
+               $azar = $row['azar'];
+               $dey = $row['dey'];
+               $bahman = $row['bahman'];
+               $esfand = $row['esfand'];
+               $farvardin = $row['farvardin'];
+               $ordibehesht = $row['ordibehesht'];
+               $khordad = $row['khordad'];
+             ?>
             <td style="padding: 0.5rem 1.1rem"><?php print substr($mehr, 0, 5); ?></td>
             <td style="padding: 0.5rem 1.1rem"><?php print substr($aban, 0, 5); ?></td>
             <td style="padding: 0.5rem 1.1rem"><?php print substr($azar, 0, 5); ?></td>
@@ -79,7 +94,7 @@
             <td style="padding: 0.5rem 1.1rem"><?php print substr($farvardin, 0, 5); ?></td>
             <td style="padding: 0.5rem 1.1rem"><?php print substr($ordibehesht, 0, 5); ?></td>
             <td style="padding: 0.5rem 1.1rem"><?php print substr($khordad, 0, 5); ?></td>
-             </tr>
+           </tr>
            </tbody>
           </table>
          </div>

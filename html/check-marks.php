@@ -50,6 +50,22 @@
               <h4 class="card-title text-primary">دریافت نمرات ماهانه دانش آموز</h4>
              </div>
              <div class="col-md-3">
+              <label for="sel-class" class="pb-1">ماه</label>
+              <select name="sel-class" class="form-select mb-1" onchange="monthSelected(this.value)"
+                      id="monthCode" tabindex="4" style="padding-right: 40px">
+               <option selected class="pe-5" disabled> ماه را انتخاب کنید</option>
+               <option class="pe-5" value="7">مهر</option>
+               <option class="pe-5" value="8">آبان</option>
+               <option class="pe-5" value="9">آذر</option>
+               <option class="pe-5" value="10">دی</option>
+               <option class="pe-5" value="11">بهمن</option>
+               <option class="pe-5" value="12">اسفند</option>
+               <option class="pe-5" value="1">فروردین</option>
+               <option class="pe-5" value="2">اردیبهشت</option>
+               <option class="pe-5" value="3">خرداد</option>
+              </select>
+             </div>
+             <div class="col-md-3">
               <label for="selschool" class="pb-1">مدرسه</label>
               <select name="selschool" onchange="changeSelectOption(this.value)"
                       class="form-select mb-1"
@@ -80,22 +96,6 @@
               <select name="sel-class" class="form-select mb-1" onchange="cshowGrade(this.value)"
                       id="students" tabindex="3" style="padding-right: 40px">
                <option selected class="pe-5" disabled> دانش آموز را انتخاب کنید</option>
-              </select>
-             </div>
-             <div class="col-md-3">
-              <label for="sel-class" class="pb-1">ماه</label>
-              <select name="sel-class" class="form-select mb-1" onchange="showmarks(this.value)"
-                      id="sel-class" tabindex="4" style="padding-right: 40px">
-               <option selected class="pe-5" disabled> ماه را انتخاب کنید</option>
-               <option class="pe-5" value="7">مهر</option>
-               <option class="pe-5" value="8">آبان</option>
-               <option class="pe-5" value="9">آذر</option>
-               <option class="pe-5" value="10">دی</option>
-               <option class="pe-5" value="11">بهمن</option>
-               <option class="pe-5" value="12">اسفند</option>
-               <option class="pe-5" value="1">فروردین</option>
-               <option class="pe-5" value="2">اردیبهشت</option>
-               <option class="pe-5" value="3">خرداد</option>
               </select>
              </div>
             </div>
@@ -154,10 +154,24 @@
 
   <script>
 
-      function changeSelectOption(str) {
+      function monthSelected(str) {
 
           if (str == "") {
-              document.getElementById("sel-school").innerHTML = "";
+          } else {
+              var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function () {
+                  if (this.readyState == 4 && this.status == 200) {
+                      document.getElementById("markslist").innerHTML = this.responseText;
+                  }
+              };
+              xmlhttp.open("GET", "../assets/mark-search.php?monthcode=" + str);
+              xmlhttp.send();
+          }
+      }
+
+      function changeSelectOption(str) {
+          if (str == "") {
+              document.getElementById("sel-class").innerHTML = "";
               return;
           } else {
               var xmlhttp = new XMLHttpRequest();
@@ -166,7 +180,7 @@
                       document.getElementById("sel-class").innerHTML = this.responseText;
                   }
               };
-              xmlhttp.open("GET", "../assets/searchClass.php?school=" + str);
+              xmlhttp.open("GET", "../assets/mark-search.php?selectedschool=" + str);
               xmlhttp.send();
           }
       }
@@ -182,7 +196,7 @@
                       document.getElementById("students").innerHTML = this.responseText;
                   }
               };
-              xmlhttp.open("GET", "../assets/searchClass.php?className=" + str);
+              xmlhttp.open("GET", "../assets/mark-search.php?className=" + str);
               xmlhttp.send();
           }
       }
@@ -199,9 +213,25 @@
                       document.getElementById("markslist").innerHTML = this.responseText;
                   }
               };
-              xmlhttp.open("GET", "../assets/searchClass.php?montCode=" + str + "&codemeli=" + codemeli);
+              xmlhttp.open("GET", "../assets/mark-search.php?montCode=" + str + "&codemeli=" + codemeli);
               xmlhttp.send();
           }
+      }
+
+      function deleteRecord(str) {
+          if (str == "") {
+              return;
+          } else {
+              var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange=function (){
+                  if (this.readyState==4 && this.status==200){
+                      console.log("deleted");
+                  }
+              };
+              xmlhttp.open("GET","../assets/mark-search.php?deleteId=" + str);
+              xmlhttp.send();
+          }
+
       }
 
   </script>
