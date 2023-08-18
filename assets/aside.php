@@ -154,27 +154,23 @@
         <div data-i18n="Misc">ثبت نمره</div>
       </a>
       <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="../html/report-monthly-mark.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Under Maintenance">گزارش ماهانه گروهی</div>
-          </a>
-        </li>
+       <li class="menu-item">
+        <a href="../html/goup-daily-mark.php" class="menu-link" tabindex="-1">
+         <div data-i18n="Under Maintenance">ثبت نمرات</div>
+        </a>
+       </li>
+
         <li class="menu-item">
           <a href="../html/check-marks.php" class="menu-link" tabindex="-1">
             <div data-i18n="Error">بررسی نمرات</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="../html/goup-daily-mark.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Under Maintenance">نمرات روزانه گروهی</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../html/single-monthly-mark.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Under Maintenance">نمرات ماهانه تکی</div>
-          </a>
-        </li>
-        <li class="menu-item">
+       <li class="menu-item">
+        <a href="../html/report-monthly-mark.php" class="menu-link" tabindex="-1">
+         <div data-i18n="Under Maintenance">گزارش سالیانه</div>
+        </a>
+       </li>
+         <li class="menu-item">
           <a href="../html/final-mark.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">ثبت نمرات پایانی</div>
           </a>
