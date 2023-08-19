@@ -20,6 +20,8 @@
  <link rel="stylesheet" href="../assets/css/demo.css"/>
  <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"/>
  <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css"/>
+  <link rel="stylesheet" href="../assets/calender/min.css">
+  <script src="../assets/calender/js-persian-cal.min.js"></script>
  <script src="../assets/vendor/js/helpers.js"></script>
  <script src="../assets/js/config.js"></script>
 
@@ -56,6 +58,10 @@
          body aside nav {
              background-color: chocolate;
          }
+     }
+
+     select{
+       background: none;
      }
 
  </style>

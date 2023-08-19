@@ -8,4 +8,5 @@
   mysqli_select_db($conn, '1402s1403');
   session_start();
   date_default_timezone_set("Asia/Tehran");
+  include_once 'functions.php';
 ?>

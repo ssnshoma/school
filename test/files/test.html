@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fa">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-language" content="fa-IR">
+	<title>تقویم فارسی جاوااسکریپت - امیب</title>
+	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="js-persian-cal.css">
+	<script type="text/javascript" src="js-persian-cal.min.js"></script>
+</head>
+
+<body>
+
+	<div>
+		<label for="pcal1">تاریخ ۱ - حالت ساده</label><br>
+		<input type="text" id="pcal1" class="pdate"><br>
+		<hr>
+	</div>
+
+	<script type="text/javascript">
+		var objCal1 = new AMIB.persianCalendar( 'pcal1' );
+
+		var objCal2 = new AMIB.persianCalendar( 'pcal2', {
+				initialDate: '1301/1/1',
+			}
+		);
+		
+		var objCal3 = new AMIB.persianCalendar( 'pcal3', {
+				defaultDate: '1401/12/12'
+			}
+		);
+		
+		var objCal4 = new AMIB.persianCalendar( 'pcal4', {
+				onchange: function( pdate ){
+					if( pdate ) {
+						alert( pdate.join( '/' ) );
+					} else {
+						alert( 'تاریخ واردشده نادرست است' );
+					}
+				}
+			}
+		);
+
+		var objCal5 = new AMIB.persianCalendar( 'pcal5', {
+				extraInputID: 'extra',
+				extraInputFormat: 'YYYY/MM/DD - yyyy/mm/dd - JD'
+			}
+		);
+	</script>
+</body>
+
+</html>

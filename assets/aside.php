@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
   <div class="app-brand demo">
-    <a href="index.html" class="app-brand-link" tabindex="-1">
+    <a href="../html/dashboard.php" class="app-brand-link" tabindex="-1">
             <span class="app-brand-logo demo">
               <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -60,7 +60,7 @@
     <!-- Dashboard -->
 
     <li class="menu-item">
-      <a href="dashboard.php" class="menu-link" tabindex="-1">
+      <a href="../html/dashboard.php" class="menu-link" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">داشبورد</div>
       </a>
