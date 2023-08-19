@@ -3,7 +3,7 @@
  id="layout-navbar"
 >
  <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-  <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+  <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" tabindex="-1">
    <i class="bx bx-menu bx-sm"></i>
   </a>
  </div>
@@ -17,11 +17,25 @@
      type="text"
      class="form-control border-0 shadow-none"
      placeholder="Search..."
-     aria-label="Search..."
+     aria-label="Search..." tabindex="-1"
     />
    </div>
   </div>
   <!-- /Search -->
+
+  <div class="row justify-content-between m-auto">
+   <div id="clock" class="col-sm-4" style="color: black;font-size: 20px">
+    14:20:54
+   </div>
+   <div class="col-sm-8" style="color: black;font-size: 20px">
+    <div class="row flex-row d-flex">
+     <div id="date1" class="col-sm-2"></div>
+     <div id="date2" class="col-sm-2"></div>
+     <div id="date3" class="col-sm-2" style="padding-left: 20px"></div>
+     <div id="date4" class="col-sm-3"></div>
+    </div>
+   </div>
+  </div>
 
   <ul class="navbar-nav flex-row align-items-center ms-auto">
    <!-- Place this tag where you want the button to render. -->
@@ -29,7 +43,7 @@
    <!-- User -->
 
    <li class="nav-item navbar-dropdown dropdown-user dropdown">
-    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" tabindex="-1">
      <div class="avatar avatar-online">
       <img src=" <?php echo '../uploaded-files/' . $profileDetails['profilePicture'] ?> " alt
            class="w-px-40 h-auto rounded-circle"/>
@@ -37,7 +51,7 @@
     </a>
     <ul class="dropdown-menu dropdown-menu-end" style="text-align: right;">
      <li>
-      <a class="dropdown-item" href="#">
+      <a class="dropdown-item" href="#" tabindex="-1">
        <div class="d-flex">
         <div class="flex-shrink-0 me-3">
          <div class="avatar avatar-online" style="margin-left: 71px; margin-bottom: 10px; ">
@@ -57,13 +71,13 @@
       <div class="dropdown-divider"></div>
      </li>
      <li>
-      <a class="dropdown-item" href="pages-account-settings-account.php">
+      <a class="dropdown-item" href="pages-account-settings-account.php" tabindex="-1">
        <span class="align-middle">پروفایل من</span>
        <i class="bx bx-user me-2"></i>
       </a>
      </li>
      <li>
-      <a class="dropdown-item" href="pages-account-settings-account.php">
+      <a class="dropdown-item" href="pages-account-settings-account.php" tabindex="-1">
        <span class="align-middle">تنظیمات حساب کاربری</span>
        <i class="bx bx-cog me-2"></i>
       </a>
@@ -72,7 +86,7 @@
       <div class="dropdown-divider"></div>
      </li>
      <li>
-      <a class="dropdown-item" href="../assets/exit.php">
+      <a class="dropdown-item" href="../assets/exit.php" tabindex="-1">
        <span class="align-middle">خروج</span>
        <i class="bx bx-power-off me-2"></i>
       </a>

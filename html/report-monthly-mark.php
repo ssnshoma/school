@@ -64,7 +64,7 @@
             <div class="col-md-4">
              <label for="sel-class" class="pb-1">کلاس</label>
              <select name="sel-class" class="form-select mb-1" onchange="cshowGrade(this.value)"
-                     id="sel-class" tabindex="2" style="padding-right: 40px">
+                     id="sel-class" tabindex="4" style="padding-right: 40px">
               <option selected class="pe-5" disabled> کلاس را انتخاب کنید</option>
              </select>
             </div>

@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
   <div class="app-brand demo">
-    <a href="index.html" class="app-brand-link">
+    <a href="index.html" class="app-brand-link" tabindex="-1">
             <span class="app-brand-logo demo">
               <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -49,7 +49,7 @@
     </a>
 
     <a href="javascript:void(0);"
-       class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+       class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none" tabindex="-1">
       <i class="bx bx-chevron-left bx-sm align-middle"></i>
     </a>
   </div>
@@ -60,7 +60,7 @@
     <!-- Dashboard -->
 
     <li class="menu-item">
-      <a href="dashboard.php" class="menu-link">
+      <a href="dashboard.php" class="menu-link" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">داشبورد</div>
       </a>
@@ -72,28 +72,28 @@
     </li>
 
     <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
         <div data-i18n="Account Settings">ثبت نام دانش آموز</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="../html/student-list.php" class="menu-link">
+          <a href="../html/student-list.php" class="menu-link" tabindex="-1">
             <div data-i18n="Account">لیست دانش آموزان</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/single-reg.php" class="menu-link">
+          <a href="../html/single-reg.php" class="menu-link" tabindex="-1">
             <div data-i18n="Account">ثبت نام تکی</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/group-reg.php" class="menu-link">
+          <a href="../html/group-reg.php" class="menu-link" tabindex="-1">
             <div data-i18n="Notifications">ثبت نام گروهی</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/import-from-excell.php" class="menu-link">
+          <a href="../html/import-from-excell.php" class="menu-link" tabindex="-1">
             <div data-i18n="Connections">وارد کردن فایل اکسل</div>
           </a>
         </li>
@@ -102,41 +102,41 @@
 
 
     <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
         <div data-i18n="Account Settings">مدرسه</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="../html/add-class.php" class="menu-link">
+          <a href="../html/add-class.php" class="menu-link" tabindex="-1">
             <div data-i18n="Account">ثبت کلاس</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/add-school.php" class="menu-link">
+          <a href="../html/add-school.php" class="menu-link" tabindex="-1">
             <div data-i18n="Notifications">ثبت مدرسه</div>
           </a>
         </li>
       </ul>
     </li>
     <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
         <div data-i18n="Authentications">هویت</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="../html/auth-login-basic.php" class="menu-link" target="_blank">
+          <a href="../html/auth-login-basic.php" class="menu-link" target="_blank" tabindex="-1">
             <div data-i18n="Basic">ورود</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/auth-register-basic.php" class="menu-link" target="_blank">
+          <a href="../html/auth-register-basic.php" class="menu-link" target="_blank" tabindex="-1">
             <div data-i18n="Basic">ثبت نام</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/auth-forgot-password-basic.php" class="menu-link" target="_blank">
+          <a href="../html/auth-forgot-password-basic.php" class="menu-link" target="_blank" tabindex="-1">
             <div data-i18n="Basic">فراموشی پسورد</div>
           </a>
         </li>
@@ -149,51 +149,47 @@
     <!-- Cards -->
 
     <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-cube-alt"></i>
         <div data-i18n="Misc">ثبت نمره</div>
       </a>
       <ul class="menu-sub">
+       <li class="menu-item">
+        <a href="../html/goup-daily-mark.php" class="menu-link" tabindex="-1">
+         <div data-i18n="Under Maintenance">ثبت نمرات</div>
+        </a>
+       </li>
+
         <li class="menu-item">
-          <a href="../html/report-monthly-mark.php" class="menu-link">
-            <div data-i18n="Under Maintenance">گزارش ماهانه گروهی</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../html/check-marks.php" class="menu-link">
+          <a href="../html/check-marks.php" class="menu-link" tabindex="-1">
             <div data-i18n="Error">بررسی نمرات</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="../html/goup-daily-mark.php" class="menu-link">
-            <div data-i18n="Under Maintenance">نمرات روزانه گروهی</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../html/single-monthly-mark.php" class="menu-link">
-            <div data-i18n="Under Maintenance">نمرات ماهانه تکی</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../html/final-mark.php" class="menu-link">
+       <li class="menu-item">
+        <a href="../html/report-monthly-mark.php" class="menu-link" tabindex="-1">
+         <div data-i18n="Under Maintenance">گزارش سالیانه</div>
+        </a>
+       </li>
+         <li class="menu-item">
+          <a href="../html/final-mark.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">ثبت نمرات پایانی</div>
           </a>
         </li>
       </ul>
     </li>
     <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-cube-alt"></i>
         <div data-i18n="Misc">حضور غیاب</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="../html/class-present-absent.php" class="menu-link">
+          <a href="../html/class-present-absent.php" class="menu-link" tabindex="-1">
             <div data-i18n="Error">ثبت کلاسی</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/present-absent-report.php" class="menu-link">
+          <a href="../html/present-absent-report.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">گزارش حضور و غیاب</div>
           </a>
         </li>
@@ -202,33 +198,33 @@
 
     <!-- User interface -->
     <li class="menu-item">
-      <a href="javascript:void(0)" class="menu-link menu-toggle">
+      <a href="javascript:void(0)" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-box"></i>
         <div data-i18n="User interface">آزمون ها</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="../html/add-question.php" class="menu-link">
+          <a href="../html/add-question.php" class="menu-link" tabindex="-1">
             <div data-i18n="Accordion">ثبت سوال</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/add-exam.php" class="menu-link">
+          <a href="../html/add-exam.php" class="menu-link" tabindex="-1">
             <div data-i18n="Alerts">ثبت امتحان</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/search-question.php" class="menu-link">
+          <a href="../html/search-question.php" class="menu-link" tabindex="-1">
             <div data-i18n="Badges">جستجو سوالات</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/import-pdf.php" class="menu-link">
+          <a href="../html/import-pdf.php" class="menu-link" tabindex="-1">
             <div data-i18n="Buttons">PDF ثبت سوال با</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/import-word.php" class="menu-link">
+          <a href="../html/import-word.php" class="menu-link" tabindex="-1">
             <div data-i18n="Buttons">WORD ثبت سوال با</div>
           </a>
         </li>

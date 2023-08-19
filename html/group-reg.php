@@ -86,30 +86,30 @@
 
               <div class="col-md-3">
                <label for="grade" class="pb-2">پایه</label>
-               <input name="grade" class="input mb-4" id="grade">
+               <input name="grade" class="input mb-4" id="grade" tabindex="-1">
               </div>
               <div class="col-md-3">
                <label for="grade" class="pb-2">رشته</label>
-               <input name="major" class="input mb-4" id="major">
+               <input name="major" class="input mb-4" id="major" tabindex="-1">
               </div>
              </div>
 
              <div class="row border-bottom mb-4">
               <div class="col-md-3">
                <label for="codemeli" class="pb-2">کد ملی</label>
-               <input type="text" class="mb-4 input" name="codemeli[]">
+               <input type="text" class="mb-4 input" name="codemeli[]" tabindex="3">
               </div>
               <div class="col-md-3">
                <label for="fname" class="pb-2">نام</label>
-               <input type="text" class="mb-4 input" name="fname[]">
+               <input type="text" class="mb-4 input" name="fname[]" tabindex="4">
               </div>
               <div class="col-md-3">
                <label for="lname" class="pb-2">نام خانوادگی</label>
-               <input type="text" class="mb-4 input" name="lname[]">
+               <input type="text" class="mb-4 input" name="lname[]" tabindex="5">
               </div>
               <div class="col-md-3">
                <label for="fathername" class="pb-2">نام پدر</label>
-               <input type="text" class="mb-4 input" name="fathername[]">
+               <input type="text" class="mb-4 input" name="fathername[]" tabindex="6">
               </div>
              </div>
 
@@ -118,8 +118,10 @@
              <div class="row w-75 m-auto" style="justify-content: space-evenly">
               <div class="col-md-4"><input type="submit" name="save_multiple_data" value="ثبت"
                                            class="btn btn-primary w-100"
-                                           tabindex="7"></div>
-              <div class="col-md-4"><a class="add-more-form text-white btn btn-info w-100">افزودن</a></div>
+                                           tabindex="39"></div>
+              <div class="col-md-4">
+               <a class="add-more-form text-white btn btn-info w-100" tabindex="40">افزودن</a>
+              </div>
              </div>
             </form>
 
@@ -242,8 +244,6 @@
 <?php include_once '../assets/footer.php'; ?>
 
 <script>
-
-    import {$} from "../libs/jquery/jquery";
 
     $(document).ready(function () {
 

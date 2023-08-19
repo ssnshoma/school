@@ -24,67 +24,6 @@
  <script src="../assets/js/config.js"></script>
 
  <style>
-     .clock {
-         border-radius: 100%;
-         /*background: #efefef;*/
-         background-image: url("../uploaded-files/best-photos-of-analog-clock-template-11549790411qdlzkcpjwm.png");
-         background-size: 200px;
-         background-position-y: -2.3px;
-         font-family: "Montserrat";
-         border: 5px solid #898989;
-         /*box-shadow: inset 0px 0px 8px 0 rgba(0, 0, 0, 0.64);*/
-     }
-
-     .wrap {
-         overflow: hidden;
-         position: relative;
-         width: 200px;
-         height: 200px;
-         border-radius: 100%;
-     }
-
-     .minute,
-     .hour {
-         position: absolute;
-         height: 50px;
-         width: 4px;
-         margin: auto;
-         top: -25%;
-         left: 0;
-         bottom: 0;
-         right: 0;
-         background: black;
-         transform-origin: bottom center;
-         transform: rotate(0deg);
-         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-         z-index: 1;
-     }
-
-     .minute {
-         position: absolute;
-         height: 74.28px;
-         width: 3px;
-         top: -38%;
-         left: 0;
-         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-         transform: rotate(90deg);
-     }
-
-     .second {
-         position: absolute;
-         height: 80px;
-         width: 2px;
-         margin: auto;
-         top: -40%;
-         left: 0;
-         bottom: 0;
-         right: 0;
-         border-radius: 4px;
-         background: #FF4B3E;
-         transform-origin: bottom center;
-         transform: rotate(180deg);
-         z-index: 1;
-     }
 
      .dot {
          position: absolute;
