@@ -151,26 +151,26 @@
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-        <div data-i18n="Misc">ثبت نمره</div>
+        <div data-i18n="Misc"> نمرات</div>
       </a>
       <ul class="menu-sub">
-       <li class="menu-item">
-        <a href="../html/goup-daily-mark.php" class="menu-link" tabindex="-1">
-         <div data-i18n="Under Maintenance">ثبت نمرات</div>
-        </a>
-       </li>
+        <li class="menu-item">
+          <a href="../html/goup-daily-mark.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Under Maintenance">ثبت نمرات</div>
+          </a>
+        </li>
 
         <li class="menu-item">
           <a href="../html/check-marks.php" class="menu-link" tabindex="-1">
             <div data-i18n="Error">بررسی نمرات</div>
           </a>
         </li>
-       <li class="menu-item">
-        <a href="../html/report-monthly-mark.php" class="menu-link" tabindex="-1">
-         <div data-i18n="Under Maintenance">گزارش سالیانه</div>
-        </a>
-       </li>
-         <li class="menu-item">
+        <li class="menu-item">
+          <a href="../html/report-monthly-mark.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Under Maintenance">گزارش سالیانه</div>
+          </a>
+        </li>
+        <li class="menu-item">
           <a href="../html/final-mark.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">ثبت نمرات پایانی</div>
           </a>
@@ -226,6 +226,34 @@
         <li class="menu-item">
           <a href="../html/import-word.php" class="menu-link" tabindex="-1">
             <div data-i18n="Buttons">WORD ثبت سوال با</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">فعالیت ها</span></li>
+    <!-- Cards -->
+
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
+        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+        <div data-i18n="Misc"> فعالیت ها</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="../assets/task_add.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Under Maintenance">ثبت فعالیت</div>
+          </a>
+        </li>
+
+        <li class="menu-item">
+          <a href="../assets/task_list.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Error">لیست فعالیت</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../assets/task-done.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Under Maintenance">انحام شده</div>
           </a>
         </li>
       </ul>

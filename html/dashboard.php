@@ -34,17 +34,17 @@ $category = "داشبورد";
     <div class="container-xxl flex-grow-1 container-p-y">
 
      <div class="row">
-      <div class="col-md-6 col-lg-6 order-2 mb-4">
+      <div class="col-md-5 order-2 mb-4">
        <div class="card h-100">
         <div class="card-body">
 
         </div>
        </div>
       </div>
-      <div class="col-md-6 mb-4">
+      <div class="col-md-7 mb-4">
        <div class="card">
         <div class="card-body d-flex">
-         <div>
+         <div style="width: 100%;">
           <table class="table align-right" dir="rtl">
            <thead>
            <tr>
@@ -162,12 +162,12 @@ $category = "داشبورد";
               ?>
              </td>
              <td style="text-align: center">
-              <a href="../assets/task_options.php?editID=<?php print $task['id']; ?>"><i
-                class="bx bx-edit"></i></a>
+              <a href="../assets/task_add.php?editID=<?php print $task['id']; ?>"><i
+                class="bx bx-edit text-dark"></i></a>
               <a href="../assets/task_options.php?deleteID=<?php print $task['id']; ?>"><i
-                class="bx bx-trash"></i></a>
+                class="bx bx-trash text-dark"></i></a>
               <a href="../assets/task_options.php?doneID=<?php print $task['id']; ?>"><i
-                class='bx bx-check-square'></i></a>
+                class='bx bx-check-square text-dark'></i></a>
              </td>
             </tr>
            <?php } ?>
