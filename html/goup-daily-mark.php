@@ -69,33 +69,10 @@
                     <h3 class="card-title text-primary mb-4">ثبت کلاسی نمرات</h3>
                     <h4 class="text-info mb-5"> برای ثبت نمرات لطفا موارد زیر را تکمیل کنید</h4>
                     <form method="get" action="goup-daily-mark-1.php">
-                      <div class="w-25 m-auto">
+                      <div class="m-auto" id="mark-input">
                         <div class="col-md-12" style="padding-left: 0">
                           <input type="text" name="data" placeholder="تاریخ" class="w-100 pdate form"
                                  tabindex="3" id="pcal1">
-                          <style>
-                            #pcal1{
-                              display: block;
-                              width: 100%;
-                              padding: 0.4375rem 0.875rem;
-                              font-size: 0.9375rem;
-                              font-weight: 400;
-                              line-height: 1.53;
-                              color: #697a8d;
-                              background-color: #fff;
-                              background-clip: padding-box;
-                              border: 1px solid #d9dee3;
-                              -webkit-appearance: none;
-                              -moz-appearance: none;
-                              appearance: none;
-                              border-radius: 0.375rem;
-                              transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-                            }
-                            a.pcalBtn{
-                              position: relative;
-                              top: -33px;
-                            }
-                          </style>
                         </div>
 
                         <select name="school" id="school" style="text-align: right;" class="form-control form-group mt-2"

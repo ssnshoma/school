@@ -112,8 +112,7 @@
            <div class="card-body">
 
             <div class="row">
-             <div class="col-6 m-auto">
-
+             <div class="col-lg-6 m-auto">
               <table class="table">
                <thead>
                <tr>
@@ -129,7 +128,6 @@
               </table>
              </div>
             </div>
-
            </div>
           </div>
          </div>

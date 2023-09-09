@@ -42,8 +42,8 @@
                           <table class="table" dir="rtl">
                             <thead>
                             <tr>
-                              <td>ردیف</td>
-                              <td>کد ملی</td>
+                              <td id="radif">ردیف</td>
+                              <td id="codemeli">کد ملی</td>
                               <td>نام</td>
                               <td>نام خانوادگی</td>
                               <td>تاریخ</td>
@@ -61,8 +61,8 @@
                               foreach ($row as $row) {
                                 ?>
                                 <tr style="font-weight: 700;color: black">
-                                  <td><?php echo $i; ?></td>
-                                  <td><?php echo $row['codemeli']; ?></td>
+                                  <td id="radif"><?php echo $i; ?></td>
+                                  <td id="codemeli"><?php echo $row['codemeli']; ?></td>
                                   <td><?php echo $row['fname']; ?></td>
                                   <td><?php echo $row['lname']; ?></td>
                                   <td dir="ltr"><?php
@@ -74,21 +74,25 @@
                                       $ststus = $row['atendence'];
                                       if ($ststus == "ok") {
                                         ?>
-                                        <span class="btn btn-sm btn-info bx-tada-hover">حاضر</span>
+                                        <span class="btn btn-sm btn-info bx-tada-hover">
+                                          <i class="checked"></i>
+                                        </span>
                                         <?php
                                       } else {
                                         ?>
-                                        <span class="btn btn-sm btn-secondary bx-tada-hover">غایب</span>
+                                        <span class="btn-sm btn-secondary bx-tada-hover">
+                                          <i class="bx bx-check"></i>
+                                        </span>
                                         <?php
                                       }
                                     ?></td>
                                   <td>
 
-                                    <a href="../assets/edit-atendence.php?editid=<?php echo $row['id']; ?>"
+                                    <a id="edit-btn" href="../assets/edit-atendence.php?editid=<?php echo $row['id']; ?>"
                                        class="btn btn-sm btn-warning">
                                       <i class="bx bx-edit-alt"></i>
                                     </a>
-                                    <a class="text-white btn btn-sm btn-danger">
+                                    <a id="edit-btn" class="text-white btn btn-sm btn-danger">
                                       <i class="bx bx-trash"></i>
                                     </a>
 

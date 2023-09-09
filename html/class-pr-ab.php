@@ -85,12 +85,12 @@
              برای تاریخ
             </h5>
             <form method="POST">
-             <table class="table table-responsive-md w-50 m-auto">
+             <table class="table table-responsive-md m-auto">
               <thead class="table-responsive-md">
               <th class="col">حضور/غیاب</th>
               <th class="col">نام و نام خانوادگی</th>
-              <th class="col">شماره دانش آموزی</th>
-              <th class="col">ردیف</th>
+              <th class="col" id="codemeli">شماره دانش آموزی</th>
+              <th class="col" id="radif">ردیف</th>
               </thead>
               <tbody>
 
@@ -102,7 +102,6 @@
                 $row = $res->fetchAll();
                 $i = 1;
                 foreach ($row
-
                          as $value) {
                   $cod = $value["codemeli"];
                   $fam = $value['fname'];
@@ -110,27 +109,28 @@
 
                   ?>
                  <tr>
-
                   <td class="form-group mb-2">
-                   <label for="fname[]" class="lable">غایب</label>
-                   <input type="checkbox" name="fname[]" value="not" tabindex="1">
-                   <label for="fname[]" class="lable">حاضر</label>
-                   <input type="checkbox" name="fname[]" value="ok" checked tabindex="1">
-                  </td>
+                    <div><label for="fname[]" class="lable">غایب</label>
+                      <input type="checkbox" name="fname[]" value="not" tabindex="1">
+                    </div>
+                    <div> <label for="fname[]" class="lable">حاضر</label>
+                      <input type="checkbox" name="fname[]" value="ok" checked tabindex="1">
+                    </div>
+                   </td>
 
                   <td class="form-group mb-2">
                     <?php echo $fam . " " . $lam; ?>
                   </td>
 
 
-                  <td class="form-group mb-2">
+                  <td class="form-group mb-2" id="codemeli">
                     <?php echo $cod; ?>
                    <input type="text"
                           style="display:none;background: transparent; border: none;text-align: right;"
                           name="code[]" class="form-control"
                           autocomplete="off" value="<?php echo $cod; ?>">
                   </td>
-                  <td class="form-group mb-2">
+                  <td class="form-group mb-2" id="radif">
                     <?php echo $i;
                       $i += 1; ?>
                   </td>

@@ -71,9 +71,67 @@
        #clock,#address,#date1,#search{
          display: none;
        }
+       #mark-input{
+         width: 100%;
+       }
        #date2,#date3,#date4{
          padding-right: 10px;
        }
+       #pcal1{
+         background-color: crimson;
+       }
+       #edit-btn{
+         width: 18px;
+       }
+     }
+
+     @media (max-width: 500px) {
+       #schooladdress{
+         display: none;
+       }
+       #codemeli{
+         display: none;
+       }
+     }
+     @media (max-width: 560px) {
+       #codemeli{
+         display: none;
+       }
+     }
+     @media (max-width: 600px) {
+       #radif{
+         display: none;
+       }
+     }
+     @media (min-width: 700.1px) {
+       #edit-btn{
+         width: 25px !important;
+       }
+       #mark-input{
+         width: 60%;
+       }
+     }
+
+     #pcal1{
+       display: block;
+       width: 100%;
+       padding: 0.4375rem 0.875rem;
+       font-size: 0.9375rem;
+       font-weight: 400;
+       line-height: 1.53;
+       color: #697a8d;
+       background-color: #fff;
+       background-clip: padding-box;
+       border: 1px solid #d9dee3;
+       -webkit-appearance: none;
+       -moz-appearance: none;
+       appearance: none;
+       border-radius: 0.375rem;
+       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+     }
+     a.pcalBtn{
+       position: relative;
+       top: -33px;
      }
 
  </style>

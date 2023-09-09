@@ -79,10 +79,8 @@
        <div class="card">
         <div class="d-flex align-items-center row">
          <div class="col-sm-12 m-auto">
-          <div class="card-body" style="height: 500px">
-
-           <div class="row flex-row" style="direction: rtl">
-
+          <div class="card-body" id="marks-table" style="height: 500px">
+           <div class="row flex-row" style="direction: rtl;overflow-x: scroll;">
             <table dir="rtl" class="table text-black">
              <thead>
              <tr>

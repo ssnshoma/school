@@ -66,20 +66,17 @@
              } ?>
             <p class="mb-4 d-inline-block"> لیست مدارس ثبت شده </p>
             <div class="col-12">
-
-
-             <table class="table">
+             <table class="pe-0 table align-right w-100">
               <thead>
               <tr>
-               <th scope="col">ویرایش</th>
-               <th scope="col">آدرس</th>
-               <th scope="col">تلفن</th>
-               <th scope="col">مدیر</th>
-               <th scope="col">نام</th>
+               <th class="pe-0 py-1">ویرایش</th>
+               <th class="pe-0 py-1" id="schooladdress">آدرس</th>
+               <th class="pe-0 py-1">تلفن</th>
+               <th class="pe-0 py-1">مدیر</th>
+               <th class="pe-0 py-1">نام</th>
               </tr>
               </thead>
               <tbody>
-
               <?php
                 $qry = "SELECT * FROM schools";
                 $res = $pdo->prepare($qry);
@@ -89,22 +86,21 @@
                   $id = $row['Id'];
                   ?>
                  <tr>
-                  <td>
-                    <?php echo '<a href="delete-school.php?deleteId=' . $id . '" class="btn p-1 text-decoration-none"><i class="bx bx-trash"></i></a>'
+                  <td class="pe-0">
+                    <?php echo '<a href="delete-school.php?deleteId=' . $id . '" class="btn p-1 text-decoration-none" id="edit-btn"><i class="bx bx-trash"></i></a>'
                     ?>
 
-                    <?php echo '<a href="add-school.php?editId=' . $id . '" class="btn p-1 text-decoration-none"><i class="bx bx-edit-alt"></i></a>'
+                    <?php echo '<a href="add-school.php?editId=' . $id . '" class="btn p-1 text-decoration-none" id="edit-btn"><i class="bx bx-edit-alt"></i></a>'
                     ?>
                   </td>
-                  <td><?php print ($row['address']); ?></td>
-                  <td><?php print ($row['phone']); ?></td>
-                  <td><?php print ($row['managername']); ?></td>
-                  <td><?php print($row['name']); ?></td>
+                  <td class="pe-0" id="schooladdress"><?php print ($row['address']); ?></td>
+                  <td class="pe-0"><?php print ($row['phone']); ?></td>
+                  <td class="pe-0"><?php print ($row['managername']); ?></td>
+                  <td class="pe-0"><?php print($row['name']); ?></td>
                  </tr>
                 <?php } ?>
               </tbody>
              </table>
-
             </div>
            </div>
           </div>

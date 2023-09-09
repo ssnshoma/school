@@ -98,13 +98,13 @@
              برای تاریخ
             </h5>
             <form method="POST">
-             <table class="table table-responsive-md w-50 m-auto">
-              <thead class="table-responsive-md">
-              <th class="col">نمره</th>
-              <th class="col">نام خانوادگی</th>
-              <th class="col">نام</th>
-              <th class="col">شماره دانش آموزی</th>
-              <th class="col">ردیف</th>
+             <table class="table table-responsive-md m-auto">
+              <thead class="table-responsive">
+              <th>نمره</th>
+              <th class="pe-0" dir="rtl">نام خانوادگی</th>
+              <th class="pe-0" style="width: 90px;">نام</th>
+              <th id="codemeli">شماره دانش آموزی</th>
+              <th id="radif">ردیف</th>
               </thead>
               <tbody>
 
@@ -126,27 +126,27 @@
                  <tr>
 
                   <td class="form-group mb-2">
-                   <input type="text" style="width: 50px" name="mark[]" tabindex="1">
+                   <input type="text" style="width: 40px;font-size: 12px;font-weight:bold;border-color: #c2c2c2" name="mark[]" tabindex="1">
                   </td>
 
-                  <td class="form-group mb-2">
-                   <input type="text" readonly style="outline: none;width: 80%;text-align: right;border: none"
+                  <td class="form-group mb-2 pe-0 py-0">
+                   <input class="p-0" type="text" dir="rtl" readonly style="width: 130px;outline: none;border: none"
                           name="lname[]" value="<?php echo $lam; ?>">
                   </td>
 
-                  <td class="form-group mb-2">
-                   <input type="text" readonly style="outline: none;width: 80%;text-align: right;border: none"
-                          name="fname[]" value="<?php echo $fam; ?>">
+                  <td class="form-group mb-2 pe-0 py-0">
+                   <input class="p-0" type="text" readonly style="width: 90px;outline: none;border: none;"
+                          name="fname[]" dir="rtl" value="<?php echo $fam; ?>">
                   </td>
 
-                  <td class="form-group mb-2">
+                  <td class="form-group mb-2" id="codemeli">
                     <?php echo $cod; ?>
                    <input type="text"
                           style="display:none;background: transparent; border: none;text-align: right;"
                           name="code[]" class="form-control"
                           autocomplete="off" value="<?php echo $cod; ?>">
                   </td>
-                  <td class="form-group mb-2">
+                  <td class="form-group mb-2" id="radif">
                     <?php echo $i;
                       $i += 1; ?>
                   </td>
