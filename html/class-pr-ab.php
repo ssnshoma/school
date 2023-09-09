@@ -19,8 +19,8 @@
 ?>
 <?php include_once '../assets/head.php'; ?>
 <?php
-  $conn = mysqli_connect("localhost", "hossein", "1234", "");
-  $s = mysqli_select_db($conn, '1402s1403');
+  $conn = mysqli_connect("localhost", "vswtsdio_hossein", "8v6lZR0S@d3x*Z", "");
+  $s = mysqli_select_db($conn, 'vswtsdio_1402s1403');
   $date = $_GET['data'];
   $gdate = convertPersianToEnglish($date);
   $arr_parts = explode('/', $gdate);

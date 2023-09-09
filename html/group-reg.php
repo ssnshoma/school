@@ -127,8 +127,8 @@
 
              <?php
 
-               $conn = mysqli_connect("localhost", "hossein", "1234", "");
-               mysqli_select_db($conn, '1402s1403');
+               $conn = mysqli_connect("localhost", "vswtsdio_hossein", "8v6lZR0S@d3x*Z", "");
+               mysqli_select_db($conn, 'vswtsdio_1402s1403');
 
                if (isset($_POST['save_multiple_data'])) {
                  $codemeli = $_POST['codemeli'];

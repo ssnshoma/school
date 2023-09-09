@@ -29,18 +29,15 @@
    </div>
    <div class="col-sm-8" style="color: black;font-size: 20px">
     <div class="row flex-row d-flex">
-     <div id="date1" class="col-sm-2"></div>
-     <div id="date2" class="col-sm-2"></div>
-     <div id="date3" class="col-sm-2" style="padding-left: 20px"></div>
-     <div id="date4" class="col-sm-3"></div>
+     <div id="date1" class="col-3"></div>
+     <div id="date2" class="col-3"></div>
+     <div id="date3" class="col-3"></div>
+     <div id="date4" class="col-3"></div>
     </div>
    </div>
   </div>
 
   <ul class="navbar-nav flex-row align-items-center ms-auto">
-   <!-- Place this tag where you want the button to render. -->
-
-   <!-- User -->
 
    <li class="nav-item navbar-dropdown dropdown-user dropdown">
     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" tabindex="-1">
