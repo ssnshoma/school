@@ -63,6 +63,18 @@
      select{
        background: none;
      }
+     #date2,#date3,#date4,#date1,#clock{
+       padding-right: 10px;
+     }
+
+     @media (max-width: 700px) {
+       #clock,#address,#date1,#search{
+         display: none;
+       }
+       #date2,#date3,#date4{
+         padding-right: 10px;
+       }
+     }
 
  </style>
 

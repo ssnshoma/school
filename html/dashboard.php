@@ -37,7 +37,6 @@
             <div class="col-md-5 order-2 mb-4">
               <div class="card h-100">
                 <div class="card-body">
-
                 </div>
               </div>
             </div>
@@ -48,15 +47,15 @@
                     <table class="table align-right" dir="rtl">
                       <thead>
                       <tr>
-                        <th style="text-align: center;">مهر</th>
-                        <th style="text-align: center;">آبان</th>
-                        <th style="text-align: center;">آذر</th>
-                        <th style="text-align: center;">دی</th>
-                        <th style="text-align: center;">بهمن</th>
-                        <th style="text-align: center;">اسفند</th>
-                        <th style="text-align: center;">فروردین</th>
-                        <th style="text-align: center;">اردیبهشت</th>
-                        <th style="text-align: center;">خرداد</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">مهر</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">آبان</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">آذر</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">دی</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">بهمن</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">اسفند</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">فروردین</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">اردیبهشت</th>
+                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">خرداد</th>
                       </tr>
                       </thead>
                       <tbody id="tbody">
@@ -102,7 +101,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-8 order-2 mb-4">
+            <div class="col-lg-6 col-lg-8 order-2 mb-4">
               <div class="card h-100">
                 <div class="card-body d-flex">
                   <div class="todo-list w-100">
