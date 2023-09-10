@@ -69,7 +69,7 @@
             <h5 class="card-title text-primary">لیست کلاس ها</h5>
              <?php if (isset($_GET['remove'])) {
                ?>
-              <div class="alert alert-warning d-inline-block"
+              <div id="alerts" class="alert alert-warning d-inline-block"
                    style="margin-right: 15px;width: 300px">
                کلاس مورد نظر حذف شد
               </div>
@@ -77,26 +77,23 @@
 
              <?php if (isset($_SESSION['class-deleted'])) {
                ?>
-              <div class="alert alert-warning d-inline-block"
+              <div id="alerts" class="alert alert-warning d-inline-block"
                    style="margin-right: 15px;width: 300px">
                 <?php echo $_SESSION['class-deleted'] ?>
               </div>
                <?php
                unset($_SESSION['class-deleted']);
              } ?>
-
             <p class="mb-4 d-inline-block"> لیست کلاس های ثبت شده </p>
-
-
-            <div class="col-12">
-             <table class="table">
+            <div id="avgmarkstable">
+             <table class="table" dir="rtl">
               <thead>
               <tr>
-               <th scope="col">عملیات</th>
-               <th scope="col">مدرسه</th>
-               <th scope="col">رشته</th>
-               <th scope="col">پایه</th>
                <th scope="col">نام</th>
+               <th scope="col">پایه</th>
+               <th scope="col">رشته</th>
+               <th scope="col">مدرسه</th>
+               <th scope="col">عملیات</th>
               </tr>
               </thead>
               <tbody>
@@ -110,16 +107,16 @@
                   $id = $row['id'];
                   ?>
                  <tr>
+                  <td><?php print ($row['name']); ?></td>
+                  <td><?php print ($row['grade']); ?></td>
+                  <td><?php print ($row['major']); ?></td>
+                  <td><?php print($row['school']); ?></td>
                   <td>
                     <?php echo '<a href="delete-class.php?DeleteId=' . $id . '" class="btn p-1 text-decoration-none"><i class="bx bx-trash"></i></a>'
                     ?>
                     <?php echo '<a href="add-class.php?editId=' . $id . '" class="btn p-1 text-decoration-none"><i class="bx bx-edit-alt"></i></a>'
                     ?>
                   </td>
-                  <td><?php print($row['school']); ?></td>
-                  <td><?php print ($row['major']); ?></td>
-                  <td><?php print ($row['grade']); ?></td>
-                  <td><?php print ($row['name']); ?></td>
                  </tr>
                 <?php } ?>
               </tbody>
@@ -325,7 +322,6 @@
               <label style="font-size: 17px" class="col-sm-2 col-form-label"
                      for="phone">مدرسه</label>
              </div>
-
 
              <div class="row justify-content-center">
               <div class="col-sm-12 mt-3 mb-2">
