@@ -9,10 +9,10 @@
     $resualt->bindValue(1, $school);
     $resualt->execute();
     $row = $resualt->fetchAll();
-    echo '<option selected disabled>کلاس را انتخاب کنید</option>';
+    echo '<option dir="rtl" selected disabled>کلاس را انتخاب کنید</option>';
     foreach ($row as $row) {
       ?>
-     <option value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+     <option dir="rtl" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
       <?php
     }
   }

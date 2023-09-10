@@ -54,13 +54,13 @@
          <div class="col-sm-12 m-auto">
           <div class="card-body">
             <?php if (isset($_GET['data-inserted'])) { ?>
-             <div class="position-absolute alert alert-success text-danger" style="top: 30px;left: 45%">
+             <div id="alerts" class="position-absolute alert alert-success text-danger" style="top: 30px;left: 45%">
                <?php print ($_GET['data-inserted']) ?>
              </div>
               <?php unset($_GET['data-inserted']);
             } ?>
             <?php if (isset($_GET['data-not-inserted'])) { ?>
-             <div class="position-absolute alert alert-danger text-danger" style="top: 30px;left: 45%">
+             <div id="alerts" class="position-absolute alert alert-danger text-danger" style="top: 30px;left: 45%">
                <?php print ($_GET['data-not-inserted']) ?>
              </div>
               <?php unset($_GET['data-not-inserted']);

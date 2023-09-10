@@ -34,7 +34,7 @@
         <div class="container-xxl flex-grow-1 container-p-y">
 
           <div class="row">
-            <div class="col-md-5 order-2 mb-4">
+            <div class="col-md-5 order-2 mb-4" id="colse">
               <div class="card h-100">
                 <div class="card-body">
                 </div>
@@ -43,7 +43,7 @@
             <div class="col-md-7 mb-4">
               <div class="card">
                 <div class="card-body d-flex">
-                  <div style="width: 100%;">
+                  <div id="avgmarkstable">
                     <table class="table align-right" dir="rtl">
                       <thead>
                       <tr>
@@ -95,7 +95,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 col-lg-4 order-2 mb-4">
+            <div class="col-md-6 col-lg-4 order-2 mb-4" id="colse">
               <div class="card h-100">
                 <div class="card-body d-flex align-items-center justify-content-center">
                 </div>
@@ -104,12 +104,12 @@
             <div class="col-lg-6 col-lg-8 order-2 mb-4">
               <div class="card h-100">
                 <div class="card-body d-flex">
-                  <div class="todo-list w-100">
+                  <div class="todo-list" id="todolisttable">
                     <table class="table" dir="rtl">
                       <thead>
                       <tr>
                         <td style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">تاریخ</td>
-                        <td style="text-align: center">فعالیت</td>
+                        <td id="content" style="text-align: center">فعالیت</td>
                         <td style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">اهمیت</td>
                         <td style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">وضعیت</td>
                         <td style="padding-left: 0;padding-right: 0;width: 110px;text-align: center">عملیات</td>
@@ -126,12 +126,12 @@
                           <tr>
                             <td
                               style="text-align: center;padding-left: 0;padding-right: 0;"><?php print miladiToShamsi($task['date']); ?></td>
-                            <td style="text-align: center"><?php print $task['activity']; ?></td>
+                            <td id="content" style="text-align: center;"><?php print $task['activity']; ?></td>
                             <td style="text-align: center;padding-left: 0;padding-right: 0;">
                               <?php
                                 if ($task['level'] == "بسیار بالا") {
                                   echo '
-              <span class="badge bg-success">بسیار بالا</span> 
+              <span class="badge bg-success" style="font-size: 10px">بسیار بالا</span> 
                    ';
                                 } elseif ($task['level'] == "بالا") {
                                   echo '
