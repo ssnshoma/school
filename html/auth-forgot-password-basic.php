@@ -1,16 +1,17 @@
-<?php include_once '../assets/login-head.php'?>
+<?php include_once '../assets/login-head.php';
+?>
   <body>
-    <!-- Content -->
+  <!-- Content -->
 
-    <div class="container-xxl">
-      <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner py-4">
-          <!-- Forgot Password -->
-          <div class="card">
-            <div class="card-body">
-              <!-- Logo -->
-              <div class="app-brand justify-content-center">
-                <a href="dashboard.php" class="app-brand-link gap-2">
+  <div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+      <div class="authentication-inner py-4">
+        <!-- Forgot Password -->
+        <div class="card">
+          <div class="card-body">
+            <!-- Logo -->
+            <div class="app-brand justify-content-center">
+              <a href="dashboard.php" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
                     <svg
                       width="25"
@@ -66,38 +67,39 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">مدرسه من</span>
-                </a>
+                <span class="app-brand-text demo text-body fw-bolder">مدرسه من</span>
+              </a>
+            </div>
+            <!-- /Logo -->
+            <h4 class="mb-2">رمز عبور خود را فراموش کردید؟</h4>
+            <p class="mb-3 mt-3">لطفا ایمیل خود را وارد کنید. سپس یک ایمیل حاوی لینک بازنشانی رمز عبور ارسال خواهد
+              شد.</p>
+            <form id="formAuthentication" class="mb-3" method="POST">
+              <div class="mb-3">
+                <label for="email" class="form-label">ایمیل</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="ایمیل یا نام کاربری خود را وارد کنید"
+                  autofocus
+                />
               </div>
-              <!-- /Logo -->
-              <h4 class="mb-2">رمز عبور خود را فراموش کردید؟</h4>
-              <p class="mb-3 mt-3">لطفا ایمیل خود را وارد کنید. سپس یک ایمیل حاوی لینک بازنشانی رمز عبور ارسال خواهد شد.</p>
-              <form id="formAuthentication" class="mb-3" action="dashboard.php" method="POST">
-                <div class="mb-3">
-                  <label for="email" class="form-label">ایمیل</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="ایمیل خود را وارد کنید"
-                    autofocus
-                  />
-                </div>
-                <button class="btn btn-primary d-grid w-100">ارسال لینک بازنشانی رمز عبور</button>
-              </form>
-              <div class="text-center">
-                <a href="auth-login-basic.php" class="d-flex align-items-center justify-content-center">
-                  بازگشت به صفحه ورود
-                  <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
-                </a>
-              </div>
+              <input type="submit" name="send" value="ارسال لینک بازنشانی رمز عبور" class="btn btn-primary d-grid w-100">
+            </form>
+            <div class="text-center">
+              <a href="auth-login-basic.php" class="d-flex align-items-center justify-content-center">
+                بازگشت به صفحه ورود
+                <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
+              </a>
             </div>
           </div>
-          <!-- /Forgot Password -->
         </div>
+        <!-- /Forgot Password -->
       </div>
     </div>
+  </div>
 
 
-<?php include_once '../assets/login-footer.php'?>
+<?php include_once '../assets/login-footer.php' ?>

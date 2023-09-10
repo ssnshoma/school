@@ -81,12 +81,12 @@
          <div class="col-sm-12 m-auto">
           <div class="card-body" id="marks-table" style="height: 500px">
            <div class="row flex-row" style="direction: rtl;overflow-x: scroll;">
-            <table dir="rtl" class="table text-black">
+            <table dir="rtl" class="table">
              <thead>
              <tr>
               <td>کد ملی</td>
               <td>نام</td>
-              <td>نام خانوادگی</td>
+              <td style="display: inline-block;width: 150px;border:none">نام خانوادگی</td>
               <td>مهر</td>
               <td>آبان</td>
               <td>آذر</td>
@@ -98,7 +98,7 @@
               <td>خرداد</td>
              </tr>
              </thead>
-             <tbody style="font-weight: bolder">
+             <tbody>
              <?php
 
                $sql = "SELECT DISTINCT codemeli,fname,lname FROM `monmark` ORDER BY lname";

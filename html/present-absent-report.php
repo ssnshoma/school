@@ -38,7 +38,7 @@
                     <div class="col-sm-12">
                       <div class="card-body">
                         <h5 class="card-title text-primary">گزارش حضور و غیاب</h5>
-                        <div class="row">
+                        <div id="avgmarkstable">
                           <table class="table" dir="rtl">
                             <thead>
                             <tr>
@@ -60,7 +60,7 @@
                               $i = 1;
                               foreach ($row as $row) {
                                 ?>
-                                <tr style="font-weight: 700;color: black">
+                                <tr>
                                   <td id="radif"><?php echo $i; ?></td>
                                   <td id="codemeli"><?php echo $row['codemeli']; ?></td>
                                   <td><?php echo $row['fname']; ?></td>
@@ -74,13 +74,13 @@
                                       $ststus = $row['atendence'];
                                       if ($ststus == "ok") {
                                         ?>
-                                        <span class="btn btn-sm btn-info bx-tada-hover">
+                                        <span class="btn-sm btn-info">
                                           <i class="checked"></i>
                                         </span>
                                         <?php
                                       } else {
                                         ?>
-                                        <span class="btn-sm btn-secondary bx-tada-hover">
+                                        <span class="btn-sm btn-secondary">
                                           <i class="bx bx-check"></i>
                                         </span>
                                         <?php
@@ -89,10 +89,10 @@
                                   <td>
 
                                     <a id="edit-btn" href="../assets/edit-atendence.php?editid=<?php echo $row['id']; ?>"
-                                       class="btn btn-sm btn-warning">
+                                       class="text-gray">
                                       <i class="bx bx-edit-alt"></i>
                                     </a>
-                                    <a id="edit-btn" class="text-white btn btn-sm btn-danger">
+                                    <a id="edit-btn" href="" class="text-gray">
                                       <i class="bx bx-trash"></i>
                                     </a>
 

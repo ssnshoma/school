@@ -89,15 +89,14 @@
              <table class="table" dir="rtl">
               <thead>
               <tr>
-               <th scope="col">نام</th>
-               <th scope="col">پایه</th>
-               <th scope="col">رشته</th>
-               <th scope="col">مدرسه</th>
-               <th scope="col">عملیات</th>
+               <th>نام</th>
+               <th>پایه</th>
+               <th>رشته</th>
+               <th>مدرسه</th>
+               <th>عملیات</th>
               </tr>
               </thead>
               <tbody>
-
               <?php
                 $qry = "SELECT * FROM classes order by school";
                 $res = $pdo->prepare($qry);
@@ -137,12 +136,12 @@
             <p class="mb-4"> برای ثبت کلاس جدید از فرم زیر استفاده کنید </p>
 
              <?php if (isset($_GET['c-inserted'])) { ?>
-              <div
+              <div id="aletrs"
                class="alert alert-success alert-dismissible"> <?php print ($_GET['c-inserted']); ?> </div>
              <?php } ?>
 
              <?php if (isset($_GET['cn-inserted'])) { ?>
-              <div
+              <div id="aletrs"
                class="alert alert-danger alert-dismissible"> <?php print ($_GET['cn-inserted']); ?> </div>
              <?php } ?>
 

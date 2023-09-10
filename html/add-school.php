@@ -57,7 +57,7 @@
             <h5 class="card-title text-primary">لیست مدارس</h5>
              <?php if (isset($_SESSION['school-deleted'])) {
                ?>
-              <div class="alert alert-warning d-inline-block"
+              <div id="aletrs" class="alert alert-warning d-inline-block"
                    style="margin-right: 15px;width: 300px">
                 <?php echo $_SESSION['school-deleted'] ?>
               </div>
@@ -65,15 +65,15 @@
                unset($_SESSION['school-deleted']);
              } ?>
             <p class="mb-4 d-inline-block"> لیست مدارس ثبت شده </p>
-            <div class="col-12">
-             <table class="pe-0 table align-right w-100">
+            <div id="avgmarkstable">
+             <table class="table">
               <thead>
               <tr>
-               <th class="pe-0 py-1">ویرایش</th>
-               <th class="pe-0 py-1" id="schooladdress">آدرس</th>
-               <th class="pe-0 py-1">تلفن</th>
-               <th class="pe-0 py-1">مدیر</th>
-               <th class="pe-0 py-1">نام</th>
+               <th>نام</th>
+               <th>مدیر</th>
+               <th>تلفن</th>
+               <th id="schooladdress">آدرس</th>
+               <th>ویرایش</th>
               </tr>
               </thead>
               <tbody>
@@ -86,17 +86,17 @@
                   $id = $row['Id'];
                   ?>
                  <tr>
-                  <td class="pe-0">
+                  <td><?php print($row['name']); ?></td>
+                  <td><?php print ($row['managername']); ?></td>
+                  <td><?php print ($row['phone']); ?></td>
+                  <td id="schooladdress"><?php print ($row['address']); ?></td>
+                  <td>
                     <?php echo '<a href="delete-school.php?deleteId=' . $id . '" class="btn p-1 text-decoration-none" id="edit-btn"><i class="bx bx-trash"></i></a>'
                     ?>
 
                     <?php echo '<a href="add-school.php?editId=' . $id . '" class="btn p-1 text-decoration-none" id="edit-btn"><i class="bx bx-edit-alt"></i></a>'
                     ?>
                   </td>
-                  <td class="pe-0" id="schooladdress"><?php print ($row['address']); ?></td>
-                  <td class="pe-0"><?php print ($row['phone']); ?></td>
-                  <td class="pe-0"><?php print ($row['managername']); ?></td>
-                  <td class="pe-0"><?php print($row['name']); ?></td>
                  </tr>
                 <?php } ?>
               </tbody>
@@ -116,7 +116,7 @@
             <h5 class="card-title text-primary">ثبت مدرسه جدید</h5>
             <p class="mb-4"> برای ثبت مدرسه جدید از فرم زیر استفاده کنید </p>
              <?php if (isset($_GET['inserted'])) { ?>
-              <div class="alert alert-success alert-dismissible"> <?php print ($_GET['inserted']); ?> </div>
+              <div id="aletrs" class="alert alert-success alert-dismissible"> <?php print ($_GET['inserted']); ?> </div>
              <?php } ?>
 
             <form method="post">
@@ -201,7 +201,7 @@
             <h5 class="card-title text-primary">ویرایش اطلاعات</h5>
             <p class="mb-4"> برای ویرایش اطلاعات از فرم زیر استفاده کنید </p>
              <?php if (isset($_GET['get-inserted'])) { ?>
-              <div
+              <div id="aletrs"
                class="alert alert-success alert-dismissible"> <?php print ($_GET['get-inserted']); ?> </div>
              <?php } ?>
 

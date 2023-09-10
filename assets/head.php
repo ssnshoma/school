@@ -126,6 +126,10 @@
       .w-75{
         width: 100% !important;
       }
+      strong,h5,p{
+        font-size: 15px !important;
+        display: inline;
+      }
       #avgmarkstable, #todolisttable {
         width: 100%;
         overflow-x: scroll;
@@ -147,7 +151,12 @@
       #content {
         width: 100%;
       }
+
       #avgmarkstable td {
+        padding: 5px 6px;
+      }
+
+      #avgmarkstable th {
         padding: 5px 6px;
       }
 
@@ -160,6 +169,10 @@
       }
 
       #todolisttable tr {
+        padding: 5px 8px;
+      }
+
+      #todolisttable th {
         padding: 5px 8px;
       }
     }
