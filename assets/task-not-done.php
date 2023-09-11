@@ -4,7 +4,7 @@
   include '../assets/first-login.php';
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
-  $title = "انجام شده";
+  $title = "انجام نشده";
   $category = "فعالیت";
 ?>
 
@@ -31,7 +31,7 @@
                   <div class="col-sm-12 m-auto">
                     <div class="card-body" dir="rtl" id="avgmarkstable">
                       <div class="card-header p-0" id="taskcontainer">
-                        <h5 id="addtasktitle" class="card-title text-primary mt-4">لیست فعالیت های انجام شده</h5>
+                        <h5 id="addtasktitle" class="card-title text-primary mt-4">لیست فعالیت های انجام نشده</h5>
                         <a href="task_add.php" id="addtaskbtn" class="btn btn-primary btn-sm"></a>
                       </div>
                       <table class="table mt-2" dir="rtl">
@@ -46,7 +46,7 @@
                         </thead>
                         <tbody>
                         <?php
-                          $taskQry = "SELECT * FROM task WHERE `ststus`='done' order by date";
+                          $taskQry = "SELECT * FROM task WHERE `ststus`='not-done' order by date";
                           $taskRun = $pdo->prepare($taskQry);
                           $taskRun->execute();
                           $row = $taskRun->fetchAll();

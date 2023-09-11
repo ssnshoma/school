@@ -167,11 +167,13 @@
                             <form method="post" class="w-75 m-auto mt-2" style="direction: rtl">
                               <div class="row">
                                 <div class="row w-75 m-auto">
-                                  <input type="text" name="activity" tabindex="1" class="w-100 form"
-                                         placeholder="فعالیت را وارد کنید">
+                                  <div class="col-md-12">
+                                    <input type="text" name="activity" tabindex="1" class="form"
+                                           placeholder="فعالیت را وارد کنید">
+                                  </div>
                                 </div>
                                 <div class="row w-75 m-auto mt-4">
-                                  <div class="col-md-6" style="padding-right: 0">
+                                  <div class="col-md-6">
                                     <select type="text" name="level" class="w-100 form" tabindex="2">
                                       <option selected disabled>اهمیت</option>
                                       <option value="بسیار بالا">بسیار بالا</option>
@@ -180,8 +182,8 @@
                                       <option value="خیلی کم">خیلی کم</option>
                                     </select>
                                   </div>
-                                  <div class="col-md-6" style="padding-left: 0">
-                                    <input type="text" name="date" placeholder="تاریخ" class="w-100 pdate form"
+                                  <div class="col-md-6">
+                                    <input type="text" name="date" placeholder="تاریخ" class="pdate taskdate form"
                                            tabindex="3" id="pcal1">
                                   </div>
                                 </div>

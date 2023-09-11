@@ -31,3 +31,20 @@
     $runDel->execute();
     header("Location: task_list.php");
   }
+
+
+  if (isset($_GET['doneIDDD'])) {
+    $id = $_GET['doneIDDD'];
+    $updateQry = "UPDATE `task` SET `ststus`='done' WHERE id=$id";
+    $run = $pdo->prepare($updateQry);
+    $run->execute();
+    header("Location: task_list.php");
+  }
+
+  if (isset($_GET['deleteIDDD'])) {
+    $id = $_GET['deleteIDDD'];
+    $deleteQry = "DELETE FROM `task` WHERE id=$id";
+    $runDel = $pdo->prepare($deleteQry);
+    $runDel->execute();
+    header("Location: task_list.php");
+  }

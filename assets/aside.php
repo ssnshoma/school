@@ -256,6 +256,11 @@
             <div data-i18n="Under Maintenance">انحام شده</div>
           </a>
         </li>
+        <li class="menu-item">
+          <a href="../assets/task-not-done.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Under Maintenance">انحام نشده</div>
+          </a>
+        </li>
       </ul>
     </li>
 

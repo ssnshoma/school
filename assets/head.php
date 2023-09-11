@@ -27,6 +27,22 @@
 
   <style>
 
+    #taskcontainer {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      margin-bottom: 10px;
+    }
+
+    #addtaskbtn {
+      width: 30px;
+      height: 30px;
+      margin-top: 15px;
+    }
+    #addtaskbtn:after{
+      content: "+";
+    }
+
     .dot {
       position: absolute;
       top: 0;
@@ -122,28 +138,43 @@
       }
     }
 
+    @media (max-width: 768px) {
+      .taskdate {
+        margin-top: 25px !important;
+      }
+    }
+
     @media (max-width: 540px) {
-      .w-75{
+      .taskdate {
+        margin-top: 25px !important;
+      }
+
+      .w-75 {
         width: 100% !important;
       }
-      strong,h5,p{
+
+      strong, h5, p {
         font-size: 15px !important;
         display: inline;
       }
+
       #avgmarkstable, #todolisttable {
         width: 100%;
         overflow-x: scroll;
         direction: rtl;
       }
-      #alerts{
+
+      #alerts {
         display: block;
         position: static !important;
       }
-      #alertss{
+
+      #alertss {
         display: block;
         position: static !important;
         width: 100% !important;
       }
+
       #colse {
         display: none;
       }

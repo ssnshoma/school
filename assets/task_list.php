@@ -29,16 +29,19 @@
               <div class="card">
                 <div class="d-flex align-items-center row">
                   <div class="col-sm-12 m-auto">
-                    <div class="card-body">
-                      <h5 class="card-title text-primary mt-4">لیست فعالیت</h5>
+                    <div div class="card-body" dir="rtl" id="avgmarkstable">
+                      <div class="card-header p-0" id="taskcontainer">
+                        <h5 id="addtasktitle" class="card-title text-primary mt-4">لیست فعالیت</h5>
+                        <a href="task_add.php" id="addtaskbtn" class="btn btn-primary btn-sm"></a>
+                      </div>
                       <table class="table" dir="rtl">
                         <thead>
-                        <tr>
-                          <td style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">تاریخ</td>
-                          <td style="text-align: center">فعالیت</td>
-                          <td style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">اهمیت</td>
-                          <td style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">وضعیت</td>
-                          <td style="padding-left: 0;padding-right: 0;width: 110px;text-align: center">عملیات</td>
+                        <tr class="border-bottom">
+                          <td class="border-bottom-0">تاریخ</td>
+                          <td style="width: 140px;display: inline-block" class="border-bottom-0">فعالیت</td>
+                          <td class="border-bottom-0">اهمیت</td>
+                          <td class="border-bottom-0">وضعیت</td>
+                          <td class="border-bottom-0">عملیات</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,7 +51,7 @@
                           $taskRun->execute();
                           $row = $taskRun->fetchAll();
                           foreach ($row as $task) {
-                            $date=$task['date'];
+                            $date = $task['date'];
                             ?>
                             <tr>
                               <td
@@ -58,19 +61,19 @@
                                 <?php
                                   if ($task['level'] == "بسیار بالا") {
                                     echo '
-                                    <span class="badge bg-success">بسیار بالا</span> 
+                                    <span class="badge bg-success">!!!!</span> 
                                          ';
                                   } elseif ($task['level'] == "بالا") {
                                     echo '
-                                    <span class="badge bg-info">بالا</span> 
+                                    <span class="badge bg-info">!!!</span> 
                                          ';
                                   } elseif ($task['level'] == "کم") {
                                     echo '
-                                    <span class="badge bg-primary">کم</span> 
+                                    <span class="badge bg-primary">!!</span> 
                                          ';
                                   } elseif ($task['level'] == "خیلی کم") {
                                     echo '
-                                    <span class="badge bg-secondary">خیلی کم</span> 
+                                    <span class="badge bg-secondary">!</span> 
                                          ';
                                   }
                                 ?>
