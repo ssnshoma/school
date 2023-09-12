@@ -26,10 +26,7 @@
   <script src="../assets/js/config.js"></script>
 
   <style>
-
-
-
-    #startend{
+    #startend {
       width: 100%;
       display: flex;
       flex-direction: row-reverse;
@@ -38,7 +35,7 @@
       padding-bottom: 15px;
     }
 
-    #todolisttable{
+    #todolisttable {
       width: 100%;
     }
 
@@ -54,7 +51,8 @@
       height: 30px;
       margin-top: 15px;
     }
-    #addtaskbtn:after{
+
+    #addtaskbtn:after {
       content: "+";
     }
 
@@ -158,12 +156,13 @@
         margin-top: 25px !important;
       }
     }
-    
+
     @media (max-width: 991px) {
-      #tsakscontainer{
-       flex-direction: column-reverse;
+      #tsakscontainer {
+        flex-direction: column-reverse;
       }
-      #startend{
+
+      #startend {
         padding-right: 0;
       }
     }

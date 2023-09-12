@@ -16,7 +16,7 @@
         <input
           type="text"
           class="form-control border-0 shadow-none"
-          placeholder="Search..."
+          placeholder="جستجو"
           aria-label="Search..." tabindex="-1"
         />
       </div>

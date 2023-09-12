@@ -41,71 +41,58 @@
             کنید.</h6>
           </div>
          </div>
-         <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-           <div class="d-flex flex-column align-items-center w-75 m-auto my-3">
-
-            <form action="" class="w-100">
-             <div class="row flex-row">
-              <div class="form-group col-md-6 mb-3 mt-2">
-               <label for="grade">پایه (عدد)</label>
-               <input type="text" name="grade" class="form-control" id="grade"
-                      placeholder="پایه را وارد کنید">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex flex-column align-items-center w-75 m-auto">
+                <form class="w-100">
+                  <div class="row flex-row">
+                    <div class="form-group col-md-6 mb-2">
+                      <label for="grade">پایه (عدد)</label>
+                      <input type="text" name="grade" class="form-control" id="grade"
+                             placeholder="پایه را وارد کنید">
+                    </div>
+                    <div class="form-group col-md-6 mb-2">
+                      <label for="major">رشته</label>
+                      <input type="text" name="major" class="form-control" id="major"
+                             placeholder="رشته را وارد کنید">
+                    </div>
+                  </div>
+                  <div class="row flex-row">
+                    <div class="form-group col-md-4 mb-2">
+                      <label for="grade">نام کتاب</label>
+                      <input type="text" name="book" class="form-control" id="book"
+                             placeholder="نام کتاب">
+                    </div>
+                    <div class="form-group col-md-4 mb-2">
+                      <label for="fasl">فصل</label>
+                      <input type="text" name="fasl" class="form-control" id="fasl"
+                             placeholder="نام فصل مربوطه را وارد کنید">
+                    </div>
+                    <div class="form-group col-md-4 mb-2">
+                      <label for="dars">درس</label>
+                      <input type="text" name="dars" class="form-control" id="dars"
+                             placeholder="نام درس را وارد کنید">
+                    </div>
+                  </div>
+                  <div>
+                    <div class="form-group mb-2 col-md-12">
+                      <label for="dars">توضیحات</label>
+                      <textarea name="tozihat" class="form-control" id="dars"
+                                placeholder="توضیحات ...."></textarea>
+                    </div>
+                    <div class="form-group mb-2 col-md-12">
+                      <label for="file">فایل</label>
+                      <input type="file" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group w-25 m-auto mb-2 mt-4">
+                    <input type="submit" name="submit-btn"
+                           class="form-control btn btn-primary" value="ثبت">
+                  </div>
+                </form>
               </div>
-
-              <div class="form-group col-md-6 mb-3 mt-2">
-               <label for="major">رشته</label>
-               <input type="text" name="major" class="form-control" id="major"
-                      placeholder="رشته را وارد کنید">
-              </div>
-
-             </div>
-
-             <div class="row flex-row">
-              <div class="form-group col-md-4 mb-3 mt-2">
-               <label for="grade">نام کتاب</label>
-               <input type="text" name="book" class="form-control" id="book"
-                      placeholder="نام کتاب">
-              </div>
-
-              <div class="form-group col-md-4 mb-3 mt-2">
-               <label for="fasl">فصل</label>
-               <input type="text" name="fasl" class="form-control" id="fasl"
-                      placeholder="نام فصل مربوطه را وارد کنید">
-              </div>
-
-
-              <div class="form-group col-md-4 mb-3 mt-2">
-               <label for="dars">درس</label>
-               <input type="text" name="dars" class="form-control" id="dars"
-                      placeholder="نام درس را وارد کنید">
-              </div>
-
-             </div>
-             <div class="row flex-row">
-              <div class="form-group mb-3 col-md-7 mt-2">
-               <label for="dars">توضیحات</label>
-               <textarea name="tozihat" class="form-control" id="dars"
-                         placeholder="توضیحات ...."></textarea>
-              </div>
-
-              <div class="form-group mb-3 col-md-5" style="margin-top: 30px;">
-               <div class="input-group">
-                <input type="file" class="form-control" style="padding-top: 19px;height: 60px">
-               </div>
-              </div>
-
-             </div>
-
-             <div class="form-group w-25 m-auto mb-3 mt-5 ">
-              <input type="submit" name="submit-btn" class="form-control btn btn-primary">
-             </div>
-
-            </form>
-
-           </div>
+            </div>
           </div>
-         </div>
         </div>
        </div>
        <!--/ Order Statistics -->
