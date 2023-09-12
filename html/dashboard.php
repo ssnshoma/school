@@ -97,7 +97,44 @@
           <div class="row">
             <div class="col-md-6 col-lg-4 order-2 mb-4" id="colse">
               <div class="card h-100">
-                <div class="card-body d-flex align-items-center justify-content-center">
+                <div class="card-body">
+                  <div id="avgmarkstable">
+                    <table class="table align-right" dir="rtl">
+                      <tbody>
+                      <tr>
+                        <td style="padding-right: 0">تعداد کل دانش آموزان</td>
+                        <td><?php RowCount('studentlist', '1=1'); ?></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-right: 0">تعداد کل مدارس</td>
+                        <td><?php RowCount('schools', '1=1'); ?></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-right: 0">تعداد کل کلاس ها</td>
+                        <td><?php RowCount('classes', '1=1'); ?></td>
+                      </tr>
+                      <?php
+                        $classes = getClassName();
+                        $count = count($classes);
+                        for ($i = 0; $i < $count; $i++) {
+                          $class = $classes[$i];
+                          ?>
+                          <tr>
+
+                            <td style="padding-right: 25px"><?php echo $i + 1 . "-"; ?> کلاس <?php print $class; ?></td>
+                            <td>
+                              <?php
+                                RowCount('studentlist', "`class`='$class'");
+                              ?>
+                            </td>
+                          </tr>
+
+                          <?php
+                        }
+                      ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -117,7 +154,7 @@
                       </thead>
                       <tbody>
                       <?php
-                        $taskQry = "SELECT * FROM task order by date";
+                        $taskQry = "SELECT * FROM task WHERE `ststus`='not-done' order by date";
                         $taskRun = $pdo->prepare($taskQry);
                         $taskRun->execute();
                         $row = $taskRun->fetchAll();
@@ -148,6 +185,7 @@
                                 }
                               ?>
                             </td>
+
                             <td style="text-align: center;padding-left: 0;padding-right: 0;">
                               <?php
                                 if ($task['ststus'] == "done") {
@@ -160,6 +198,7 @@
                    ';
                                 }
                               ?>
+
                             </td>
                             <td style="text-align: center">
                               <a href="../assets/task_add.php?editID=<?php print $task['id']; ?>"><i

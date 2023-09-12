@@ -27,6 +27,10 @@
 
   <style>
 
+    #todolisttable{
+      width: 100%;
+    }
+
     #taskcontainer {
       display: flex;
       justify-content: space-between;
