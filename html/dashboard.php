@@ -34,15 +34,23 @@
         <div class="container-xxl flex-grow-1 container-p-y">
 
           <div class="row">
-            <div class="col-md-5 order-2 mb-4" id="colse">
+            <div class="col-md-5 order-2 mb-4">
               <div class="card h-100">
                 <div class="card-body">
+                  <div id="startend" class="border-bottom text-primary">
+                    <div>یادداشت ها</div>
+                  </div>
+                  <div>ik</div>
+                  <div>ik</div>
                 </div>
               </div>
             </div>
             <div class="col-md-7 mb-4">
               <div class="card">
-                <div class="card-body d-flex">
+                <div class="card-body">
+                  <div id="startend" class="border-bottom text-primary">
+                    <div>میانگین نمرات</div>
+                  </div>
                   <div id="avgmarkstable">
                     <table class="table align-right" dir="rtl">
                       <thead>
@@ -94,8 +102,8 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6 col-lg-4 order-2 mb-4" id="colse">
+          <div class="row" id="tsakscontainer">
+            <div class="col-md-6 col-lg-4 order-1 mb-4">
               <div class="card h-100">
                 <div class="card-body">
                   <div id="avgmarkstable">
@@ -103,15 +111,15 @@
                       <tbody>
                       <tr>
                         <td style="padding-right: 0">تعداد کل دانش آموزان</td>
-                        <td><?php RowCount('studentlist', '1=1'); ?></td>
+                        <td class="center"><?php RowCount('studentlist', '1=1'); ?></td>
                       </tr>
                       <tr>
                         <td style="padding-right: 0">تعداد کل مدارس</td>
-                        <td><?php RowCount('schools', '1=1'); ?></td>
+                        <td class="center"><?php RowCount('schools', '1=1'); ?></td>
                       </tr>
                       <tr>
                         <td style="padding-right: 0">تعداد کل کلاس ها</td>
-                        <td><?php RowCount('classes', '1=1'); ?></td>
+                        <td class="center"><?php RowCount('classes', '1=1'); ?></td>
                       </tr>
                       <?php
                         $classes = getClassName();
@@ -120,9 +128,8 @@
                           $class = $classes[$i];
                           ?>
                           <tr>
-
-                            <td style="padding-right: 25px"><?php echo $i + 1 . "-"; ?> کلاس <?php print $class; ?></td>
-                            <td>
+                            <td><i class="bx bx-left-arrow small"></i> کلاس <?php print $class; ?></td>
+                            <td class="center">
                               <?php
                                 RowCount('studentlist', "`class`='$class'");
                               ?>
@@ -140,7 +147,13 @@
             </div>
             <div class="col-lg-6 col-lg-8 order-2 mb-4">
               <div class="card h-100">
-                <div class="card-body d-flex">
+                <div class="card-body">
+                  <div id="startend" class="border-bottom text-primary">
+                    <div>لیست فعالیت ها</div>
+                    <div>
+                      <a href="../assets/task_add.php" class="btn btn-sm btn-primary">+</a>
+                    </div>
+                  </div>
                   <div class="todo-list" id="todolisttable">
                     <table class="table" dir="rtl">
                       <thead>
@@ -224,11 +237,6 @@
   </div>
 </div>
 <!-- / Content -->
-
-
-<!-- Footer -->
-<?php include_once '../assets/page-footer.php'; ?>
-<!-- / Footer -->
 
 <div class="content-backdrop fade"></div>
 

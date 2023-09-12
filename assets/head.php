@@ -27,6 +27,17 @@
 
   <style>
 
+
+
+    #startend{
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      padding-right: 25px;
+      padding-bottom: 15px;
+    }
+
     #todolisttable{
       width: 100%;
     }
@@ -145,6 +156,15 @@
     @media (max-width: 768px) {
       .taskdate {
         margin-top: 25px !important;
+      }
+    }
+    
+    @media (max-width: 991px) {
+      #tsakscontainer{
+       flex-direction: column-reverse;
+      }
+      #startend{
+        padding-right: 0;
       }
     }
 

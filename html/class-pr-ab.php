@@ -153,11 +153,6 @@
       </div>
      </div>
     </div>
-
-    <!-- Footer -->
-     <?php include_once '../assets/page-footer.php'; ?>
-    <!-- / Footer -->
-
     <div class="content-backdrop fade"></div>
    </div>
    <!-- Content wrapper -->

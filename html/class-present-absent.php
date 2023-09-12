@@ -97,8 +97,4 @@
     <!-- Content wrapper -->
   </div>
 
-<?php include_once '../assets/page-footer.php'; ?>
-  <!-- Overlay -->
-  <!-- / Layout wrapper -->
-
 <?php include_once '../assets/footer.php'; ?>

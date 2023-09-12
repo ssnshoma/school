@@ -108,7 +108,6 @@
           </div>
         </div>
       </div>
-      <?php include_once '../assets/page-footer.php'; ?>
     </div>
     <!-- / Layout page -->
   </div>
