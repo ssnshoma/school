@@ -22,14 +22,14 @@
                     <div class="col-sm-12">
                       <div class="card-body">
                         <h5 class="card-title text-primary">گزارش حضور و غیاب</h5>
-                        <div id="avgmarkstable">
+                        <div id="avgmarkstable" class="text-nowrap">
                           <table class="table" dir="rtl">
                             <thead>
                             <tr>
                               <td id="radif">ردیف</td>
                               <td id="codemeli">کد ملی</td>
                               <td>نام</td>
-                              <td>نام خانوادگی</td>
+                              <td class="th-lg">نام خانوادگی</td>
                               <?php
                                 $qry = "SELECT DISTINCT atendence.date FROM `atendence` order by date";
                                 $run = $pdo->prepare($qry);
@@ -60,7 +60,7 @@
                                   <td id="radif"><?php echo $i; ?></td>
                                   <td id="codemeli"><?php echo $row['codemeli']; ?></td>
                                   <td><?php echo $row['fname']; ?></td>
-                                  <td><?php echo $row['lname']; ?></td>
+                                  <td class="col-5"><?php echo $row['lname']; ?></td>
                                   <?php
                                     $FindQry = "SELECT atendence FROM `atendence` where codemeli='$code' order by date";
                                     $resualt = $pdo->prepare($FindQry);

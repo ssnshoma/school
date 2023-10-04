@@ -29,7 +29,7 @@
               <div class="card">
                 <div class="d-flex align-items-center row">
                   <div class="col-sm-12 m-auto">
-                    <div div class="card-body" dir="rtl" id="avgmarkstable">
+                    <div div class="card-body text-nowrap" dir="rtl" id="avgmarkstable">
                       <div class="card-header p-0" id="taskcontainer">
                         <h5 id="addtasktitle" class="card-title text-primary mt-4">لیست فعالیت</h5>
                         <a href="task_add.php" id="addtaskbtn" class="btn btn-primary btn-sm"></a>

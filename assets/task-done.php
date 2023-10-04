@@ -29,7 +29,7 @@
               <div class="card">
                 <div class="d-flex align-items-center row">
                   <div class="col-sm-12 m-auto">
-                    <div class="card-body" dir="rtl" id="avgmarkstable">
+                    <div class="card-body text-nowrap" dir="rtl" id="avgmarkstable">
                       <div class="card-header p-0" id="taskcontainer">
                         <h5 id="addtasktitle" class="card-title text-primary mt-4">لیست فعالیت های انجام شده</h5>
                         <a href="task_add.php" id="addtaskbtn" class="btn btn-primary btn-sm"></a>
@@ -38,10 +38,10 @@
                         <thead>
                         <tr class="border-bottom">
                           <td class="border-bottom-0">تاریخ</td>
-                          <td style="width: 140px;display: inline-block" class="border-bottom-0">فعالیت</td>
-                          <td class="border-bottom-0">اهمیت</td>
-                          <td class="border-bottom-0">وضعیت</td>
-                          <td class="border-bottom-0">عملیات</td>
+                          <td class="border-bottom-0">فعالیت</td>
+                          <td class="border-bottom-0 center">اهمیت</td>
+                          <td class="border-bottom-0 center">وضعیت</td>
+                          <td class="border-bottom-0 center">عملیات</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,7 @@
                             <tr>
                               <td
                                 style="text-align: center;padding-left: 0;padding-right: 0;"><?php print miladiToShamsi($date); ?></td>
-                              <td style="text-align: center"><?php print $task['activity']; ?></td>
+                              <td><?php print $task['activity']; ?></td>
                               <td style="text-align: center;padding-left: 0;padding-right: 0;">
                                 <?php
                                   if ($task['level'] == "بسیار بالا") {

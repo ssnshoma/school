@@ -109,18 +109,18 @@
                   <div class="d-flex align-items-center row">
                     <div class="col-sm-12 m-auto">
                       <div class="card-body">
-
                         <div class="row">
-                          <div class="col-lg-6 m-auto" id="avgmarkstable">
+                          <div class="m-auto text-nowrap" id="avgmarkstable">
                             <table class="table" dir="rtl">
                               <thead>
                               <tr>
+                                <td>ردیف</td>
                                 <td>نام</td>
-                                <td style="width: 120px;display: inline-block;" class="border-bottom-0">نام خانوادگی</td>
-                                <td>کلاس</td>
-                                <td>نمره</td>
-                                <td>تاریخ</td>
-                                <td>عملیات</td>
+                                <td class="border-bottom-0">نام خانوادگی</td>
+                                <td class="center">کلاس</td>
+                                <td class="center">نمره</td>
+                                <td class="center">تاریخ</td>
+                                <td class="center">عملیات</td>
                               </tr>
                               </thead>
                               <tbody id="markslist">
@@ -129,19 +129,19 @@
                                 $schoolMonth = $pdo->prepare($schoolMonthQuery);
                                 $schoolMonth->execute();
                                 $row = $schoolMonth->fetchAll();
+                                $i=1;
                                 foreach ($row as $row) {
                                   ?>
                                   <tr>
                                     <td class="text-dark"
+                                        style="text-align: right;"><?php echo $i; ?></td>
+                                    <td class="text-dark"
                                         style="text-align: right;"><?php echo $row['fname']; ?></td>
                                     <td class="text-dark"
                                         style="text-align: right;"><?php echo $row['lname']; ?></td>
-                                    <td class="text-dark"
-                                        style="text-align: right;"><?php echo $row['class']; ?></td>
-                                    <td class="text-dark"
-                                        style="text-align: right;"><?php echo $row['mark']; ?></td>
-                                    <td class="text-dark"
-                                        style="text-align: right;"><?php
+                                    <td class="text-dark center"><?php echo $row['class']; ?></td>
+                                    <td class="text-dark center"><?php echo $row['mark']; ?></td>
+                                    <td class="text-dark center"><?php
                                         $date = $row['tarikh'];
                                         $arr_parts = explode('-', $date);
                                         $gYear = $arr_parts[0];
@@ -150,7 +150,7 @@
                                         $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
                                         print $converted;
                                       ?></td>
-                                    <td style="text-align: right;">
+                                    <td class="center">
                                       <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>"
                                          class="btn btn-sm btn-warning">
                                         <i class="bx bx-edit-alt"></i>
@@ -161,7 +161,9 @@
                                       </a>
                                     </td>
                                   </tr>
-                                <?php } ?>
+                                <?php
+                                $i++;
+                                } ?>
                               </tbody>
                             </table>
                           </div>

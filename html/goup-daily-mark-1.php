@@ -96,7 +96,7 @@
                             style="font-size: 20px;color: black;margin: 0px 4px;padding: 4px 5px;"> <?php print($date); ?></strong>
                         </h5>
                         <form method="POST">
-                          <div id="avgmarkstable" class="mt-3">
+                          <div id="avgmarkstable" class="mt-3" dir="rtl">
                             <table class="table table-responsive-md m-auto">
                               <thead class="table-responsive">
                               <th id="radif">ردیف</th>
