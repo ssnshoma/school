@@ -43,7 +43,8 @@
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                       <div class="d-flex flex-column align-items-center w-75 m-auto">
-                        <form class="w-100">
+                        <form class="w-100" method="post" enctype="multipart/form-data"
+                              action="../assets/questions-oprator.php">
                           <div class="row flex-row">
                             <div class="form-group col-md-6 mb-2">
                               <label for="grade">پایه (عدد)</label>
@@ -64,28 +65,28 @@
                             </div>
                             <div class="form-group col-md-4 mb-2">
                               <label for="fasl">فصل</label>
-                              <input type="text" name="fasl" class="form-control" id="fasl"
+                              <input type="text" name="chapter" class="form-control" id="fasl"
                                      placeholder="نام فصل مربوطه را وارد کنید">
                             </div>
                             <div class="form-group col-md-4 mb-2">
                               <label for="dars">درس</label>
-                              <input type="text" name="dars" class="form-control" id="dars"
+                              <input type="text" name="section" class="form-control" id="dars"
                                      placeholder="نام درس را وارد کنید">
                             </div>
                           </div>
                           <div>
                             <div class="form-group mb-2 col-md-12">
                               <label for="dars">توضیحات</label>
-                              <textarea name="tozihat" class="form-control" id="dars"
+                              <textarea name="details" class="form-control" id="dars"
                                         placeholder="توضیحات ...."></textarea>
                             </div>
                             <div class="form-group mb-2 col-md-12">
                               <label for="file">فایل</label>
-                              <input type="file" class="form-control">
+                              <input type="file" name="file" class="form-control">
                             </div>
                           </div>
                           <div class="form-group w-25 m-auto mb-2 mt-4">
-                            <input type="submit" name="submit-btn"
+                            <input type="submit" name="submit-btn-question"
                                    class="form-control btn btn-primary" value="ثبت">
                           </div>
                         </form>

@@ -104,7 +104,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="mt-2">
                 <div class="card">
                   <div class="d-flex align-items-center row">
@@ -113,11 +112,11 @@
 
                         <div class="row">
                           <div class="col-lg-6 m-auto" id="avgmarkstable">
-                            <table class="table">
+                            <table class="table" dir="rtl">
                               <thead>
                               <tr>
                                 <td>نام</td>
-                                <td style="width: 90px;display: inline-block;" class="border-bottom-0">نام خانوادگی</td>
+                                <td style="width: 120px;display: inline-block;" class="border-bottom-0">نام خانوادگی</td>
                                 <td>کلاس</td>
                                 <td>نمره</td>
                                 <td>تاریخ</td>
@@ -125,7 +124,6 @@
                               </tr>
                               </thead>
                               <tbody id="markslist">
-
                               <?php
                                 $schoolMonthQuery = "SELECT * FROM `monmark` ORDER BY lname,tarikh,class";
                                 $schoolMonth = $pdo->prepare($schoolMonthQuery);
@@ -136,17 +134,12 @@
                                   <tr>
                                     <td class="text-dark"
                                         style="text-align: right;"><?php echo $row['fname']; ?></td>
-
                                     <td class="text-dark"
                                         style="text-align: right;"><?php echo $row['lname']; ?></td>
-
                                     <td class="text-dark"
                                         style="text-align: right;"><?php echo $row['class']; ?></td>
-
                                     <td class="text-dark"
                                         style="text-align: right;"><?php echo $row['mark']; ?></td>
-
-
                                     <td class="text-dark"
                                         style="text-align: right;"><?php
                                         $date = $row['tarikh'];
@@ -157,7 +150,6 @@
                                         $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
                                         print $converted;
                                       ?></td>
-
                                     <td style="text-align: right;">
                                       <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>"
                                          class="btn btn-sm btn-warning">
@@ -168,8 +160,6 @@
                                         <i class="bx bx-trash"></i>
                                       </a>
                                     </td>
-
-
                                   </tr>
                                 <?php } ?>
                               </tbody>
@@ -191,12 +181,8 @@
       </div>
       <!-- / Layout page -->
     </div>
-
-
     <script>
-
       function monthSelected(str) {
-
         if (str == "") {
         } else {
           var xmlhttp = new XMLHttpRequest();
@@ -209,11 +195,9 @@
           xmlhttp.send();
         }
       }
-
       function changeSelectOption(str) {
         if (str == "") {
           document.getElementById("sel-class").innerHTML = "";
-
         } else {
           var xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function () {
@@ -225,11 +209,9 @@
           xmlhttp.send();
         }
       }
-
       function cshowStudent(str) {
         if (str == "") {
           document.getElementById("students").innerHTML = "";
-
         } else {
           var xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function () {
@@ -241,7 +223,6 @@
           xmlhttp.send();
         }
       }
-
       function showmarks(str) {
         var codemeli = document.getElementById('students').value;
         if (str == "") {
@@ -258,7 +239,6 @@
           xmlhttp.send();
         }
       }
-
       function deleteRecord(str) {
         if (str == "") {
           return;
@@ -272,15 +252,8 @@
           xmlhttp.open("GET", "../assets/mark-search.php?deleteId=" + str);
           xmlhttp.send();
         }
-
       }
-
     </script>
-
-
-    <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
-  <!-- / Layout wrapper -->
-
 <?php include_once '../assets/footer.php'; ?>

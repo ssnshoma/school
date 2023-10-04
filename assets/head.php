@@ -26,12 +26,23 @@
   <script src="../assets/js/config.js"></script>
 
   <style>
+    .avgmarkstables{
+      width: 100%;
+      overflow-x: scroll;
+    }
+    .plr-0{
+      padding-left: 5px !important;
+      padding-right: 5px !important;
+    }
+    #avgmarkstable {
+      overflow-x: scroll;
+    }
     #startend {
       width: 100%;
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
-      padding-right: 25px;
+      padding-right: 20px;
       padding-bottom: 15px;
     }
 
@@ -81,6 +92,13 @@
       color: #697a8d;
       border: 1px solid #d9dee3;
       border-radius: 0.375rem;
+    }
+
+    @media (max-width: 991.9px) {
+      #tsakscontainer {
+        display: flex;
+        flex-direction: column-reverse;
+      }
     }
 
     @media (max-width: 1199.98px) {
@@ -159,7 +177,7 @@
 
     @media (max-width: 991px) {
       #tsakscontainer {
-        flex-direction: column-reverse;
+        /*flex-direction: column-reverse;*/
       }
 
       #startend {

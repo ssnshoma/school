@@ -5,31 +5,15 @@
   include_once '../assets/files/jdf.php';
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
-  $title = "گزارش حضور غیاب";
+  $title = "گزارش";
   $category = "حضور غیاب";
-?>
-<?php include_once '../assets/head.php'; ?>
-
-
+  include_once '../assets/head.php'; ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-
-
       <?php include_once '../assets/aside.php'; ?>
-      <!-- / Menu -->
-
-      <!-- Layout container -->
       <div class="layout-page">
-        <!-- Navbar -->
-
         <?php include_once '../assets/nav.php' ?>
-
-        <!-- / Navbar -->
-
-        <!-- Content wrapper -->
         <div class="content-wrapper">
-          <!-- Content -->
-
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
               <div class="col-lg-12 mb-4 order-0">
@@ -46,60 +30,68 @@
                               <td id="codemeli">کد ملی</td>
                               <td>نام</td>
                               <td>نام خانوادگی</td>
-                              <td>تاریخ</td>
-                              <td>وضعیت</td>
-                              <td>عملیات</td>
+                              <?php
+                                $qry = "SELECT DISTINCT atendence.date FROM `atendence` order by date";
+                                $run = $pdo->prepare($qry);
+                                $run->execute();
+                                $row = $run->fetchAll();
+                                foreach ($row as $row) { ?>
+                                  <td class="center plr-0" ><?php
+                                      $date = $row['date'];
+                                      echo miladiToShamsi($date);
+                                      ?>
+                                  </td>
+                                  <?php
+                                }
+                              ?>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
-                              $qry = "SELECT studentlist.fname,studentlist.lname,studentlist.codemeli,atendence.codemeli,atendence.atendence,atendence.date,atendence.id FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli ORDER BY date,lname";
+                              $qry = "SELECT distinct studentlist.fname,studentlist.lname,studentlist.codemeli,atendence.codemeli FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli ORDER BY date,lname";
                               $run = $pdo->prepare($qry);
                               $run->execute();
                               $row = $run->fetchAll();
                               $i = 1;
                               foreach ($row as $row) {
+                                $code = $row['codemeli'];
                                 ?>
                                 <tr>
                                   <td id="radif"><?php echo $i; ?></td>
                                   <td id="codemeli"><?php echo $row['codemeli']; ?></td>
                                   <td><?php echo $row['fname']; ?></td>
                                   <td><?php echo $row['lname']; ?></td>
-                                  <td dir="ltr"><?php
-                                      $date = $row['date'];
-                                      echo miladiToShamsi($date);
-                                    ?></td>
-                                  <td>
-                                    <?php
-                                      $ststus = $row['atendence'];
-                                      if ($ststus == "ok") {
-                                        ?>
-                                        <span class="btn-sm btn-info">
-                                          <i class="checked"></i>
-                                        </span>
+                                  <?php
+                                    $FindQry = "SELECT atendence FROM `atendence` where codemeli='$code' order by date";
+                                    $resualt = $pdo->prepare($FindQry);
+                                    $resualt->execute();
+                                    $roww = $resualt->fetchAll();
+                                    foreach ($roww as $roww) {
+                                      ?>
+                                      <td class="center">
                                         <?php
-                                      } else {
-                                        ?>
-                                        <span class="btn-sm btn-secondary">
+                                          $ststus = $roww['atendence'];
+                                          if ($ststus == "ok") {
+                                            ?>
+                                            <span class="btn-sm p-0 btn-success">
                                           <i class="bx bx-check"></i>
                                         </span>
-                                        <?php
-                                      }
-                                    ?></td>
-                                  <td>
-
-                                    <a id="edit-btn" href="../assets/edit-atendence.php?editid=<?php echo $row['id']; ?>"
-                                       class="text-gray">
-                                      <i class="bx bx-edit-alt"></i>
-                                    </a>
-                                    <a id="edit-btn" href="" class="text-gray">
-                                      <i class="bx bx-trash"></i>
-                                    </a>
-
-                                  </td>
+                                            <?php
+                                          } else {
+                                            ?>
+                                            <span class="btn-sm p-0 btn-warning">
+                                          <i class="bx bx-x"></i>
+                                        </span>
+                                            <?php
+                                          }
+                                        ?></td>
+                                      <?php
+                                    }
+                                  ?>
                                 </tr>
                                 <?php $i++;
-                              } ?>
+                              }
+                            ?>
                             </tbody>
                           </table>
                         </div>

@@ -62,7 +62,7 @@
     <li class="menu-item">
       <a href="../html/dashboard.php" class="menu-link" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">داشبورد</div>
+        <div data-i18n="Analytics">صفحه اصلی</div>
       </a>
     </li>
 

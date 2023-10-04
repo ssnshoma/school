@@ -4,7 +4,7 @@
   include_once '../assets/first-login.php';
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
-  $title = "داشبورد";
+  $title = "صفحه اصلی";
   $category = "داشبورد";
 
 
@@ -39,9 +39,28 @@
                 <div class="card-body">
                   <div id="startend" class="border-bottom text-primary">
                     <div>یادداشت ها</div>
+                    <div>
+                      <a href="../assets/task_note.php" class="btn btn-sm btn-primary">+</a>
+                    </div>
                   </div>
-                  <div>ik</div>
-                  <div>ik</div>
+                  <div id="avgmarkstable">
+                    <table class="table" dir="rtl">
+                      <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>یادداشت</th>
+                        <th>عملیات</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>سلام و درود خدا بر تو کونی عالم</td>
+                        <td>+-+</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -55,15 +74,15 @@
                     <table class="table align-right" dir="rtl">
                       <thead>
                       <tr>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">مهر</th>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">آبان</th>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">آذر</th>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">دی</th>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">بهمن</th>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">اسفند</th>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">فروردین</th>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">اردیبهشت</th>
-                        <th style="padding-left: 0;padding-right: 0;width: 90px;text-align: center">خرداد</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">مهر</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">آبان</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">آذر</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">دی</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">بهمن</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">اسفند</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">فروردین</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">اردیبهشت</th>
+                        <th style="padding-left: 4px;padding-right: 4px;width: 90px;text-align: center">خرداد</th>
                       </tr>
                       </thead>
                       <tbody id="tbody">
@@ -103,11 +122,11 @@
             </div>
           </div>
           <div class="row" id="tsakscontainer">
-            <div class="col-md-6 col-lg-4 order-1 mb-4">
+            <div class="col-lg-4 mb-4">
               <div class="card h-100">
                 <div class="card-body">
                   <div id="avgmarkstable">
-                    <table class="table align-right" dir="rtl">
+                    <table class="table" dir="rtl">
                       <tbody>
                       <tr>
                         <td style="padding-right: 0">تعداد کل دانش آموزان</td>
@@ -145,7 +164,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-lg-8 order-2 mb-4">
+            <div class="col-lg-8 mb-4">
               <div class="card h-100">
                 <div class="card-body">
                   <div id="startend" class="border-bottom text-primary">
