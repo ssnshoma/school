@@ -36,3 +36,4 @@
     $_SESSION["inserted"]="ثبت شد";
     header('Location: ../html/add-question.php');
   }
+

@@ -75,6 +75,16 @@
                 <div class="card h-100" style="direction: rtl;">
                   <div class="card-header d-flex align-items-center justify-content-between pb-0">
                     <div class="card-title mb-0">
+                      <?php
+                        if (isset($_SESSION["inserted"])) {
+                          ?>
+                          <div class="alert alert-success w-25 center m-auto">
+                            <?php print $_SESSION["inserted"]; ?>
+                          </div>
+                          <?php
+                        }
+                        unset($_SESSION["inserted"]);
+                      ?>
                       <h3 style="direction: rtl" class="m-0 me-2"> ثبت امتحان </h3>
                       <h6 class="my-4">لطفا برای ثبت سوال اطلاعات لازم را تکمیل کرده و سپس فایل Word
                         یا PDF و یا Jpg را وارد کنید.</h6>

@@ -87,11 +87,11 @@
                                     </a>
                                   </td>
                                   <td class="center">
-                                    <a href="../assets/questions-oprator.php?editid=<?php echo $id; ?>"
+                                    <a href="../assets/questions-editor.php?editid=<?php echo $id; ?>"
                                        class="btn btn-sm p-0">
                                       <i class="bx bx-edit-alt"></i>
                                     </a>
-                                    <a href="../assets/questions-oprator.php?deleteid=<?php echo $id; ?>"
+                                    <a href="../assets/questions-editor.php?deleteid=<?php echo $id; ?>"
                                        class="btn btn-sm p-0">
                                       <i class="bx bx-trash"></i>
                                     </a>
