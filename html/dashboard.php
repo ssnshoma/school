@@ -55,7 +55,7 @@
                       <tbody>
                       <tr>
                         <td>1</td>
-                        <td>سلام و درود خدا بر تو کونی عالم</td>
+                        <td>سلام و درود خدا بر تو</td>
                         <td>+-+</td>
                       </tr>
                       </tbody>
@@ -186,7 +186,8 @@
                       </thead>
                       <tbody>
                       <?php
-                        $taskQry = "SELECT * FROM task WHERE `ststus`='not-done' order by date";
+                        $beforeyesterday = date('Y-m-d', strtotime('-2 days'));
+                        $taskQry = "SELECT * FROM task WHERE `date`>='$beforeyesterday' order by date";
                         $taskRun = $pdo->prepare($taskQry);
                         $taskRun->execute();
                         $row = $taskRun->fetchAll();
@@ -194,7 +195,7 @@
                           ?>
                           <tr>
                             <td
-                              style="text-align: center;padding-left: 0;padding-right: 0;"><?php print miladiToShamsi($task['date']); ?></td>
+                              style="text-align: center;padding-left: 0;padding-right: 0;"><?php print findDay($task['date']); ?></td>
                             <td id="content" style="text-align: center;"><?php print $task['activity']; ?></td>
                             <td style="text-align: center;padding-left: 0;padding-right: 0;">
                               <?php

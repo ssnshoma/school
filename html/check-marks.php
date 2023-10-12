@@ -125,7 +125,7 @@
                               </thead>
                               <tbody id="markslist">
                               <?php
-                                $schoolMonthQuery = "SELECT * FROM `monmark` ORDER BY lname,tarikh,class";
+                                $schoolMonthQuery = "SELECT * FROM `monmark` ORDER BY tarikh,lname,class";
                                 $schoolMonth = $pdo->prepare($schoolMonthQuery);
                                 $schoolMonth->execute();
                                 $row = $schoolMonth->fetchAll();

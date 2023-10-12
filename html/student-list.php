@@ -106,7 +106,7 @@
                           <tbody id="tbody">
 
                           <?php
-
+                            mysqli_query($conn,"set names 'utf8'");
                             $sqll = "SELECT * FROM `studentlist` order by lname";
                             $result3 = mysqli_query($conn, $sqll);
                             if ($result3) {

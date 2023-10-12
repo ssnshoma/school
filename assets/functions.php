@@ -42,14 +42,36 @@
   function getClassName()
   {
     global $pdo;
-    $classes=array();
+    $classes = array();
     $sql = "SELECT * FROM `classes`";
     $resualt = $pdo->prepare($sql);
     $resualt->execute();
     $rows = $resualt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
-      $name=$row['name'];
-      array_push($classes,$name);
+      $name = $row['name'];
+      array_push($classes, $name);
     }
     return $classes;
+  }
+
+  function findDay($date)
+  {
+    $today = date("Y-m-d");
+    $nextday = date('Y-m-d', strtotime('+1 days'));
+    $yesterday = date('Y-m-d', strtotime('-1 days'));
+    $beforeyesterday = date('Y-m-d', strtotime('-2 days'));
+    $nexttommorow = date('Y-m-d', strtotime('+2 days'));
+    if ($date == $yesterday) {
+      return "دیروز";
+    } else if ($date == $nextday) {
+      return "فردا";
+    } else if ($date == $today) {
+      return "امروز";
+    } else if ($date == $beforeyesterday) {
+      return "پریروز";
+    } else if ($date == $nexttommorow) {
+      return "پس فردا";
+    } else {
+      return miladiToShamsi($date);
+    }
   }

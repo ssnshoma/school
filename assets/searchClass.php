@@ -12,7 +12,7 @@
     echo '<option dir="rtl" selected disabled>کلاس را انتخاب کنید</option>';
     foreach ($row as $row) {
       ?>
-     <option dir="rtl" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+      <option dir="rtl" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
       <?php
     }
   }
@@ -34,31 +34,31 @@
     $resualt = $pdo->prepare($sql);
     $resualt->execute();
     $row = $resualt->fetchAll();
+    $i = 1;
     foreach ($row as $row) {
       ?>
-     <tr>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fathername']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['major']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['grade']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem">
-       <a href="../assets/opration.php?editid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-warning">
-        <i class="bx bx-edit-alt"></i>
-       </a>
-       <a href="../assets/opration.php?deleteid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-danger">
-        <i class="bx bx-trash me-1"></i>
-       </a>
-      </td>
-     </tr>
-
-
+      <tr>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $i; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fathername']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['major']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['grade']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem">
+          <a href="../assets/opration.php?editid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-warning">
+            <i class="bx bx-edit-alt"></i>
+          </a>
+          <a href="../assets/opration.php?deleteid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-danger">
+            <i class="bx bx-trash me-1"></i>
+          </a>
+        </td>
+      </tr>
       <?php
+      $i++;
     }
-
   }
 
 
@@ -68,35 +68,38 @@
     $resualt = $pdo->prepare($sql);
     $resualt->execute();
     $row = $resualt->fetchAll();
+      $i = 1;
     foreach ($row as $row) {
       ?>
-     <tr>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"
-          style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"
-          style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"
-          style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"
-          style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fathername']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"
-          style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"
-          style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"
-          style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['major']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"
-          style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['grade']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem">
-       <a href="../assets/opration.php?editid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-warning">
-        <i class="bx bx-edit-alt"></i>
-       </a>
-       <a href="../assets/opration.php?deleteid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-danger">
-        <i class="bx bx-trash me-1"></i>
-       </a>
-      </td>
-     </tr>
+      <tr>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $i; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"
+            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"
+            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"
+            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"
+            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fathername']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"
+            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"
+            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"
+            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['major']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"
+            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['grade']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem">
+          <a href="../assets/opration.php?editid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-warning">
+            <i class="bx bx-edit-alt"></i>
+          </a>
+          <a href="../assets/opration.php?deleteid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-danger">
+            <i class="bx bx-trash me-1"></i>
+          </a>
+        </td>
+      </tr>
       <?php
+      $i++;
     }
   }
   if (isset($_GET['MarkSchool'])) {
@@ -107,23 +110,23 @@
     $row = $resualt->fetchAll();
     foreach ($row as $row) {
       ?>
-     <tr>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['mehr']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['aban']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['azar']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['dey']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['bahman']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['esfand']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['farvardin']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['ordibehesht']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['khordad']; ?></td>
-     </tr>
+      <tr>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['mehr']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['aban']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['azar']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['dey']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['bahman']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['esfand']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['farvardin']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['ordibehesht']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['khordad']; ?></td>
+      </tr>
       <?php
     }
   }
@@ -136,23 +139,23 @@
     $row = $resualt->fetchAll();
     foreach ($row as $row) {
       ?>
-     <tr>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['mehr']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['aban']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['azar']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['dey']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['bahman']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['esfand']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['farvardin']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['ordibehesht']; ?></td>
-      <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['khordad']; ?></td>
-     </tr>
+      <tr>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['mehr']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['aban']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['azar']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['dey']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['bahman']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['esfand']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['farvardin']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['ordibehesht']; ?></td>
+        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['khordad']; ?></td>
+      </tr>
       <?php
     }
   }
@@ -167,7 +170,7 @@
     echo '<option selected disabled>دانش آموز را انتخاب کنید</option>';
     foreach ($row as $row) {
       ?>
-     <option value="<?php echo $row['codemeli'] ?>"><?php echo $row['fname'] . " " . $row['lname'] ?></option>
+      <option value="<?php echo $row['codemeli'] ?>"><?php echo $row['fname'] . " " . $row['lname'] ?></option>
       <?php
     }
   }
@@ -181,31 +184,31 @@
     $row = $resualt->fetchAll();
     foreach ($row as $row) {
       ?>
-     <tr>
-      <td style="text-align: right;padding: 0.5rem 1.1rem">
-       <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
-        <i class="bx bx-edit-alt"></i>
-       </a>
-       <a href="check-marks.php?deleteid=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger">
-        <i class="bx bx-trash"></i>
-       </a>
-      </td>
-      <td class="text-dark"
-          style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['mark']; ?></td>
-      <td class="text-dark" style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php
-          $date = $row['tarikh'];
-          $arr_parts = explode('-', $date);
-          $gYear = $arr_parts[0];
-          $gMonth = $arr_parts[1];
-          $gDay = $arr_parts[2];
-          $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, ' / ');
-          print $converted;
-        ?></td>
-      <td class="text-dark"
-          style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['lname']; ?></td>
-      <td class="text-dark"
-          style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['fname']; ?></td>
-     </tr>
+      <tr>
+        <td style="text-align: right;padding: 0.5rem 1.1rem">
+          <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
+            <i class="bx bx-edit-alt"></i>
+          </a>
+          <a href="check-marks.php?deleteid=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger">
+            <i class="bx bx-trash"></i>
+          </a>
+        </td>
+        <td class="text-dark"
+            style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['mark']; ?></td>
+        <td class="text-dark" style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php
+            $date = $row['tarikh'];
+            $arr_parts = explode('-', $date);
+            $gYear = $arr_parts[0];
+            $gMonth = $arr_parts[1];
+            $gDay = $arr_parts[2];
+            $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, ' / ');
+            print $converted;
+          ?></td>
+        <td class="text-dark"
+            style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['lname']; ?></td>
+        <td class="text-dark"
+            style="text-align: right;padding: 0.5rem 1.1rem;font-weight: bold;font-size: 16px"><?php echo $row['fname']; ?></td>
+      </tr>
       <?php
     }
   }

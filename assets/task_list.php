@@ -55,7 +55,7 @@
                             ?>
                             <tr>
                               <td
-                                style="text-align: center;padding-left: 0;padding-right: 0;"><?php print miladiToShamsi($date); ?></td>
+                                style="text-align: center;padding-left: 0;padding-right: 0;"><?php print findDay($date); ?></td>
                               <td style="text-align: center"><?php print $task['activity']; ?></td>
                               <td style="text-align: center;padding-left: 0;padding-right: 0;">
                                 <?php

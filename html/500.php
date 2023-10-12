@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html
   lang="en"
   class="light-style"
@@ -15,7 +14,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>صفحه یافت نشد</title>
+    <title>500</title>
 
     <meta name="description" content="" />
 
@@ -58,8 +57,8 @@
     <!-- Error -->
     <div class="container-xxl container-p-y">
       <div class="misc-wrapper">
-        <h2 class="mb-2 mx-2">صفحه یافت نشد :(</h2>
-        <p class="mb-4 mx-2">اوپس 😖 صفحه درخواستی وجود ندارد</p>
+        <h2 class="mb-2 mx-2">مشکل داخلی سرور :(</h2>
+        <p class="mb-4 mx-2">اوپس 😖 مثه اینکه سرور مشکل داره</p>
         <a href="http://localhost/main/" class="btn btn-primary">برگشت به صفحه اصلی</a>
         <div class="mt-3">
           <img
