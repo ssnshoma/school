@@ -4,7 +4,7 @@
   include_once '../assets/first-login.php';
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
-  $title = "ثبت مدرسه جدید";
+  $title = "لیست مدارس";
   $category = "مدرسه";
 ?>
 <?php include_once '../assets/head.php'; ?>
@@ -66,7 +66,7 @@
              } ?>
             <p class="mb-4 d-inline-block"> لیست مدارس ثبت شده </p>
             <div id="avgmarkstable">
-             <table class="table">
+             <table class="table" dir="rtl">
               <thead>
               <tr>
                <th>نام</th>

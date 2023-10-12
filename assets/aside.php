@@ -189,7 +189,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/present-absent-report.php" class="menu-link" tabindex="-1">
+          <a href="../assets/pr-ab.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">گزارش حضور و غیاب</div>
           </a>
         </li>

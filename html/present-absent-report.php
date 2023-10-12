@@ -5,9 +5,10 @@
   include_once '../assets/files/jdf.php';
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
-  $title = "گزارش";
+  $title = "گزارش کلاسی";
   $category = "حضور غیاب";
-  include_once '../assets/head.php'; ?>
+  $classname=$_GET['class'];
+    include_once '../assets/head.php'; ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <?php include_once '../assets/aside.php'; ?>
@@ -21,9 +22,11 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-12">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">گزارش حضور و غیاب</h5>
-                        <div id="avgmarkstable" class="text-nowrap">
-                          <table class="table" dir="rtl">
+                        <h5 class="text-info card-title text-primary">لیست حضور غیاب کلاس
+                          <strong style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"><?php echo $classname; ?></strong>
+                         </h5>
+                        <div  dir="rtl" id="avgmarkstable" class="text-nowrap">
+                          <table class="table">
                             <thead>
                             <tr>
                               <td id="radif">ردیف</td>
@@ -31,7 +34,7 @@
                               <td>نام</td>
                               <td class="th-lg">نام خانوادگی</td>
                               <?php
-                                $qry = "SELECT DISTINCT atendence.date FROM `atendence` order by date";
+                                $qry = "SELECT DISTINCT atendence.date,atendence.codemeli,studentlist.codemeli,studentlist.class FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli where studentlist.class='$classname' group by `date` ";
                                 $run = $pdo->prepare($qry);
                                 $run->execute();
                                 $row = $run->fetchAll();
@@ -48,7 +51,7 @@
                             </thead>
                             <tbody>
                             <?php
-                              $qry = "SELECT distinct studentlist.fname,studentlist.lname,studentlist.codemeli,atendence.codemeli FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli ORDER BY date,lname";
+                              $qry = "SELECT studentlist.fname,atendence.id,studentlist.class,studentlist.lname,studentlist.codemeli,atendence.codemeli FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli WHERE studentlist.class='$classname' GROUP BY studentlist.codemeli ORDER BY date,lname";
                               $run = $pdo->prepare($qry);
                               $run->execute();
                               $row = $run->fetchAll();
@@ -72,16 +75,18 @@
                                         <?php
                                           $ststus = $roww['atendence'];
                                           if ($ststus == "ok") {
-                                            ?>
+                                            ?><a href="../assets/pr-ab-edit.php?id=<?php print $row['id'];?>">
                                             <span class="btn-sm p-0 btn-success">
                                           <i class="bx bx-check"></i>
-                                        </span>
+                                        </span></a>
                                             <?php
                                           } else {
                                             ?>
+                                          <a href="../assets/pr-ab-edit.php?id=<?php print $row['id'];?>">
                                             <span class="btn-sm p-0 btn-warning">
                                           <i class="bx bx-x"></i>
                                         </span>
+                                          </a>
                                             <?php
                                           }
                                         ?></td>
