@@ -118,6 +118,7 @@
                               <select type="text" name="section" class="form-control" id="dars"
                                       placeholder="نام درس را وارد کنید">
                                 <option selected disabled>درس را انتخاب کنید</option>
+                                <option value="کل فصل ها ها">کل فصل ها</option>
                                 <option value="درس 1">درس 1</option>
                                 <option value="درس 2">درس 2</option>
                                 <option value="درس 3">درس 3</option>
@@ -159,6 +160,12 @@
     function SelectChapter(str) {
       if (str == "ریاضی و آمار 1") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -173,6 +180,12 @@
           '</option>';
       } else if (str == "ریاضی و آمار 2") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -184,6 +197,12 @@
           '</option>';
       } else if (str == "ریاضی و آمار 3") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -195,6 +214,12 @@
           '</option>';
       } else if (str == "ریاضی 1") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -218,6 +243,12 @@
           '</option>';
       } else if (str == "ریاضی 2") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -241,6 +272,12 @@
           '</option>';
       } else if (str == "ریاضی 3") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -264,6 +301,12 @@
           '</option>';
       } else if (str == "هندسه 1") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -278,6 +321,12 @@
           '</option>';
       } else if (str == "آمار احتمال") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -292,6 +341,12 @@
           '</option>';
       } else if (str == "هندسه 2") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -306,6 +361,12 @@
           '</option>';
       } else if (str == "حسابان 1") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -323,6 +384,12 @@
           '</option>';
       } else if (str == "حسابان 2") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -340,6 +407,12 @@
           '</option>';
       } else if (str == "گسسته") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
@@ -354,6 +427,12 @@
           '</option>';
       } else if (str == "هندسه 3") {
         document.getElementById('fasl').innerHTML = '' +
+          '<option selected disabled>' +
+          'انتخاب کنید' +
+          '</option>' +
+          '<option value="کل کتاب">' +
+          'کل کتاب' +
+          '</option>' +
           '<option value="فصل 1">' +
           'فصل 1' +
           '</option>' +
