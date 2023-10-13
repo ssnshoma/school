@@ -4,7 +4,7 @@
   include_once '../assets/first-login.php';
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
-  $title = "نمرات ماهانه";
+  $title = "نمرات سالانه";
   $category = "نمره";
   if (isset($_GET['deleteid'])) {
     $deleteid = $_GET['deleteid'];
@@ -32,23 +32,7 @@
                           <div>
                             <h4 class="card-title text-primary">دریافت نمرات ماهانه دانش آموز</h4>
                           </div>
-                          <div class="col-md-3">
-                            <label for="sel-class" class="pb-1">ماه</label>
-                            <select name="sel-class" class="form-select mb-1" onchange="monthSelected(this.value)"
-                                    id="monthCode" tabindex="4" style="padding-right: 40px">
-                              <option selected class="pe-5" disabled> ماه را انتخاب کنید</option>
-                              <option class="pe-5" value="7">مهر</option>
-                              <option class="pe-5" value="8">آبان</option>
-                              <option class="pe-5" value="9">آذر</option>
-                              <option class="pe-5" value="10">دی</option>
-                              <option class="pe-5" value="11">بهمن</option>
-                              <option class="pe-5" value="12">اسفند</option>
-                              <option class="pe-5" value="1">فروردین</option>
-                              <option class="pe-5" value="2">اردیبهشت</option>
-                              <option class="pe-5" value="3">خرداد</option>
-                            </select>
-                          </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                             <label for="selschool" class="pb-1">مدرسه</label>
                             <select name="selschool" onchange="changeSelectOption(this.value)"
                                     class="form-select mb-1"
@@ -67,14 +51,14 @@
 
                             </select>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                             <label for="sel-class" class="pb-1">کلاس</label>
                             <select name="sel-class" class="form-select mb-1" onchange="cshowStudent(this.value)"
                                     id="sel-class" tabindex="2" style="padding-right: 40px">
                               <option selected class="pe-5" disabled> کلاس را انتخاب کنید</option>
                             </select>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                             <label for="sel-class" class="pb-1">دانش آموز</label>
                             <select name="sel-class" class="form-select mb-1" onchange="showmarks(this.value)"
                                     id="students" tabindex="3" style="padding-right: 40px">
@@ -164,22 +148,8 @@
       <!-- / Layout page -->
     </div>
     <script>
-      function monthSelected(str) {
-        if (str == "") {
-        } else {
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("markslist").innerHTML = this.responseText;
-            }
-          };
-          xmlhttp.open("GET", "../assets/mark-search.php?monthcode=" + str);
-          xmlhttp.send();
-        }
-      }
 
       function showSchoolMarks(str) {
-        var month = document.getElementById('monthCode').value;
         if (str == "") {
           document.getElementById("markslist").innerHTML = "";
         } else {
@@ -189,7 +159,7 @@
               document.getElementById("markslist").innerHTML = this.responseText;
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?selectedschool=" + str + "&month=" + month + "&code=10");
+          xmlhttp.open("GET", "../assets/mark-search-all.php?selectedschool=" + str);
           xmlhttp.send();
         }
       }
@@ -205,15 +175,13 @@
               document.getElementById("sel-class").innerHTML = this.responseText;
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?selectedschool=" + str + "&schoolCode=10");
+          xmlhttp.open("GET", "../assets/mark-search-all.php?selectedschool=" + str + "&schoolCode=10");
           xmlhttp.send();
         }
       }
 
 
       function showClassMarks(str) {
-        var month = document.getElementById('monthCode').value;
-        var school = document.getElementById('selschool').value;
         if (str == "") {
           document.getElementById("markslist").innerHTML = "";
         } else {
@@ -221,9 +189,11 @@
           xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
               document.getElementById("markslist").innerHTML = this.responseText;
+              console.log(this.responseText);
+
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?selectedclass=" + str + "&month=" + month);
+          xmlhttp.open("GET", "../assets/mark-search-all.php?selectedclass=" + str);
           xmlhttp.send();
         }
       }
@@ -239,13 +209,12 @@
               document.getElementById("students").innerHTML = this.responseText;
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?className=" + str);
+          xmlhttp.open("GET", "../assets/mark-search-all.php?className=" + str);
           xmlhttp.send();
         }
       }
 
       function showmarks(str) {
-        var month = document.getElementById('monthCode').value;
         if (str == "") {
           document.getElementById("markslist").innerHTML = "";
         } else {
@@ -256,7 +225,7 @@
               document.getElementById("markslist").innerHTML = this.responseText;
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?montCode=" + month + "&codemeli=" + str);
+          xmlhttp.open("GET", "../assets/mark-search-all.php?codemeli=" + str);
           xmlhttp.send();
         }
       }
@@ -270,7 +239,7 @@
             if (this.readyState == 4 && this.status == 200) {
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?deleteId=" + str);
+          xmlhttp.open("GET", "../assets/mark-search-all.php?deleteId=" + str);
           xmlhttp.send();
         }
       }

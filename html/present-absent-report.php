@@ -7,8 +7,8 @@
   $profileDetails = getProfilePicName();
   $title = "گزارش کلاسی";
   $category = "حضور غیاب";
-  $classname=$_GET['class'];
-    include_once '../assets/head.php'; ?>
+  $classname = $_GET['class'];
+  include_once '../assets/head.php'; ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <?php include_once '../assets/aside.php'; ?>
@@ -23,26 +23,28 @@
                     <div class="col-sm-12">
                       <div class="card-body">
                         <h5 class="text-info card-title text-primary">لیست حضور غیاب کلاس
-                          <strong style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"><?php echo $classname; ?></strong>
-                         </h5>
-                        <div  dir="rtl" id="avgmarkstable" class="text-nowrap">
+                          <strong
+                            style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"><?php echo $classname; ?></strong>
+                        </h5>
+                        <div dir="rtl" id="avgmarkstable" class="text-nowrap">
                           <table class="table">
                             <thead>
                             <tr>
-                              <td id="radif">ردیف</td>
-                              <td id="codemeli">کد ملی</td>
-                              <td>نام</td>
-                              <td class="th-lg">نام خانوادگی</td>
+                              <td class="pe-0 center" id="radif">ردیف</td>
+                              <td class="pe-0 center" id="codemeli">کد ملی</td>
+                              <td class="pe-0 center">نام</td>
+                              <td class="pe-0 center th-lg">نام خانوادگی</td>
                               <?php
                                 $qry = "SELECT DISTINCT atendence.date,atendence.codemeli,studentlist.codemeli,studentlist.class FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli where studentlist.class='$classname' group by `date` ";
                                 $run = $pdo->prepare($qry);
                                 $run->execute();
                                 $row = $run->fetchAll();
                                 foreach ($row as $row) { ?>
-                                  <td class="center plr-0" ><?php
+                                  <td class="center plr-0"><?php
                                       $date = $row['date'];
-                                      echo miladiToShamsi($date);
-                                      ?>
+                                    ?>
+                                    <a class="text-secondary"
+                                       href="../assets/pr-ab-edit.php?DateId=<?php echo $date ?>&class=<?php echo $classname ?>"><?php echo miladiToShamsi($date) ?></a>
                                   </td>
                                   <?php
                                 }
@@ -60,10 +62,10 @@
                                 $code = $row['codemeli'];
                                 ?>
                                 <tr>
-                                  <td id="radif"><?php echo $i; ?></td>
-                                  <td id="codemeli"><?php echo $row['codemeli']; ?></td>
-                                  <td><?php echo $row['fname']; ?></td>
-                                  <td class="col-5"><?php echo $row['lname']; ?></td>
+                                  <td class="pe-0 center" id="radif"><?php echo $i; ?></td>
+                                  <td class="pe-0 center" id="codemeli"><?php echo $row['codemeli']; ?></td>
+                                  <td class="pe-0 center"><?php echo $row['fname']; ?></td>
+                                  <td class="pe-0 center"><?php echo $row['lname']; ?></td>
                                   <?php
                                     $FindQry = "SELECT atendence FROM `atendence` where codemeli='$code' order by date";
                                     $resualt = $pdo->prepare($FindQry);
@@ -75,18 +77,18 @@
                                         <?php
                                           $ststus = $roww['atendence'];
                                           if ($ststus == "ok") {
-                                            ?><a href="../assets/pr-ab-edit.php?id=<?php print $row['id'];?>">
-                                            <span class="btn-sm p-0 btn-success">
+                                            ?><a href="../assets/pr-ab-edit.php?id=<?php print $row['id']; ?>">
+                                              <span class="btn-sm p-0 btn-success">
                                           <i class="bx bx-check"></i>
                                         </span></a>
                                             <?php
                                           } else {
                                             ?>
-                                          <a href="../assets/pr-ab-edit.php?id=<?php print $row['id'];?>">
+                                            <a href="../assets/pr-ab-edit.php?id=<?php print $row['id']; ?>">
                                             <span class="btn-sm p-0 btn-warning">
                                           <i class="bx bx-x"></i>
                                         </span>
-                                          </a>
+                                            </a>
                                             <?php
                                           }
                                         ?></td>

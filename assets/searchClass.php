@@ -38,16 +38,16 @@
     foreach ($row as $row) {
       ?>
       <tr>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $i; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fathername']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['major']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['grade']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem">
+        <td class="center pe-0"><?php echo $i; ?></td>
+        <td class="center pe-0"><?php echo $row['codemeli']; ?></td>
+        <td class="center pe-0"><?php echo $row['fname']; ?></td>
+        <td class="center pe-0"><?php echo $row['lname']; ?></td>
+        <td class="center pe-0"><?php echo $row['fathername']; ?></td>
+        <td class="center pe-0"><?php echo $row['school']; ?></td>
+        <td class="center pe-0"><?php echo $row['class']; ?></td>
+        <td class="center pe-0"><?php echo $row['major']; ?></td>
+        <td class="center pe-0"><?php echo $row['grade']; ?></td>
+        <td class="center pe-0">
           <a href="../assets/opration.php?editid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
           </a>
@@ -68,28 +68,20 @@
     $resualt = $pdo->prepare($sql);
     $resualt->execute();
     $row = $resualt->fetchAll();
-      $i = 1;
+    $i = 1;
     foreach ($row as $row) {
       ?>
       <tr>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $i; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"
-            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['codemeli']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"
-            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fname']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"
-            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['lname']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"
-            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['fathername']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"
-            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['school']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"
-            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['class']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"
-            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['major']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem"
-            style="text-align: right;padding: 0.5rem 1.1rem"><?php echo $row['grade']; ?></td>
-        <td style="text-align: right;padding: 0.5rem 1.1rem">
+        <td class="center pe-0" ><?php echo $i; ?></td>
+        <td class="center pe-0"><?php echo $row['codemeli']; ?></td>
+        <td class="center pe-0"><?php echo $row['fname']; ?></td>
+        <td class="center pe-0"><?php echo $row['lname']; ?></td>
+        <td class="center pe-0"><?php echo $row['fathername']; ?></td>
+        <td class="center pe-0"><?php echo $row['school']; ?></td>
+        <td class="center pe-0"><?php echo $row['class']; ?></td>
+        <td class="center pe-0"><?php echo $row['major']; ?></td>
+        <td class="center pe-0"><?php echo $row['grade']; ?></td>
+        <td class="center pe-0">
           <a href="../assets/opration.php?editid=<?php echo $row['codemeli']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
           </a>

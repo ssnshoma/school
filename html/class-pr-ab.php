@@ -7,18 +7,6 @@
   $profileDetails = getProfilePicName();
   $title = "ثبت کلاسی";
   $category = "حضور/غیاب";
-
-  function convertPersianToEnglish($string)
-  {
-    $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    $english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    $output = str_replace($persian, $english, $string);
-    return $output;
-  }
-
-?>
-<?php include_once '../assets/head.php'; ?>
-<?php
   $conn = mysqli_connect("localhost", "mansoori_hossein", "8v6lZR0S@d3x*Z", "");
   $s = mysqli_select_db($conn, 'mansoori_1402s1403');
   $date = $_GET['data'];
@@ -28,7 +16,6 @@
   $jMonth = $arr_parts[1];
   $jDay = $arr_parts[2];
   $converted = jalali_to_gregorian($jYear, $jMonth, $jDay, '/');
-
   if (isset($_POST['save_multiple_data'])) {
     $codemeli = $_POST['code'];
     $fname = $_POST['fname'];
@@ -47,27 +34,22 @@
       header("location:class-present-absent.php");
     }
   }
-?>
+  function convertPersianToEnglish($string)
+  {
+    $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    $english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    $output = str_replace($persian, $english, $string);
+    return $output;
+  }
 
+  include_once '../assets/head.php';
+?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-
-
       <?php include_once '../assets/aside.php'; ?>
-      <!-- / Menu -->
-
-      <!-- Layout container -->
       <div class="layout-page">
-        <!-- Navbar -->
-
         <?php include_once '../assets/nav.php' ?>
-
-        <!-- / Navbar -->
-
-        <!-- Content wrapper -->
         <div class="content-wrapper">
-          <!-- Content -->
-
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
               <div class="col-lg-12 mb-4 order-0">
@@ -125,6 +107,9 @@
                                   <td class="form-group mb-2">
                                     <div><label for="fname[]" class="lable">حاضر</label>
                                       <input type="checkbox" name="fname[]" value="ok" checked tabindex="1">
+                                      <br>
+                                      <label for="fname[]" class="lable">غایب</label>
+                                      <input type="checkbox" name="fname[]" value="not" tabindex="1">
                                     </div>
                                   </td>
 
@@ -149,13 +134,7 @@
         </div>
         <div class="content-backdrop fade"></div>
       </div>
-      <!-- Content wrapper -->
     </div>
-    <!-- / Layout page -->
   </div>
-
-  <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
-  <!-- / Layout wrapper -->
-
 <?php include_once '../assets/footer.php'; ?>

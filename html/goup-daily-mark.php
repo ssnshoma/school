@@ -8,8 +8,7 @@
   $title = "ثبت کلاسی";
   $category = "نمره";
 ?>
-<?php include_once '../assets/head.php'; ?>
-<?php
+<?php include_once '../assets/head.php';
   if (isset($_POST['send'])) {
     $task_group = $_POST['taskgroup'];
     $task = $_POST['task'];
@@ -27,35 +26,22 @@
 
   <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
-
-
     <?php include_once '../assets/aside.php'; ?>
-    <!-- / Menu -->
-
-    <!-- Layout container -->
     <div class="layout-page">
-      <!-- Navbar -->
-
       <?php include_once '../assets/nav.php' ?>
-
-      <!-- / Navbar -->
-
-      <!-- Content wrapper -->
       <div class="content-wrapper">
-        <!-- Content -->
-
         <div class="container-xxl flex-grow-1 container-p-y">
           <div class="row">
             <div class="col-lg-10 mb-4 order-0 m-auto">
               <div class="card border-0">
                 <div class="d-flex align-items-end row ">
                   <div class="card-body p-5">
-                    <?php if (isset($_SESSION['pb-inserted'])) { ?>
+                    <?php if (isset($_SESSION['pb-inserted-1'])) { ?>
                       <div class="alert alert-success" style="width: 320px;position:absolute;left: 35%;top: 15px">
-                        <?php echo $_SESSION['pb-inserted']; ?>
+                        <?php echo $_SESSION['pb-inserted-1']; ?>
                       </div>
                       <?php
-                      unset($_SESSION['pb-inserted']);
+                      unset($_SESSION['pb-inserted-1']);
                     }
                     ?>
                     <?php if (isset($_SESSION['pb-not-inserted'])) { ?>
@@ -75,7 +61,8 @@
                                  tabindex="3" id="pcal1">
                         </div>
 
-                        <select name="school" id="school" style="text-align: right;" class="form-control form-group mt-2"
+                        <select name="school" id="school" style="text-align: right;"
+                                class="form-control form-group mt-2"
                                 onchange="changeSelectOption(this.value)">
                           <option dir="rtl" selected disabled>مدرسه را انتخاب کنید</option>
                           <?php

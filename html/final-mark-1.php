@@ -7,30 +7,8 @@
   $profileDetails = getProfilePicName();
   $title = "ثبت کلاسی";
   $category = "حضور و غیاب";
-
-  function convertPersianToEnglish($string)
-  {
-    $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    $english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    $output = str_replace($persian, $english, $string);
-    return $output;
-  }
-
-?>
-<?php include_once '../assets/head.php'; ?>
-<?php
   $conn = mysqli_connect("localhost", "mansoori_hossein", "8v6lZR0S@d3x*Z", "");
   $s = mysqli_select_db($conn, 'mansoori_1402s1403');
-
-  $date = $_GET['data'];
-  $gdate = convertPersianToEnglish($date);
-  $arr_parts = explode('/', $gdate);
-  $jYear = $arr_parts[0];
-  $jMonth = $arr_parts[1];
-  $jDay = $arr_parts[2];
-  $converted = jalali_to_gregorian($jYear, $jMonth, $jDay, '/');
-
-
   if (isset($_POST['save_multiple_data'])) {
     $codemeli = $_POST['code'];
     $mark = $_POST['mark'];
@@ -38,6 +16,7 @@
     $lname = $_POST['lname'];
     $classs = $_GET['class'];
     $school = $_GET['school'];
+    $nobat = $_GET['nobat'];
     foreach ($codemeli as $index => $codemeli) {
       $s_codemeli = $codemeli;
       $s_mark = $mark[$index];
@@ -45,42 +24,29 @@
       $s_lname = $lname[$index];
       $s_classs = $classs;
       $s_school = $school;
-      $monCode = $jMonth;
-      if ($s_mark == "") {
-      } else {
+      $monCode = $nobat;
+      $converted = date("Y-m-d");
+      if ($s_mark != "") {
         $query = "INSERT INTO `monmark` (`codemeli`, `mark`, `fname`, `lname`, `class`, `school`, `monCode`,`tarikh`) VALUES ('$s_codemeli','$s_mark','$s_fname','$s_lname','$s_classs','$s_school','$monCode', '$converted')";
         $query_run = mysqli_query($conn, $query);
       }
     }
     if ($query_run) {
       $_SESSION['pb-inserted-1'] = "نمرات با موفقیت ثبت شدند";
-      header("location:goup-daily-mark.php");
+      header("location:final-mark.php");
     } else {
       $_SESSION['pb-not-inserted'] = "متاسفانه نمرات ثبت نشدند";
-      header("location:goup-daily-mark.php");
+      header("location:final-mark.php");
     }
   }
+  include_once '../assets/head.php';
 ?>
-
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-
-
-      <?php include_once '../assets/aside.php'; ?>
-      <!-- / Menu -->
-
-      <!-- Layout container -->
+      <?php //include_once '../assets/aside.php'; ?>
       <div class="layout-page">
-        <!-- Navbar -->
-
         <?php include_once '../assets/nav.php' ?>
-
-        <!-- / Navbar -->
-
-        <!-- Content wrapper -->
         <div class="content-wrapper">
-          <!-- Content -->
-
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
               <div class="col-lg-12 mb-4 order-0">
@@ -90,10 +56,10 @@
                       <div class="card-body">
                         <h5 class="text-info card-title text-primary">ثبت نمرات کلاس
                           <strong
-                            style="font-size: 20px;color: black;margin: 0px 4px;padding: 4px 5px;"><?php print($_GET['class']); ?></strong>
-                          برای تاریخ
+                            style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"><?php print($_GET['class']); ?></strong>
+                          برای
                           <strong
-                            style="font-size: 20px;color: black;margin: 0px 4px;padding: 4px 5px;"> <?php print($date); ?></strong>
+                            style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"> <?php print($_GET['nobat']); ?></strong>
                         </h5>
                         <form method="POST">
                           <div id="avgmarkstable" class="mt-3" dir="rtl">
@@ -114,9 +80,7 @@
                                 $res->execute();
                                 $row = $res->fetchAll();
                                 $i = 1;
-                                foreach ($row
-
-                                         as $value) {
+                                foreach ($row as $value) {
                                   $cod = $value["codemeli"];
                                   $fam = $value['fname'];
                                   $lam = $value['lname'];
@@ -149,7 +113,7 @@
                                     <td class="form-group mb-2">
                                       <input type="text"
                                              style="width: 40px;font-size: 12px;font-weight:bold;border-color: #c2c2c2"
-                                             name="mark[]" tabindex="1">
+                                             name="mark[]" tabindex="1" required>
                                     </td>
 
                                   </tr>
@@ -174,13 +138,7 @@
         </div>
         <div class="content-backdrop fade"></div>
       </div>
-      <!-- Content wrapper -->
     </div>
-    <!-- / Layout page -->
   </div>
-
-  <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
-  <!-- / Layout wrapper -->
-
 <?php include_once '../assets/footer.php'; ?>

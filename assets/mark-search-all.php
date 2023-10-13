@@ -2,44 +2,7 @@
   include_once "connect.php";
   include_once './files/jdf.php';
 
-  if (isset($_GET['monthcode'])) {
-    $monthCode = $_GET['monthcode'];
-    $sql = "SELECT * FROM `monmark` WHERE monCode='$monthCode' order by tarikh";
-    $resualt = $pdo->prepare($sql);
-    $resualt->execute();
-    $row = $resualt->fetchAll();
-    $i = 1;
-    foreach ($row as $row) {
-      ?>
-      <tr>
-        <td class="text-dark center"><?php echo $i; ?></td>
-        <td class="text-dark center"><?php echo $row['fname']; ?></td>
-        <td class="text-dark center"><?php echo $row['lname']; ?></td>
-        <td class="text-dark center"><?php echo $row['class']; ?></td>
-        <td class="text-dark center"
-            style="padding: 0.5rem 1.1rem;"><?php echo $row['mark']; ?></td>
-        <td class="text-dark center"><?php
-            $date = $row['tarikh'];
-            $arr_parts = explode('-', $date);
-            $gYear = $arr_parts[0];
-            $gMonth = $arr_parts[1];
-            $gDay = $arr_parts[2];
-            $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
-            print $converted;
-          ?></td>
-        <td style="padding: 0.5rem 1.1rem" class="center">
-          <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
-            <i class="bx bx-edit-alt"></i>
-          </a>
-          <a onclick="deleteRecord(<?php echo $row['id']; ?>)" class="text-white btn btn-sm btn-danger">
-            <i class="bx bx-trash"></i>
-          </a>
-        </td>
-      </tr>
-      <?php
-      $i++;
-    }
-  }
+
   if (isset($_GET['selectedschool']) and isset($_GET['schoolCode'])) {
     $selectedschool = $_GET['selectedschool'];
     $classQry = "SELECT * FROM `classes` WHERE school='$selectedschool'";
@@ -56,10 +19,9 @@
     }
   }
 
-  if (isset($_GET['selectedschool']) and isset($_GET['month']) and isset($_GET['code'])) {
+  if (isset($_GET['selectedschool'])) {
     $selectedschool = $_GET['selectedschool'];
-    $selectedmonth = $_GET['month'];
-    $classQry = "SELECT * FROM `monmark` WHERE `school`='$selectedschool' and `monCode`='$selectedmonth'";
+    $classQry = "SELECT * FROM `monmark` WHERE `school`='$selectedschool'";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();
@@ -96,10 +58,9 @@
     }
   }
 
-  if (isset($_GET['selectedclass']) and isset($_GET['month'])) {
+  if (isset($_GET['selectedclass'])) {
     $selectedschool = $_GET['selectedclass'];
-    $selectedmonth = $_GET['month'];
-    $classQry = "SELECT * FROM `monmark` WHERE `class`='$selectedschool' and `monCode`='$selectedmonth'";
+    $classQry = "SELECT * FROM `monmark` WHERE `class`='$selectedschool'";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();
@@ -135,10 +96,9 @@
       $i++;
     }
   }
-  if (isset($_GET['montCode']) and isset($_GET['codemeli'])) {
+  if (isset($_GET['codemeli'])){
     $codemeli = $_GET['codemeli'];
-    $selectedmonth = $_GET['montCode'];
-    $classQry = "SELECT * FROM `monmark` WHERE `codemeli`='$codemeli' and `monCode`='$selectedmonth'";
+    $classQry = "SELECT * FROM `monmark` WHERE `codemeli`='$codemeli'";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();

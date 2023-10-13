@@ -162,7 +162,12 @@
 
         <li class="menu-item">
           <a href="../html/check-marks.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Error">بررسی نمرات</div>
+            <div data-i18n="Error">نمرات ماهانه دانش آموز</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/check-marks-all.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Error">نمرات کلی دانش آموز</div>
           </a>
         </li>
         <li class="menu-item">
@@ -218,7 +223,7 @@
             <div data-i18n="Badges">جستجو سوالات</div>
           </a>
         </li>
-             </ul>
+      </ul>
     </li>
 
     <li class="menu-header small text-uppercase"><span class="menu-header-text">فعالیت ها</span></li>

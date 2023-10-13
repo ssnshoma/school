@@ -90,17 +90,16 @@
                         <table class="table align-right" style="height: fit-content">
                           <thead>
                           <tr>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">#</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">کد ملی</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">نام</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">نام خانوادگی</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">نام پدر</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">مدرسه</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">کلاس</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">رشته</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">پایه</th>
-                            <th style="text-align: right;padding: 0.5rem 1.1rem">عملیات</th>
-
+                            <th class="center pe-0">#</th>
+                            <th class="center pe-0">کد ملی</th>
+                            <th class="center pe-0">نام</th>
+                            <th class="center pe-0">نام خانوادگی</th>
+                            <th class="center pe-0">نام پدر</th>
+                            <th class="center pe-0">مدرسه</th>
+                            <th class="center pe-0">کلاس</th>
+                            <th class="center pe-0">رشته</th>
+                            <th class="center pe-0">پایه</th>
+                            <th class="center pe-0">عملیات</th>
                           </tr>
                           </thead>
                           <tbody id="tbody">
@@ -123,16 +122,16 @@
 
                                 ?>
                                 <tr>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $i; ?></td>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $codmeli; ?></td>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $fname; ?></td>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $lname; ?></td>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $fathername; ?></td>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $school; ?></td>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $class; ?></td>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $major; ?></td>
-                                  <td style="padding: 0.5rem 1.1rem"><?php echo $grade; ?></td>
-                                  <td>
+                                  <td class="center pe-0"><?php echo $i; ?></td>
+                                  <td class="center pe-0"><?php echo $codmeli; ?></td>
+                                  <td class="center pe-0"><?php echo $fname; ?></td>
+                                  <td class="center pe-0"><?php echo $lname; ?></td>
+                                  <td class="center pe-0"><?php echo $fathername; ?></td>
+                                  <td class="center pe-0"><?php echo $school; ?></td>
+                                  <td class="center pe-0"><?php echo $class; ?></td>
+                                  <td class="center pe-0"><?php echo $major; ?></td>
+                                  <td class="center pe-0"><?php echo $grade; ?></td>
+                                  <td class="center pe-0">
                                     <a href="../assets/opration.php?editid=<?php echo $codmeli; ?>"
                                        class="btn btn-sm btn-warning">
                                       <i class="bx bx-edit-alt"></i>
