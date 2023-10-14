@@ -7,9 +7,7 @@
   $profileDetails = getProfilePicName();
   $title = "ثبت کلاسی";
   $category = "حضور/غیاب";
-  $conn = mysqli_connect("localhost", "mansoori_hossein", "8v6lZR0S@d3x*Z", "");
-  $s = mysqli_select_db($conn, 'mansoori_1402s1403');
-  $date = $_GET['data'];
+ $date = $_GET['data'];
   $gdate = convertPersianToEnglish($date);
   $arr_parts = explode('/', $gdate);
   $jYear = $arr_parts[0];

@@ -22,6 +22,32 @@
       $_GET['inserted'] = "ثبت شد";
     }
   }
+  if (isset($_GET['editId'])) { ?>
+    <script>
+      window.scrollTo({left: 0, top: 500, behavior: "smooth"});
+    </script>
+    <?php
+    if (isset($_POST['submit-btn-e'])) {
+      $editidd = $_GET['editId'];
+      $editname = $_POST['name-e'];
+      $editmanager = $_POST['manager-name-e'];
+      $editphone = $_POST['phone-e'];
+      $editadress = $_POST['address-e'];
+      $mysqlq = "UPDATE schools SET name=?,managername=?,phone=?,address=? WHERE Id=$editidd";
+      $resua = $pdo->prepare($mysqlq);
+      $resua->bindValue(1, $editname);
+      $resua->bindValue(2, $editmanager);
+      $resua->bindValue(3, $editphone);
+      $resua->bindValue(4, $editadress);
+      if ($resua->execute()) { ?>
+        <script>
+          window.location.href = "add-school.php";
+          window.scrollTo({left: 0, top: 0, behavior: "smooth"});
+        </script>
+        <?php
+      }
+    }
+  }
 ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
@@ -29,7 +55,7 @@
       <div class="layout-page">
         <?php include_once '../assets/nav.php' ?>
         <div class="content-wrapper">
-         <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
               <div class="col-lg-8 mb-4 order-0">
                 <div class="card h-100">
@@ -65,7 +91,7 @@
                               $res = $pdo->prepare($qry);
                               $res->execute();
                               $roww = $res->fetchAll();
-                              $i=1;
+                              $i = 1;
                               foreach ($roww as $row) {
                                 $id = $row['Id'];
                                 ?>
@@ -83,8 +109,8 @@
                                     ?>
                                   </td>
                                 </tr>
-                              <?php
-                              $i++;
+                                <?php
+                                $i++;
                               } ?>
                             </tbody>
                           </table>
@@ -164,7 +190,6 @@
               </div>
             </div>
             <?php
-
               if (isset($_GET['editId'])) {
               $ID = $_GET['editId'];
               $qruy = "SELECT * FROM schools WHERE id=$ID";
@@ -178,7 +203,6 @@
               $mange = $row['managername'];
               $addr = $row['address'];
               $number = $row['phone'];
-
             ?>
             <div class="row">
               <div class="col-lg-12 mb-4 border-0 m-auto">
@@ -255,52 +279,12 @@
               </div>
             </div>
           </div>
-
-
           <?php }
             } ?>
         </div>
-        <!-- / Content -->
         <div class="content-backdrop fade"></div>
       </div>
-      <!-- Content wrapper -->
     </div>
-    <!-- / Layout page -->
   </div>
-
-  <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
-
-  <!-- / Layout wrapper -->
-
-<?php
-  if (isset($_GET['editId'])) { ?>
-    <script>
-      window.scrollTo({left: 0, top: 500, behavior: "smooth"});
-    </script>
-    <?php
-    if (isset($_POST['submit-btn-e'])) {
-      $editidd = $_GET['editId'];
-      $editname = $_POST['name-e'];
-      $editmanager = $_POST['manager-name-e'];
-      $editphone = $_POST['phone-e'];
-      $editadress = $_POST['address-e'];
-      $mysqlq = "UPDATE schools SET name=?,managername=?,phone=?,address=? WHERE Id=$editidd";
-      $resua = $pdo->prepare($mysqlq);
-      $resua->bindValue(1, $editname);
-      $resua->bindValue(2, $editmanager);
-      $resua->bindValue(3, $editphone);
-      $resua->bindValue(4, $editadress);
-      if ($resua->execute()) { ?>
-        <script>
-          window.location.href = "add-school.php";
-          window.scrollTo({left: 0, top: 0, behavior: "smooth"});
-        </script>
-        <?php
-      }
-    }
-  }
-?>
-
-
 <?php include_once '../assets/footer.php'; ?>

@@ -7,19 +7,6 @@
   $profileDetails = getProfilePicName();
   $title = "کارها";
   $category = "فعالیت";
-?>
-
-<?php include_once '../assets/head.php'; ?>
-<style>
-  .form {
-    width: 100%;
-    height: 40px;
-    border: 1px solid #d9dee3;
-    border-radius: 0.375rem;
-    padding-right: 10px;
-  }
-</style>
-<?php
   if (isset($_POST['edit-Btn'])) {
     $id = $_GET['editID'];
     $activity = $_POST['activity'];
@@ -53,20 +40,22 @@
     $runDel->execute();
     $_GET['inserted'] = "ثبت شد";
   }
-?>
+ include_once '../assets/head.php'; ?>
+<style>
+  .form {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #d9dee3;
+    border-radius: 0.375rem;
+    padding-right: 10px;
+  }
+</style>
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
     <?php include_once '../assets/aside.php'; ?>
-    <!-- / Menu -->
-    <!-- Layout container -->
     <div class="layout-page">
-      <!-- Navbar -->
       <?php include_once '../assets/nav.php' ?>
-      <!-- / Navbar -->
-
-      <!-- Content wrapper -->
       <div class="content-wrapper">
-        <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
           <div class="row">
             <div class="col-lg-10 m-auto mb-4 order-0">
@@ -112,7 +101,6 @@
                           <input type="submit" style="display: block; width: 100px;margin:auto;" name="edit-Btn"
                                  value="ویرایش" class="btn btn-warning mt-4 mb-5" tabindex="9">
                         </form>
-
                         <?php
                           } else if (isset($_GET['editIDD'])) {
                           $id = $_GET['editIDD'];
@@ -202,21 +190,10 @@
                 </div>
               </div>
             </div>
-            <!-- / Content -->
             <div class="content-backdrop fade"></div>
           </div>
-          <!-- Content wrapper -->
         </div>
-        <!-- / Layout page -->
       </div>
-      <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-    <!-- / Layout wrapper -->
-
-
-    <script>
-
-    </script>
-
     <?php include_once '../assets/footer.php'; ?>

@@ -6,33 +6,14 @@
   $profileDetails = getProfilePicName();
   $title = "صفحه اصلی";
   $category = "داشبورد";
-
-
-?>
-
-<?php include_once '../assets/head.php'; ?>
-
+ include_once '../assets/head.php'; ?>
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
-
-
     <?php include_once '../assets/aside.php'; ?>
-    <!-- / Menu -->
-
-    <!-- Layout container -->
     <div class="layout-page">
-      <!-- Navbar -->
-
       <?php include_once '../assets/nav.php' ?>
-
-      <!-- / Navbar -->
-
-      <!-- Content wrapper -->
       <div class="content-wrapper">
-        <!-- Content -->
-
         <div class="container-xxl flex-grow-1 container-p-y">
-
           <div class="row">
             <div class="col-md-5 order-2 mb-4">
               <div class="card h-100">
@@ -253,17 +234,8 @@
         </div>
       </div>
     </div>
-    <!--/ Transactions -->
   </div>
 </div>
-<!-- / Content -->
-
 <div class="content-backdrop fade"></div>
-
-
-<!-- Overlay -->
 <div class="layout-overlay layout-menu-toggle"></div>
-<!-- / Layout wrapper -->
-
-
 <?php include_once '../assets/footer.php'; ?>

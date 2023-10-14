@@ -6,8 +6,6 @@
   $profileDetails = getProfilePicName();
   $title = "ثبت نام تکی";
   $category = "ثبت نام";
-?>
-<?php
   if (isset($_POST['reg-btn'])) {
     $selschool = $_POST['sel-school'];
     $selclass = $_POST['sel-class'];
@@ -28,24 +26,14 @@
     } else {
       $_GET['data-not-inserted'] = "کد ملی تکراری می باشد";
     }
-
   }
-?>
-
-<?php include_once '../assets/head.php'; ?>
+ include_once '../assets/head.php'; ?>
 <div class="layout-wrapper layout-content-navbar">
  <div class="layout-container">
    <?php include_once '../assets/aside.php'; ?>
-  <!-- / Menu -->
-  <!-- Layout container -->
   <div class="layout-page">
-   <!-- Navbar -->
     <?php include_once '../assets/nav.php' ?>
-   <!-- / Navbar -->
-
-   <!-- Content wrapper -->
    <div class="content-wrapper">
-    <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
      <div class="row">
       <div class="col-lg-10 m-auto mb-4 order-0">
@@ -100,11 +88,11 @@
              <div class="row">
               <div class="col-md-6">
                <label for="grade" class="pb-2">پایه</label>
-               <input name="grade" class="input mb-4" id="grade"tabindex="3">
+               <input name="grade" class="input mb-4" id="grade" tabindex="3">
               </div>
               <div class="col-md-6">
                <label for="grade" class="pb-2">رشته</label>
-               <input name="major" class="input mb-4" id="major"tabindex="4">
+               <input name="major" class="input mb-4" id="major" tabindex="4">
               </div>
              </div>
              <div class="row">
@@ -140,19 +128,11 @@
     </div>
     <div class="content-backdrop fade"></div>
    </div>
-   <!-- Content wrapper -->
   </div>
-  <!-- / Layout page -->
  </div>
- <!-- Overlay -->
  <div class="layout-overlay layout-menu-toggle"></div>
 </div>
-<!-- / Layout wrapper -->
-
-
-
 <script>
-
     function changeSelectOption(str) {
 
         if (str == "") {
@@ -191,5 +171,4 @@
         }
     }
 </script>
-
 <?php include_once '../assets/footer.php'; ?>

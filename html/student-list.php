@@ -6,35 +6,14 @@
   $profileDetails = getProfilePicName();
   $title = "لیست دانش آموزان";
   $category = "ثبت نام";
-?>
+include_once '../assets/head.php'; ?>
 
-
-<?php include_once '../assets/head.php'; ?>
-
-<?php
-
-?>
-
-<!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
-    <!-- Menu -->
-
     <?php include_once '../assets/aside.php'; ?>
-    <!-- / Menu -->
-
-    <!-- Layout container -->
     <div class="layout-page">
-      <!-- Navbar -->
-
       <?php include_once '../assets/nav.php' ?>
-
-      <!-- / Navbar -->
-
-      <!-- Content wrapper -->
       <div class="content-wrapper">
-        <!-- Content -->
-
         <div class="container-xxl flex-grow-1 container-p-y">
           <div class="row flex-row-reverse">
             <div>
@@ -78,16 +57,13 @@
                 </div>
               </div>
             </div>
-
             <div class="mt-2">
               <div class="card">
                 <div class="d-flex align-items-center row">
                   <div class="col-sm-12 m-auto">
                     <div class="card-body" style="height: 500px">
-
                       <div class="row flex-row" style="direction: rtl;height: 440px;overflow-y: scroll">
-
-                        <table class="table align-right" style="height: fit-content">
+                        <table class="table align-right text-nowrap" style="height: fit-content">
                           <thead>
                           <tr>
                             <th class="center pe-0">#</th>
@@ -103,9 +79,7 @@
                           </tr>
                           </thead>
                           <tbody id="tbody">
-
                           <?php
-                            mysqli_query($conn,"set names 'utf8'");
                             $sqll = "SELECT * FROM `studentlist` order by lname";
                             $result3 = mysqli_query($conn, $sqll);
                             if ($result3) {
@@ -119,7 +93,6 @@
                                 $class = $row1['class'];
                                 $major = $row1['major'];
                                 $grade = $row1['grade'];
-
                                 ?>
                                 <tr>
                                   <td class="center pe-0"><?php echo $i; ?></td>
@@ -156,24 +129,13 @@
             </div>
           </div>
         </div>
-
-
-        <!-- / Content -->
         <div class="content-backdrop fade"></div>
       </div>
-      <!-- Content wrapper -->
     </div>
-    <!-- / Layout page -->
   </div>
-
-  <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
-  <!-- / Layout wrapper -->
-
   <script>
-
     function changeSelectOption(str) {
-
       if (str == "") {
         document.getElementById("tbody").innerHTML = " ";
         return;

@@ -7,8 +7,6 @@
   $profileDetails = getProfilePicName();
   $title = "ثبت کلاسی";
   $category = "نمره";
-?>
-<?php include_once '../assets/head.php';
   if (isset($_POST['send'])) {
     $task_group = $_POST['taskgroup'];
     $task = $_POST['task'];
@@ -22,8 +20,8 @@
       return $output;
     }
   }
+  include_once '../assets/head.php';
 ?>
-
   <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
     <?php include_once '../assets/aside.php'; ?>
@@ -60,7 +58,6 @@
                           <input type="text" name="data" placeholder="تاریخ" class="w-100 pdate form"
                                  tabindex="3" id="pcal1">
                         </div>
-
                         <select name="school" id="school" style="text-align: right;"
                                 class="form-control form-group mt-2"
                                 onchange="changeSelectOption(this.value)">
@@ -78,12 +75,9 @@
                             }
                           ?>
                         </select>
-
-
                         <select name="class" style="text-align: right;" id="class" class="form-control form-group mt-4">
                           <option dir="rtl">کلاس را انتخاب کنید</option>
                         </select>
-
                       </div>
                       <input type="submit" name="send" value="ارسال"
                              class="mb-5 mt-4 btn btn-success m-auto d-block">
@@ -98,14 +92,8 @@
     </div>
     <!-- / Layout page -->
   </div>
-
-  <!-- Overlay -->
-  <!-- / Layout wrapper -->
-
   <script type="text/javascript">
-
     function changeSelectOption(str) {
-
       if (str == "") {
         document.getElementById("class").innerHTML = "";
         return;
@@ -122,7 +110,6 @@
         xmlhttp.send();
       }
     }
-
 
     $('#input1').change(function () {
       var $this = $(this),

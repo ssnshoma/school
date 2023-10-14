@@ -6,31 +6,13 @@
   $profileDetails = getProfilePicName();
   $title = "ثبت نام گروهی";
   $category = "ثبت نام";
-?>
-
-
-<?php include_once '../assets/head.php'; ?>
-
-<!-- Layout wrapper -->
+  include_once '../assets/head.php'; ?>
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
-    <!-- Menu -->
-
     <?php include_once '../assets/aside.php'; ?>
-    <!-- / Menu -->
-
-    <!-- Layout container -->
     <div class="layout-page">
-      <!-- Navbar -->
-
       <?php include_once '../assets/nav.php' ?>
-
-      <!-- / Navbar -->
-
-      <!-- Content wrapper -->
       <div class="content-wrapper">
-        <!-- Content -->
-
         <div class="container-xxl flex-grow-1 container-p-y">
           <div class="row">
             <div class="col-md-12">
@@ -127,12 +109,7 @@
                             </div>
                           </div>
                         </form>
-
                         <?php
-
-                          $conn = mysqli_connect("localhost", "mansoori_hossein", "8v6lZR0S@d3x*Z", "");
-                          mysqli_select_db($conn, 'mansoori_1402s1403');
-
                           if (isset($_POST['save_multiple_data'])) {
                           $codemeli = $_POST['codemeli'];
                           $fname = $_POST['fname'];
@@ -142,7 +119,6 @@
                           $school = $_POST['sel-school'];
                           $grade = $_POST['grade'];
                           $class = $_POST['sel-class'];
-
                           foreach ($codemeli
 
                           as $index => $codemeli) {
@@ -154,7 +130,6 @@
                           $s_school = $school;
                           $s_grade = $grade;
                           $s_class = $class;
-
                           $sql = "SELECT * FROM studentlist WHERE codemeli=$s_codemeli";
                           $query_run = mysqli_query($conn, $sql);
                           $rowcount = mysqli_num_rows($query_run);
@@ -203,9 +178,38 @@
   <!-- / Layout wrapper -->
 
   <script>
+    $(document).ready(function () {
+      $(document).on('click', '.remove-btn', function () {
+        $(this).closest('.main-form').remove();
+      });
+      $(document).on('click', '.add-more-form', function () {
+        console.log("ok");
+        $('.paste-new-forms').append('<div class="main-form mt-3 mb-4 border-bottom float-left">' +
+          '<div class="row mt-3">' +
+          '<div class="col-md-3">' +
+          '<label for="codemeli" class="pb-2">کد ملی</label>' +
+          '<input type="text" class="mb-4 input" name="codemeli[]">' +
+          '</div>' +
+          '<div class="col-md-3">' +
+          '<label for="fname" class="pb-2">نام</label>' +
+          '<input type="text" class="mb-4 input" name="fname[]">' +
+          '</div>' +
+          '<div class="col-md-3">' +
+          '<label for="lname" class="pb-2">نام خانوادگی</label>' +
+          '<input type="text" class="mb-4 input" name="lname[]">' +
+          '</div>' +
+          '<div class="col-md-3">' +
+          '<label for="fathername" class="pb-2">نام پدر</label>' +
+          '<input type="text" class="mb-4 input" name="fathername[]">' +
+          '</div>' +
+          '<button type="button" class="remove-btn btn btn-danger w-px-100 m-auto mb-4">حذف</button>' +
+          '</div>' +
+          '</div>');
+      });
+
+    });
 
     function changeSelectOption(str) {
-
       if (str == "") {
         document.getElementById("sel-school").innerHTML = "";
         return;
@@ -241,49 +245,8 @@
         xmlhttp.send();
       }
     }
-
   </script>
-
-
   <?php include_once '../assets/footer.php'; ?>
-
-  <script>
-
-    $(document).ready(function () {
-
-      $(document).on('click', '.remove-btn', function () {
-        $(this).closest('.main-form').remove();
-      });
-
-      $(document).on('click', '.add-more-form', function () {
-        console.log("ok");
-        $('.paste-new-forms').append('<div class="main-form mt-3 mb-4 border-bottom float-left">' +
-          '<div class="row mt-3">' +
-          '<div class="col-md-3">' +
-          '<label for="codemeli" class="pb-2">کد ملی</label>' +
-          '<input type="text" class="mb-4 input" name="codemeli[]">' +
-          '</div>' +
-          '<div class="col-md-3">' +
-          '<label for="fname" class="pb-2">نام</label>' +
-          '<input type="text" class="mb-4 input" name="fname[]">' +
-          '</div>' +
-          '<div class="col-md-3">' +
-          '<label for="lname" class="pb-2">نام خانوادگی</label>' +
-          '<input type="text" class="mb-4 input" name="lname[]">' +
-          '</div>' +
-          '<div class="col-md-3">' +
-          '<label for="fathername" class="pb-2">نام پدر</label>' +
-          '<input type="text" class="mb-4 input" name="fathername[]">' +
-          '</div>' +
-          '<button type="button" class="remove-btn btn btn-danger w-px-100 m-auto mb-4">حذف</button>' +
-          '</div>' +
-          '</div>');
-      });
-
-    });
-
-
-  </script>
 
 
 

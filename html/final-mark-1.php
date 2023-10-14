@@ -7,8 +7,6 @@
   $profileDetails = getProfilePicName();
   $title = "ثبت کلاسی";
   $category = "حضور و غیاب";
-  $conn = mysqli_connect("localhost", "mansoori_hossein", "8v6lZR0S@d3x*Z", "");
-  $s = mysqli_select_db($conn, 'mansoori_1402s1403');
   if (isset($_POST['save_multiple_data'])) {
     $codemeli = $_POST['code'];
     $mark = $_POST['mark'];
@@ -43,7 +41,7 @@
 ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-      <?php //include_once '../assets/aside.php'; ?>
+      <?php include_once '../assets/aside.php'; ?>
       <div class="layout-page">
         <?php include_once '../assets/nav.php' ?>
         <div class="content-wrapper">

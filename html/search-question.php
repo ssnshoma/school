@@ -6,35 +6,13 @@
   $profileDetails = getProfilePicName();
   $title = "لیست سوالات";
   $category = "آزمون";
-?>
-
-
-<?php include_once '../assets/head.php'; ?>
-
-<?php
-
-?>
-
-<!-- Layout wrapper -->
+include_once '../assets/head.php'; ?>
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
-    <!-- Menu -->
-
     <?php include_once '../assets/aside.php'; ?>
-    <!-- / Menu -->
-
-    <!-- Layout container -->
     <div class="layout-page">
-      <!-- Navbar -->
-
       <?php include_once '../assets/nav.php' ?>
-
-      <!-- / Navbar -->
-
-      <!-- Content wrapper -->
       <div class="content-wrapper">
-        <!-- Content -->
-
         <div class="container-xxl flex-grow-1 container-p-y">
           <div class="row flex-row-reverse">
             <div class="mt-1">
@@ -57,7 +35,6 @@
                           </tr>
                           </thead>
                           <tbody id="tbody">
-
                           <?php
                             $sqll = "SELECT * FROM `questions` order by book,chapter,section";
                             $result3 = mysqli_query($conn, $sqll);
@@ -72,7 +49,6 @@
                                 $details = $row1['details'];
                                 $file = $row1['file'];
                                 $id = $row1['id'];
-
                                 ?>
                                 <tr>
                                   <td class="center" style="padding: 0.5rem 1.1rem"><?php echo $i; ?></td>

@@ -7,10 +7,6 @@
   $profileDetails = getProfilePicName();
   $title = "ثبت کلاسی";
   $category = "حضور و غیاب";
-?>
-<?php include_once '../assets/head.php'; ?>
-
-<?php
   if (isset($_POST['send'])) {
     $task_group = $_POST['taskgroup'];
     $task = $_POST['task'];
@@ -24,28 +20,14 @@
       return $output;
     }
   }
+  include_once '../assets/head.php';
 ?>
-
   <div class="layout-wrapper layout-content-navbar">
-
-    <div class="layout-container">
-
-
+   <div class="layout-container">
       <?php include_once '../assets/aside.php'; ?>
-      <!-- / Menu -->
-
-      <!-- Layout container -->
       <div class="layout-page">
-        <!-- Navbar -->
-
         <?php include_once '../assets/nav.php' ?>
-
-        <!-- / Navbar -->
-
-        <!-- Content wrapper -->
         <div class="content-wrapper">
-          <!-- Content -->
-
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
               <div class="col-lg-10 mb-4 order-0 m-auto">
@@ -60,7 +42,6 @@
                             <input type="text" name="data" placeholder="تاریخ" class="w-100 pdate form"
                                    tabindex="3" id="pcal1">
                           </div>
-
                           <select name="class" style="text-align: right;" class="form-control form-group mt-2">
                             <?php
                               $sqli = "SELECT * FROM classes";
@@ -88,13 +69,7 @@
           </div>
         </div>
       </div>
-      <!-- Footer -->
-
-      <!-- / Fo oter -->
-
       <div class="content-backdrop fade"></div>
     </div>
-    <!-- Content wrapper -->
   </div>
-
 <?php include_once '../assets/footer.php'; ?>

@@ -5,10 +5,9 @@
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
   $title = "ثبت امتحان";
-  $category = "آزمون ها"
-?>
+  $category = "آزمون ها";
 
-<?php include_once '../assets/head.php'; ?>
+  include_once '../assets/head.php'; ?>
 
   <script>
     var subjectObject = {

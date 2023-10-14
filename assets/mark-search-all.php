@@ -1,8 +1,6 @@
 <?php
   include_once "connect.php";
   include_once './files/jdf.php';
-
-
   if (isset($_GET['selectedschool']) and isset($_GET['schoolCode'])) {
     $selectedschool = $_GET['selectedschool'];
     $classQry = "SELECT * FROM `classes` WHERE school='$selectedschool'";
@@ -18,7 +16,6 @@
       <?php
     }
   }
-
   if (isset($_GET['selectedschool'])) {
     $selectedschool = $_GET['selectedschool'];
     $classQry = "SELECT * FROM `monmark` WHERE `school`='$selectedschool'";

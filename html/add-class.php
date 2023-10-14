@@ -34,6 +34,33 @@
     } else {
       $_GET['cn-inserted'] = "مدرسه ای ب این نام وجود ندارد";
     }
+  } ?>
+<?php
+  if (isset($_GET['editId'])) { ?>
+    <script>
+      window.scrollTo({left: 0, top: 10000, behavior: "smooth"});
+    </script>
+    <?php
+    if (isset($_POST['submit-btn-c'])) {
+      $editidd = $_GET['editId'];
+      $editname = $_POST['cname-e'];
+      $cmajor = $_POST['cmajor'];
+      $editgrade = $_POST['cgrade-e'];
+      $editschool = $_POST['cschool-e'];
+      $mysqlq = "UPDATE classes SET name=?,grade=?,major=?,school=? WHERE Id=$editidd";
+      $resua = $pdo->prepare($mysqlq);
+      $resua->bindValue(1, $editname);
+      $resua->bindValue(2, $editgrade);
+      $resua->bindValue(3, $cmajor);
+      $resua->bindValue(4, $editschool);
+      if ($resua->execute()) { ?>
+        <script>
+          window.location.href = "add-class.php";
+          window.scrollTo({left: 0, top: 0, behavior: "smooth"});
+        </script>
+        <?php
+      }
+    }
   }
 ?>
   <div class="layout-wrapper layout-content-navbar">
@@ -86,7 +113,7 @@
                               $res = $pdo->prepare($qry);
                               $res->execute();
                               $roww = $res->fetchAll();
-                              $i=1;
+                              $i = 1;
                               foreach ($roww as $row) {
                                 $id = $row['id'];
                                 ?>
@@ -103,7 +130,8 @@
                                     ?>
                                   </td>
                                 </tr>
-                              <?php $i++;} ?>
+                                <?php $i++;
+                              } ?>
                             </tbody>
                           </table>
                         </div>
@@ -324,52 +352,13 @@
               </div>
             </div>
           </div>
-
-
           <?php }
             } ?>
         </div>
-        <!-- / Content -->
         <div class="content-backdrop fade"></div>
       </div>
-      <!-- Content wrapper -->
     </div>
-    <!-- / Layout page -->
   </div>
-
-  <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
-
-  <!-- / Layout wrapper -->
-
-<?php
-  if (isset($_GET['editId'])) { ?>
-    <script>
-      window.scrollTo({left: 0, top: 10000, behavior: "smooth"});
-    </script>
-    <?php
-    if (isset($_POST['submit-btn-c'])) {
-      $editidd = $_GET['editId'];
-      $editname = $_POST['cname-e'];
-      $cmajor = $_POST['cmajor'];
-      $editgrade = $_POST['cgrade-e'];
-      $editschool = $_POST['cschool-e'];
-      $mysqlq = "UPDATE classes SET name=?,grade=?,major=?,school=? WHERE Id=$editidd";
-      $resua = $pdo->prepare($mysqlq);
-      $resua->bindValue(1, $editname);
-      $resua->bindValue(2, $editgrade);
-      $resua->bindValue(3, $cmajor);
-      $resua->bindValue(4, $editschool);
-      if ($resua->execute()) { ?>
-        <script>
-          window.location.href = "add-class.php";
-          window.scrollTo({left: 0, top: 0, behavior: "smooth"});
-        </script>
-        <?php
-      }
-    }
-  }
-?>
-
 
 <?php include_once '../assets/footer.php'; ?>

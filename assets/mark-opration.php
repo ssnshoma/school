@@ -6,10 +6,7 @@
   $logifo = $_SESSION['log-info'];
   $profileDetails = getProfilePicName();
   $title = "ویرایش";
-  $category = "ثبت نمره"
-?>
-
-<?php
+  $category = "ثبت نمره";
   if (isset($_POST['edit-btn'])) {
     $id = $_GET['editid'];
     $mark = $_POST['mark'];
@@ -18,20 +15,13 @@
     $run->execute();
     header("Location: ../html/check-marks.php");
   }
-?>
-<?php include_once '../assets/head.php'; ?>
+ include_once '../assets/head.php'; ?>
  <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
-   <!-- / Menu -->
     <?php include_once '../assets/aside.php'; ?>
-   <!-- Layout container -->
    <div class="layout-page">
-    <!-- Navbar -->
-     <?php include_once '../assets/nav.php' ?>
-    <!-- / Navbar -->
-    <!-- Content wrapper -->
+<?php include_once '../assets/nav.php' ?>
     <div class="content-wrapper">
-     <!-- Content -->
      <div class="container-xxl flex-grow-1 container-p-y">
       <div class="row">
        <div class="col-lg-8 mb-4 order-0">
@@ -40,8 +30,7 @@
        </div>
       </div>
       <div class="row">
-       <!-- Order Statistics -->
-       <div class="col-md-10 col-lg-10 col-xl-10 order-0 mb-4 m-auto">
+      <div class="col-md-10 col-lg-10 col-xl-10 order-0 mb-4 m-auto">
         <div class="card h-100" style="direction: rtl;">
          <div class="card-header d-flex align-items-center justify-content-between pb-0">
           <div class="card-title mb-0">
@@ -97,19 +86,12 @@
          </div>
         </div>
        </div>
-       <!--/ Order S tatistics -->
       </div>
      </div>
-     <!-- / Content -->
      <div class="content-backdrop fade"></div>
     </div>
-    <!-- Content wrapper -->
    </div>
-   <!-- / Layout page -->
   </div>
-  <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
  </div>
- <!-- / Layout wrapper -->
-
 <?php include_once '../assets/footer.php'; ?>

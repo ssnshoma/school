@@ -1,7 +1,6 @@
 <?php
   include_once "connect.php";
   include_once './files/jdf.php';
-
   if (isset($_GET['monthcode'])) {
     $monthCode = $_GET['monthcode'];
     $sql = "SELECT * FROM `monmark` WHERE monCode='$monthCode' order by tarikh";
@@ -222,7 +221,6 @@
     $deleteQuryRun = mysqli_query($conn, $deleteQury);
 
   }
-
   if (isset($_GET['className'])) {
     $className = $_GET['className'];
     $schoolMonthQuery = "SELECT * FROM `monmark` WHERE `class`='$className'";
