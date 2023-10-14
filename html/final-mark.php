@@ -43,10 +43,10 @@
                         <select name="nobat" id="nobat" style="text-align: right;"
                                 class="form-control form-group">
                           <option dir="rtl" selected disabled>نوبت را انتخاب کنید</option>
-                          <option dir="rtl" value="دی">دی</option>
-                          <option dir="rtl" value="خرداد">خرداد</option>
-                          <option dir="rtl" value="شهریور">شهریور</option>
-                          <option dir="rtl" value="آغازین">آغازین</option>
+                          <option dir="rtl" value="21">دی</option>
+                          <option dir="rtl" value="22">خرداد</option>
+                          <option dir="rtl" value="23">شهریور</option>
+                          <option dir="rtl" value="20">آغازین</option>
                         </select>
                         <select name="school" id="school" style="text-align: right;"
                                 class="form-control form-group mt-4"

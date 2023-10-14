@@ -1,14 +1,17 @@
-.avgmarkstables{
+.avgmarkstables {
     width: 100%;
     overflow-x: scroll;
 }
-.plr-0{
+
+.plr-0 {
     padding-left: 5px !important;
     padding-right: 5px !important;
 }
+
 #avgmarkstable {
     overflow-x: scroll;
 }
+
 #startend {
     width: 100%;
     display: flex;

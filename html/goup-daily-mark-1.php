@@ -15,6 +15,23 @@
     return $output;
   }
 
+  function findMonCode($jMonth)
+  {
+    if ($jMonth == 1) {
+      $monCode = 13;
+      return $monCode;
+    } else if ($jMonth == 2) {
+      $monCode = 14;
+      return $monCode;
+    } else if ($jMonth == 3) {
+      $monCode = 15;
+      return $monCode;
+    } else {
+      $monCode = $jMonth;
+      return $monCode;
+    }
+  }
+
   $date = $_GET['data'];
   $gdate = convertPersianToEnglish($date);
   $arr_parts = explode('/', $gdate);
@@ -36,9 +53,8 @@
       $s_lname = $lname[$index];
       $s_classs = $classs;
       $s_school = $school;
-      $monCode = $jMonth;
-      if ($s_mark == "") {
-      } else {
+      $monCode = findMonCode($jMonth);
+      if ($s_mark != "") {
         $query = "INSERT INTO `monmark` (`codemeli`, `mark`, `fname`, `lname`, `class`, `school`, `monCode`,`tarikh`) VALUES ('$s_codemeli','$s_mark','$s_fname','$s_lname','$s_classs','$s_school','$monCode', '$converted')";
         $query_run = mysqli_query($conn, $query);
       }
@@ -93,12 +109,10 @@
                                 $row = $res->fetchAll();
                                 $i = 1;
                                 foreach ($row
-
                                          as $value) {
                                   $cod = $value["codemeli"];
                                   $fam = $value['fname'];
                                   $lam = $value['lname'];
-
                                   ?>
                                   <tr>
                                     <td class="form-group mb-2" id="radif">

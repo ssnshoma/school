@@ -75,3 +75,9 @@
       return miladiToShamsi($date);
     }
   }
+
+  function markSubstr($mark)
+  {
+    $markRounded = substr($mark, "0", "5");
+    return $markRounded;
+  }

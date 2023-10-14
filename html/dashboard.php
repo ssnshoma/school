@@ -6,7 +6,7 @@
   $profileDetails = getProfilePicName();
   $title = "صفحه اصلی";
   $category = "داشبورد";
- include_once '../assets/head.php'; ?>
+  include_once '../assets/head.php'; ?>
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
     <?php include_once '../assets/aside.php'; ?>
@@ -69,27 +69,14 @@
                       <tbody id="tbody">
                       <tr>
                         <?php
-                          $monthes = array("mehr", "aban", "azar", "dey", "bahman", "esfand");
-                          for ($i = 7; $i <= 12; $i++) {
+                          $monthes = array("mehr", "aban", "azar", "dey", "bahman", "esfand", "farvardin", "ordibehesht", "khordad");
+                          for ($i = 7; $i <= 15; $i++) {
                             $mon = $monthes[($i - 7)];
                             $sql = "SELECT AVG(mark) as $mon from `monmark` WHERE monCode=$i";
                             $run = $pdo->prepare($sql);
                             $run->execute();
                             $row = $run->fetchAll();
                             $mark = $row[0]["$mon"];
-                            ?>
-                            <td style="text-align: center;"> <?php print substr($mark, 0, 5); ?> </td>
-                          <?php }
-                        ?>
-                        <?php
-                          $monthes = array("farvardin", "ordibehesht", "khordad");
-                          for ($i = 1; $i <= 3; $i++) {
-                            $monn = $monthes[($i - 1)];
-                            $sql = "SELECT AVG(mark) as $monn from `monmark` WHERE monCode=$i";
-                            $run = $pdo->prepare($sql);
-                            $run->execute();
-                            $row = $run->fetchAll();
-                            $mark = $row[0]["$monn"];
                             ?>
                             <td style="text-align: center;"> <?php print substr($mark, 0, 5); ?> </td>
                           <?php }

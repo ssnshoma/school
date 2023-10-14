@@ -57,7 +57,12 @@
                             style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"><?php print($_GET['class']); ?></strong>
                           برای
                           <strong
-                            style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"> <?php print($_GET['nobat']); ?></strong>
+                            style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"> <?php
+                            if ($_GET['nobat']==20){print("آزمون آغازین");}
+                            if ($_GET['nobat']==21){print("آزمون دی ماه");}
+                            if ($_GET['nobat']==22){print("آزمون خرداد ماه");}
+                            if ($_GET['nobat']==23){print("آزمون شهریور ماه");}
+                            ?></strong>
                         </h5>
                         <form method="POST">
                           <div id="avgmarkstable" class="mt-3" dir="rtl">
@@ -111,7 +116,7 @@
                                     <td class="form-group mb-2">
                                       <input type="text"
                                              style="width: 40px;font-size: 12px;font-weight:bold;border-color: #c2c2c2"
-                                             name="mark[]" tabindex="1" required>
+                                             name="mark[]" tabindex="1">
                                     </td>
 
                                   </tr>

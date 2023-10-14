@@ -178,37 +178,6 @@
   <!-- / Layout wrapper -->
 
   <script>
-    $(document).ready(function () {
-      $(document).on('click', '.remove-btn', function () {
-        $(this).closest('.main-form').remove();
-      });
-      $(document).on('click', '.add-more-form', function () {
-        console.log("ok");
-        $('.paste-new-forms').append('<div class="main-form mt-3 mb-4 border-bottom float-left">' +
-          '<div class="row mt-3">' +
-          '<div class="col-md-3">' +
-          '<label for="codemeli" class="pb-2">کد ملی</label>' +
-          '<input type="text" class="mb-4 input" name="codemeli[]">' +
-          '</div>' +
-          '<div class="col-md-3">' +
-          '<label for="fname" class="pb-2">نام</label>' +
-          '<input type="text" class="mb-4 input" name="fname[]">' +
-          '</div>' +
-          '<div class="col-md-3">' +
-          '<label for="lname" class="pb-2">نام خانوادگی</label>' +
-          '<input type="text" class="mb-4 input" name="lname[]">' +
-          '</div>' +
-          '<div class="col-md-3">' +
-          '<label for="fathername" class="pb-2">نام پدر</label>' +
-          '<input type="text" class="mb-4 input" name="fathername[]">' +
-          '</div>' +
-          '<button type="button" class="remove-btn btn btn-danger w-px-100 m-auto mb-4">حذف</button>' +
-          '</div>' +
-          '</div>');
-      });
-
-    });
-
     function changeSelectOption(str) {
       if (str == "") {
         document.getElementById("sel-school").innerHTML = "";
@@ -247,6 +216,37 @@
     }
   </script>
   <?php include_once '../assets/footer.php'; ?>
+  <script>    $(document).ready(function () {
+      $(document).on('click', '.remove-btn', function () {
+        $(this).closest('.main-form').remove();
+      });
+      $(document).on('click', '.add-more-form', function () {
+        console.log("ok");
+        $('.paste-new-forms').append('<div class="main-form mt-3 mb-4 border-bottom float-left">' +
+          '<div class="row mt-3">' +
+          '<div class="col-md-3">' +
+          '<label for="codemeli" class="pb-2">کد ملی</label>' +
+          '<input type="text" class="mb-4 input" name="codemeli[]">' +
+          '</div>' +
+          '<div class="col-md-3">' +
+          '<label for="fname" class="pb-2">نام</label>' +
+          '<input type="text" class="mb-4 input" name="fname[]">' +
+          '</div>' +
+          '<div class="col-md-3">' +
+          '<label for="lname" class="pb-2">نام خانوادگی</label>' +
+          '<input type="text" class="mb-4 input" name="lname[]">' +
+          '</div>' +
+          '<div class="col-md-3">' +
+          '<label for="fathername" class="pb-2">نام پدر</label>' +
+          '<input type="text" class="mb-4 input" name="fathername[]">' +
+          '</div>' +
+          '<button type="button" class="remove-btn btn btn-danger w-px-100 m-auto mb-4">حذف</button>' +
+          '</div>' +
+          '</div>');
+      });
+
+    });
+  </script>
 
 
 

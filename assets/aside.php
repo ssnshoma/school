@@ -159,7 +159,6 @@
             <div data-i18n="Under Maintenance">ثبت نمرات</div>
           </a>
         </li>
-
         <li class="menu-item">
           <a href="../html/check-marks.php" class="menu-link" tabindex="-1">
             <div data-i18n="Error">نمرات ماهانه دانش آموز</div>
@@ -178,6 +177,16 @@
         <li class="menu-item">
           <a href="../html/final-mark.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">ثبت نمرات پایانی</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/check-final-marks.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Error">نمرات پایانی دانش آموز</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/check-final-marks-all.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Error">بررسی نمرات پایانی</div>
           </a>
         </li>
       </ul>
