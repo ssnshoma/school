@@ -1,5 +1,5 @@
 <?php
-unset($_SESSION['first-login']);
+setcookie("logedIn", $usname, time() + (300), "/");
 session_unset();
 session_reset();
 session_destroy();

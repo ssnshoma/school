@@ -87,6 +87,7 @@
                                 <td class="center">کلاس</td>
                                 <td class="center">نمره</td>
                                 <td class="center">تاریخ</td>
+                                <td class="center">جزییات</td>
                                 <td class="center">عملیات</td>
                               </tr>
                               </thead>
@@ -114,6 +115,7 @@
                                         $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
                                         print $converted;
                                       ?></td>
+                                   <td class="text-dark center"><?php echo $row['details']; ?></td>
                                     <td class="center">
                                       <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>"
                                          class="btn btn-sm btn-warning">

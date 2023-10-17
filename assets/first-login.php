@@ -1,7 +1,5 @@
 <?php
-  if (isset($_SESSION['logedin'])) {
-} else {
+  if (!isset($_COOKIE['logedIn'])) {
   echo " <script> window.location.href='../index.php';</script> ";
-  $_SESSION['first-login'] = "لطفا ابتدا وارد شوید";
+  $_SESSION['first-login'] = "لطفا وارد شوید";
 }
-?>

@@ -1,8 +1,8 @@
 <?php
 include_once 'assets/connect.php';
-?>
-
-<?php
+if (isset($_COOKIE['logedIn'])){
+ header("Location: html/dashboard.php");
+}
 if (isset($_POST['login-btn'])) {
   $usname = $_POST['email-username'];
   $uspsw = $_POST['password'];
@@ -14,15 +14,19 @@ if (isset($_POST['login-btn'])) {
   $row = $resault->fetch();
   $count = $resault->rowCount();
   if ($count == 1 && $row["password"] == md5($uspsw)) {
-    $_SESSION['log-info'] = $usname;
-    $_SESSION['logedin'] = "logedin";
-    echo "<script>window.location.href='html/dashboard.php'</script>";
+if (isset($_POST['check']) and $_POST['check']=="set"){
+ setcookie("logedIn", $usname, time() + (300), "/");
+ echo "<script>window.location.href='html/dashboard.php'</script>";
+}else{
+ setcookie("logedIn", $usname);
+ echo "<script>window.location.href='html/dashboard.php'</script>";
+
+}
   } else {
     $_GET['not-ok'] = "نام کاربری یا رمز عبور نادرست است";
   }
 }
-?>
-<?php include_once 'assets/login-head.php';
+ include_once 'assets/login-head.php';
 ?>
 
 <!-- Content -->
@@ -129,7 +133,7 @@ if (isset($_POST['login-btn'])) {
             </div>
             <div class="mb-3">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="remember-me" />
+                <input class="form-check-input" name="check" value="set" type="checkbox" id="remember-me" />
                 <label class="form-check-label" for="remember-me"> مرا به خاطر بسپار </label>
               </div>
             </div>

@@ -166,11 +166,6 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/check-marks-all.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Error">نمرات کلی دانش آموز</div>
-          </a>
-        </li>
-        <li class="menu-item">
           <a href="../html/report-monthly-mark.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">گزارش سالیانه</div>
           </a>

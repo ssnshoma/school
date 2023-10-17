@@ -9,8 +9,9 @@
   $category = "ثبت نمره";
   if (isset($_POST['edit-btn'])) {
     $id = $_GET['editid'];
+    $details=$_POST['details'];
     $mark = $_POST['mark'];
-    $qry = "UPDATE `monmark` SET `mark`='$mark' WHERE id=$id";
+    $qry = "UPDATE `monmark` SET `mark`='$mark',`details`='$details' WHERE id=$id";
     $run = $pdo->prepare($qry);
     $run->execute();
     header("Location: ../html/check-marks.php");
@@ -73,6 +74,13 @@
                    </label>
                    <input type="text" name="mark" class="form-control" style="text-align: center;background: none"
                           value="<?php print $row['mark']; ?>">
+                  </div>
+                  <div class="col-md-4">
+                   <label>
+                    جزییات
+                   </label>
+                   <input type="text" name="details" class="form-control" style="text-align: center;background: none"
+                          value="<?php print $row['details']; ?>">
                   </div>
                  <?php } ?>
              </div>

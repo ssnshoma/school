@@ -2,8 +2,8 @@
   include_once '../assets/connect.php';
   function getProfilePicName()
   {
-    if (isset($_SESSION['log-info'])) {
-      $logifo = $_SESSION['log-info'];
+    if (isset($_COOKIE['logedIn'])) {
+      $logifo = $_COOKIE['logedIn'];
       global $pdo;
       $sqll = "SELECT * FROM users WHERE username=? OR email=?";
       $resualt = $pdo->prepare($sqll);
