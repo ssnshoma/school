@@ -35,15 +35,16 @@
                               <td class="pe-0 center">نام</td>
                               <td class="pe-0 center th-lg">نام خانوادگی</td>
                               <?php
-                                $qry = "SELECT DISTINCT atendence.date,atendence.codemeli,studentlist.codemeli,studentlist.class FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli where studentlist.class='$classname' group by `date` ";
+                                $qry = "SELECT DISTINCT atendence.date,atendence.details,atendence.codemeli,studentlist.codemeli,studentlist.class FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli where studentlist.class='$classname' group by `date` ";
                                 $run = $pdo->prepare($qry);
                                 $run->execute();
                                 $row = $run->fetchAll();
                                 foreach ($row as $row) { ?>
                                   <td class="center plr-0"><?php
                                       $date = $row['date'];
+                                      $details=$row['details'];
                                     ?>
-                                    <a class="text-secondary"
+                                    <a class="text-secondary" title="<?php echo $details ?>"
                                        href="../assets/pr-ab-edit.php?DateId=<?php echo $date ?>&class=<?php echo $classname ?>"><?php echo miladiToShamsi($date) ?></a>
                                   </td>
                                   <?php
