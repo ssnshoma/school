@@ -61,7 +61,7 @@
 
     <li class="menu-item">
       <a href="../html/dashboard.php" class="menu-link" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <i class="menu-icon tf-icons bx bx-home "></i>
         <div data-i18n="Analytics">صفحه اصلی</div>
       </a>
     </li>
@@ -73,7 +73,7 @@
 
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <i class="menu-icon tf-icons bx bx-book-add"></i>
         <div data-i18n="Account Settings">ثبت نام دانش آموز</div>
       </a>
       <ul class="menu-sub">
@@ -103,7 +103,7 @@
 
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <i class="menu-icon tf-icons bx bxs-school"></i>
         <div data-i18n="Account Settings">مدرسه</div>
       </a>
       <ul class="menu-sub">
@@ -121,7 +121,7 @@
     </li>
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+        <i class="menu-icon tf-icons bx bx-id-card"></i>
         <div data-i18n="Authentications">هویت</div>
       </a>
       <ul class="menu-sub">
@@ -150,8 +150,8 @@
 
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-        <div data-i18n="Misc"> نمرات</div>
+        <i class="menu-icon tf-icons bx bx-data"></i>
+        <div data-i18n="Misc"> نمرات مستمر</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
@@ -169,6 +169,33 @@
             <div data-i18n="Under Maintenance">گزارش سالیانه</div>
           </a>
         </li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
+        <i class="menu-icon tf-icons bx bx-check-square"></i>
+        <div data-i18n="Misc">حضور غیاب</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="../html/class-present-absent.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Error">ثبت کلاسی</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../assets/pr-ab.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Under Maintenance">گزارش حضور و غیاب</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
+        <i class="menu-icon tf-icons bx bx-bong"></i>
+        <div data-i18n="Misc">نمرات پایانی</div>
+      </a>
+      <ul class="menu-sub">
         <li class="menu-item">
           <a href="../html/final-mark.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">ثبت نمرات پایانی</div>
@@ -186,29 +213,11 @@
         </li>
       </ul>
     </li>
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-        <div data-i18n="Misc">حضور غیاب</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="../html/class-present-absent.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Error">ثبت کلاسی</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../assets/pr-ab.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Under Maintenance">گزارش حضور و غیاب</div>
-          </a>
-        </li>
-      </ul>
-    </li>
 
     <!-- User interface -->
     <li class="menu-item">
       <a href="javascript:void(0)" class="menu-link menu-toggle" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-box"></i>
+        <i class="menu-icon tf-icons bx bx-question-mark"></i>
         <div data-i18n="User interface">آزمون ها</div>
       </a>
       <ul class="menu-sub">
@@ -235,7 +244,7 @@
 
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+        <i class="menu-icon tf-icons bx bx-task"></i>
         <div data-i18n="Misc"> فعالیت ها</div>
       </a>
       <ul class="menu-sub">

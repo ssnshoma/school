@@ -2,7 +2,7 @@
   include_once '../assets/connect.php';
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
-  $logifo = $_SESSION['log-info'];
+  
   $profileDetails = getProfilePicName();
   $title = "نمرات ماهانه";
   $category = "نمره";
@@ -76,9 +76,9 @@
                            <option class="pe-5" value="10">دی</option>
                            <option class="pe-5" value="11">بهمن</option>
                            <option class="pe-5" value="12">اسفند</option>
-                           <option class="pe-5" value="1">فروردین</option>
-                           <option class="pe-5" value="2">اردیبهشت</option>
-                           <option class="pe-5" value="3">خرداد</option>
+                           <option class="pe-5" value="13">فروردین</option>
+                           <option class="pe-5" value="14">اردیبهشت</option>
+                           <option class="pe-5" value="15">خرداد</option>
                           </select>
                          </div>
                         </div>
@@ -168,7 +168,6 @@
     <script>
       function monthSelected(str) {
           document.getElementById("markslist").innerHTML = "";
-          document.getElementById("markslist").innerText = "";
           codemeli=document.getElementById('students').value;
           if (str == "") {
         } else {

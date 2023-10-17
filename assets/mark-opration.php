@@ -3,7 +3,7 @@
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
   include_once './files/jdf.php';
-  $logifo = $_SESSION['log-info'];
+  
   $profileDetails = getProfilePicName();
   $title = "ویرایش";
   $category = "ثبت نمره";
@@ -77,7 +77,7 @@
                   </div>
                   <div class="col-md-4">
                    <label>
-                    جزییات
+                    توضیحات
                    </label>
                    <input type="text" name="details" class="form-control" style="text-align: center;background: none"
                           value="<?php print $row['details']; ?>">

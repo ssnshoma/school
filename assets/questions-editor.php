@@ -3,7 +3,7 @@
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
   include_once 'questions-oprator.php';
-  $logifo = $_SESSION['log-info'];
+  
   $profileDetails = getProfilePicName();
   $title = "ثبت سوال";
   $category = "آزمون ها";

@@ -3,7 +3,7 @@
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
   include_once '../assets/files/jdf.php';
-  $logifo = $_SESSION['log-info'];
+
   $profileDetails = getProfilePicName();
   $title = "ثبت کلاسی";
   $category = "حضور و غیاب";
@@ -81,6 +81,7 @@
                               <th id="codemeli">شماره دانش آموزی</th>
                               <th class="pe-0" style="width: 90px;">نام</th>
                               <th class="pe-0" dir="rtl">نام خانوادگی</th>
+                              <th class="pe-0" dir="rtl">نام پدر</th>
                               <th>نمره</th>
                               </thead>
                               <tbody>
@@ -98,6 +99,7 @@
                                   $cod = $value["codemeli"];
                                   $fam = $value['fname'];
                                   $lam = $value['lname'];
+                                  $fathername = $value['fathername'];
 
                                   ?>
                                   <tr>
@@ -114,14 +116,19 @@
                                     </td>
                                     <td class="form-group mb-2 pe-0 py-0">
                                       <input class="p-0" type="text" readonly
-                                             style="width: 90px;outline: none;border: none;"
+                                             style="outline: none;border: none;"
                                              name="fname[]" dir="rtl" value="<?php echo $fam; ?>">
                                     </td>
 
                                     <td class="form-group mb-2 pe-0 py-0">
                                       <input class="p-0" type="text" dir="rtl" readonly
-                                             style="width: 130px;outline: none;border: none"
+                                             style="outline: none;border: none"
                                              name="lname[]" value="<?php echo $lam; ?>">
+                                    </td>
+                                    <td class="form-group mb-2 pe-0 py-0">
+                                      <input class="p-0" type="text" dir="rtl" readonly
+                                             style="outline: none;border: none"
+                                             name="lname[]" value="<?php echo $fathername; ?>">
                                     </td>
 
                                     <td class="form-group mb-2">

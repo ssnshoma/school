@@ -14,11 +14,8 @@
     $row = $resault->fetch();
     $count = $resault->rowCount();
     if ($count == 1 && $row["password"] == md5($uspsw)) {
-      $_SESSION['log-info'] = $usname;
-      $_SESSION['logedin'] = "logedin";
       $cookie_name = "user";
-      $cookie_value = "John Doe";
-      setcookie($cookie_name, $cookie_value, time() + (60*60*24*30), "/");
+      setcookie($cookie_name, $usname, time() + (60*60*24*30), "/");
       header('location: dashboard.php');
     } else {
       $_GET['not-ok'] = "نام کاربری یا رمز عبور نادرست است";

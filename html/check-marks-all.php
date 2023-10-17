@@ -2,7 +2,7 @@
   include_once '../assets/connect.php';
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
-  $logifo = $_SESSION['log-info'];
+  
   $profileDetails = getProfilePicName();
   $title = "نمرات سالانه";
   $category = "نمره";
@@ -87,7 +87,7 @@
                                 <td class="center">کلاس</td>
                                 <td class="center">نمره</td>
                                 <td class="center">تاریخ</td>
-                                <td class="center">جزییات</td>
+                                <td class="center">توضیحات</td>
                                 <td class="center">عملیات</td>
                               </tr>
                               </thead>

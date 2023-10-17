@@ -3,7 +3,7 @@
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/files/jdf.php';
   include '../assets/first-login.php';
-  $logifo = $_SESSION['log-info'];
+  
   $profileDetails = getProfilePicName();
   $title = "کارها";
   $category = "فعالیت";

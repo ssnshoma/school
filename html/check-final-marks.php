@@ -2,7 +2,7 @@
   include_once '../assets/connect.php';
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
-  $logifo = $_SESSION['log-info'];
+  
   $profileDetails = getProfilePicName();
   $title = "نمرات پایانی";
   $category = "نمره";

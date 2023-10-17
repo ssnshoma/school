@@ -226,14 +226,16 @@
   }
   if (isset($_GET['className'])) {
     $className = $_GET['className'];
-    $schoolMonthQuery = "SELECT * FROM `monmark` WHERE `class`='$className'";
+    $schoolMonthQuery = "SELECT  * FROM `monmark` WHERE `class`='$className' group by codemeli";
     $schoolMonth = $pdo->prepare($schoolMonthQuery);
     $schoolMonth->execute();
     $row = $schoolMonth->fetchAll();
+    ?>
+    <option>دانش آموز را انتخاب کنید</option>
+    <?php
     foreach ($row as $row) {
       ?>
-      <option
-        value="<?php print $row['codemeli'] ?>"><?php print " " . $row['fname'] . " " . $row['lname']; ?></option>
+      <option value="<?php print $row['codemeli'] ?>"><?php print " " . $row['fname'] . " " . $row['lname']; ?></option>
       <?php
     }
   }
