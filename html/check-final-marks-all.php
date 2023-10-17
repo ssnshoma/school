@@ -30,20 +30,20 @@
                                 <td class="border-left center">نام</td>
                                 <td class="border-left center">نام خانوادگی</td>
                                 <td class="border-left center">کلاس</td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.4)"
                                     class="border-left center">آغازین
                                 </td>
                                 <td class="border-left center">مستمر</td>
                                 <td class="border-left center">دی</td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.4)"
                                     class="border-left center">پایانی
                                 </td>
                                 <td class="border-left center">مستمر</td>
-                                <td class="border-left center">خرداد</td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td c lass="border-left center">خرداد</td>
+                                <td style="border-left: 1px solid rgba(0,0,0,0.4)"
                                     class="border-left center">پایانی
                                 </td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.4)"
                                     class="border-left center">سالانه
                                 </td>
                                 <td class="center">شهریور</td>
@@ -101,21 +101,21 @@
                                 <td class="center"><?php echo $fname; ?></td>
                                 <td class="center"><?php echo $lname; ?></td>
                                 <td class="center"><?php echo $class; ?></td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.4)"
                                     class="center"><?php echo $aghazin; ?></td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.2)"
                                     class="center"><?php echo markSubstr($mostamaDey); ?></td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.2)"
                                     class="center"><?php echo $dey; ?></td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.4)"
                                     class="center"><?php echo markSubstr($payaniNobat1); ?></td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.2)"
                                     class="center"><?php echo markSubstr($mostamarKhordad); ?></td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.20)"
                                     class="center"><?php echo $khordad; ?></td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.4)"
                                     class="center"><?php echo markSubstr($payaniNobat2); ?></td>
-                                <td style="border-left: 1px solid rgba(0,0,0,0.22)"
+                                <td style="border-left: 1px solid rgba(0,0,0,0.4)"
                                     class="center"><?php echo markSubstr($payaniSal); ?></td>
                                 <td class="center"><?php echo $shahrivar; ?></td>
                                 <?php } ?>

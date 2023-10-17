@@ -71,7 +71,8 @@
                             <thead class="table-responsive-md">
                             <th id="radif">ردیف</th>
                             <th id="codemeli">شماره دانش آموزی</th>
-                            <th>نام و نام خانوادگی</th>
+                            <th>نام</th>
+                            <th>نام خانوادگی</th>
                             <th>نام پدر</th>
                             <th>وضعیت حضور</th>
                             </thead>
@@ -104,7 +105,10 @@
                                            autocomplete="off" value="<?php echo $cod; ?>">
                                   </td>
                                   <td class="form-group mb-2">
-                                    <?php echo $fam . " " . $lam; ?>
+                                    <?php echo $fam; ?>
+                                  </td>
+                                  <td class="form-group mb-2">
+                                    <?php echo $lam; ?>
                                   </td>
                                   <td class="form-group mb-2">
                                     <?php echo $father; ?>

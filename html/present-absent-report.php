@@ -34,8 +34,9 @@
                               <td class="pe-0 center" id="codemeli">کد ملی</td>
                               <td class="pe-0 center">نام</td>
                               <td class="pe-0 center th-lg">نام خانوادگی</td>
+                              <td class="pe-0 center th-lg">نام پدر</td>
                               <?php
-                                $qry = "SELECT DISTINCT atendence.date,atendence.details,atendence.codemeli,studentlist.codemeli,studentlist.class FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli where studentlist.class='$classname' group by `date` ";
+                                $qry = "SELECT DISTINCT atendence.date,atendence.details,atendence.codemeli,studentlist.codemeli,studentlist.class,studentlist.fathername FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli where studentlist.class='$classname' group by `date` ";
                                 $run = $pdo->prepare($qry);
                                 $run->execute();
                                 $row = $run->fetchAll();
@@ -54,7 +55,7 @@
                             </thead>
                             <tbody>
                             <?php
-                              $qry = "SELECT studentlist.fname,atendence.id,studentlist.class,studentlist.lname,studentlist.codemeli,atendence.codemeli FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli WHERE studentlist.class='$classname' GROUP BY studentlist.codemeli ORDER BY date,lname";
+                              $qry = "SELECT studentlist.fname,atendence.id,studentlist.class,studentlist.lname,studentlist.codemeli,studentlist.fathername FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli WHERE studentlist.class='$classname' GROUP BY studentlist.codemeli ORDER BY date,lname";
                               $run = $pdo->prepare($qry);
                               $run->execute();
                               $row = $run->fetchAll();
@@ -67,6 +68,7 @@
                                   <td class="pe-0 center" id="codemeli"><?php echo $row['codemeli']; ?></td>
                                   <td class="pe-0 center"><?php echo $row['fname']; ?></td>
                                   <td class="pe-0 center"><?php echo $row['lname']; ?></td>
+                                  <td class="pe-0 center"><?php echo $row['fathername']; ?></td>
                                   <?php
                                     $FindQry = "SELECT atendence FROM `atendence` where codemeli='$code' order by date";
                                     $resualt = $pdo->prepare($FindQry);

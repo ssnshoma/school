@@ -2,7 +2,7 @@
   include_once '../assets/connect.php';
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
-  
+
   $profileDetails = getProfilePicName();
   $title = "ویرایش";
   $category = "حضور غیاب";
@@ -34,24 +34,24 @@
     echo '<script>window.history.go(-2)</script>';
   }
 
-if (isset($_POST['details-edit']) and $_POST['details'] != "") {
- $class = $_GET['class'];
- $details=$_POST['details'];
- $lastDate = $_GET['DateId'];
- $findClass = "SELECT `codemeli` FROM `studentlist` WHERE `class`='$class'";
- $resualt = $pdo->prepare($findClass);
- $resualt->execute();
- $row = $resualt->fetchAll();
- foreach ($row as $row) {
-  $codemeli = $row['codemeli'];
-  $UpdateSql = "UPDATE `atendence` SET `details`='$details' WHERE `date`='$lastDate' and `codemeli`='$codemeli'";
-  $res = $pdo->prepare($UpdateSql);
-  $res->execute();
- }
- echo '<script>window.history.go(-2)</script>';
-} else if (isset($_POST['details-edit']) and $_POST['details'] == "") {
- echo '<script>window.history.go(-2)</script>';
-}
+  if (isset($_POST['details-edit']) and $_POST['details'] != "") {
+    $class = $_GET['class'];
+    $details = $_POST['details'];
+    $lastDate = $_GET['DateId'];
+    $findClass = "SELECT `codemeli` FROM `studentlist` WHERE `class`='$class'";
+    $resualt = $pdo->prepare($findClass);
+    $resualt->execute();
+    $row = $resualt->fetchAll();
+    foreach ($row as $row) {
+      $codemeli = $row['codemeli'];
+      $UpdateSql = "UPDATE `atendence` SET `details`='$details' WHERE `date`='$lastDate' and `codemeli`='$codemeli'";
+      $res = $pdo->prepare($UpdateSql);
+      $res->execute();
+    }
+    echo '<script>window.history.go(-2)</script>';
+  } else if (isset($_POST['details-edit']) and $_POST['details'] == "") {
+    echo '<script>window.history.go(-2)</script>';
+  }
 
   if (isset($_POST['delete-yes'])) {
     $class = $_GET['class'];
@@ -138,8 +138,7 @@ if (isset($_POST['details-edit']) and $_POST['details'] != "") {
                         <input type="submit" name="edit" value="ویرایش"
                                class="mb-5 mt-4 btn btn-warning m-auto d-block">
                       </form>
-                    <?php } ?>
-                    <?php if (isset($_GET['DateId'])) { ?>
+                    <?php } else if (isset($_GET['DateId'])) { ?>
                       <form method="post">
                         <h5 class="text-secondary mb-5">
                           جهت ویرایش تاریخ
@@ -160,12 +159,13 @@ if (isset($_POST['details-edit']) and $_POST['details'] != "") {
               </div>
             </div>
           </div>
+          <?php if (isset($_GET['DateId'])) { ?>
           <div class="row">
             <div class="col-lg-10 mb-4 order-0 m-auto">
               <div class="card border-0">
                 <div class="d-flex align-items-end row ">
                   <div class="card-body p-5" dir="rtl">
-                    <?php if (isset($_GET['DateId'])) { ?>
+
                       <form method="post">
                         <h6 class="text-secondary mb-2">
                           آیا مایل به حذف کلی این حضور/غیاب هستید؟
@@ -175,13 +175,14 @@ if (isset($_POST['details-edit']) and $_POST['details'] != "") {
                           <input type="submit" name="delete-yes" value="بله" class="btn btn-danger center d-block w-25">
                         </div>
                       </form>
-                      <?php
-                    }
-                    ?>
+
                   </div>
                 </div>
               </div>
             </div>
+            <?php
+                    }
+                    ?>
           </div>
         </div>
       </div>

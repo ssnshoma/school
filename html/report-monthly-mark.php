@@ -18,8 +18,8 @@
        <div>
        <div class="card">
         <div class="d-flex align-items-center row">
-         <div class="col-sm-12 m-auto">
-          <div class="card-body" id="marks-table" style="height: 500px">
+         <div class="col-sm-12 m-auto pt-2 pb-2">
+          <div class="card-body" id="marks-table" style="height: 80vh;overflow-y: scroll">
              <h5 class="card-title text-primary">دریافت نمرات دانش آموزان</h5>
            <div class="row flex-row" style="direction: rtl;overflow-x: scroll;">
             <table dir="rtl" class="table text-nowrap">

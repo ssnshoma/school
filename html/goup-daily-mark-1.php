@@ -29,17 +29,19 @@
     $lname = $_POST['lname'];
     $classs = $_GET['class'];
     $school = $_GET['school'];
+    $details = $_POST['details'];
     foreach ($codemeli as $index => $codemeli) {
       $s_codemeli = $codemeli;
       $s_mark = $mark[$index];
       $s_fname = $fname[$index];
       $s_lname = $lname[$index];
+      $s_details = $details;
       $s_classs = $classs;
       $s_school = $school;
       $monCode = $jMonth;
       if ($s_mark == "") {
       } else {
-        $query = "INSERT INTO `monmark` (`codemeli`, `mark`, `fname`, `lname`, `class`, `school`, `monCode`,`tarikh`) VALUES ('$s_codemeli','$s_mark','$s_fname','$s_lname','$s_classs','$s_school','$monCode', '$converted')";
+       $query = "INSERT INTO `monmark` (`codemeli`, `mark`, `fname`, `lname`, `class`, `school`, `monCode`,`tarikh`,`details`) VALUES ('$s_codemeli','$s_mark','$s_fname','$s_lname','$s_classs','$s_school','$monCode', '$converted','$s_details')";
         $query_run = mysqli_query($conn, $query);
       }
     }
@@ -143,6 +145,11 @@
                               ?>
                               </tbody>
                             </table>
+                            <div class="w-75 mt-3 m-auto">
+                              <label>توضیحات</label>
+                              <input type="text" class="form-control" name="details"
+                                     placeholder="لطفا فعالیت های خود را وارد کنید">
+                            </div>
                             <button type="submit" name="save_multiple_data"
                                     class="btn btn-primary mt-4 mb-5 d-block m-auto"
                                     tabindex="9">ثبت

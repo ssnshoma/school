@@ -2,7 +2,6 @@
   include_once '../assets/connect.php';
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
-  
   $profileDetails = getProfilePicName();
   $title = "لیست کلاسی";
   $category = "حضور غیاب";

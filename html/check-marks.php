@@ -261,20 +261,6 @@
           xmlhttp.send();
         }
       }
-
-      function deleteRecord(str) {
-        if (str == "") {
-          return;
-        } else {
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-            }
-          };
-          xmlhttp.open("GET", "../assets/mark-search.php?deleteId=" + str);
-          xmlhttp.send();
-        }
-      }
     </script>
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>

@@ -32,7 +32,7 @@
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
           </a>
-          <a onclick="deleteRecord(<?php echo $row['id']; ?>)" class="text-white btn btn-sm btn-danger">
+          <a href="../assets/mark-search.php?deleteId=<?php echo $row['id']; ?>" class="text-white btn btn-sm btn-danger">
             <i class="bx bx-trash"></i>
           </a>
         </td>
@@ -59,7 +59,7 @@
 
   if (isset($_GET['selectedschool']) and isset($_GET['code'])) {
     $selectedschool = $_GET['selectedschool'];
-    $classQry = "SELECT * FROM `monmark` WHERE `school`='$selectedschool' ORDER BY class,lname";
+    $classQry = "SELECT * FROM `monmark` WHERE `school`='$selectedschool' and monCode<=16 ORDER BY class,lname";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();
@@ -87,7 +87,7 @@
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
           </a>
-          <a onclick="deleteRecord(<?php echo $row['id']; ?>)" class="text-white btn btn-sm btn-danger">
+          <a href="../assets/mark-search.php?deleteId=<?php echo $row['id']; ?>" class="text-white btn btn-sm btn-danger">
             <i class="bx bx-trash"></i>
           </a>
         </td>
@@ -99,7 +99,7 @@
 
   if (isset($_GET['selectedclass']) and isset($_GET['calCode'])) {
     $selectedschool = $_GET['selectedclass'];
-    $classQry = "SELECT * FROM `monmark` WHERE `class`='$selectedschool' ORDER BY lname";
+    $classQry = "SELECT * FROM `monmark` WHERE `class`='$selectedschool' and monCode<=16 ORDER BY lname";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();
@@ -127,7 +127,7 @@
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
           </a>
-          <a onclick="deleteRecord(<?php echo $row['id']; ?>)" class="text-white btn btn-sm btn-danger">
+          <a href="../assets/mark-search.php?deleteId=<?php echo $row['id']; ?>" class="text-white btn btn-sm btn-danger">
             <i class="bx bx-trash"></i>
           </a>
         </td>
@@ -138,7 +138,7 @@
   }
   if (isset($_GET['codemeli']) and isset($_GET['codemeliSelected'])) {
     $codemeli = $_GET['codemeli'];
-    $classQry = "SELECT * FROM `monmark` WHERE `codemeli`='$codemeli' ORDER BY tarikh";
+    $classQry = "SELECT * FROM `monmark` WHERE `codemeli`='$codemeli' and monCode<=16 ORDER BY tarikh";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();
@@ -166,7 +166,7 @@
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
           </a>
-          <a onclick="deleteRecord(<?php echo $row['id']; ?>)" class="text-white btn btn-sm btn-danger">
+          <a href="../assets/mark-search.php?deleteId=<?php echo $row['id']; ?>" class="text-white btn btn-sm btn-danger">
             <i class="bx bx-trash"></i>
           </a>
         </td>
@@ -209,7 +209,7 @@
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
           </a>
-          <a href="check-marks.php?deleteid=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger">
+          <a href="../assets/mark-search.php?deleteId=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger">
             <i class="bx bx-trash"></i>
           </a>
         </td>
@@ -222,11 +222,11 @@
     $id = $_GET['deleteId'];
     $deleteQury = "DELETE FROM `monmark` WHERE id=$id";
     $deleteQuryRun = mysqli_query($conn, $deleteQury);
-
+    echo '<script>window.history.go(-2)</script>';
   }
   if (isset($_GET['className'])) {
     $className = $_GET['className'];
-    $schoolMonthQuery = "SELECT  * FROM `monmark` WHERE `class`='$className' group by codemeli";
+    $schoolMonthQuery = "SELECT  * FROM `monmark` WHERE `class`='$className' and monCode<=16 group by codemeli order by lname";
     $schoolMonth = $pdo->prepare($schoolMonthQuery);
     $schoolMonth->execute();
     $row = $schoolMonth->fetchAll();
