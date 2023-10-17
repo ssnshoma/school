@@ -17,11 +17,13 @@
   if (isset($_POST['save_multiple_data'])) {
     $codemeli = $_POST['code'];
     $fname = $_POST['fname'];
+    $details=$_POST['details'];
     foreach ($codemeli as $index => $codemeli) {
       $s_codemeli = $codemeli;
       $s_fname = $fname[$index];
       $s_date = $converted;
-      $query = "INSERT INTO `atendence` ( codemeli , atendence , date) VALUES ('$s_codemeli','$s_fname','$s_date')";
+      $s_details=$details;
+      $query = "INSERT INTO `atendence` ( codemeli , atendence , date, details) VALUES ('$s_codemeli','$s_fname','$s_date','$s_details')";
       $query_run = mysqli_query($conn, $query);
     }
     if ($query_run) {
@@ -70,6 +72,7 @@
                             <th id="radif">ردیف</th>
                             <th id="codemeli">شماره دانش آموزی</th>
                             <th>نام و نام خانوادگی</th>
+                            <th>نام پدر</th>
                             <th>وضعیت حضور</th>
                             </thead>
                             <tbody>
@@ -86,6 +89,7 @@
                                 $cod = $value["codemeli"];
                                 $fam = $value['fname'];
                                 $lam = $value['lname'];
+                                $father=$value['fathername']
                                 ?>
                                 <tr>
                                   <td class="form-group mb-2" id="radif">
@@ -103,6 +107,9 @@
                                     <?php echo $fam . " " . $lam; ?>
                                   </td>
                                   <td class="form-group mb-2">
+                                    <?php echo $father; ?>
+                                  </td>
+                                  <td class="form-group mb-2">
                                     <div><label for="fname[]" class="lable">حاضر</label>
                                       <input type="checkbox" name="fname[]" value="ok" checked tabindex="1">
                                       <br>
@@ -117,6 +124,10 @@
                             ?>
                             </tbody>
                           </table>
+                         <div class="w-75 mt-3 m-auto">
+                          <label>توضیحات</label>
+                          <input type="text" class="form-control" name="details" placeholder="لطفا فعالیت های خود را وارد کنید">
+                         </div>
                           <button type="submit" name="save_multiple_data"
                                   class="btn btn-primary mt-4 mb-5 d-block m-auto"
                                   tabindex="9">ثبت

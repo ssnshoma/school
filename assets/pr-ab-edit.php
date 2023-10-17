@@ -33,6 +33,26 @@
   } else if (isset($_POST['Date-edit']) and $_POST['data'] == "") {
     echo '<script>window.history.go(-2)</script>';
   }
+
+if (isset($_POST['details-edit']) and $_POST['details'] != "") {
+ $class = $_GET['class'];
+ $details=$_POST['details'];
+ $lastDate = $_GET['DateId'];
+ $findClass = "SELECT `codemeli` FROM `studentlist` WHERE `class`='$class'";
+ $resualt = $pdo->prepare($findClass);
+ $resualt->execute();
+ $row = $resualt->fetchAll();
+ foreach ($row as $row) {
+  $codemeli = $row['codemeli'];
+  $UpdateSql = "UPDATE `atendence` SET `details`='$details' WHERE `date`='$lastDate' and `codemeli`='$codemeli'";
+  $res = $pdo->prepare($UpdateSql);
+  $res->execute();
+ }
+ echo '<script>window.history.go(-2)</script>';
+} else if (isset($_POST['details-edit']) and $_POST['details'] == "") {
+ echo '<script>window.history.go(-2)</script>';
+}
+
   if (isset($_POST['delete-yes'])) {
     $class = $_GET['class'];
     $lastDate = $_GET['DateId'];

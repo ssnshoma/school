@@ -1,9 +1,10 @@
 <?php
   include_once "connect.php";
   include_once './files/jdf.php';
-  if (isset($_GET['monthcode'])) {
+  if (isset($_GET['monthcode']) and isset($_GET['codemeli'])) {
     $monthCode = $_GET['monthcode'];
-    $sql = "SELECT * FROM `monmark` WHERE monCode='$monthCode' order by tarikh";
+    $codemeli = $_GET['codemeli'];
+    $sql = "SELECT * FROM `monmark` WHERE `monCode`='$monthCode' and `codemeli`='$codemeli' order by tarikh";
     $resualt = $pdo->prepare($sql);
     $resualt->execute();
     $row = $resualt->fetchAll();
@@ -26,6 +27,7 @@
             $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
             print $converted;
           ?></td>
+       <td class="text-dark center"><?php echo $row['details']; ?></td>
         <td style="padding: 0.5rem 1.1rem" class="center">
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
@@ -55,10 +57,9 @@
     }
   }
 
-  if (isset($_GET['selectedschool']) and isset($_GET['month']) and isset($_GET['code'])) {
+  if (isset($_GET['selectedschool']) and isset($_GET['code'])) {
     $selectedschool = $_GET['selectedschool'];
-    $selectedmonth = $_GET['month'];
-    $classQry = "SELECT * FROM `monmark` WHERE `school`='$selectedschool' and `monCode`='$selectedmonth'";
+    $classQry = "SELECT * FROM `monmark` WHERE `school`='$selectedschool' ORDER BY class,lname";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();
@@ -81,6 +82,7 @@
             $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
             print $converted;
           ?></td>
+       <td class="text-dark center"><?php echo $row['details']; ?></td>
         <td style="padding: 0.5rem 1.1rem" class="center">
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
@@ -95,10 +97,9 @@
     }
   }
 
-  if (isset($_GET['selectedclass']) and isset($_GET['month'])) {
+  if (isset($_GET['selectedclass']) and isset($_GET['calCode'])) {
     $selectedschool = $_GET['selectedclass'];
-    $selectedmonth = $_GET['month'];
-    $classQry = "SELECT * FROM `monmark` WHERE `class`='$selectedschool' and `monCode`='$selectedmonth'";
+    $classQry = "SELECT * FROM `monmark` WHERE `class`='$selectedschool' ORDER BY lname";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();
@@ -121,6 +122,7 @@
             $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
             print $converted;
           ?></td>
+       <td class="text-dark center"><?php echo $row['details']; ?></td>
         <td style="padding: 0.5rem 1.1rem" class="center">
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
@@ -134,10 +136,9 @@
       $i++;
     }
   }
-  if (isset($_GET['montCode']) and isset($_GET['codemeli'])) {
+  if (isset($_GET['codemeli']) and isset($_GET['codemeliSelected'])) {
     $codemeli = $_GET['codemeli'];
-    $selectedmonth = $_GET['montCode'];
-    $classQry = "SELECT * FROM `monmark` WHERE `codemeli`='$codemeli' and `monCode`='$selectedmonth'";
+    $classQry = "SELECT * FROM `monmark` WHERE `codemeli`='$codemeli' ORDER BY tarikh";
     $findClass = $pdo->prepare($classQry);
     $findClass->execute();
     $row = $findClass->fetchAll();
@@ -160,6 +161,7 @@
             $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
             print $converted;
           ?></td>
+       <td class="text-dark center"><?php echo $row['details']; ?></td>
         <td style="padding: 0.5rem 1.1rem" class="center">
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>
@@ -202,6 +204,7 @@
             $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
             print $converted;
           ?></td>
+       <td class="text-dark center"><?php echo $row['details']; ?></td>
         <td style="text-align: right;">
           <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
             <i class="bx bx-edit-alt"></i>

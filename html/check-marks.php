@@ -33,22 +33,6 @@
                             <h4 class="card-title text-primary">دریافت نمرات ماهانه دانش آموز</h4>
                           </div>
                           <div class="col-md-3">
-                            <label for="sel-class" class="pb-1">ماه</label>
-                            <select name="sel-class" class="form-select mb-1" onchange="monthSelected(this.value)"
-                                    id="monthCode" tabindex="4" style="padding-right: 40px">
-                              <option selected class="pe-5" disabled> ماه را انتخاب کنید</option>
-                              <option class="pe-5" value="7">مهر</option>
-                              <option class="pe-5" value="8">آبان</option>
-                              <option class="pe-5" value="9">آذر</option>
-                              <option class="pe-5" value="10">دی</option>
-                              <option class="pe-5" value="11">بهمن</option>
-                              <option class="pe-5" value="12">اسفند</option>
-                              <option class="pe-5" value="1">فروردین</option>
-                              <option class="pe-5" value="2">اردیبهشت</option>
-                              <option class="pe-5" value="3">خرداد</option>
-                            </select>
-                          </div>
-                          <div class="col-md-3">
                             <label for="selschool" class="pb-1">مدرسه</label>
                             <select name="selschool" onchange="changeSelectOption(this.value)"
                                     class="form-select mb-1"
@@ -81,6 +65,22 @@
                               <option selected class="pe-5" disabled> دانش آموز را انتخاب کنید</option>
                             </select>
                           </div>
+                         <div class="col-md-3">
+                          <label for="sel-class" class="pb-1">ماه</label>
+                          <select name="sel-class" class="form-select mb-1" onchange="monthSelected(this.value)"
+                                  id="monthCode" tabindex="4" style="padding-right: 40px">
+                           <option selected class="pe-5" disabled> ماه را انتخاب کنید</option>
+                           <option class="pe-5" value="7">مهر</option>
+                           <option class="pe-5" value="8">آبان</option>
+                           <option class="pe-5" value="9">آذر</option>
+                           <option class="pe-5" value="10">دی</option>
+                           <option class="pe-5" value="11">بهمن</option>
+                           <option class="pe-5" value="12">اسفند</option>
+                           <option class="pe-5" value="1">فروردین</option>
+                           <option class="pe-5" value="2">اردیبهشت</option>
+                           <option class="pe-5" value="3">خرداد</option>
+                          </select>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -103,6 +103,7 @@
                                 <td class="center">کلاس</td>
                                 <td class="center">نمره</td>
                                 <td class="center">تاریخ</td>
+                                <td class="center">توضیحات</td>
                                 <td class="center">عملیات</td>
                               </tr>
                               </thead>
@@ -130,6 +131,7 @@
                                         $converted = gregorian_to_jalali($gYear, $gMonth, $gDay, '-');
                                         print $converted;
                                       ?></td>
+                                   <td class="text-dark center"><?php echo $row['details']; ?></td>
                                     <td class="center">
                                       <a href="../assets/mark-opration.php?editid=<?php echo $row['id']; ?>"
                                          class="btn btn-sm btn-warning">
@@ -165,7 +167,10 @@
     </div>
     <script>
       function monthSelected(str) {
-        if (str == "") {
+          document.getElementById("markslist").innerHTML = "";
+          document.getElementById("markslist").innerText = "";
+          codemeli=document.getElementById('students').value;
+          if (str == "") {
         } else {
           var xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function () {
@@ -173,13 +178,12 @@
               document.getElementById("markslist").innerHTML = this.responseText;
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?monthcode=" + str);
+          xmlhttp.open("GET", "../assets/mark-search.php?monthcode=" + str +"&codemeli="+codemeli);
           xmlhttp.send();
         }
       }
 
       function showSchoolMarks(str) {
-        var month = document.getElementById('monthCode').value;
         if (str == "") {
           document.getElementById("markslist").innerHTML = "";
         } else {
@@ -189,7 +193,7 @@
               document.getElementById("markslist").innerHTML = this.responseText;
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?selectedschool=" + str + "&month=" + month + "&code=10");
+          xmlhttp.open("GET", "../assets/mark-search.php?selectedschool=" + str + "&code=10");
           xmlhttp.send();
         }
       }
@@ -212,7 +216,6 @@
 
 
       function showClassMarks(str) {
-        var month = document.getElementById('monthCode').value;
         var school = document.getElementById('selschool').value;
         if (str == "") {
           document.getElementById("markslist").innerHTML = "";
@@ -223,7 +226,7 @@
               document.getElementById("markslist").innerHTML = this.responseText;
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?selectedclass=" + str + "&month=" + month);
+          xmlhttp.open("GET", "../assets/mark-search.php?selectedclass=" + str + "&calCode=1");
           xmlhttp.send();
         }
       }
@@ -245,7 +248,6 @@
       }
 
       function showmarks(str) {
-        var month = document.getElementById('monthCode').value;
         if (str == "") {
           document.getElementById("markslist").innerHTML = "";
         } else {
@@ -256,7 +258,7 @@
               document.getElementById("markslist").innerHTML = this.responseText;
             }
           };
-          xmlhttp.open("GET", "../assets/mark-search.php?montCode=" + month + "&codemeli=" + str);
+          xmlhttp.open("GET", "../assets/mark-search.php?codemeli=" + str+"&codemeliSelected=1");
           xmlhttp.send();
         }
       }
