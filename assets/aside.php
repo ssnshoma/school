@@ -53,21 +53,15 @@
       <i class="bx bx-chevron-left bx-sm align-middle"></i>
     </a>
   </div>
-
   <div class="menu-inner-shadow"></div>
-
-  <ul class="menu-inner py-1">
-    <!-- Dashboard -->
-
+  <ul class="menu-inner">
     <li class="menu-item">
       <a href="../html/dashboard.php" class="menu-link" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-home "></i>
         <div data-i18n="Analytics">صفحه اصلی</div>
       </a>
     </li>
-
-
-    <li class="menu-header small text-uppercase">
+    <li class="menu-header small sdlka">
       <span class="menu-header-text">ثبت نام ها </span>
     </li>
 
@@ -119,35 +113,8 @@
         </li>
       </ul>
     </li>
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
-        <i class="menu-icon tf-icons bx bx-id-card"></i>
-        <div data-i18n="Authentications">هویت</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="../html/auth-login-basic.php" class="menu-link" target="_blank" tabindex="-1">
-            <div data-i18n="Basic">ورود</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../html/auth-register-basic.php" class="menu-link" target="_blank" tabindex="-1">
-            <div data-i18n="Basic">ثبت نام</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../html/auth-forgot-password-basic.php" class="menu-link" target="_blank" tabindex="-1">
-            <div data-i18n="Basic">فراموشی پسورد</div>
-          </a>
-        </li>
-      </ul>
-    </li>
-
-
     <!-- Components -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">ارزشیابی</span></li>
-    <!-- Cards -->
-
+    <li class="menu-header small sdlka"><span class="menu-header-text">ارزشیابی مستمر</span></li>
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-data"></i>
@@ -194,7 +161,28 @@
         </li>
       </ul>
     </li>
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
+        <i class="menu-icon tf-icons bx bx-minus-circle"></i>
+        <div data-i18n="Misc">مثبت / منفی</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="../html/enzebat.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Misc">ثبت مورد تشویقی/انضباطی</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/enzebat-list.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Misc">لیست موارد</div>
+          </a>
+        </li>
+      </ul>
+    </li>
 
+
+    <li class="menu-header small text-uppercase sdlka"><span class="menu-header-text">ارزشیابی پایانی</span></li>
+    <!-- Cards -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-bong"></i>
@@ -218,7 +206,7 @@
         </li>
       </ul>
     </li>
-
+    <li class="menu-header small text-uppercase sdlka"><span class="menu-header-text">سایر</span></li>
     <!-- User interface -->
     <li class="menu-item">
       <a href="javascript:void(0)" class="menu-link menu-toggle" tabindex="-1">
@@ -243,10 +231,6 @@
         </li>
       </ul>
     </li>
-
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">فعالیت ها</span></li>
-    <!-- Cards -->
-
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle" tabindex="-1">
         <i class="menu-icon tf-icons bx bx-task"></i>
