@@ -22,7 +22,7 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-12">
                       <div class="card-body">
-                        <h5 class="text-info card-title text-primary">لیست حضور غیاب کلاس
+                        <h5 class="text-info card-title text-primary">لیست نمرات کلاس
                           <strong
                             style="font-size: 20px;color: black;margin: 0 4px;padding: 4px 5px;"><?php echo $classname; ?></strong>
                         </h5>

@@ -31,14 +31,14 @@
               <div class="card border-0">
                 <div class="d-flex align-items-end row ">
                   <div class="card-body p-5">
-                    <h3 class="card-title text-primary mb-4">گزارش کلاسی حضور غیاب</h3>
-                    <h4 class="text-info mb-5"> برای دریافت گزارش لطفا موارد زیر را تکمیل کنید</h4>
+                    <h3 class="card-title text-primary mb-4">لیست کلاسی نمرات</h3>
+                    <h4 class="text-info mb-5"> برای دریافت لیست لطفا موارد زیر را تکمیل کنید</h4>
                     <form method="get" action="../html/class-mark-list.php">
                       <div class="m-auto" id="mark-input">
-                        <select name="school" id="school" style="text-align: right;"
+                        <select name="school" id="school" style="text-align: right;" required
                                 class="form-control form-group mt-2"
                                 onchange="changeSelectOption(this.value)">
-                          <option dir="rtl" selected disabled>مدرسه را انتخاب کنید</option>
+                          <option dir="rtl" value="" selected disabled>مدرسه را انتخاب کنید</option>
                           <?php
                             $sqli = "SELECT * FROM schools";
                             $resui = $pdo->prepare($sqli);
@@ -52,8 +52,8 @@
                             }
                           ?>
                         </select>
-                        <select name="class" style="text-align: right;" id="class" class="form-control form-group mt-4">
-                          <option dir="rtl">کلاس را انتخاب کنید</option>
+                        <select required name="class" style="text-align: right;" id="class" class="form-control form-group mt-4">
+                          <option dir="rtl" value="">کلاس را انتخاب کنید</option>
                         </select>
 
                       </div>

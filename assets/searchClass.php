@@ -9,7 +9,7 @@
     $resualt->bindValue(1, $school);
     $resualt->execute();
     $row = $resualt->fetchAll();
-    echo '<option dir="rtl" selected disabled>کلاس را انتخاب کنید</option>';
+    echo '<option dir="rtl" value="" selected disabled>کلاس را انتخاب کنید</option>';
     foreach ($row as $row) {
       ?>
       <option dir="rtl" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
@@ -159,7 +159,7 @@
     $resualt->bindValue(1, $class);
     $resualt->execute();
     $row = $resualt->fetchAll();
-    echo '<option selected disabled>دانش آموز را انتخاب کنید</option>';
+    echo '<option selected value="" disabled>دانش آموز را انتخاب کنید</option>';
     foreach ($row as $row) {
       ?>
       <option value="<?php echo $row['codemeli'] ?>"><?php echo $row['fname'] . " " . $row['lname'] ?></option>
