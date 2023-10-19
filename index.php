@@ -1,48 +1,48 @@
 <?php
-include_once 'assets/connect.php';
-if (isset($_COOKIE['logedIn'])){
- header("Location: html/dashboard.php");
-}
-if (isset($_POST['login-btn'])) {
-  $usname = $_POST['email-username'];
-  $uspsw = $_POST['password'];
-  $sql = "SELECT * FROM `users` WHERE username=? OR email=?";
-  $resault = $pdo->prepare($sql);
-  $resault->bindValue(1, $usname);
-  $resault->bindValue(2, $usname);
-  $resault->execute();
-  $row = $resault->fetch();
-  $count = $resault->rowCount();
-  if ($count == 1 && $row["password"] == md5($uspsw)) {
-if (isset($_POST['check']) and $_POST['check']=="set"){
- setcookie("logedIn", $usname, time() + (300), "/");
- echo "<script>window.location.href='html/dashboard.php'</script>";
-}else{
- setcookie("logedIn", $usname);
- echo "<script>window.location.href='html/dashboard.php'</script>";
-
-}
-  } else {
-    $_GET['not-ok'] = "نام کاربری یا رمز عبور نادرست است";
+  include_once 'assets/connect.php';
+  if (isset($_COOKIE['logedIn'])) {
+    header("Location: html/dashboard.php");
   }
-}
- include_once 'assets/login-head.php';
+  if (isset($_POST['login-btn'])) {
+    $usname = $_POST['email-username'];
+    $uspsw = $_POST['password'];
+    $sql = "SELECT * FROM `users` WHERE username=? OR email=?";
+    $resault = $pdo->prepare($sql);
+    $resault->bindValue(1, $usname);
+    $resault->bindValue(2, $usname);
+    $resault->execute();
+    $row = $resault->fetch();
+    $count = $resault->rowCount();
+    if ($count == 1 && $row["password"] == md5($uspsw)) {
+      if (isset($_POST['check']) and $_POST['check'] == "set") {
+        setcookie("logedIn", $usname, time() + (36000), "/");
+        echo "<script>window.location.href='html/dashboard.php'</script>";
+      } else {
+        setcookie("logedIn", $usname);
+        echo "<script>window.location.href='html/dashboard.php'</script>";
+
+      }
+    } else {
+      $_GET['not-ok'] = "نام کاربری یا رمز عبور نادرست است";
+    }
+  }
+  include_once 'assets/login-head.php';
 ?>
 
-<!-- Content -->
+  <!-- Content -->
 
-<div class="container-xxl">
-  <div class="authentication-wrapper authentication-basic container-p-y">
-    <div class="authentication-inner">
-      <!-- Register -->
-      <div class="card">
-        <div class="card-body">
-          <!-- Logo -->
-          <div class="app-brand justify-content-center">
-            <a disabled class="app-brand-link gap-2">
+  <div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+      <div class="authentication-inner">
+        <!-- Register -->
+        <div class="card">
+          <div class="card-body">
+            <!-- Logo -->
+            <div class="app-brand justify-content-center">
+              <a disabled class="app-brand-link gap-2">
               <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink">
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
                   <defs>
                     <path
                       d="M13.7918663,0.358365126 L3.39788168,7.44174259 C0.566865006,9.69408886 -0.379795268,12.4788597 0.557900856,15.7960551 C0.68998853,16.2305145 1.09562888,17.7872135 3.12357076,19.2293357 C3.8146334,19.7207684 5.32369333,20.3834223 7.65075054,21.2172976 L7.59773219,21.2525164 L2.63468769,24.5493413 C0.445452254,26.3002124 0.0884951797,28.5083815 1.56381646,31.1738486 C2.83770406,32.8170431 5.20850219,33.2640127 7.09180128,32.5391577 C8.347334,32.0559211 11.4559176,30.0011079 16.4175519,26.3747182 C18.0338572,24.4997857 18.6973423,22.4544883 18.4080071,20.2388261 C17.963753,17.5346866 16.1776345,15.5799961 13.0496516,14.3747546 L10.9194936,13.4715819 L18.6192054,7.984237 L13.7918663,0.358365126 Z"
@@ -75,7 +75,7 @@ if (isset($_POST['check']) and $_POST['check']=="set"){
                           </g>
                         </g>
                         <g id="Triangle"
-                          transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) ">
+                           transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) ">
                           <use fill="#696cff" xlink:href="#path-5"></use>
                           <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5"></use>
                         </g>
@@ -84,77 +84,77 @@ if (isset($_POST['check']) and $_POST['check']=="set"){
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo text-body fw-bolder">مدرسه من</span>
-            </a>
+                <span class="app-brand-text demo text-body fw-bolder">مدرسه من</span>
+              </a>
+            </div>
+            <!-- /Logo -->
+
+            <?php if (isset($_GET['ok'])) { ?>
+              <p class="alert alert-success">
+                <?php
+                  print($_GET['ok']);
+                  print('<a href="auth-login-basic.php"> وارد شوید! </a>');
+                ?>
+              </p>
+            <?php } ?>
+            <?php if (isset($_GET['not-ok'])) { ?>
+              <p class="alert alert-danger">
+                <?php print($_GET['not-ok']); ?>
+              </p>
+            <?php } ?>
+
+            <?php if (@$_SESSION['first-login']) { ?>
+              <p class="alert alert-danger">
+                <?php print(@$_SESSION['first-login']); ?>
+              </p>
+            <?php } ?>
+
+            <h4 class="mb-2">خوش آمدید</h4>
+            <p class="mb-4">لطفا وارد شوید</p>
+
+            <form id="formAuthentication" class="mb-3" method="POST">
+              <div class="mb-3">
+                <label for="email" class="form-label">ایمیل یا نام کاربری:</label>
+                <input type="text" class="form-control" id="email" name="email-username"
+                       placeholder="نام کاربری یا ایمل خود را وارد کنید." autofocus tabindex="1"/>
+              </div>
+              <div class="mb-3 form-password-toggle">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label" for="password">رمز عبور</label>
+                  <a href="auth-forgot-password-basic.php">
+                    <small>رمز عبور را فراموش کردید؟</small>
+                  </a>
+                </div>
+                <div class="input-group input-group-merge">
+                  <input type="password" id="password" class="form-control" name="password" placeholder="رمز عبور"
+                         aria-describedby="password" tabindex="1"/>
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" checked name="check" value="set" type="checkbox" id="remember-me"/>
+                  <label class="form-check-label" for="remember-me"> مرا به خاطر بسپار </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-primary d-grid w-100" type="submit" name="login-btn" tabindex="1">ورود</button>
+              </div>
+            </form>
+
+            <p class="text-center">
+              <span>ثبت نام نکردید؟</span>
+              <a href="auth-register-basic.php">
+                <span>ثبت نام کن</span>
+              </a>
+            </p>
           </div>
-          <!-- /Logo -->
-
-          <?php if (isset($_GET['ok'])) { ?>
-            <p class="alert alert-success">
-              <?php
-              print($_GET['ok']);
-              print('<a href="auth-login-basic.php"> وارد شوید! </a>');
-              ?>
-            </p>
-          <?php } ?>
-          <?php if (isset($_GET['not-ok'])) { ?>
-            <p class="alert alert-danger">
-              <?php print($_GET['not-ok']); ?>
-            </p>
-          <?php } ?>
-
-          <?php if (@$_SESSION['first-login']) { ?>
-            <p class="alert alert-danger">
-              <?php print(@$_SESSION['first-login']); ?>
-            </p>
-          <?php } ?>
-
-          <h4 class="mb-2">خوش آمدید</h4>
-          <p class="mb-4">لطفا وارد شوید</p>
-
-          <form id="formAuthentication" class="mb-3" method="POST">
-            <div class="mb-3">
-              <label for="email" class="form-label">ایمیل یا نام کاربری:</label>
-              <input type="text" class="form-control" id="email" name="email-username"
-                placeholder="نام کاربری یا ایمل خود را وارد کنید." autofocus tabindex="1" />
-            </div>
-            <div class="mb-3 form-password-toggle">
-              <div class="d-flex justify-content-between">
-                <label class="form-label" for="password">رمز عبور</label>
-                <a href="auth-forgot-password-basic.php">
-                  <small>رمز عبور را فراموش کردید؟</small>
-                </a>
-              </div>
-              <div class="input-group input-group-merge">
-                <input type="password" id="password" class="form-control" name="password" placeholder="رمز عبور"
-                  aria-describedby="password" tabindex="1" />
-                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-              </div>
-            </div>
-            <div class="mb-3">
-              <div class="form-check">
-                <input class="form-check-input" name="check" value="set" type="checkbox" id="remember-me" />
-                <label class="form-check-label" for="remember-me"> مرا به خاطر بسپار </label>
-              </div>
-            </div>
-            <div class="mb-3">
-              <button class="btn btn-primary d-grid w-100" type="submit" name="login-btn" tabindex="1">ورود</button>
-            </div>
-          </form>
-
-          <p class="text-center">
-            <span>ثبت نام نکردید؟</span>
-            <a href="auth-register-basic.php">
-              <span>ثبت نام کن</span>
-            </a>
-          </p>
         </div>
+        <!-- /Register -->
       </div>
-      <!-- /Register -->
     </div>
   </div>
-</div>
 
-<!-- / Content -->
+  <!-- / Content -->
 
 <?php include_once 'assets/login-footer.php' ?>

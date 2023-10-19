@@ -164,6 +164,9 @@ select {
     .taskdate {
         margin-top: 25px !important;
     }
+    #lable{
+        display: none;
+    }
 
     .w-75 {
         width: 100% !important;
@@ -246,3 +249,4 @@ a.pcalBtn {
     position: relative;
     top: -33px;
 }
+

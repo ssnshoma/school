@@ -3,11 +3,10 @@
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
   include_once '../assets/files/jdf.php';
-  
   $profileDetails = getProfilePicName();
   $title = "ثبت کلاسی";
   $category = "حضور/غیاب";
- $date = $_GET['data'];
+  $date = $_GET['data'];
   $gdate = convertPersianToEnglish($date);
   $arr_parts = explode('/', $gdate);
   $jYear = $arr_parts[0];
@@ -17,12 +16,12 @@
   if (isset($_POST['save_multiple_data'])) {
     $codemeli = $_POST['code'];
     $fname = $_POST['fname'];
-    $details=$_POST['details'];
+    $details = $_POST['details'];
     foreach ($codemeli as $index => $codemeli) {
       $s_codemeli = $codemeli;
       $s_fname = $fname[$index];
       $s_date = $converted;
-      $s_details=$details;
+      $s_details = $details;
       $query = "INSERT INTO `atendence` ( codemeli , atendence , date, details) VALUES ('$s_codemeli','$s_fname','$s_date','$s_details')";
       $query_run = mysqli_query($conn, $query);
     }
@@ -72,8 +71,7 @@
                             <th id="radif">ردیف</th>
                             <th id="codemeli">شماره دانش آموزی</th>
                             <th>نام</th>
-                            <th>نام خانوادگی</th>
-                            <th>نام پدر</th>
+                            <th>نام و نام خانوادگی</th>
                             <th>وضعیت حضور</th>
                             </thead>
                             <tbody>
@@ -90,7 +88,7 @@
                                 $cod = $value["codemeli"];
                                 $fam = $value['fname'];
                                 $lam = $value['lname'];
-                                $father=$value['fathername']
+                                $father = $value['fathername']
                                 ?>
                                 <tr>
                                   <td class="form-group mb-2" id="radif">
@@ -105,33 +103,28 @@
                                            autocomplete="off" value="<?php echo $cod; ?>">
                                   </td>
                                   <td class="form-group mb-2">
-                                    <?php echo $fam; ?>
-                                  </td>
-                                  <td class="form-group mb-2">
-                                    <?php echo $lam; ?>
+                                    <?php echo $fam . " " . $lam; ?>
                                   </td>
                                   <td class="form-group mb-2">
                                     <?php echo $father; ?>
                                   </td>
                                   <td class="form-group mb-2">
-                                    <div><label for="fname[]" class="lable">حاضر</label>
-                                      <input type="checkbox" name="fname[]" value="ok" checked tabindex="1">
-                                      <br>
-                                      <label for="fname[]" class="lable">غایب</label>
-                                      <input type="checkbox" name="fname[]" value="not" tabindex="1">
-                                    </div>
+                                    <input type="checkbox" value="ok" checked name="fname[]">
+                                    <label id="lable">حاضر</label>
+                                    <input type="checkbox" value="not" name="fname[]">
+                                    <label id="lable">غایب</label>
                                   </td>
-
                                 </tr>
                                 <?php
                               }
                             ?>
                             </tbody>
                           </table>
-                         <div class="w-75 mt-3 m-auto">
-                          <label>توضیحات</label>
-                          <input type="text" class="form-control" name="details" placeholder="لطفا فعالیت های خود را وارد کنید">
-                         </div>
+                          <div class="w-75 mt-3 m-auto">
+                            <label>توضیحات</label>
+                            <input type="text" class="form-control" name="details"
+                                   placeholder="لطفا فعالیت های خود را وارد کنید">
+                          </div>
                           <button type="submit" name="save_multiple_data"
                                   class="btn btn-primary mt-4 mb-5 d-block m-auto"
                                   tabindex="9">ثبت

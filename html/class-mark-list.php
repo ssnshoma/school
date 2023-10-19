@@ -3,11 +3,11 @@
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
   include_once '../assets/files/jdf.php';
-
   $profileDetails = getProfilePicName();
   $title = "گزارش کلاسی";
   $category = "حضور غیاب";
   $classname = $_GET['class'];
+  $marks = array();
   include_once '../assets/head.php'; ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
@@ -36,14 +36,14 @@
                               <td class="pe-0 center th-lg">نام خانوادگی</td>
                               <td class="pe-0 center th-lg">نام پدر</td>
                               <?php
-                                $qry = "SELECT DISTINCT atendence.date,atendence.details,atendence.codemeli,studentlist.codemeli,studentlist.class,studentlist.fathername FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli where studentlist.class='$classname' group by `date` ";
+                                $qry = "SELECT DISTINCT monmark.tarikh,monmark.details,monmark.codemeli,studentlist.codemeli,studentlist.class,studentlist.fathername FROM `studentlist` join `monmark` on monmark.codemeli=studentlist.codemeli where studentlist.class='$classname' and `monCode`<=16 group by `tarikh` ";
                                 $run = $pdo->prepare($qry);
                                 $run->execute();
                                 $row = $run->fetchAll();
                                 $Date = array();
                                 foreach ($row as $row) { ?>
                                   <td class="center plr-0"><?php
-                                      $date = $row['date'];
+                                      $date = $row['tarikh'];
                                       $details = $row['details'];
                                       array_push($Date, $date);
                                     ?>
@@ -51,6 +51,9 @@
                                        href="../assets/pr-ab-edit.php?DateId=<?php echo $date ?>&class=<?php echo $classname ?>"><?php echo miladiToShamsi($date) ?></a>
                                   </td>
                                   <?php
+                                }
+                                foreach ($Date as $day) {
+                                  array_push($marks, "-");
                                 }
                               ?>
                             </tr>
@@ -61,65 +64,39 @@
                               $run = $pdo->prepare($qry);
                               $run->execute();
                               $row = $run->fetchAll();
-                              $i = 1;
+                              $radif = 1;
                               foreach ($row as $row) {
                                 $code = $row['codemeli'];
                                 ?>
                                 <tr>
-                                  <td class="pe-0 center" id="radif"><?php echo $i; ?></td>
+                                  <td class="pe-0 center" id="radif"><?php echo $radif; ?></td>
                                   <td class="pe-0 center" id="codemeli"><?php echo $row['codemeli']; ?></td>
                                   <td class="pe-0 center"><?php echo $row['fname']; ?></td>
                                   <td class="pe-0 center"><?php echo $row['lname']; ?></td>
                                   <td class="pe-0 center"><?php echo $row['fathername']; ?></td>
                                   <?php
-                                    $FindQry = "SELECT atendence,id,date FROM `atendence` where codemeli='$code' order by date";
-                                    $resualt = $pdo->prepare($FindQry);
-                                    $resualt->execute();
-                                    $roww = $resualt->fetchAll();
-                                    $rowCount = $resualt->rowCount();
-                                    foreach ($roww as $roww) {
-                                      if ($rowCount < sizeof($Date)) {
-                                        for ($i = 0; $i < (sizeof($Date) - $rowCount); $i++) {
+                                    foreach ($Date as $day) {
+                                      $FindQry = "SELECT mark,id,tarikh,monCode FROM `monmark` where `codemeli`='$code' and `tarikh`='$day' and `monCode`<=16 order by tarikh";
+                                      $resualt = $pdo->prepare($FindQry);
+                                      $resualt->execute();
+                                      $roww = $resualt->fetchAll();
+                                      $rowCount = $resualt->rowCount();
+                                      if ($rowCount == 0) {
+                                        echo '<td class="center">-</td>';
+                                      } else {
+                                        foreach ($roww as $roww) {
                                           ?>
                                           <td class="center">
-                                            <a>
-                                            <span class="btn-sm p-0 btn-secondary">
-                                          <i class="bx bx-x"></i>
-                                        </span></a>
+                                            <a class="text-secondary" href="../assets/mark-opration.php?editid=<?php echo $roww['id'];?>"><?php echo $roww['mark']?></a>
                                           </td>
                                           <?php
                                         }
                                       }
-                                      if ($rowCount = sizeof($Date)) {
-                                        $ststus = $roww['atendence'];
-                                        if ($ststus == "ok") {
-                                          ?>
-                                          <td class="center">
-                                            <a title="<?php print miladiToShamsi($roww['date']); ?>" href="../assets/pr-ab-edit.php?id=<?php print $roww['id']; ?>">
-                                            <span class="btn-sm p-0 btn-success">
-                                          <i class="bx bx-check"></i>
-                                        </span></a>
-                                          </td>
-                                          <?php
-                                        } else {
-                                          ?>
-                                          <td class="center">
-                                            <a title="<?php print miladiToShamsi($roww['date']); ?>" href="../assets/pr-ab-edit.php?id=<?php print $roww['id']; ?>">
-                                            <span class="btn-sm p-0 btn-warning">
-                                          <i class="bx bx-x"></i>
-                                        </span>
-                                            </a>
-                                          </td>
-                                          <?php
-                                        }
-                                      }
-                                      ?>
-
-                                      <?php
                                     }
                                   ?>
                                 </tr>
-                                <?php $i++;
+                                <?php
+                                $radif++;
                               }
                             ?>
                             </tbody>

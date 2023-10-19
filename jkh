@@ -1,0 +1,34 @@
+                            <?php
+                              $qry = "SELECT DISTINCT
+                            atendence.date,atendence.details,atendence.codemeli,studentlist.codemeli,studentlist.class,studentlist.fathername
+                            FROM `studentlist` join `atendence` on atendence.codemeli=studentlist.codemeli where
+                            studentlist.class='$classname' group by `date` ";
+                              $run = $pdo->prepare($qry);
+                              $run->execute();
+                              $row = $run->fetchAll();
+                              foreach ($row as $row) {
+                                $date = $row['date'];
+                                $qry1 = "SELECT * FROM `studentlist` where class='$classname'";
+                                $rows = $pdo->prepare($qry1);
+                                $rows->execute();
+                                $rowww = $rows->fetchAll();
+                                foreach ($rowww as $row) {
+                                  $codemeli = $row['codemeli'];
+                                  $atendenceQry = "SELECT * FROM `atendence` WHERE `codemeli`='$codemeli' and `date`='$date'";
+                                  $res = $pdo->prepare($atendenceQry);
+                                  $find = mysqli_query($conn, $atendenceQry);
+                                  $findRows = mysqli_fetch_array($find);
+                                  $countRow = $res->execute();
+                                  $count = $res->rowCount();
+                                  if ($count == 1) {
+                                    if ($findRows['atendence'] == "ok") {
+                                      echo "حاضر";
+                                    } else {
+                                      echo "غایب";
+                                    }
+                                  } else if ($count < 1) {
+                                    echo "غایب";
+                                  }
+                                }
+                              }
+                            ?>

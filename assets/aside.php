@@ -160,13 +160,18 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="../html/check-marks.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Error">نمرات ماهانه دانش آموز</div>
+          <a href="../assets/class-mark-find-list.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Error">لیست کلاسی نمرات</div>
           </a>
         </li>
         <li class="menu-item">
           <a href="../html/report-monthly-mark.php" class="menu-link" tabindex="-1">
             <div data-i18n="Under Maintenance">گزارش سالیانه</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="../html/check-marks.php" class="menu-link" tabindex="-1">
+            <div data-i18n="Error">نمرات ماهانه دانش آموز</div>
           </a>
         </li>
       </ul>
@@ -184,7 +189,7 @@
         </li>
         <li class="menu-item">
           <a href="../assets/pr-ab.php" class="menu-link" tabindex="-1">
-            <div data-i18n="Under Maintenance">گزارش حضور و غیاب</div>
+            <div data-i18n="Under Maintenance">لیست کلاسی حضور/غیاب</div>
           </a>
         </li>
       </ul>

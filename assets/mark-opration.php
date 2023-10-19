@@ -13,7 +13,7 @@
     $qry = "UPDATE `monmark` SET `mark`='$mark',`details`='$details' WHERE id=$id";
     $run = $pdo->prepare($qry);
     $run->execute();
-    header("Location: ../html/check-marks.php");
+    echo '<script>window.history.go(-2)</script>';
   }
   include_once '../assets/head.php'; ?>
   <div class="layout-wrapper layout-content-navbar">

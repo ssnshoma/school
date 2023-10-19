@@ -129,8 +129,7 @@
                                     </td>
                                     <td class="form-group mb-2 pe-0 py-0">
                                       <input class="p-0" type="text" dir="rtl" readonly
-                                             style="outline: none;border: none"
-                                             name="lname[]" value="<?php echo $fathername; ?>">
+                                             style="outline: none;border: none" value="<?php echo $fathername; ?>">
                                     </td>
 
                                     <td class="form-group mb-2">
