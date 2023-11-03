@@ -2,6 +2,7 @@
   session_start();
   $charcters = "";
   $Chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  $Chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
   for ($i = 0; $i <= 5; $i++) {
     $charcters = $charcters . $Chars[rand(0, sizeof($Chars) - 1)];
   }
@@ -21,7 +22,7 @@
   for ($i = 0; $i < 1000; $i++) {
     imagesetpixel($target_layer, rand() % 200, rand() % 100, $pixel_color);
   }
-  imagettftext($target_layer, $font_size, 0, 15, 45, $captcha_text_color, "Wicked Autumn.ttf", $captcha_code);
+  imagettftext($target_layer, $font_size, 0, 15, 45, $captcha_text_color, "autumn.ttf", $captcha_code);
   header("Content-Type: image/jpeg");
   imagejpeg($target_layer);
   $_SESSION['captcha-code'] = $captcha_code;

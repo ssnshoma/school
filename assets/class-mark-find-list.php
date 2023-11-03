@@ -27,7 +27,7 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
           <div class="row">
-            <div class="col-lg-10 mb-4 order-0 m-auto">
+            <div class="col-md-12 mb-4 order-0 m-auto">
               <div class="card border-0">
                 <div class="d-flex align-items-end row ">
                   <div class="card-body p-5">

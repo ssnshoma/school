@@ -80,6 +80,7 @@
                           }
                           ?>
                           <?php if (isset($_POST['no'])) {
+                            $_SESSION['class-deleted-not'] = "کلاس مورد نظر حذف شد";
                             ?>
                             <script>
                               window.location.href = "add-class.php";

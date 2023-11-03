@@ -1,58 +1,50 @@
 <?php
-  include_once '../assets/connect.php';
-  include_once '../assets/get-profile-pic.php';
-  include '../assets/first-login.php';
-  
-  $profileDetails = getProfilePicName();
-  $title = "ثبت نام تکی";
-  $category = "ثبت نام";
-  if (isset($_POST['reg-btn'])) {
-    $selschool = $_POST['sel-school'];
-    $selclass = $_POST['sel-class'];
-    $grade = $_POST['grade'];
-    $major = $_POST['major'];
-    $codemeli = $_POST['codemeli'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $fathername = $_POST['fathername'];
-    $resualt = $pdo->prepare("SELECT * FROM studentlist WHERE codemeli=$codemeli");
-    $resualt->execute();
-    $row = $resualt->rowCount();
-    if ($row <= 0) {
-      $resualt = $pdo->prepare("INSERT INTO `studentlist`(`codemeli`, `fname`, `lname`, `fathername`, `major`, `school`, `grade`, `class`) VALUES ('$codemeli','$fname','$lname','$fathername','$major','$selschool','$grade','$selclass')");
-      if ($resualt->execute()) {
-        $_GET['data-inserted'] = "ثبت نام انجام شد";
-      }
-    } else {
-      $_GET['data-not-inserted'] = "کد ملی تکراری می باشد";
-    }
+include_once '../assets/connect.php';
+include_once '../assets/get-profile-pic.php';
+include '../assets/first-login.php';
+$profileDetails = getProfilePicName();
+$title = "ثبت نام تکی";
+$category = "ثبت نام";
+include_once '../assets/head.php';
+if (isset($_POST['reg-btn'])) {
+ if (isset($_POST['codemeli']) and $_POST['codemeli'] != "" and $_POST['fname'] != "" and $_POST['lname'] != "") {
+  $selschool = $_POST['sel-school'];
+  $selclass = $_POST['sel-class'];
+  $grade = $_POST['grade'];
+  $major = $_POST['major'];
+  $codemeli = $_POST['codemeli'];
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $fathername = $_POST['fathername'];
+  $resualt = $pdo->prepare("SELECT * FROM studentlist WHERE codemeli=$codemeli");
+  $resualt->execute();
+  $row = $resualt->rowCount();
+  if ($row <= 0) {
+   $resualt = $pdo->prepare("INSERT INTO `studentlist`(`codemeli`, `fname`, `lname`, `fathername`, `major`, `school`, `grade`, `class`) VALUES ('$codemeli','$fname','$lname','$fathername','$major','$selschool','$grade','$selclass')");
+   if ($resualt->execute()) {
+    echo '<script type="text/javascript">toastr.success("ثبت نام با موفیت انجام شد")</script>';
+   }
+  } else {
+   echo '<script type="text/javascript">toastr.warning("کد ملی قبلا ثبت شده است")</script>';
   }
- include_once '../assets/head.php'; ?>
+ } else {
+  echo '<script type="text/javascript">toastr.warning("لطفا همه موارد را تکمیل کنید")</script>';
+ }
+}
+?>
 <div class="layout-wrapper layout-content-navbar">
  <div class="layout-container">
-   <?php include_once '../assets/aside.php'; ?>
+  <?php include_once '../assets/aside.php'; ?>
   <div class="layout-page">
-    <?php include_once '../assets/nav.php' ?>
+   <?php include_once '../assets/nav.php' ?>
    <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
      <div class="row">
-      <div class="col-lg-10 m-auto mb-4 order-0">
+      <div class="col-md-12 m-auto mb-4 order-0">
        <div class="card">
         <div class="d-flex align-items-center row">
          <div class="col-sm-12 m-auto">
           <div class="card-body">
-            <?php if (isset($_GET['data-inserted'])) { ?>
-             <div id="alerts" class="position-absolute alert alert-success text-danger" style="top: 30px;left: 45%">
-               <?php print ($_GET['data-inserted']) ?>
-             </div>
-              <?php unset($_GET['data-inserted']);
-            } ?>
-            <?php if (isset($_GET['data-not-inserted'])) { ?>
-             <div id="alerts" class="position-absolute alert alert-danger text-danger" style="top: 30px;left: 45%">
-               <?php print ($_GET['data-not-inserted']) ?>
-             </div>
-              <?php unset($_GET['data-not-inserted']);
-            } ?>
            <h5 class="card-title text-primary mt-4">مدرسه را انتخاب کنید</h5>
            <p class="mt-4">برای ثبت نام دانش آموز بر اساس مدرسه و کلاس انتخاب کنید</p>
            <div class="input-group">
@@ -64,16 +56,16 @@
                        class="form-select mb-4"
                        id="sel-school" tabindex="1" style="padding-right: 40px">
                 <option selected disabled>مدرسه را انتخاب کنید</option>
-                 <?php
-                   $sql = "SELECT * FROM schools";
-                   $resualt = $pdo->prepare($sql);
-                   $resualt->execute();
-                   $roww = $resualt->fetchAll(PDO::FETCH_ASSOC);
-                   foreach ($roww as $row) {
-                     ?>
-                    <option style="direction: rtl"
-                            value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
-                   <?php } ?>
+                <?php
+                $sql = "SELECT * FROM schools";
+                $resualt = $pdo->prepare($sql);
+                $resualt->execute();
+                $roww = $resualt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($roww as $row) {
+                 ?>
+                 <option style="direction: rtl"
+                         value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+                <?php } ?>
 
                </select>
               </div>
@@ -172,3 +164,5 @@
     }
 </script>
 <?php include_once '../assets/footer.php'; ?>
+
+

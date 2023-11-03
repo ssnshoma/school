@@ -16,7 +16,6 @@
       <?php
     }
   }
-
   if (isset($_GET['grade'])) {
     $grade = $_GET['grade'];
     $sql = "SELECT * FROM `classes` WHERE name=?";
