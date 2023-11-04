@@ -1,94 +1,104 @@
 <?php
-  include_once '../assets/connect.php';
-  include_once '../assets/get-profile-pic.php';
-  include_once '../assets/first-login.php';
-  include_once '../assets/files/jdf.php';
-  $profileDetails = getProfilePicName();
-  $title = "محاسبه نمرات";
-  $category = "نمرات";
-  include_once '../assets/head.php';
-?>
-  <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-      <?php include_once '../assets/aside.php'; ?>
-      <div class="layout-page">
-        <?php include_once '../assets/nav.php' ?>
-        <div class="content-wrapper">
-          <div class="container-xxl flex-grow-1 container-p-y">
-            <div class="row">
-              <div class="col-lg-12 mb-4 order-0">
-                <div class="card">
-                  <div class="card-header">
-                    محاسبه نمرات
-                  </div>
-                  <div class="d-flex align-items-end row w-75 m-auto mb-5">
-                    <div class="row flex-row-reverse justify-content-between">
-                      <div class=" col-md-6">
-                        <label for="number">نمره آزمون</label>
-                        <input type="number" id="exam-mark" class="form-control" min="0" max="20">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="number"> تعداد دانش آموزان را وارد کنید</label>
-                        <input type="number" onchange="showRows(this.value)" id="std-count" class="form-control"
-                               min="0">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card mt-2 pt-3 pb-5">
-                  <table class="table w-50 m-auto" dir="rtl">
-                    <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>نمره اولیه</th>
-                      <th>نمره از 20</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    <tr>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+include_once '../assets/connect.php';
+include_once '../assets/get-profile-pic.php';
+include_once '../assets/first-login.php';
+$profileDetails = getProfilePicName();
+$title = "محاسبه نمره";
+$category = "نمره";
+include_once '../assets/head.php'; ?>
+ <div class="layout-wrapper layout-content-navbar">
+ <div class="layout-container">
+  <?php include_once '../assets/aside.php'; ?>
+  <div class="layout-page">
+   <?php include_once '../assets/nav.php' ?>
+   <div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+     <div class="row">
+      <div class="col-md-12 mb-4 order-0 m-auto">
+       <div class="card border-0">
+        <div class="d-flex align-items-end row ">
+         <div class="card-body p-5">
+          <h3 class="card-title text-primary mb-4">ماشین حساب نمرات</h3>
+          <form dir="rtl">
+           <div class="row justify-content-around">
+            <div class="col-md-5">
+             <div class="row">
+              <label for="">نمره کل آزمون</label>
+              <input type="text" id="max-mark" class="input">
+             </div>
+             <div class="row">
+              <label for="">نمره کسب شده دانش آموز</label>
+              <input type="text" id="std-mark" class="input" onkeyup="showMark(this.value)">
+             </div>
+
             </div>
-          </div>
-          <div class="content-backdrop fade"></div>
+            <div class="col-md-5">
+             <div class="row">
+              <label for="">نمره نهایی (پیشنهادی)</label>
+              <input type="text" id="mark-out1" class="input" readonly disabled tabindex="-1">
+             </div>
+             <div class="row">
+              <label for="">نمره نهایی (بالا)</label>
+              <input type="text" id="mark-out" class="input" readonly disabled tabindex="-1">
+             </div>
+             <div class="row">
+              <label for="">نمره رند نشده</label>
+              <input type="text" id="mark-out2" class="input" readonly disabled tabindex="-1">
+             </div>
+            </div>
+          </form>
+         </div>
         </div>
+       </div>
       </div>
+     </div>
     </div>
-    <div class="layout-overlay layout-menu-toggle"></div>
+   </div>
   </div>
-  <script>
-    function showRows(count) {
-      document.getElementById('tbody').innerHTML = "";
-      tbody = document.getElementById('tbody');
-      tr = "<td>1</td><td>2</td><td>3</td>";
-      for (i = 1; i <= count; i++) {
-        row = tbody.insertRow();
-        cell1 = row.insertCell(0);
-        celInput1 = cell1.innerHTML = i;
-        cell2 = row.insertCell(1);
-        celInput2 = cell2.innerHTML = '<input type="text" onkeyup="calculateMark(this.value,this.id)" id=' + i + '>';
-        cell3 = row.insertCell(2);
-        celInput3 = cell3.innerHTML = '<input type="text" id=' + 'mark-' + i + '>';
-      }
-    }
+ </div>
+ <script>
+     function showMark(mark) {
+         maxMark = document.getElementById('max-mark').value;
+         mark = Number(mark);
+         finalMark = (mark / maxMark) * 20;
+         finalMarkRoundNearest = (Math.round(finalMark * 4) / 4).toFixed(2);
+         funalMarkStr = String(finalMark);
+         document.getElementById('mark-out1').value = finalMarkRoundNearest;
+         document.getElementById('mark-out2').value = funalMarkStr.substr(0, 5);
+         finalMarkSplited = funalMarkStr.split('.');
+         x = finalMarkSplited.length;
+         decimal = finalMarkSplited[1];
+         intger = finalMarkSplited[0];
+         if (!decimal) {
+             document.getElementById('mark-out').value = Number(intger);
+         } else {
+             decimal = finalMarkSplited[1];
+             len = String(decimal).length;
+             if (len == 1) {
+                 newStr = String(decimal) + "0";
+                 roundMark(intger, newStr);
+             } else if (len > 1) {
+                 y = String(decimal).substr(0, 2);
+                 roundMark(intger, y);
+             }
+         }
+     }
+     function roundMark(integerr, decimmal) {
+         intger = integerr;
+         dec = Number(decimmal);
+         console.log(dec);
+         if (dec <= 25) {
+             document.getElementById('mark-out').value = Number(intger + "." + "25");
 
-    function calculateMark(val, id) {
-      mid='mark-' + i;
-      console.log(mid);
-      final = document.getElementById(mid);
-      console.log(final)
-      // mark = document.getElementById('exam-mark').value;
-      // marks = Number(mark);
-      // finalMark = ((val / marks) * 20);
-      // value = final.value;
-      // value=finalMark;
-    }
+         } else if (dec > 25 && dec <= 50) {
+             document.getElementById('mark-out').value = Number(intger + "." + "5");
 
-  </script>
+         } else if (dec > 50 && dec <= 75) {
+             document.getElementById('mark-out').value = Number(intger + "." + "75");
+
+         } else if (dec > 75 && dec <= 99) {
+             document.getElementById('mark-out').value = Number(intger) + (1);
+         }
+     }
+ </script>
 <?php include_once '../assets/footer.php'; ?>
