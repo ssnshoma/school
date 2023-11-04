@@ -191,12 +191,12 @@ if (isset($_POST['save_multiple_data']) and $_POST['codemeli'] != "") {
     }
 </script>
 <?php include_once '../assets/footer.php'; ?>
-<script>    $(document).ready(function () {
+<script>
+  $(document).ready(function () {
         $(document).on('click', '.remove-btn', function () {
             $(this).closest('.main-form').remove();
         });
         $(document).on('click', '.add-more-form', function () {
-            console.log("ok");
             $('.paste-new-forms').append('<div class="main-form mt-3 mb-4 border-bottom float-left">' +
                 '<div class="row mt-3">' +
                 '<div class="col-md-3">' +
