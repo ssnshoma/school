@@ -81,7 +81,7 @@
 
                               <?php
                                 $classs = $_GET['class'];
-                                $sql = "SELECT * FROM `studentlist` WHERE class='$classs' order by lname";
+                                $sql = "SELECT * FROM `studentlist` WHERE class='$classs' order by lname,CHAR_LENGTH(lname) DESC , fname";
                                 $res = $pdo->prepare($sql);
                                 $res->execute();
                                 $row = $res->fetchAll();

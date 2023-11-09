@@ -3,7 +3,6 @@
   include_once '../assets/get-profile-pic.php';
   include_once '../assets/first-login.php';
   include_once '../assets/files/jdf.php';
-  
   $profileDetails = getProfilePicName();
   $title = "ثبت نمرات پایانی";
   $category = "نمره";
@@ -20,20 +19,14 @@
               <div class="card border-0">
                 <div class="d-flex align-items-end row ">
                   <div class="card-body p-5">
-                    <?php if (isset($_SESSION['pb-inserted-1'])) { ?>
-                      <div class="alert alert-success" style="width: 320px;position:absolute;left: 35%;top: 15px">
-                        <?php echo $_SESSION['pb-inserted-1']; ?>
-                      </div>
-                      <?php
-                      unset($_SESSION['pb-inserted-1']);
+                    <?php if (isset($_SESSION['pb-inserted-1'])) {
+                     echo '<script type="text/javascript">toastr.success("نمرات ثبت شد")</script>';
+                     unset($_SESSION['pb-inserted-1']);
                     }
                     ?>
-                    <?php if (isset($_SESSION['pb-not-inserted'])) { ?>
-                      <div class="alert alert-danger" style="width: 320px;position:absolute;left: 35%;top: 15px">
-                        <?php echo $_SESSION['pb-not-inserted']; ?>
-                      </div>
-                      <?php
-                      unset($_SESSION['pb-not-inserted']);
+                    <?php if (isset($_SESSION['pb-not-inserted'])) {
+                     echo '<script type="text/javascript">toastr.error("نمرات متاسفانه ثبت نشد")</script>';
+                     unset($_SESSION['pb-not-inserted']);
                     }
                     ?>
                     <h4 class="card-title text-primary mb-4">ثبت نمرات پایانی</h4>

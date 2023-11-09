@@ -2,7 +2,7 @@
   session_start();
   $charcters = "";
   $Chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  $Chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  //$Chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
   for ($i = 0; $i <= 5; $i++) {
     $charcters = $charcters . $Chars[rand(0, sizeof($Chars) - 1)];
   }
@@ -11,7 +11,7 @@
   $captcha_bacground = imagecolorallocate($target_layer, 255, 255, 255);
   imagefill($target_layer, 0, 0, $captcha_bacground);
   $captcha_text_color = imagecolorallocate($target_layer, 39, 55, 70);
-  $font_size = 35;
+  $font_size = 42;
   $image_width = 80;
   $image_height = 48;
   $line_color = imagecolorallocate($target_layer, 64, 64, 64);
