@@ -26,83 +26,14 @@
   <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css"/>
   <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css"/>
   <link rel="stylesheet" href="../assets/css/demo.css"/>
+  <script src="../assets/toaster/jquery.js"></script>
+  <link rel="stylesheet" href="../assets/toaster/toaster.css">
+  <script src="../assets/toaster/toaster.js"></script>
   <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"/>
   <link rel="stylesheet" href="../assets/vendor/css/pages/page-auth.css"/>
   <script src="../assets/vendor/js/helpers.js"></script>
   <script src="../assets/js/config.js"></script>
   <style>
-    #toastBox {
-      position: absolute;
-      top: 30px;
-      right: 45.8%;
-      display: flex;
-      align-items: flex-end;
-      flex-direction: column;
-      overflow: hidden;
-      padding: 20px;
-      z-index: 3000;
-    }
-
-    .toast {
-      width: 400px;
-      height: 80px;
-      background: #fff;
-      margin: 15px 0;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      position: relative;
-      transform: translateY(-100%);
-      opacity: 0.5;
-      animation: movetop 0.2s linear forwards;
-    }
-
-    @keyframes movetop {
-      100% {
-        transform: translateY(0);
-        opacity: 100%;
-      }
-    }
-
-    .toast i {
-      margin: 0 20px;
-      font-size: 35px;
-      color: green;
-    }
-
-    .toast.error i {
-      color: red;
-    }
-
-    .toast.invalid i {
-      color: orange;
-    }
-
-    .toast::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 5px;
-      background: green;
-      animation: anim 3s linear forwards;
-    }
-
-    .toast.error::after {
-      background: red;
-    }
-
-    .toast.invalid::after {
-      background: orange;
-    }
-
-    @keyframes anim {
-      100% {
-        width: 0;
-      }
-    }
-
     @media (max-width: 502.9px) {
       .cap-img {
         width: 160px;
